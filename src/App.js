@@ -1,8 +1,12 @@
 import Header from './components/Header/Header'
+import FirstTable from './components/Tables/FirstTable';
 
 function App() {
   return (
-    <Header />
+    <div>
+      <Header />
+      <FirstTable />
+    </div>
   );
 }
 

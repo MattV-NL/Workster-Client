@@ -1,0 +1,19 @@
+table {
+    display: flex;
+    justify-content: center;
+}
+
+tbody {
+    display: block;
+}
+
+tr {
+    height: 1.5rem;
+}
+
+td {
+    background-color: #ffffff;
+    color: #000000;
+    border: solid black 1px;
+    width: 8rem;
+}
