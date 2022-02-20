@@ -6,7 +6,7 @@ function App() {
   console.log('app');
 
   return (
-    <div>
+    <div className='container'>
       <Header />
       <FirstTable />
       <FirstChart />
