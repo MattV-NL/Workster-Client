@@ -2,22 +2,39 @@ import './FirstTable.css';
 
 const FirstTable = () => {
   return (
-    <div className="first-table">
+    <div className="table-chart1">
       <table>
           <tbody>
+            <tr>
+              <th>Day of the Week</th>
+              <th>Rainfall Amount</th>
+            </tr>
               <tr>
-                  <td></td>
-                  <td></td>
+                  <td>Monday</td>
                   <td></td>
               </tr>
               <tr>
-                  <td></td>
-                  <td>Table</td>
+                  <td>Tuesday</td>
                   <td></td>
               </tr>
               <tr>
+                  <td>Wednesday</td>
                   <td></td>
+              </tr>
+              <tr>
+                  <td>Thursday</td>
                   <td></td>
+              </tr>
+              <tr>
+                  <td>Friday</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Saturday</td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>Sunday</td>
                   <td></td>
               </tr>
           </tbody>

@@ -2,7 +2,7 @@ import './FirstChart.css';
 import c3 from 'c3';
 
 
-const chart = c3.generate({
+c3.generate({
 
   bindto: '#chart',
   data: {
@@ -38,7 +38,7 @@ const chart = c3.generate({
 const FirstChart = () => {
   
   return (
-    <div id='chart'></div>
+    <div id='chart' className='table-chart1'></div>
   )
 }
 

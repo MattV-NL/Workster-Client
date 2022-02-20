@@ -1,5 +1,11 @@
 #chart {
-    background-color: #ffffff;
+    background-color: #677680;
     display: flex;
     justify-content: center;
+}
+
+.table-chart1 {
+    display: block;
+    float: left;
+    width: 50%;
 }
