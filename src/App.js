@@ -3,7 +3,6 @@ import FirstTable from './components/Tables/FirstTable';
 import FirstChart from './components/Charts/FirstChart';
 
 function App() {
-  console.log('app');
 
   return (
     <div className='container'>

@@ -2,7 +2,7 @@ import './FirstTable.css';
 
 const FirstTable = () => {
   return (
-    <div className="table-chart1">
+    <div className="table-chart">
       <table>
           <tbody>
             <tr>

@@ -18,7 +18,8 @@ td {
     width: 8rem;
 }
 
-.table-chart1 {
+.table-chart {
     display: block;
+    float: left;
     width: 50%;
 }
