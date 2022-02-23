@@ -1,8 +1,15 @@
-import Header from './components/Header'
+import Header from './components/Header/Header'
+import FirstTable from './components/Tables/FirstTable';
+import FirstChart from './components/Charts/FirstChart';
 
 function App() {
+
   return (
-    <Header />
+    <div className='container'>
+      <Header />
+      <FirstTable />
+      <FirstChart />
+    </div>
   );
 }
 
