@@ -11,7 +11,6 @@ const FirstChart = () => {
     c3.generate({
 
       bindto: '#chart',
-      data: {
         data: {
           json: [
               {name: 'Monday', Precipitation: 20, WindSpeed: 65},
@@ -31,7 +30,6 @@ const FirstChart = () => {
           x: {
               type: 'category'
           }
-      }
       }
     });
   }, []);
