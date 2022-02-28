@@ -3,8 +3,6 @@ import './c3.min.css';
 import c3 from 'c3';
 import { useEffect } from 'react';
 
-
-
 const FirstChart = () => {
 
   useEffect(() => {
@@ -24,8 +22,12 @@ const FirstChart = () => {
           keys: {
               x: 'name',
               value: ['Precipitation', 'WindSpeed'],
-          }
+          },
+          colors: {
+            Precipitation: '#0000ff',
+            WindSpeed: 'D5840E'
       },
+    },
       axis: {
           x: {
               type: 'category'
