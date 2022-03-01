@@ -11,8 +11,8 @@ function App() {
       <Header />
       <FirstContextProvider>       
         <RainfallTable />
-        <WindRainChart />
         <WindSpeedTable />
+        <WindRainChart />
       </FirstContextProvider>       
     </div>
   );

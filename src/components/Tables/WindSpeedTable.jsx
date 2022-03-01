@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { FirstContext } from '../../contexts/FirstContext';
-import './FirstTable.css';
+import './tables.css';
 
 const WindSpeedTable = () => {
 
   const {weatherValue} = useContext(FirstContext);
 
   return (
-    <div className="table-chart">
+    <div className="wind-rain-table">
       <table>
           <tbody>
             <tr>

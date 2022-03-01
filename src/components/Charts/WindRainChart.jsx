@@ -1,4 +1,4 @@
-import './FirstChart.css';
+import './charts.css';
 import './c3.min.css';
 import c3 from 'c3';
 import { useEffect, useContext } from 'react';
@@ -31,7 +31,7 @@ const WindRainChart = () => {
   }, []);
 
   return (
-    <div id='chart' className='table-chart'></div>
+    <div id='chart' className='wind-rain-chart'></div>
   )
 }
 
