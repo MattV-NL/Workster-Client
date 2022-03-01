@@ -1,6 +1,10 @@
+import { useContext } from 'react';
+import { FirstContext } from '../../contexts/FirstContext';
 import './FirstTable.css';
 
 const FirstTable = () => {
+  //const [precipValue, setPrecipValue] = useContext(FirstContext);
+
   return (
     <div className="table-chart">
       <table>
@@ -11,7 +15,7 @@ const FirstTable = () => {
             </tr>
               <tr>
                   <td>Monday</td>
-                  <td></td>
+                  <td>20</td>
               </tr>
               <tr>
                   <td>Tuesday</td>

@@ -1,9 +1,11 @@
 import './FirstChart.css';
 import './c3.min.css';
 import c3 from 'c3';
-import { useEffect } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { FirstContext } from '../../contexts/FirstContext';
 
 const FirstChart = () => {
+//  const [precipValue, setPrecipValue] = useContext(FirstContext);
 
   useEffect(() => {
     c3.generate({
