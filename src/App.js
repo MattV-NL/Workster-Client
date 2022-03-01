@@ -7,9 +7,11 @@ function App() {
   
   return (
     <div className='container'>
-      <Header />          
-      <FirstTable />
-      <FirstChart />      
+      <Header />
+      <FirstContextProvider>       
+        <FirstTable />
+        <FirstChart />
+      </FirstContextProvider>       
     </div>
   );
 }

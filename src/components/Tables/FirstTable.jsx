@@ -3,7 +3,8 @@ import { FirstContext } from '../../contexts/FirstContext';
 import './FirstTable.css';
 
 const FirstTable = () => {
-  //const [precipValue, setPrecipValue] = useContext(FirstContext);
+
+  const {weatherValue} = useContext(FirstContext);
 
   return (
     <div className="table-chart">
@@ -15,31 +16,31 @@ const FirstTable = () => {
             </tr>
               <tr>
                   <td>Monday</td>
-                  <td>20</td>
+                  <td>{weatherValue[0].Precipitation}</td>
               </tr>
               <tr>
                   <td>Tuesday</td>
-                  <td></td>
+                  <td>{weatherValue[1].Precipitation}</td>
               </tr>
               <tr>
                   <td>Wednesday</td>
-                  <td></td>
+                  <td>{weatherValue[2].Precipitation}</td>
               </tr>
               <tr>
                   <td>Thursday</td>
-                  <td></td>
+                  <td>{weatherValue[3].Precipitation}</td>
               </tr>
               <tr>
                   <td>Friday</td>
-                  <td></td>
+                  <td>{weatherValue[4].Precipitation}</td>
               </tr>
               <tr>
                   <td>Saturday</td>
-                  <td></td>
+                  <td>{weatherValue[5].Precipitation}</td>
               </tr>
               <tr>
                   <td>Sunday</td>
-                  <td></td>
+                  <td>{weatherValue[6].Precipitation}</td>
               </tr>
           </tbody>
       </table>
