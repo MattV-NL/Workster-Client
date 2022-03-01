@@ -1,7 +1,8 @@
 import Header from './components/Header/Header'
-import FirstTable from './components/Tables/FirstTable';
-import FirstChart from './components/Charts/FirstChart';
+import RainfallTable from './components/Tables/RainfallTable';
+import WindRainChart from './components/Charts/WindRainChart';
 import FirstContextProvider from './contexts/FirstContext';
+import WindSpeedTable from './components/Tables/WindSpeedTable';
 
 function App() {
   
@@ -9,8 +10,9 @@ function App() {
     <div className='container'>
       <Header />
       <FirstContextProvider>       
-        <FirstTable />
-        <FirstChart />
+        <RainfallTable />
+        <WindRainChart />
+        <WindSpeedTable />
       </FirstContextProvider>       
     </div>
   );

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { FirstContext } from '../../contexts/FirstContext';
 import './FirstTable.css';
 
-const FirstTable = () => {
+const RainfallTable = () => {
 
   const {weatherValue} = useContext(FirstContext);
 
@@ -48,4 +48,4 @@ const FirstTable = () => {
   )
 }
 
-export default FirstTable
+export default RainfallTable

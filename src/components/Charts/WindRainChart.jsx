@@ -1,10 +1,10 @@
 import './FirstChart.css';
 import './c3.min.css';
 import c3 from 'c3';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { FirstContext } from '../../contexts/FirstContext';
 
-const FirstChart = () => {
+const WindRainChart = () => {
   const {weatherValue} = useContext(FirstContext);
 
   useEffect(() => {
@@ -35,4 +35,4 @@ const FirstChart = () => {
   )
 }
 
-export default FirstChart
+export default WindRainChart
