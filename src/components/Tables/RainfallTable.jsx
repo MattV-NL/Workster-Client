@@ -1,14 +1,13 @@
 import { useContext } from 'react';
 import { FirstContext } from '../../contexts/FirstContext';
-import './tables.css';
+import './tables.scss';
 
 const RainfallTable = () => {
 
-  const {weatherValue} = useContext(FirstContext);
+  const {weatherValues} = useContext(FirstContext);
 
   return (
-    <div className="wind-rain-table">
-      <table>
+      <table className="table">
           <tbody>
             <tr>
               <th>Day of the Week</th>
@@ -16,36 +15,35 @@ const RainfallTable = () => {
             </tr>
               <tr>
                   <td>Monday</td>
-                  <td>{weatherValue[0].Precipitation}</td>
+                  <td>{weatherValues[0].Precipitation}</td>
               </tr>
               <tr>
                   <td>Tuesday</td>
-                  <td>{weatherValue[1].Precipitation}</td>
+                  <td>{weatherValues[1].Precipitation}</td>
               </tr>
               <tr>
                   <td>Wednesday</td>
-                  <td>{weatherValue[2].Precipitation}</td>
+                  <td>{weatherValues[2].Precipitation}</td>
               </tr>
               <tr>
                   <td>Thursday</td>
-                  <td>{weatherValue[3].Precipitation}</td>
+                  <td>{weatherValues[3].Precipitation}</td>
               </tr>
               <tr>
                   <td>Friday</td>
-                  <td>{weatherValue[4].Precipitation}</td>
+                  <td>{weatherValues[4].Precipitation}</td>
               </tr>
               <tr>
                   <td>Saturday</td>
-                  <td>{weatherValue[5].Precipitation}</td>
+                  <td>{weatherValues[5].Precipitation}</td>
               </tr>
               <tr>
                   <td>Sunday</td>
-                  <td>{weatherValue[6].Precipitation}</td>
+                  <td>{weatherValues[6].Precipitation}</td>
               </tr>
           </tbody>
       </table>
-    </div>
-  )
+  );
 }
 
 export default RainfallTable
