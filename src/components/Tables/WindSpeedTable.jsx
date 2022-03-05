@@ -6,6 +6,9 @@ const WindSpeedTable = () => {
 
   const {weatherValues} = useContext(FirstContext);
 
+  const weekdays = weatherValues.map(weekday => weekday.name)
+  const windValues = weatherValues.map(windValue => windValue.WindSpeed)
+
   return (
     <table className="table">
           <tbody>
@@ -14,32 +17,32 @@ const WindSpeedTable = () => {
               <th>Wind Speed</th>
             </tr>
               <tr>
-                  <td>Monday</td>
-                  <td>{weatherValues[0].WindSpeed}</td>
+                  <td>{weekdays[0]}</td>
+                  <td>{windValues[0]}</td>
               </tr>
               <tr>
-                  <td>Tuesday</td>
-                  <td>{weatherValues[1].WindSpeed}</td>
+                  <td>{weekdays[1]}</td>
+                  <td>{windValues[1]}</td>
               </tr>
               <tr>
-                  <td>Wednesday</td>
-                  <td>{weatherValues[2].WindSpeed}</td>
+                  <td>{weekdays[2]}</td>
+                  <td>{windValues[2]}</td>
               </tr>
               <tr>
-                  <td>Thursday</td>
-                  <td>{weatherValues[3].WindSpeed}</td>
+                  <td>{weekdays[3]}</td>
+                  <td>{windValues[3]}</td>
               </tr>
               <tr>
-                  <td>Friday</td>
-                  <td>{weatherValues[4].WindSpeed}</td>
+                  <td>{weekdays[4]}</td>
+                  <td>{windValues[4]}</td>
               </tr>
               <tr>
-                  <td>Saturday</td>
-                  <td>{weatherValues[5].WindSpeed}</td>
+                  <td>{weekdays[5]}</td>
+                  <td>{windValues[5]}</td>
               </tr>
               <tr>
-                  <td>Sunday</td>
-                  <td>{weatherValues[6].WindSpeed}</td>
+                  <td>{weekdays[6]}</td>
+                  <td>{windValues[6]}</td>
               </tr>
           </tbody>
       </table>

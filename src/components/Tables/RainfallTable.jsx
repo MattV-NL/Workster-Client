@@ -6,6 +6,9 @@ const RainfallTable = () => {
 
   const {weatherValues} = useContext(FirstContext);
 
+  const weekdays = weatherValues.map(weekday => weekday.name)
+  const precipValues = weatherValues.map(precipValue => precipValue.Precipitation)
+
   return (
       <table className="table">
           <tbody>
@@ -14,32 +17,32 @@ const RainfallTable = () => {
               <th>Rainfall Amount</th>
             </tr>
               <tr>
-                  <td>Monday</td>
-                  <td>{weatherValues[0].Precipitation}</td>
+                  <td>{weekdays[0]}</td>
+                  <td>{precipValues[0]}</td>
               </tr>
               <tr>
-                  <td>Tuesday</td>
-                  <td>{weatherValues[1].Precipitation}</td>
+                  <td>{weekdays[1]}</td>
+                  <td>{precipValues[1]}</td>
               </tr>
               <tr>
-                  <td>Wednesday</td>
-                  <td>{weatherValues[2].Precipitation}</td>
+                  <td>{weekdays[2]}</td>
+                  <td>{precipValues[2]}</td>
               </tr>
               <tr>
-                  <td>Thursday</td>
-                  <td>{weatherValues[3].Precipitation}</td>
+                  <td>{weekdays[3]}</td>
+                  <td>{precipValues[3]}</td>
               </tr>
               <tr>
-                  <td>Friday</td>
-                  <td>{weatherValues[4].Precipitation}</td>
+                  <td>{weekdays[4]}</td>
+                  <td>{precipValues[4]}</td>
               </tr>
               <tr>
-                  <td>Saturday</td>
-                  <td>{weatherValues[5].Precipitation}</td>
+                  <td>{weekdays[5]}</td>
+                  <td>{precipValues[5]}</td>
               </tr>
               <tr>
-                  <td>Sunday</td>
-                  <td>{weatherValues[6].Precipitation}</td>
+                  <td>{weekdays[6]}</td>
+                  <td>{precipValues[6]}</td>
               </tr>
           </tbody>
       </table>
