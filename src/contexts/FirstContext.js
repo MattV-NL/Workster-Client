@@ -14,8 +14,13 @@ const FirstContextProvider = (props) => {
     {name: 'Sunday', Precipitation: 15, WindSpeed: 60}
   ]);
 
+  const inputWeatherValue = (weekday, precip, wind) => {
+    setWeatherValue([
+      {name: weekday, Precipitation: precip, WindSpeed: wind}
+    ])
+  }
   return (
-    <FirstContext.Provider value={{weatherValues}}>
+    <FirstContext.Provider value={{weatherValues, inputWeatherValue}}>
       {props.children}
     </FirstContext.Provider>
   );
