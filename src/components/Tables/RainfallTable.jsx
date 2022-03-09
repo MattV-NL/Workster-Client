@@ -14,7 +14,7 @@ const RainfallTable = () => {
               <th>Rainfall Amount</th>
             </tr>
             {weatherValues.map(({ name, Precipitation }) => (
-                  <tr>
+                  <tr key={name + Precipitation}>
                       <td>{name}</td>
                       <td>{Precipitation}</td>
                   </tr>

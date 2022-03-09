@@ -14,7 +14,7 @@ const WindSpeedTable = () => {
               <th>Wind Speed</th>
             </tr>
             {weatherValues.map(({ name, WindSpeed }) => (
-                  <tr>
+                  <tr key={name + WindSpeed}>
                       <td>{name}</td>
                       <td>{WindSpeed}</td>
                   </tr>

@@ -28,7 +28,7 @@ const WeatherChart = () => {
           }
       }
     });
-  }, []);
+  }, [weatherValues]);
 
   return ( 
     <div id='chart'></div>
