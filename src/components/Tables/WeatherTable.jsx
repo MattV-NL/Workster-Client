@@ -2,20 +2,22 @@ import { useContext } from 'react';
 import { FirstContext } from '../../contexts/FirstContext';
 import './tables.scss';
 
-const WindSpeedTable = () => {
+const RainfallTable = () => {
 
   const {weatherValues} = useContext(FirstContext);
 
   return (
-    <table className="table">
+      <table className="table">
           <tbody>
             <tr>
               <th>Day of the Week</th>
+              <th>Rainfall Amount</th>
               <th>Wind Speed</th>
             </tr>
-            {weatherValues.map(({ name, WindSpeed }) => (
-                  <tr key={name + WindSpeed}>
+            {weatherValues.map(({ name, Precipitation, WindSpeed }) => (
+                  <tr key = {`${name} + ${Precipitation}`}>
                       <td>{name}</td>
+                      <td>{Precipitation}</td>
                       <td>{WindSpeed}</td>
                   </tr>
               ))}
@@ -24,4 +26,4 @@ const WindSpeedTable = () => {
   );
 }
 
-export default WindSpeedTable;
+export default RainfallTable
