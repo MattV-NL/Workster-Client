@@ -4,7 +4,7 @@ export const FirstContext = createContext();
 
 const FirstContextProvider = (props) => {
 
-  const [weatherValues, setWeatherValue] = useState([
+  const [weatherValues, setWeatherValues] = useState([
     {name: 'Monday', Precipitation: 20, WindSpeed: 65},
     {name: 'Tuesday', Precipitation: 10, WindSpeed: 50},
     {name: 'Wednesday', Precipitation: 0, WindSpeed: 25},
@@ -15,9 +15,10 @@ const FirstContextProvider = (props) => {
   ]);
 
   const inputWeatherValue = (weekday, precip, wind) => {
-    setWeatherValue([
-      {name: weekday, Precipitation: precip, WindSpeed: wind}
-    ])
+    setWeatherValues((prevWeatherValues) =>
+      prevWeatherValues.map((weatherValue) => 
+        weatherValue.name === weekday ? {name: weekday, Precipitation: precip, WindSpeed: wind} : weatherValue
+      ));
   }
   return (
     <FirstContext.Provider value={{weatherValues, inputWeatherValue}}>
