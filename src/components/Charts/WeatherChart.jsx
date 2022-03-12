@@ -14,7 +14,7 @@ const WeatherChart = () => {
         data: {
           json: weatherValues,
           keys: {
-              x: 'name',
+              x: 'date',
               value: ['Precipitation', 'WindSpeed'],
           },
           colors: {
@@ -24,7 +24,10 @@ const WeatherChart = () => {
     },
       axis: {
           x: {
-              type: 'category'
+              type: 'timeseries',
+              tick: {
+                format: '%Y-%m-%d %H:%M:%S'
+              }
           }
       }
     });

@@ -14,9 +14,9 @@ const RainfallTable = () => {
               <th>Rainfall Amount</th>
               <th>Wind Speed</th>
             </tr>
-            {weatherValues.map(({ name, Precipitation, WindSpeed }) => (
-                  <tr key = {`${name} + ${Precipitation}`}>
-                      <td>{name}</td>
+            {weatherValues.map(({ date, Precipitation, WindSpeed }) => (
+                  <tr key = {`${date} + ${Precipitation}`}>
+                      <td>{date}</td>
                       <td>{Precipitation}</td>
                       <td>{WindSpeed}</td>
                   </tr>

@@ -26,7 +26,7 @@ const WeatherInput = () => {
   return (
     <form className='user-inputs' onSubmit={handleSubmit}>
       <input 
-        type="text" 
+        type="date" 
         value={weekday} 
         className='weekday-input' 
         placeholder='Day of the week' 
