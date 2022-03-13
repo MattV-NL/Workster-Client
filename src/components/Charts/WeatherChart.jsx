@@ -19,14 +19,15 @@ const WeatherChart = () => {
           },
           colors: {
             Precipitation: '#0000ff',
-            WindSpeed: 'D5840E'
+            WindSpeed: '#D5840E'
       },
     },
       axis: {
           x: {
               type: 'timeseries',
               tick: {
-                format: '%Y-%m-%d %H:%M:%S'
+                rotate: -45,
+                format: '%Y-%m-%d'
               }
           }
       }
