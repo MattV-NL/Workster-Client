@@ -1,8 +1,8 @@
 import { createContext, useState } from 'react';
 
-export const FirstContext = createContext();
+export const DataContext = createContext();
 
-const FirstContextProvider = (props) => {
+const DataContextProvider = (props) => {
 
   const [weatherValues, setWeatherValues] = useState([
     {date: '2022-03-12', Precipitation: 6, WindSpeed: 78},
@@ -21,10 +21,10 @@ const FirstContextProvider = (props) => {
       ));
   }
   return (
-    <FirstContext.Provider value={{weatherValues, inputWeatherValue}}>
+    <DataContext.Provider value={{weatherValues, inputWeatherValue}}>
       {props.children}
-    </FirstContext.Provider>
+    </DataContext.Provider>
   );
 }
 
-export default FirstContextProvider;
+export default DataContextProvider;

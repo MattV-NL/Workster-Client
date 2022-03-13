@@ -1,9 +1,9 @@
 import './inputs.scss';
 import { useState, useContext } from 'react';
-import { FirstContext } from '../../contexts/FirstContext';
+import { DataContext } from '../../contexts/DataContext';
 
 const WeatherInput = () => {
-  const { weatherValues, inputWeatherValue } = useContext(FirstContext);
+  const { inputWeatherValue } = useContext(DataContext);
 
   const [weekday, setWeekday] = useState('');
   const [precip, setPrecip] = useState(null);
@@ -24,35 +24,44 @@ const WeatherInput = () => {
   const takeWindInput = (e) => setWind(parseInt(e.target.value));
 
   return (
-    <form className='user-inputs' onSubmit={handleSubmit}>
-      <input 
-        type="date" 
-        value={weekday} 
-        className='weekday-input' 
-        placeholder='Day of the week' 
-        required 
-        onChange={takeWeekdayInput}
-      />
-      <input 
-        type="number" 
-        value={precip || ""} 
-        className='precip-input' 
-        placeholder='Precipitation amount' 
-        required 
-        onChange={takePrecipInput} 
-      />
-      <input 
-        type="number" 
-        value={wind || ""} 
-        className='wind-input' 
-        placeholder='Wind Speed' 
-        required 
-        onChange={takeWindInput} 
-      />
-      <div className='submit-button-div'>
-        <button className='submit-button'>Submit</button>
-      </div>
-    </form>
+    <>
+      <tr>
+        <td>
+          <input 
+            type="date" 
+            value={weekday} 
+            className='weekday-input'  
+            required 
+            onChange={takeWeekdayInput}
+          />
+        </td>
+        <td>
+          <input 
+            type="number" 
+            value={precip || ""} 
+            className='precip-input' 
+            placeholder='Precipitation amount' 
+            required 
+            onChange={takePrecipInput} 
+          />
+        </td>
+        <td>
+          <input 
+            type="number" 
+            value={wind || ""} 
+            className='wind-input' 
+            placeholder='Wind Speed' 
+            required 
+            onChange={takeWindInput} 
+          />
+        </td>  
+      </tr>
+      <tr className='submit-button-div'>
+        <td className='empty-td'></td>
+        <td className='submit-button' onClick={handleSubmit}>Submit</td>
+        <td className='empty-td'></td>
+      </tr>
+    </>
   )
 }
 

@@ -1,28 +1,15 @@
-.user-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.weekday-input, .precip-input, .wind-input {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.submit-button-div {
-    display: flex;
-    justify-content: center;
-}
-
 .submit-button {
-    background-color: #677680;
-    border: none;
-    padding: 1rem;
+    background-color: #1a4c6d;
+    text-align: center;
 }
 
 .submit-button:hover {
-    background-color: #677680;
-    color: #fff;
+    background-color: #0f2f44;
     cursor: pointer;
+    color: #fff;
+}
+
+.empty-td {
+    border: none;
+    background-color: #20232a;
 }

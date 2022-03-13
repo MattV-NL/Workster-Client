@@ -1,15 +1,15 @@
 import Header from './components/Header/Header'
 import Layout from './components/Layout/Layout';
-import FirstContextProvider from './contexts/FirstContext';
+import DataContextProvider from './contexts/DataContext';
 
 function App() {
   
   return (
     <>
       <Header />
-      <FirstContextProvider>
+      <DataContextProvider>
         <Layout />
-      </FirstContextProvider>       
+      </DataContextProvider>      
     </>
   );
 }
