@@ -1,6 +1,7 @@
 import Header from './components/Header/Header'
 import Layout from './components/Layout/Layout';
 import DataContextProvider from './contexts/DataContext';
+import InputContextProvider from './contexts/InputContext';
 
 function App() {
   
@@ -8,7 +9,9 @@ function App() {
     <>
       <Header />
       <DataContextProvider>
-        <Layout />
+        <InputContextProvider>
+          <Layout />
+        </InputContextProvider>
       </DataContextProvider>      
     </>
   );

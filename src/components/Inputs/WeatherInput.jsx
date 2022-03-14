@@ -1,27 +1,16 @@
 import './inputs.scss';
-import { useState, useContext } from 'react';
-import { DataContext } from '../../contexts/DataContext';
+import { useContext } from 'react';
+import { InputContext } from '../../contexts/InputContext';
 
 const WeatherInput = () => {
-  const { inputWeatherValue } = useContext(DataContext);
-
-  const [weekday, setWeekday] = useState('');
-  const [precip, setPrecip] = useState(null);
-  const [wind, setWind] = useState(null);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    inputWeatherValue(weekday, precip, wind);
-    setWeekday('');
-    setPrecip(null);
-    setWind(null);
-  }
-
-  const takeWeekdayInput = (e) => setWeekday(e.target.value);
-
-  const takePrecipInput = (e) => setPrecip(parseInt(e.target.value));
-
-  const takeWindInput = (e) => setWind(parseInt(e.target.value));
+  
+  const { weekday, 
+          precip, 
+          wind, 
+          takeWeekdayInput, 
+          takePrecipInput, 
+          takeWindInput
+        } = useContext(InputContext);
 
   return (
     <>
@@ -40,7 +29,7 @@ const WeatherInput = () => {
             type="number" 
             value={precip || ""} 
             className='precip-input' 
-            placeholder='Precipitation amount' 
+            placeholder='Precipitation' 
             required 
             onChange={takePrecipInput} 
           />
@@ -55,11 +44,6 @@ const WeatherInput = () => {
             onChange={takeWindInput} 
           />
         </td>  
-      </tr>
-      <tr className='submit-button-div'>
-        <td className='empty-td'></td>
-        <td className='submit-button' onClick={handleSubmit}>Submit</td>
-        <td className='empty-td'></td>
       </tr>
     </>
   )

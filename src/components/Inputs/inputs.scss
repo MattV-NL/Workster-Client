@@ -1,15 +1,18 @@
-.submit-button {
-    background-color: #1a4c6d;
-    text-align: center;
-}
-
-.submit-button:hover {
-    background-color: #0f2f44;
-    cursor: pointer;
-    color: #fff;
-}
-
-.empty-td {
-    border: none;
-    background-color: #20232a;
+.submit-button-div {
+    display: flex;
+    justify-content: center;
+    
+    & .submit-button {
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        background-color: var(--buttonColor);
+        text-align: center;
+    }
+    
+    & .submit-button:hover {
+        background-color: var(--buttonHover);
+        cursor: pointer;
+    }
 }

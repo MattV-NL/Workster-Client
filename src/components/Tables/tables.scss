@@ -2,7 +2,7 @@
     width: 100%;
 
     & tbody {
-        background-color: #677680;
+        background-color: var(--componentBackground);
     }
     & tr {
         height: 1.5rem;
@@ -13,6 +13,6 @@
         width: 8rem;
     }
     & input {
-        max-width: 5rem;
+        width: 20vw;
     }
 }
