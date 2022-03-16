@@ -4,14 +4,21 @@ export const DataContext = createContext();
 
 const DataContextProvider = (props) => {
 
+  const newDate = new Date();
+  const d = newDate.getDate();
+  const dd = (d < 10 ? ("0" + d) : d);
+  const m = (newDate.getMonth() + 1);
+  const mm = (m < 10 ? ("0" + m) : 0);
+  const yyyy = newDate.getFullYear();
+
   const [weatherValues, setWeatherValues] = useState([
-    {date: '2022-03-12', Precipitation: 6, WindSpeed: 78},
-    {date: '2022-03-13', Precipitation: 0, WindSpeed: 55},
-    {date: '2022-03-14', Precipitation: 3, WindSpeed: 41},
-    {date: '2022-03-15', Precipitation: 0, WindSpeed: 23},
-    {date: '2022-03-16', Precipitation: 0, WindSpeed: 20},
-    {date: '2022-03-17', Precipitation: 10, WindSpeed: 40},
-    {date: '2022-03-18', Precipitation: 3, WindSpeed: 29}
+    {date: `${yyyy}-${mm}-${dd}`, Precipitation: 0, WindSpeed: 0},
+    {date: `${yyyy}-${mm}-${dd + 1}`, Precipitation: 0, WindSpeed: 0},
+    {date: `${yyyy}-${mm}-${dd + 2}`, Precipitation: 0, WindSpeed: 0},
+    {date: `${yyyy}-${mm}-${dd + 3}`, Precipitation: 0, WindSpeed: 0},
+    {date: `${yyyy}-${mm}-${dd + 4}`, Precipitation: 0, WindSpeed: 0},
+    {date: `${yyyy}-${mm}-${dd + 5}`, Precipitation: 0, WindSpeed: 0},
+    {date: `${yyyy}-${mm}-${dd + 6}`, Precipitation: 0, WindSpeed: 0}
   ]);
 
   const inputWeatherValue = (weekday, precip, wind) => {
@@ -20,6 +27,7 @@ const DataContextProvider = (props) => {
         weatherValue.date === weekday ? {date: weekday, Precipitation: precip, WindSpeed: wind} : weatherValue
       ));
   }
+
   return (
     <DataContext.Provider value={{weatherValues, inputWeatherValue}}>
       {props.children}
