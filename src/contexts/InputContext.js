@@ -11,7 +11,7 @@ const InputContextProvider = (props) => {
   const [precip, setPrecip] = useState(null);
   const [wind, setWind] = useState(null);
 
-  const handleSubmit = (e) => {
+  const weatherSubmit = (e) => {
     e.preventDefault();
     inputWeatherValue(weekday, precip, wind);
     setWeekday('');
@@ -33,7 +33,7 @@ const InputContextProvider = (props) => {
         takeWeekdayInput, 
         takePrecipInput, 
         takeWindInput, 
-        handleSubmit} 
+        weatherSubmit} 
         }>
           {props.children} 
       </InputContext.Provider>

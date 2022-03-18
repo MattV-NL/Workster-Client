@@ -6,7 +6,7 @@
         color: #fff;
         border: 2px solid #fff;
         border-radius: 10px;
-        padding: 1rem 2rem;
+        padding: .5rem 1rem;
         background-color: var(--buttonColor);
         text-align: center;
     }
@@ -14,5 +14,38 @@
     & .submit-button:hover {
         background-color: var(--buttonHover);
         cursor: pointer;
+    }
+}
+
+.work-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 1rem;
+
+
+    & .work-form-labels {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    & .work-form-inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    & .work-form-input-button {
+        background-color: var(--buttonColor);
+        color: #fff;
+        width: 5rem;
+        border-radius: 8px;
+        border: 1px solid #fff;
+    }
+
+    & .work-form-input-button:hover {
+        background-color: var(--buttonHover);
     }
 }
