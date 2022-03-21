@@ -7,7 +7,7 @@ import WorkInput from '../Inputs/WorkInput';
 const Layout = () => {
   return (
     <div className='layout'>
-      <WorkInput />
+        <WorkInput /> 
       <div className='layout-tables'>
         <WeatherTable />
       </div>

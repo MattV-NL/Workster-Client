@@ -6,7 +6,11 @@ const WeatherButton = () => {
   
   return (
       <div className="submit-button-div">
-          <button className="submit-button" onClick={weatherSubmit}>Submit</button>
+          <button 
+            className="submit-button" 
+            onClick={weatherSubmit}
+            >Submit
+          </button>
       </div>
   )
 
