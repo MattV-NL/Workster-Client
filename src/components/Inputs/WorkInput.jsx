@@ -16,28 +16,28 @@ const WorkInput = () => {
             <div className='work-form-labels'>
                 <label
                     className='work-form-label'
-                    htmlFor="work-type"
-                    >Type of Work
+                    htmlFor="work-type">
+                        Type of Work
                 </label>
                 <label 
                     className='work-form-label' 
-                    htmlFor="work-duration"
-                    >Date
+                    htmlFor="work-duration">
+                        Date
                 </label>
                 <label 
                     className='work-form-label' 
-                    htmlFor="work-location-checkbox"
-                    >Will there be welding involved?
+                    htmlFor="work-location-checkbox">
+                        Will there be welding involved?
                 </label>
                 <label 
                     className='work-form-label' 
-                    htmlFor="work-location-checkbox"
-                    >Will you need crane support?
+                    htmlFor="work-location-checkbox">
+                        Will you need crane support?
                 </label>
                 <label 
                     className='work-form-label' 
-                    htmlFor="work-location"
-                    >Location
+                    htmlFor="work-location">
+                        Location
                 </label>
             </div>
             <div className='work-form-inputs'>
@@ -63,12 +63,15 @@ const WorkInput = () => {
                     type="checkbox"
                     
                 />
-                <button 
-                    className='work-form-input-button' 
-                    type='button' 
-                    onClick={switchLocation}
-                    >{location ? "Outside" : "Inside"}
-                </button>
+                <div className='submit-button-container'>
+                    <button
+                        className='submit-button'
+                        style={{padding: '.1rem .5rem'}}
+                        type='button' 
+                        onClick={switchLocation}>
+                        {location ? "Outside" : "Inside"}
+                    </button>
+                </div>
             </div>    
         </form>
         <WorkButton />

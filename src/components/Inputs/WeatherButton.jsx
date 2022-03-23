@@ -5,7 +5,7 @@ const WeatherButton = () => {
   const { weatherSubmit } = useContext(InputContext);
   
   return (
-      <div className="submit-button-div">
+      <div className="submit-button-container">
           <button 
             className="submit-button" 
             onClick={weatherSubmit}

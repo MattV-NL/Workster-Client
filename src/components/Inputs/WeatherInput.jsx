@@ -7,9 +7,9 @@ const WeatherInput = () => {
   const { weekday, 
           precip, 
           wind, 
-          takeWeekdayInput, 
-          takePrecipInput, 
-          takeWindInput
+          submitWeekday, 
+          submitPrecip, 
+          submitWind
         } = useContext(InputContext);
 
   return (
@@ -21,7 +21,7 @@ const WeatherInput = () => {
             value={weekday} 
             className='weekday-input'  
             required 
-            onChange={takeWeekdayInput}
+            onChange={submitWeekday}
           />
         </td>
         <td>
@@ -31,7 +31,7 @@ const WeatherInput = () => {
             className='precip-input' 
             placeholder='Precipitation' 
             required 
-            onChange={takePrecipInput} 
+            onChange={submitPrecip} 
           />
         </td>
         <td>
@@ -41,7 +41,7 @@ const WeatherInput = () => {
             className='wind-input' 
             placeholder='Wind Speed' 
             required 
-            onChange={takeWindInput} 
+            onChange={submitWind} 
           />
         </td>  
       </tr>

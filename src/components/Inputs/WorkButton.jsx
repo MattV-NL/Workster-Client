@@ -1,13 +1,11 @@
-
-
 const WorkButton = () => {
 
   
   return (
-      <div className="submit-button-div">
+      <div className="submit-button-container">
           <button 
-            className="submit-button"
-            >Submit
+            className="submit-button">
+              Submit
           </button>
       </div>
   )

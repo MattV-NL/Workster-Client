@@ -21,7 +21,7 @@ const DataContextProvider = (props) => {
     {date: `${yyyy}-${mm}-${dd + 6}`, Precipitation: 0, WindSpeed: 0}
   ]);
 
-  const inputWeatherValue = (weekday, precip, wind) => {
+  const submitWeatherValues = (weekday, precip, wind) => {
     setWeatherValues((prevWeatherValues) =>
       prevWeatherValues.map((weatherValue) => 
         weatherValue.date === weekday ? {date: weekday, Precipitation: precip, WindSpeed: wind} : weatherValue
@@ -29,7 +29,7 @@ const DataContextProvider = (props) => {
   }
 
   return (
-    <DataContext.Provider value={{weatherValues, inputWeatherValue}}>
+    <DataContext.Provider value={{weatherValues, submitWeatherValues}}>
       {props.children}
     </DataContext.Provider>
   );
