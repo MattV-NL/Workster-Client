@@ -1,24 +1,26 @@
 import { createContext, useState } from 'react';
+import { DateTime } from 'luxon';
 
 export const DataContext = createContext();
 
 const DataContextProvider = (props) => {
 
-  const newDate = new Date();
-  const d = newDate.getDate();
-  const dd = (d < 10 ? ("0" + d) : d);
-  const m = (newDate.getMonth() + 1);
-  const mm = (m < 10 ? ("0" + m) : 0);
-  const yyyy = newDate.getFullYear();
+  const date = DateTime.now().toFormat('yyyy-MM-dd');
+  const date1 = DateTime.now().plus({days: 1}).toFormat('yyyy-MM-dd');
+  const date2 = DateTime.now().plus({days: 2}).toFormat('yyyy-MM-dd');
+  const date3 = DateTime.now().plus({days: 3}).toFormat('yyyy-MM-dd');
+  const date4 = DateTime.now().plus({days: 4}).toFormat('yyyy-MM-dd');
+  const date5 = DateTime.now().plus({days: 5}).toFormat('yyyy-MM-dd');
+  const date6 = DateTime.now().plus({days: 6}).toFormat('yyyy-MM-dd');
 
   const [weatherValues, setWeatherValues] = useState([
-    {date: `${yyyy}-${mm}-${dd}`, Precipitation: 0, WindSpeed: 0},
-    {date: `${yyyy}-${mm}-${dd + 1}`, Precipitation: 0, WindSpeed: 0},
-    {date: `${yyyy}-${mm}-${dd + 2}`, Precipitation: 0, WindSpeed: 0},
-    {date: `${yyyy}-${mm}-${dd + 3}`, Precipitation: 0, WindSpeed: 0},
-    {date: `${yyyy}-${mm}-${dd + 4}`, Precipitation: 0, WindSpeed: 0},
-    {date: `${yyyy}-${mm}-${dd + 5}`, Precipitation: 0, WindSpeed: 0},
-    {date: `${yyyy}-${mm}-${dd + 6}`, Precipitation: 0, WindSpeed: 0}
+    {date: date, Precipitation: 0, WindSpeed: 0},
+    {date: date1, Precipitation: 0, WindSpeed: 0},
+    {date: date2, Precipitation: 0, WindSpeed: 0},
+    {date: date3, Precipitation: 0, WindSpeed: 0},
+    {date: date4, Precipitation: 0, WindSpeed: 0},
+    {date: date5, Precipitation: 0, WindSpeed: 0},
+    {date: date6, Precipitation: 0, WindSpeed: 0}
   ]);
 
   const submitWeatherValues = (weekday, precip, wind) => {
