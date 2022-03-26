@@ -6,7 +6,7 @@ const WeatherButton = () => {
   const { weatherSubmit } = useContext(InputContext);
   
   return (
-      <Button handleClick={weatherSubmit}/>
+      <Button handleClick={weatherSubmit} name='Submit'/>
   )
 
 }

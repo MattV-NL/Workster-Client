@@ -2,7 +2,7 @@ import Button from "./Button";
 
 const WorkButton = () => { 
   return (
-      <Button />
+      <Button name='Submit'/>
   )
   
 }

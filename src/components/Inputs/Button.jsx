@@ -1,10 +1,10 @@
-const Button = ({handleClick}) => {
+const Button = ({handleClick, name}) => {
   return (
       <div className="submit-button-container">
           <button 
             className="submit-button" 
             onClick={handleClick}>
-                Submit
+                {name}
           </button>
       </div>
   )
