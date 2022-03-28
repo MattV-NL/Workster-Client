@@ -15,8 +15,13 @@ const DataContextProvider = (props) => {
   );
 
   const submitWeatherValues = (weekday, precip, wind) => {
-    setWeatherValues([...weatherValues, {date: weekday, Precipitation: precip, WindSpeed: wind}]
-      );
+    setWeatherValues((prevWeatherValues) =>
+      prevWeatherValues.map((weatherValue) => 
+        weatherValue.date === weekday ? {date: weekday, Precipitation: precip, WindSpeed: wind}
+          : weatherValue
+      ), 
+      weatherValues.push({date: weekday, Precipitation: precip, WindSpeed: wind})
+    );
   }
 
   return (
