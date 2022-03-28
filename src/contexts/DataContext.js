@@ -3,25 +3,25 @@ import { DateTime } from 'luxon';
 
 export const DataContext = createContext();
 
-const DataContextProvider = (props) => {
+const DataContextProvider = ({ children }) => {
 
   const date = DateTime.local(); 
 
   const [weatherValues, setWeatherValues] = useState(
     Array(7).fill(date).map((date, index) => {
-      var nextDate = date.plus({days: index})
+      var nextDate = date.plus({ days: index })
       return nextDate;
-    }).map((date) => ({date: date.toFormat('yyyy-MM-dd'), Precipitation: 0, WindSpeed: 0}))
+    }).map((date) => ({date: date.toFormat('yyyy-MM-dd'), precip: 0, wind: 0}))
   );
 
-  const submitWeatherValues = (weekday, precip, wind) => {
-    setWeatherValues([...weatherValues, {date: weekday, Precipitation: precip, WindSpeed: wind}]
+  const submitWeatherValues = (date, precip, wind) => {
+    setWeatherValues([...weatherValues, {date, precip, wind}]
       );
   }
 
   return (
-    <DataContext.Provider value={{weatherValues, submitWeatherValues}}>
-      {props.children}
+    <DataContext.Provider value={{ weatherValues, submitWeatherValues }}>
+      {children}
     </DataContext.Provider>
   );
 }

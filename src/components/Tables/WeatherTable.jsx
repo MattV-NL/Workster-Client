@@ -15,7 +15,7 @@ const RainfallTable = () => {
           <table>
             <tbody>
               {weatherValues.map(({ date, Precipitation, WindSpeed }) => (
-                  <tr key = {`${date} + ${Precipitation}`}>
+                  <tr key = {`${date}+${Precipitation}`}>
                     <td>{date}</td>
                     <td>{Precipitation}</td>
                     <td>{WindSpeed}</td>
