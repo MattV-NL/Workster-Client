@@ -15,11 +15,11 @@ const WeatherChart = () => {
           json: weatherValues,
           keys: {
               x: 'date',
-              value: ['Precipitation', 'WindSpeed'],
+              value: ['precip', 'wind'],
           },
           colors: {
-            Precipitation: '#0000ff',
-            WindSpeed: '#D5840E'
+            precip: '#0000ff',
+            wind: '#D5840E'
       },
     },
       axis: {
