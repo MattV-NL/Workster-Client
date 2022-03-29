@@ -12,13 +12,13 @@ const RainfallTable = () => {
     <>
       <WeatherTableHeader />
         <div className="weather-table">
-          <table>
+          <table className='table'>
             <tbody>
-              {weatherValues.map(({ date, Precipitation, WindSpeed }) => (
-                  <tr key = {`${date}+${Precipitation}`}>
+              {weatherValues.map(({ date, precip, wind }) => (
+                  <tr key = {`${date}-${precip}`}>
                     <td>{date}</td>
-                    <td>{Precipitation}</td>
-                    <td>{WindSpeed}</td>
+                    <td>{precip}</td>
+                    <td>{wind}</td>
                   </tr>
                   ))}            
             </tbody>

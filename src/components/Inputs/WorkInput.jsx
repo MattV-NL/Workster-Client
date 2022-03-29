@@ -5,10 +5,10 @@ import Button from './Button';
 
 const WorkInput = () => {
 
-    const [location, setLocation] = useState(false);
+    const [isOutside, setIsOutside] = useState(false);
 
-    const switchLocation = () => {
-        setLocation(!location);
+    const switchIsOutside = () => {
+        setIsOutside(!isOutside);
     }
 
   return (
@@ -64,7 +64,7 @@ const WorkInput = () => {
                     type="checkbox"
                     
                 />
-                <Button handleClick={switchLocation} name={location ? "Outside" : "Inside"} />
+                <Button handleClick={switchIsOutside} name={isOutside ? "Outside" : "Inside"} />
             </div>    
         </form>
         <WorkButton />

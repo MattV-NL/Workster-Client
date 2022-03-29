@@ -2,7 +2,7 @@ import './tables.scss';
 
 const WeatherTableHeader = () => {
   return (
-    <table>
+    <table className='table'>
       <tbody>
         <tr>
           <th>Day of the Week</th>

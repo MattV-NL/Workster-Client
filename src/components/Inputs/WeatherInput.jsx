@@ -4,10 +4,10 @@ import { InputContext } from '../../contexts/InputContext';
 
 const WeatherInput = () => {
   
-  const { weekday, 
+  const { date, 
           precip, 
           wind, 
-          submitWeekday, 
+          submitDate, 
           submitPrecip, 
           submitWind
         } = useContext(InputContext);
@@ -19,17 +19,15 @@ const WeatherInput = () => {
           <td>
             <input 
               type="date" 
-              value={weekday} 
-              className='weekday-input'  
+              value={date} 
               required 
-              onChange={submitWeekday}
+              onChange={submitDate}
             />
           </td>
           <td>
             <input 
               type="number" 
               value={precip || ""} 
-              className='precip-input' 
               placeholder='Precipitation' 
               required 
               onChange={submitPrecip} 
@@ -39,7 +37,6 @@ const WeatherInput = () => {
             <input 
               type="number" 
               value={wind || ""} 
-              className='wind-input' 
               placeholder='Wind Speed' 
               required 
               onChange={submitWind} 
