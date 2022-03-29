@@ -20,8 +20,12 @@ const WeatherChart = () => {
           colors: {
             precip: '#0000ff',
             wind: '#D5840E'
-      },
-    },
+          },
+          names: {
+            precip: 'Precipitation',
+            wind: 'Wind Speed'
+          }
+        },
       axis: {
           x: {
               type: 'timeseries',
