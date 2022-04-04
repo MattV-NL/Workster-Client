@@ -1,10 +1,8 @@
 import Button from "./Button";
 
-const WorkButton = () => { 
-  return (
-      <Button name='Submit'/>
-  )
-  
-}
+const WorkButton = () => (  
+    <Button name='Submit'/>
+
+  );
 
 export default WorkButton;

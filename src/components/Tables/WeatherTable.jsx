@@ -10,6 +10,7 @@ const RainfallTable = () => {
 
   return (
     <>
+    <div>
       <WeatherTableHeader />
         <div className="weather-table">
           <table className='table'>
@@ -25,6 +26,7 @@ const RainfallTable = () => {
           </table>
         </div>
       <WeatherInput />
+    </div>
     </>
   );
 }

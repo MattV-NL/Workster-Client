@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useCallback } from "react";
 import { DataContext } from "./DataContext";
 
 export const InputContext = createContext();
@@ -11,13 +11,17 @@ const InputContextProvider = (props) => {
   const [precip, setPrecip] = useState(null);
   const [wind, setWind] = useState(null);
 
-  const weatherSubmit = (e) => {
-    e.preventDefault();
-    submitWeatherValues(date, precip, wind);
-    setDate('');
-    setPrecip(null);
-    setWind(null);
-  }
+  const weatherSubmit = useCallback((e) => {
+    if (date != '' && precip != null && wind != null) {
+      e.preventDefault();
+        submitWeatherValues(date, precip, wind);
+        setDate('');
+        setPrecip(null);
+        setWind(null);
+    } else {
+      alert('Please fill out all weather information.');
+    }
+  }, [date, precip, wind]);
 
   const submitDate = ({ target: { value }}) => setDate(value);
 

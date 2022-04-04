@@ -1,6 +1,6 @@
 .weather-table {
     height: auto;
-    max-height: 20rem;
+    max-height: 19rem;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -16,12 +16,12 @@ table.table {
     & tbody {
         background-color: var(--componentBackground);
     }
-    & th {
+    & thead, tfoot, th {
+        height: 1.5rem;
+        background-color: var(--componentBackground);
         width: 12rem;
         padding: 0.75rem;
-    }
-    & tr {
-        height: 1.5rem;
+        position: sticky;
     }
     & td {
         padding: 0.75rem;

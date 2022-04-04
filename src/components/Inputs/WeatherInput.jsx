@@ -1,6 +1,7 @@
 import '../Tables/tables.scss';
 import { useContext } from 'react';
 import { InputContext } from '../../contexts/InputContext';
+import Input from './Input';
 
 const WeatherInput = () => {
   
@@ -14,36 +15,36 @@ const WeatherInput = () => {
 
   return (
     <table className='table'>
-      <tbody>
+      <tfoot>
         <tr>
           <td>
-            <input 
-              type="date" 
-              value={date} 
-              required 
-              onChange={submitDate}
-            />
+            <Input 
+              type="date"
+              value={date}
+              isRequired={true}
+              handleChange={submitDate}
+              />
           </td>
           <td>
-            <input 
+            <Input 
               type="number" 
               value={precip || ""} 
-              placeholder='Precipitation' 
-              required 
-              onChange={submitPrecip} 
+              placeholder='Precipitation'
+              isRequired={true} 
+              handleChange={submitPrecip} 
             />
           </td>
           <td>
-            <input 
+            <Input 
               type="number" 
               value={wind || ""} 
               placeholder='Wind Speed' 
-              required 
-              onChange={submitWind} 
+              isRequired 
+              handleChange={submitWind} 
             />
           </td>  
         </tr>
-      </tbody>
+      </tfoot>
     </table>
   )
 }

@@ -8,9 +8,7 @@ const Layout = () => {
   return (
     <div className='layout'>
       <WorkInput />
-      <div className='layout-tables'> 
-        <WeatherTable />
-      </div>
+      <WeatherTable />
       <WeatherButton />
       <WeatherChart />
     </div>

@@ -3,13 +3,13 @@ import './tables.scss';
 const WeatherTableHeader = () => {
   return (
     <table className='table'>
-      <tbody>
+      <thead>
         <tr>
           <th>Day of the Week</th>
           <th>Rainfall Amount</th>
           <th>Wind Speed</th>
         </tr>
-      </tbody>
+      </thead>
     </table>
   )
 }
