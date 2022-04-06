@@ -1,3 +1,5 @@
+import "./inputs.scss";
+
 const Button = ({handleClick, name}) => (
   <div className="submit-button-container">
       <button 

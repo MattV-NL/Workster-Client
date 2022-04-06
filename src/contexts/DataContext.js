@@ -1,20 +1,7 @@
 import { createContext, useState } from 'react';
-import { DateTime } from 'luxon';
+import { weatherMap, weatherArray } from '../constants';
 
 export const DataContext = createContext();
-
-const date = DateTime.local(); 
-
-const weatherArray = Array(7).fill(date).map((date, index) => {
-  let nextDate = date.plus({ days: index })
-  return nextDate;
-  }).map((date) => ({date: date.toISODate(), precip: 0, wind: 0}));
-
-const weatherMap = new Map();
-  
-weatherArray.map(({ date, precip, wind }) => {
-  weatherMap.set(date, ({ date, precip, wind }));
-})
 
 const DataContextProvider = ({ children }) => {
 
