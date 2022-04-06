@@ -3,7 +3,7 @@ const Button = ({handleClick, name}) => (
       <button 
         className="submit-button" 
         onClick={handleClick}>
-            {name}
+          {name}
       </button>
   </div>
 );

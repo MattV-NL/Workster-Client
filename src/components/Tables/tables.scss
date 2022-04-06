@@ -1,34 +1,66 @@
 .weather-table {
+    border-left: #000 solid 1px;
+    border-right: #000 solid 1px;
+    background-color: var(--componentBackground);
+    display: grid;
+    grid-template-rows: [row1-start] 15% [row1-end] 70% [third-line] 15% [last-line];
+}
+
+.table-header-row {
+    border-top: #000 solid 1px;
+    border-bottom: #000 solid 1px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
     height: auto;
+    font-size: 1.25rem;
+}
+
+.header-cells {
+    text-indent: 1rem;
+}
+
+.table-input-row {
+    border-top: #000 solid 1px;
+    border-bottom: #000 solid 1px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
+    height: auto;
+    padding: 1.5rem;
+
+    & .input-cells {
+        display: grid;
+        align-content: center;
+    }
+
+    & .input-element {
+        width: 95%;
+        height: 1.25rem;
+    }
+}
+
+.table {
+    height: auto;
+    padding: 0 1.5rem;
     max-height: 19rem;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-}
 
-.weather-table::-webkit-scrollbar {
-    display: none;
-}
-
-table.table {
-    width: 100%;
-
-    & tbody {
-        background-color: var(--componentBackground);
+    & .row {
+        display: grid;
+        height: auto;
+        grid-template-columns: 1fr 1fr 1fr;
     }
-    & thead, tfoot, th {
-        height: 1.5rem;
-        background-color: var(--componentBackground);
-        width: 12rem;
-        padding: 0.75rem;
-        position: sticky;
-    }
-    & td {
-        padding: 0.75rem;
+
+    & .cells {
+        text-indent: 1rem;
+        border-right: #000 solid 1px;
+        padding: 0.5rem 0 0.5rem 0;
         color: #000;
-        width: 12rem;
     }
-    & input {
-        width: 20vw;
+    & .cells:last-child {
+        border: none;
     }
 }

@@ -1,12 +1,11 @@
-const Input = ({ type, value, placeholder, isRequired, handleChange }) => (
-    <div>
-        <input
+const Input = ({ type, value, placeholder, isRequired, handleChange, inputClass }) => (
+        <input 
             type={type}
             value={value}
             placeholder={placeholder}
             required={isRequired}
-            onChange={handleChange} />
-    </div>
+            onChange={handleChange} 
+            className={inputClass}/>
 
 );
  

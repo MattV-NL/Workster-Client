@@ -12,7 +12,7 @@ const InputContextProvider = (props) => {
   const [wind, setWind] = useState(null);
 
   const weatherSubmit = useCallback((e) => {
-    if (date != '' && precip != null && wind != null) {
+    if (date && precip && wind) {
       e.preventDefault();
         submitWeatherValues(date, precip, wind);
         setDate('');

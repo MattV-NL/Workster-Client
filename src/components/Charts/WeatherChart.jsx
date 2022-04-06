@@ -26,6 +26,9 @@ const WeatherChart = () => {
             wind: 'Wind Speed'
           }
         },
+        subchart: {
+          show: true
+        },
       axis: {
           x: {
               type: 'timeseries',
