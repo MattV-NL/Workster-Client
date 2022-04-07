@@ -16,8 +16,8 @@
 	font-size: 1.25rem;
 }
 
-.header-cells {
-	text-indent: 1rem;
+.table-header-row {
+	text-indent: 0.5rem;
 }
 
 .table-input-row {
@@ -27,22 +27,19 @@
 	grid-template-columns: 1fr 1fr 1fr;
 	align-content: center;
 	height: auto;
-	padding: 1.5rem;
 
 	& .input-cells {
-		display: grid;
-		align-content: center;
+		display: flex;
+		justify-content: center;
 	}
 
 	& .input-element {
-		width: 95%;
-		height: 1.25rem;
+		width: 100%;
 	}
 }
 
 .table {
 	height: auto;
-	padding: 0 1.5rem;
 	max-height: 19rem;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
@@ -63,4 +60,8 @@
 	& .cells:last-child {
 		border: none;
 	}
+}
+
+.table::-webkit-scrollbar {
+	display: none;
 }
