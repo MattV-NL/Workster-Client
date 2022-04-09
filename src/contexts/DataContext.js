@@ -8,8 +8,7 @@ const DataContextProvider = ({ children }) => {
 
 	const submitWeatherValues = (date, precip, wind) => {
 		weatherMap.set(parseInt(date.replace(/-/g, '')), { date, precip, wind });
-		console.log(weatherMap.entries());
-		const nextWeatherMap = new Map([...weatherMap.entries()].sort());
+		const nextWeatherMap = new Map([...weatherMap].sort((a, b) => a[0] - b[0]));
 		setWeatherValues(Array.from(nextWeatherMap.values()));
 	};
 
