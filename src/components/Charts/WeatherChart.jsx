@@ -24,9 +24,10 @@ const WeatherChart = () => {
 					precip: 'Precipitation',
 					wind: 'Wind Speed',
 				},
-			},
-			subchart: {
-				show: true,
+				types: {
+					precip: 'bar',
+					wind: 'spline',
+				},
 			},
 			axis: {
 				x: {
