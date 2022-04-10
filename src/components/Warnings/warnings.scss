@@ -2,15 +2,17 @@
 	display: none;
 	position: absolute;
 	top: 50%;
+	justify-content: center;
+	top: 50%;
 	left: 30%;
 
 	& .warning-message {
 		background-color: var(--buttonColor);
 		border-radius: 5px;
 		border: solid #fff 2px;
-		padding-bottom: 1rem;
+		padding: 0 1rem 1rem 1rem;
 		display: grid;
-		grid-template-columns: [first] 3rem [line2] auto [line3] 3rem [end];
+		grid-template-columns: [first] 3rem [line2] fit-content [line3] 3rem [end];
 	}
 
 	& .close-button {
