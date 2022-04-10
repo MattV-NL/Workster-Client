@@ -1,0 +1,27 @@
+.warning-message-container {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 30%;
+
+	& .warning-message {
+		background-color: var(--buttonColor);
+		border-radius: 5px;
+		border: solid #fff 2px;
+		padding-bottom: 1rem;
+		display: grid;
+		grid-template-columns: [first] 3rem [line2] auto [line3] 3rem [end];
+	}
+
+	& .close-button {
+		grid-column-start: 3;
+		cursor: pointer;
+	}
+
+	& .warning-text {
+		grid-column-start: 2;
+		display: flex;
+		justify-content: center;
+		cursor: default;
+	}
+}

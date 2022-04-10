@@ -9,6 +9,7 @@ const InputContextProvider = (props) => {
 	const [date, setDate] = useState('');
 	const [precip, setPrecip] = useState(null);
 	const [wind, setWind] = useState(null);
+	const [warningDisplay, setWarningDisplay] = useState('none');
 
 	const weatherSubmit = useCallback(
 		(e) => {
@@ -19,7 +20,7 @@ const InputContextProvider = (props) => {
 				setPrecip(null);
 				setWind(null);
 			} else {
-				alert('Please fill out all weather information.');
+				setWarningDisplay('flex');
 			}
 		},
 		[date, precip, wind]
@@ -37,10 +38,12 @@ const InputContextProvider = (props) => {
 				date,
 				precip,
 				wind,
+				warningDisplay,
 				submitDate,
 				submitPrecip,
 				submitWind,
 				weatherSubmit,
+				setWarningDisplay,
 			}}
 		>
 			{props.children}

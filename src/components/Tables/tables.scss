@@ -1,4 +1,5 @@
 .weather-table {
+	position: relative;
 	border-left: #000 solid 1px;
 	border-right: #000 solid 1px;
 	background-color: var(--componentBackground);
@@ -14,9 +15,6 @@
 	align-content: center;
 	height: auto;
 	font-size: 1.25rem;
-}
-
-.table-header-row {
 	text-indent: 0.5rem;
 }
 

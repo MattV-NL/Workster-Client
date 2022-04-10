@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataContext';
 import WeatherInput from '../Inputs/WeatherInput';
+import WeatherWarning from '../Warnings/WeatherWarning';
 import './tables.scss';
 
 const RainfallTable = () => {
@@ -23,6 +24,7 @@ const RainfallTable = () => {
 				))}
 			</div>
 			<WeatherInput />
+			<WeatherWarning />
 		</div>
 	);
 };
