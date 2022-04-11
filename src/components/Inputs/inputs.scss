@@ -1,28 +1,38 @@
-.user-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.submit-button-container {
+	display: flex;
+	justify-content: center;
+
+	& .submit-button {
+		color: #fff;
+		border: 2px solid #fff;
+		border-radius: 10px;
+		padding: 0.5rem 1rem;
+		background-color: var(--buttonColor);
+		text-align: center;
+	}
+
+	& .submit-button:hover {
+		background-color: var(--buttonHover);
+		cursor: pointer;
+	}
 }
 
-.weekday-input, .precip-input, .wind-input {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+.work-form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding-bottom: 1rem;
 
-.submit-button-div {
-    display: flex;
-    justify-content: center;
-}
+	& .work-form-labels {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 8px;
+	}
 
-.submit-button {
-    background-color: #677680;
-    border: none;
-    padding: 1rem;
-}
-
-.submit-button:hover {
-    background-color: #677680;
-    color: #fff;
-    cursor: pointer;
+	& .work-form-inputs {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
 }

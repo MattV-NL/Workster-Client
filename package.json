@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "c3": "^0.7.20",
     "d3": "^7.3.0",
+    "luxon": "^2.3.1",
+    "prettier": "^2.6.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -18,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write --list-different --ignore-unknown"
   },
   "eslintConfig": {
     "extends": [

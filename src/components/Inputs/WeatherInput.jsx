@@ -1,53 +1,45 @@
-import './inputs.scss';
-import { useState, useContext } from 'react';
-import { FirstContext } from '../../contexts/FirstContext';
+import '../Tables/tables.scss';
+import { useContext } from 'react';
+import { InputContext } from '../../contexts/InputContext';
+import Input from './Input';
 
 const WeatherInput = () => {
-  const { weatherValues, inputWeatherValue } = useContext(FirstContext);
+	const { date, precip, wind, submitDate, submitPrecip, submitWind } =
+		useContext(InputContext);
 
-  const [weekday, setWeekday] = useState('');
-  const [precip, setPrecip] = useState(null);
-  const [wind, setWind] = useState(null);
+	return (
+		<div className='table-input-row'>
+			<div className='input-cells'>
+				<Input
+					inputClass='input-element'
+					type='date'
+					value={date}
+					isRequired={true}
+					handleChange={submitDate}
+				/>
+			</div>
+			<div className='input-cells'>
+				<Input
+					inputClass='input-element'
+					type='number'
+					value={precip || ''}
+					placeholder='Precipitation'
+					isRequired={true}
+					handleChange={submitPrecip}
+				/>
+			</div>
+			<div className='input-cells'>
+				<Input
+					inputClass='input-element'
+					type='number'
+					value={wind || ''}
+					placeholder='Wind Speed'
+					isRequired
+					handleChange={submitWind}
+				/>
+			</div>
+		</div>
+	);
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    inputWeatherValue(weekday, precip, wind);
-    setWeekday('');
-    setPrecip(null);
-    setWind(null);
-  }
-
-  return (
-    <form className='user-inputs' onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        value={weekday} 
-        className='weekday-input' 
-        placeholder='Day of the week' 
-        required 
-        onChange={(e) => setWeekday(e.target.value)}
-      />
-      <input 
-        type="number" 
-        value={precip || ""} 
-        className='precip-input' 
-        placeholder='Precipitation amount' 
-        required 
-        onChange={(e) => setPrecip(parseInt(e.target.value))} 
-      />
-      <input 
-        type="number" 
-        value={wind || ""} 
-        className='wind-input' 
-        placeholder='Wind Speed' 
-        required 
-        onChange={(e) => setWind(parseInt(e.target.value))} 
-      />
-      <div className='submit-button-div'>
-        <button className='submit-button'>Submit</button>
-      </div>
-    </form>
-  )
-}
-
-export default WeatherInput
+export default WeatherInput;

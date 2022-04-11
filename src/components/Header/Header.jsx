@@ -1,11 +1,7 @@
-import './Header.css';
+import './Header.scss';
 
 const Header = () => {
-  return (
-    <div className='header'>
-      <h1>Work / Weather Analizer</h1>
-    </div>
-  )
-}
+	return <h1 className='header'>Work / Weather Analizer</h1>;
+};
 
-export default Header
+export default Header;

@@ -1,20 +1,16 @@
-import './layout.scss'
-import WeatherChart from '../Charts/WeatherChart'
-import RainfallTable from '../Tables/RainfallTable'
-import WindSpeedTable from '../Tables/WindSpeedTable'
-import WeatherInput from '../Inputs/WeatherInput'
+import './layout.scss';
+import WeatherChart from '../Charts/WeatherChart';
+import WeatherTable from '../Tables/WeatherTable';
+import WeatherButton from '../Inputs/WeatherButton';
 
 const Layout = () => {
-  return (
-    <div className='layout'>
-      <WeatherInput />
-      <div className='layout-tables'>
-        <RainfallTable />
-        <WindSpeedTable />
-      </div>
-      <WeatherChart />
-    </div>
-  )
-}
+	return (
+		<div className='layout'>
+			<WeatherTable />
+			<WeatherButton />
+			<WeatherChart />
+		</div>
+	);
+};
 
-export default Layout
+export default Layout;

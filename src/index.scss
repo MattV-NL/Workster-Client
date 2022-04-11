@@ -1,6 +1,13 @@
+:root {
+	--background: #20232a;
+	--componentBackground: #677680;
+	--buttonColor: #1a4c6d;
+	--buttonHover: #0f2f44;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  background-color: #20232a;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #fff;
+	background-color: var(--background);
 }
