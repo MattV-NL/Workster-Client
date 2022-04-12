@@ -23,7 +23,7 @@ const InputContextProvider = (props) => {
 				setWarningDisplay('flex');
 			}
 		},
-		[date, precip, wind]
+		[submitWeatherValues, date, precip, wind]
 	);
 
 	const submitDate = ({ target: { value } }) => setDate(value);

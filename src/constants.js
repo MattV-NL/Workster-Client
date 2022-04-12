@@ -1,9 +1,11 @@
 import { DateTime } from 'luxon';
 
-const date = DateTime.utc();
+const createDate = () => {
+	return new DateTime.utc();
+};
 
 export const weatherArray = Array(7)
-	.fill(date)
+	.fill(createDate())
 	.map((date, index) => {
 		let nextDate = date.plus({ days: index });
 		return nextDate;

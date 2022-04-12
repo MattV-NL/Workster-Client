@@ -1,13 +1,13 @@
 import './warnings.scss';
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { InputContext } from '../../contexts/InputContext';
 
 const WeatherWarning = () => {
 	const { warningDisplay, setWarningDisplay } = useContext(InputContext);
 
-	const closeWarning = () => {
+	const closeWarning = useCallback(() => {
 		setWarningDisplay('none');
-	};
+	}, [setWarningDisplay]);
 	return (
 		<div
 			className='warning-message-container'
