@@ -4,16 +4,16 @@ import DataContextProvider from './contexts/DataContext';
 import InputContextProvider from './contexts/InputContext';
 
 function App() {
-	return (
-		<>
-			<Header />
-			<DataContextProvider>
-				<InputContextProvider>
-					<Layout />
-				</InputContextProvider>
-			</DataContextProvider>
-		</>
-	);
+  return (
+    <>
+      <Header />
+      <DataContextProvider>
+        <InputContextProvider>
+          <Layout />
+        </InputContextProvider>
+      </DataContextProvider>
+    </>
+  );
 }
 
 export default App;

@@ -1,65 +1,65 @@
 .weather-table {
-	position: relative;
-	border-left: #000 solid 1px;
-	border-right: #000 solid 1px;
-	background-color: var(--componentBackground);
-	display: grid;
-	grid-template-rows: [row1-start] 15% [row1-end] 70% [third-line] 15% [last-line];
+  position: relative;
+  border-left: #000 solid 1px;
+  border-right: #000 solid 1px;
+  background-color: var(--componentBackground);
+  display: grid;
+  grid-template-rows: [row1-start] 15% [row1-end] 70% [third-line] 15% [last-line];
 }
 
 .table-header-row {
-	border-top: #000 solid 1px;
-	border-bottom: #000 solid 1px;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	align-content: center;
-	height: auto;
-	font-size: 1.25rem;
-	text-indent: 0.5rem;
+  border-top: #000 solid 1px;
+  border-bottom: #000 solid 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: center;
+  height: auto;
+  font-size: 1.25rem;
+  text-indent: 0.5rem;
 }
 
 .table-input-row {
-	border-top: #000 solid 1px;
-	border-bottom: #000 solid 1px;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	align-content: center;
-	height: auto;
+  border-top: #000 solid 1px;
+  border-bottom: #000 solid 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: center;
+  height: auto;
 
-	& .input-cells {
-		display: flex;
-		justify-content: center;
-	}
+  & .input-cells {
+    display: flex;
+    justify-content: center;
+  }
 
-	& .input-element {
-		width: 100%;
-	}
+  & .input-element {
+    width: 100%;
+  }
 }
 
 .table {
-	height: auto;
-	max-height: 19rem;
-	overflow-y: scroll;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
+  height: auto;
+  max-height: 19rem;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
-	& .row {
-		display: grid;
-		height: auto;
-		grid-template-columns: 1fr 1fr 1fr;
-	}
+  & .row {
+    display: grid;
+    height: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 
-	& .cells {
-		text-indent: 1rem;
-		border-right: #000 solid 1px;
-		padding: 0.5rem 0 0.5rem 0;
-		color: #000;
-	}
-	& .cells:last-child {
-		border: none;
-	}
+  & .cells {
+    text-indent: 1rem;
+    border-right: #000 solid 1px;
+    padding: 0.5rem 0 0.5rem 0;
+    color: #000;
+  }
+  & .cells:last-child {
+    border: none;
+  }
 }
 
 .table::-webkit-scrollbar {
-	display: none;
+  display: none;
 }

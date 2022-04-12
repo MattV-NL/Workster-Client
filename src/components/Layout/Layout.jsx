@@ -4,13 +4,13 @@ import WeatherTable from '../Tables/WeatherTable';
 import WeatherButton from '../Inputs/WeatherButton';
 
 const Layout = () => {
-	return (
-		<div className='layout'>
-			<WeatherTable />
-			<WeatherButton />
-			<WeatherChart />
-		</div>
-	);
+  return (
+    <div className='layout'>
+      <WeatherTable />
+      <WeatherButton />
+      <WeatherChart />
+    </div>
+  );
 };
 
 export default Layout;
