@@ -4,7 +4,7 @@ import WeatherInput from '../Inputs/WeatherInput';
 import WeatherWarning from '../Warnings/WeatherWarning';
 import './tables.scss';
 
-const RainfallTable = () => {
+const WeatherTable = () => {
   const { weatherValues } = useContext(DataContext);
 
   return (
@@ -29,4 +29,4 @@ const RainfallTable = () => {
   );
 };
 
-export default RainfallTable;
+export default WeatherTable;
