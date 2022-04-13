@@ -10,32 +10,24 @@ const WeatherInput = () => {
   return (
     <div className='table-input-row'>
       <div className='input-cells'>
-        <Input
-          inputClass='input-element'
-          type='date'
-          value={date}
-          isRequired={true}
-          handleChange={submitDate}
-        />
+        <Input type='date' value={date} required={true} onChange={submitDate} />
       </div>
       <div className='input-cells'>
         <Input
-          inputClass='input-element'
           type='number'
           value={precip || ''}
           placeholder='Precipitation'
-          isRequired={true}
-          handleChange={submitPrecip}
+          required={true}
+          onChange={submitPrecip}
         />
       </div>
       <div className='input-cells'>
         <Input
-          inputClass='input-element'
           type='number'
           value={wind || ''}
           placeholder='Wind Speed'
-          isRequired
-          handleChange={submitWind}
+          required={true}
+          onChange={submitWind}
         />
       </div>
     </div>
