@@ -1,3 +1,4 @@
+import { index } from 'd3';
 import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataContext';
 import WeatherInput from '../Inputs/WeatherInput';
@@ -7,12 +8,16 @@ import './tables.scss';
 const WeatherTable = () => {
   const { weatherValues } = useContext(DataContext);
 
+  const tableHead = ['Date', 'Precipitation', 'Wind Speed'];
+
   return (
     <div className='weather-table'>
       <div className='table-header-row'>
-        <div className='header-cells'>Date</div>
-        <div className='header-cells'>Precipitaion</div>
-        <div className='header-cells'>Wind Speed</div>
+        {tableHead.map((item) => (
+          <div className='header-cells' key={`${item}`}>
+            {item}
+          </div>
+        ))}
       </div>
       <div className='table'>
         {weatherValues.map(({ date, precip, wind }) => (
