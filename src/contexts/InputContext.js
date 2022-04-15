@@ -3,7 +3,7 @@ import { DataContext } from './DataContext';
 
 export const InputContext = createContext();
 
-const InputContextProvider = (props) => {
+const InputContextProvider = ({ children }) => {
   const { submitWeatherValues } = useContext(DataContext);
 
   const [date, setDate] = useState('');
@@ -46,7 +46,7 @@ const InputContextProvider = (props) => {
         setWarningDisplay,
       }}
     >
-      {props.children}
+      {children}
     </InputContext.Provider>
   );
 };
