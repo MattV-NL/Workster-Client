@@ -1,7 +1,7 @@
-import { index } from 'd3';
 import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataContext';
 import WeatherInput from '../Inputs/WeatherInput';
+import WeatherInput2 from '../Inputs/WeatherInput2';
 import WeatherWarning from '../Warnings/WeatherWarning';
 import './tables.scss';
 
@@ -28,7 +28,8 @@ const WeatherTable = () => {
           </div>
         ))}
       </div>
-      <WeatherInput />
+      <WeatherInput2 />
+      {/* <WeatherInput /> */}
       <WeatherWarning />
     </div>
   );
