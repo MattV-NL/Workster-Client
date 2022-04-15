@@ -26,11 +26,15 @@ const InputContextProvider = ({ children }) => {
     [submitWeatherValues, date, precip, wind]
   );
 
-  const submitDate = ({ target: { value } }) => setDate(value);
-
-  const submitPrecip = ({ target: { value } }) => setPrecip(value);
-
-  const submitWind = ({ target: { value } }) => setWind(value);
+  const submitValues = ({ target: { id, value } }) => {
+    if (id == 'date-input') {
+      setDate(value);
+    } else if (id == 'precip-input') {
+      setPrecip(value);
+    } else if (id == 'wind-input') {
+      setWind(value);
+    }
+  };
 
   return (
     <InputContext.Provider
@@ -39,9 +43,7 @@ const InputContextProvider = ({ children }) => {
         precip,
         wind,
         warningDisplay,
-        submitDate,
-        submitPrecip,
-        submitWind,
+        submitValues,
         weatherSubmit,
         setWarningDisplay,
       }}

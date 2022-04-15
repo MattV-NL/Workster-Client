@@ -1,7 +1,9 @@
 import Header from './components/Header/Header';
-import Layout from './components/Layout/Layout';
 import DataContextProvider from './contexts/DataContext';
 import InputContextProvider from './contexts/InputContext';
+import WeatherChart from './components/Charts/WeatherChart';
+import WeatherTable from './components/Tables/WeatherTable';
+import WeatherButton from './components/Inputs/WeatherButton';
 
 function App() {
   return (
@@ -9,7 +11,11 @@ function App() {
       <Header />
       <DataContextProvider>
         <InputContextProvider>
-          <Layout />
+          <div className='layout'>
+            <WeatherTable />
+            <WeatherButton />
+            <WeatherChart />
+          </div>
         </InputContextProvider>
       </DataContextProvider>
     </>
