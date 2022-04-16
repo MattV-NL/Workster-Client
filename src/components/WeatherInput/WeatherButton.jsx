@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { InputContext } from '../../contexts/InputContext';
-import Button from './Button';
+import Button from '../Inputs/Button';
 
 const WeatherButton = () => {
   const { weatherSubmit } = useContext(InputContext);

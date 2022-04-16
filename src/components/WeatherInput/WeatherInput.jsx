@@ -1,7 +1,7 @@
 import '../Tables/tables.scss';
 import { useContext } from 'react';
 import { InputContext } from '../../contexts/InputContext';
-import Input from './Input';
+import Input from '../Inputs/Input';
 
 const WeatherInput = () => {
   const { date, precip, wind, submitValues } = useContext(InputContext);

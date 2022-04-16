@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataContext';
-import WeatherInput from '../Inputs/WeatherInput';
+import WeatherInput from '../WeatherInput/WeatherInput';
 import WeatherWarning from '../Warnings/WeatherWarning';
 import './tables.scss';
 
