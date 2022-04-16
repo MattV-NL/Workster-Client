@@ -1,7 +1,15 @@
 import './Header.scss';
 
 const Header = () => {
-  return <h1 className='header'>Work / Weather Analizer</h1>;
+  return (
+    <div className='header'>
+      <div className='title'>Work / Weather Analyzer</div>
+      <div className='navbar'>
+        <div className='navbar-item'>Work Form</div>
+        <div className='navbar-item'>Weather Table</div>
+      </div>
+    </div>
+  );
 };
 
 export default Header;
