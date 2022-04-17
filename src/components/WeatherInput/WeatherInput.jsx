@@ -9,7 +9,7 @@ const WeatherInput = () => {
   const weatherInputsArray = [
     {
       id: 'date-input',
-      name: 'date',
+
       value: date,
       type: 'date',
       required: true,
@@ -17,7 +17,7 @@ const WeatherInput = () => {
     },
     {
       id: 'precip-input',
-      name: 'precip',
+
       value: precip || '',
       type: 'number',
       required: true,
@@ -25,7 +25,7 @@ const WeatherInput = () => {
     },
     {
       id: 'wind-input',
-      name: 'wind',
+
       value: wind || '',
       type: 'number',
       required: true,
@@ -35,21 +35,19 @@ const WeatherInput = () => {
 
   return (
     <div className='table-input-row'>
-      {weatherInputsArray.map(
-        ({ name, value, type, required, onChange, id }) => {
-          return (
-            <div className='input-cells' key={name}>
-              <Input
-                id={id}
-                onChange={onChange}
-                type={type}
-                value={value}
-                required={required}
-              ></Input>
-            </div>
-          );
-        }
-      )}
+      {weatherInputsArray.map(({ value, type, required, onChange, id }) => {
+        return (
+          <div className='input-cells' key={id}>
+            <Input
+              id={id}
+              onChange={onChange}
+              type={type}
+              value={value}
+              required={required}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };

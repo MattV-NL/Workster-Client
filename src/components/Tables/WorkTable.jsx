@@ -1,16 +1,21 @@
 import './tables.scss';
 
 const WorkTable = () => {
+  const workTableHead = [
+    'Date',
+    'Outside',
+    'Welding',
+    'Scaffolding',
+    'Details',
+  ];
   return (
     <div className='work-table'>
       <div className='work-table-header-row'>
-        <div className='work-header-cells'>Date</div>
-        <div className='work-header-cells'>Outside</div>
-        <div className='work-header-cells'>Welding</div>
-        <div className='work-header-cells'>Scaffolding</div>
-        <div className='work-header-cells'>Details</div>
+        {workTableHead.map((item) => (
+          <div key={`${item}`}>{item}</div>
+        ))}
       </div>
-      <div className='wetaher-table-body'>
+      <div className='work-table-body'>
         <div className='work-table-row'>
           <div className='work-cells'></div>
           <div className='work-cells'></div>
