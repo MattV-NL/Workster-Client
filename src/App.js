@@ -3,22 +3,31 @@ import DataContextProvider from './contexts/DataContext';
 import InputContextProvider from './contexts/InputContext';
 import WeatherChart from './components/Charts/WeatherChart';
 import WeatherTable from './components/Tables/WeatherTable';
-import WeatherButton from './components/Inputs/WeatherButton';
+import WeatherButton from './components/WeatherInput/WeatherButton';
+import WorkInput from './components/WorkInput/WorkInput';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <>
+    <Router>
       <Header />
       <DataContextProvider>
         <InputContextProvider>
           <div className='layout'>
-            <WeatherTable />
-            <WeatherButton />
-            <WeatherChart />
+            <Switch>
+              <Route exact path={'/'}>
+                <WeatherTable />
+                <WeatherButton />
+                <WeatherChart />
+              </Route>
+              <Route exact path={'/work'}>
+                <WorkInput />
+              </Route>
+            </Switch>
           </div>
         </InputContextProvider>
       </DataContextProvider>
-    </>
+    </Router>
   );
 }
 

@@ -17,22 +17,14 @@
   }
 }
 
+.work-form-layout {
+  background-color: var(--componentBackground);
+  padding: 1rem;
+}
+
 .work-form {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 1rem;
   padding-bottom: 1rem;
-
-  & .work-form-labels {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  & .work-form-inputs {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
 }

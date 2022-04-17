@@ -20,5 +20,9 @@
 
   & .navbar-item {
     cursor: pointer;
+    text-decoration: none;
   }
+}
+.navbar-item:visited {
+  color: #fff;
 }
