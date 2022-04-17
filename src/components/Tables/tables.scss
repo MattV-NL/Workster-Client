@@ -7,11 +7,11 @@
   grid-template-rows: [row1-start] 15% [row1-end] 70% [third-line] 15% [last-line];
 }
 
-.table-header-row {
+.weather-table-header-row {
   border-top: #000 solid 1px;
   border-bottom: #000 solid 1px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 33%);
   align-content: center;
   height: auto;
   font-size: 1.25rem;
@@ -22,7 +22,7 @@
   border-top: #000 solid 1px;
   border-bottom: #000 solid 1px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 33%);
   align-content: center;
   height: auto;
 
@@ -36,30 +36,67 @@
   }
 }
 
-.table {
+.weather-table-body {
   height: auto;
   max-height: 19rem;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
-  & .row {
+  & .weather-row {
     display: grid;
     height: auto;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 33%);
   }
 
-  & .cells {
+  & .weather-cells {
     text-indent: 1rem;
     border-right: #000 solid 1px;
     padding: 0.5rem 0 0.5rem 0;
     color: #000;
   }
-  & .cells:last-child {
+  & .weather-cells:last-child {
     border: none;
   }
 }
 
-.table::-webkit-scrollbar {
+.weather-table-body::-webkit-scrollbar {
   display: none;
+}
+
+.work-table {
+  background-color: var(--componentBackground);
+  display: grid;
+  grid-template-rows: [first] 2rem [last] auto;
+  border: solid 1px #000;
+}
+
+.work-table-header-row {
+  border-bottom: solid 1px #000;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  align-content: center;
+  font-size: 1.25rem;
+  text-indent: 0.5rem;
+  height: auto;
+}
+
+.work-table-row {
+  color: #000;
+  height: auto;
+  min-height: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  text-indent: 1rem;
+}
+
+.work-cells {
+  text-indent: 1rem;
+  border-right: #000 solid 1px;
+  padding: 0.5rem 0 0.5rem 0;
+  color: #000;
+}
+
+.work-cells:last-child {
+  border: none;
 }

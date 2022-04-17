@@ -6,6 +6,7 @@ import WeatherTable from './components/Tables/WeatherTable';
 import WeatherButton from './components/WeatherInput/WeatherButton';
 import WorkInput from './components/WorkInput/WorkInput';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import WorkTable from './components/Tables/WorkTable';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               </Route>
               <Route exact path={'/work'}>
                 <WorkInput />
+                <WorkTable />
               </Route>
             </Switch>
           </div>

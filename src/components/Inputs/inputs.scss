@@ -18,6 +18,7 @@
 }
 
 .work-form-layout {
+  border: solid 1px #000;
   background-color: var(--componentBackground);
   padding: 1rem;
 }
@@ -27,4 +28,12 @@
   flex-direction: column;
   gap: 1rem;
   padding-bottom: 1rem;
+}
+
+.work-form-label {
+  border-bottom: solid 1px #000;
+}
+
+.checkbox-label {
+  color: #000;
 }

@@ -5,14 +5,12 @@ const WorkInput = () => {
   return (
     <div className='work-form-layout'>
       <form className='work-form'>
-        <label className='work-form-label'>Type of work</label>
-        <input type='text' />
         <label className='work-form-label'>Date</label>
         <input type='date' />
         <label className='work-form-label'>
           Will there be working outside?
         </label>
-        <div>
+        <div className='checkbox-label'>
           Yes
           <input type='checkbox' />
           (if no leave blank)
@@ -20,13 +18,13 @@ const WorkInput = () => {
         <label className='work-form-label'>
           Will there be welding involved?
         </label>
-        <div>
+        <div className='checkbox-label'>
           Yes
           <input type='checkbox' />
           (if no leave blank)
         </div>
         <label className='work-form-label'>Is Scaffolding Required?</label>
-        <div>
+        <div className='checkbox-label'>
           Yes
           <input type='checkbox' />
           (if no leave blank)
