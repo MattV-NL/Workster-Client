@@ -35,18 +35,21 @@ const WeatherInput = () => {
 
   return (
     <div className='table-input-row'>
-      {weatherInputsArray.map(({ name, value, type, required, onChange }) => {
-        return (
-          <div className='input-cells' key={name}>
-            <Input
-              onChange={onChange}
-              type={type}
-              value={value}
-              required={required}
-            ></Input>
-          </div>
-        );
-      })}
+      {weatherInputsArray.map(
+        ({ name, value, type, required, onChange, id }) => {
+          return (
+            <div className='input-cells' key={name}>
+              <Input
+                id={id}
+                onChange={onChange}
+                type={type}
+                value={value}
+                required={required}
+              ></Input>
+            </div>
+          );
+        }
+      )}
     </div>
   );
 };
