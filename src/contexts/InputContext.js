@@ -7,8 +7,8 @@ const InputContextProvider = ({ children }) => {
   const { submitWeatherValues } = useContext(DataContext);
 
   const [date, setDate] = useState('');
-  const [precip, setPrecip] = useState(null);
-  const [wind, setWind] = useState(null);
+  const [precip, setPrecip] = useState('');
+  const [wind, setWind] = useState('');
   const [warningDisplay, setWarningDisplay] = useState('none');
 
   const weatherSubmit = useCallback(
@@ -17,8 +17,8 @@ const InputContextProvider = ({ children }) => {
         e.preventDefault();
         submitWeatherValues(date, precip, wind);
         setDate('');
-        setPrecip(null);
-        setWind(null);
+        setPrecip('');
+        setWind('');
       } else {
         setWarningDisplay('flex');
       }

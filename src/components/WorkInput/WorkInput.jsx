@@ -1,54 +1,17 @@
 import '../Inputs/inputs.scss';
 import WorkButton from './WorkButton';
 import Input from '../Inputs/Input';
+import { workFormArray } from '../../constants';
 
 const WorkInput = () => {
   const doSomething = () => {
     console.log('hello');
   };
 
-  const workFormArray = [
-    {
-      label: 'Date',
-      id: 'work-date',
-      value: '',
-      type: 'date',
-      required: true,
-      onChange: doSomething,
-    },
-    {
-      label: 'Will there be work outside?',
-      id: 'outside-input',
-      value: false,
-      type: 'checkbox',
-      required: true,
-      onChange: doSomething,
-    },
-    {
-      label: 'Will there be welding involved?',
-      id: 'welding-input',
-      value: false,
-      type: 'checkbox',
-      required: true,
-      onChange: doSomething,
-    },
-    {
-      label: 'Is scaffolding required?',
-      id: 'scaffolding-input',
-      value: false,
-      type: 'checkbox',
-      required: true,
-      onChange: doSomething,
-    },
-    {
-      label: 'Work Details',
-      id: 'details-input',
-      value: 'some text',
-      type: 'text',
-      required: true,
-      onChange: doSomething,
-    },
-  ];
+  workFormArray.map((item) => {
+    item.onChange = doSomething;
+  });
+
   return (
     <div className='work-form-layout'>
       <form className='work-form'>
