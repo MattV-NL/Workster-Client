@@ -1,6 +1,7 @@
 import Header from './components/Header/Header';
 import DataContextProvider from './contexts/DataContext';
 import InputContextProvider from './contexts/InputContext';
+import WorkContextProvider from './contexts/WorkContext';
 import WeatherChart from './components/Charts/WeatherChart';
 import WeatherTable from './components/Tables/WeatherTable';
 import WeatherButton from './components/WeatherInput/WeatherButton';
@@ -22,8 +23,10 @@ function App() {
                 <WeatherChart />
               </Route>
               <Route exact path={'/work'}>
-                <WorkInput />
-                <WorkTable />
+                <WorkContextProvider>
+                  <WorkInput />
+                  <WorkTable />
+                </WorkContextProvider>
               </Route>
             </Switch>
           </div>

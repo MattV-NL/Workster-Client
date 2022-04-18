@@ -2,14 +2,14 @@ import '../Inputs/inputs.scss';
 import WorkButton from './WorkButton';
 import Input from '../Inputs/Input';
 import { workFormArray } from '../../constants';
+import { WorkContext } from '../../contexts/WorkContext';
+import { useContext } from 'react';
 
 const WorkInput = () => {
-  const doSomething = () => {
-    console.log('hello');
-  };
+  const { workSubmit } = useContext(WorkContext);
 
   workFormArray.map((item) => {
-    item.onChange = doSomething;
+    item.onChange = workSubmit;
   });
 
   return (
