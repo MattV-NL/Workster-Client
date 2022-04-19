@@ -1,5 +1,5 @@
 import { createContext, useState, useCallback } from 'react';
-import { workFormArray } from '../constants';
+import { weatherInputsArray, workFormArray } from '../constants';
 
 export const WorkContext = createContext();
 
@@ -10,19 +10,27 @@ const WorkContextProvider = ({ children }) => {
   const [isScaffolding, setIsScaffolding] = useState(false);
   const [workDetails, setWorkDetails] = useState('');
 
-  const workSubmit = useCallback(({ target: { value, id } }) => {
-    if (id == 'work-date') {
+  const setWorkArrayValues = ({ target: { id } }) => {
+    const findValue = (item) => item.id === id;
+    weatherInputsArray.find(findValue).value = formDate;
+  };
+
+  const workSubmit = ({ target: { value, id } }) => {
+    if (id === 'work-date') {
       setFormDate(value);
-    } else if (id == 'outside-input') {
+      setWorkArrayValues(id);
+    } else if (id === 'outside-input') {
       setIsOutside(value);
-    } else if (id == 'welding-input') {
+    } else if (id === 'welding-input') {
       setIsWelding(value);
-    } else if (id == 'scaffolding-input') {
+    } else if (id === 'scaffolding-input') {
       setIsScaffolding(value);
-    } else if (id == 'details-input') {
+    } else if (id === 'details-input') {
       setWorkDetails(value);
     }
-  });
+  };
+
+  console.log(workFormArray);
 
   return (
     <WorkContext.Provider

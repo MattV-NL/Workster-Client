@@ -3,13 +3,16 @@ import WorkButton from './WorkButton';
 import Input from '../Inputs/Input';
 import { workFormArray } from '../../constants';
 import { WorkContext } from '../../contexts/WorkContext';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 
 const WorkInput = () => {
   const { workSubmit } = useContext(WorkContext);
 
-  workFormArray.map((item) => {
-    item.onChange = workSubmit;
+  useMemo(() => {
+    workFormArray.map((item) => {
+      item.onChange = workSubmit;
+      item.value = '';
+    });
   });
 
   return (
