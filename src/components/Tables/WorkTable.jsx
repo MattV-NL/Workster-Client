@@ -1,18 +1,12 @@
 import './tables.scss';
+import { workFormArray } from '../../constants';
 
 const WorkTable = () => {
-  const workTableHead = [
-    'Date',
-    'Outside',
-    'Welding',
-    'Scaffolding',
-    'Details',
-  ];
   return (
     <div className='work-table'>
       <div className='work-table-header-row'>
-        {workTableHead.map((item) => (
-          <div key={`${item}`}>{item}</div>
+        {workFormArray.map(({ title, id }) => (
+          <div key={`${id}`}>{title}</div>
         ))}
       </div>
       <div className='work-table-body'>
