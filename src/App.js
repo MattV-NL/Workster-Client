@@ -5,7 +5,7 @@ import WorkContextProvider from './contexts/WorkContext';
 import WeatherChart from './components/Charts/WeatherChart';
 import WeatherTable from './components/Tables/WeatherTable';
 import WeatherButton from './components/WeatherInput/WeatherButton';
-import WorkInput from './components/WorkInput/WorkInput';
+import WorkForm from './components/WorkInput/WorkForm';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WorkTable from './components/Tables/WorkTable';
 
@@ -24,7 +24,7 @@ function App() {
               </Route>
               <Route exact path={'/work'}>
                 <WorkContextProvider>
-                  <WorkInput />
+                  <WorkForm />
                   <WorkTable />
                 </WorkContextProvider>
               </Route>

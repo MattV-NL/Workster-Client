@@ -5,7 +5,7 @@ import { workFormArray } from '../../constants';
 import { WorkContext } from '../../contexts/WorkContext';
 import { useContext, useMemo } from 'react';
 
-const WorkInput = () => {
+const WorkForm = () => {
   const { workSubmit } = useContext(WorkContext);
 
   useMemo(() => {
@@ -38,4 +38,4 @@ const WorkInput = () => {
   );
 };
 
-export default WorkInput;
+export default WorkForm;
