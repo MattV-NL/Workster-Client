@@ -16,6 +16,7 @@ const WeatherInput = () => {
   //   weatherInputsArray[2].value = wind;
   //   // I know there must be a better way to do this part but I couldn't think of it at the time
   // }, [date, precip, wind]);
+  // this is just for learning purposes
 
   return (
     <div className='table-input-row'>
