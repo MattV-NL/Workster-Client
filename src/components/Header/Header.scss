@@ -1,5 +1,28 @@
 .header {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 30px;
+  display: grid;
+  grid-template-rows: [first] 4rem [last] 2rem;
+}
+
+.title {
+  padding-top: 1rem;
+  margin: 0 1rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin: 0 1rem;
+
+  & .navbar-item {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+.navbar-item:visited {
+  color: #fff;
 }

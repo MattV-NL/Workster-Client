@@ -1,13 +1,21 @@
 :root {
-	--background: #20232a;
-	--componentBackground: #677680;
-	--buttonColor: #1a4c6d;
-	--buttonHover: #0f2f44;
+  --background: #20232a;
+  --componentBackground: #677680;
+  --buttonColor: #1a4c6d;
+  --buttonHover: #0f2f44;
 }
 
 body {
-	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #fff;
-	background-color: var(--background);
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  background-color: var(--background);
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem;
 }

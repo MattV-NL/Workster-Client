@@ -1,38 +1,45 @@
 .submit-button-container {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 
-	& .submit-button {
-		color: #fff;
-		border: 2px solid #fff;
-		border-radius: 10px;
-		padding: 0.5rem 1rem;
-		background-color: var(--buttonColor);
-		text-align: center;
-	}
+  & .submit-button {
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    background-color: var(--buttonColor);
+    text-align: center;
+  }
 
-	& .submit-button:hover {
-		background-color: var(--buttonHover);
-		cursor: pointer;
-	}
+  & .submit-button:hover {
+    background-color: var(--buttonHover);
+    cursor: pointer;
+  }
+}
+
+.work-form-layout {
+  border: solid 1px #000;
+  background-color: var(--componentBackground);
+  padding: 1rem;
 }
 
 .work-form {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
 
-	& .work-form-labels {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		gap: 8px;
-	}
+.label-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-	& .work-form-inputs {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
+.work-form-label {
+  border-bottom: solid 1px #000;
+}
+
+.checkbox-label {
+  color: #000;
 }
