@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useCallback } from 'react';
 import { DataContext } from './DataContext';
+import { DATE_KEY, PRECIP_KEY, WIND_KEY } from '../constants';
 
 export const InputContext = createContext();
 
@@ -27,11 +28,11 @@ const InputContextProvider = ({ children }) => {
   );
 
   const submitValues = ({ target: { id, value } }) => {
-    if (id == 'date-input') {
+    if (id === DATE_KEY) {
       setDate(value);
-    } else if (id == 'precip-input') {
+    } else if (id === PRECIP_KEY) {
       setPrecip(value);
-    } else if (id == 'wind-input') {
+    } else if (id === WIND_KEY) {
       setWind(value);
     }
   };
@@ -39,11 +40,12 @@ const InputContextProvider = ({ children }) => {
   return (
     <InputContext.Provider
       value={{
-        date,
-        precip,
-        wind,
+        weatherData: {
+          [DATE_KEY]: { value: date, onChange: submitValues },
+          [PRECIP_KEY]: { value: precip, onChange: submitValues },
+          [WIND_KEY]: { value: wind, onChange: submitValues },
+        },
         warningDisplay,
-        submitValues,
         weatherSubmit,
         setWarningDisplay,
       }}

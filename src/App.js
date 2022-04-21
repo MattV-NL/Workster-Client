@@ -11,10 +11,10 @@ import WorkTable from './components/Tables/WorkTable';
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <DataContextProvider>
-        <InputContextProvider>
+    <DataContextProvider>
+      <InputContextProvider>
+        <Router>
+          <Header />
           <div className='layout'>
             <Switch>
               <Route exact path={'/'}>
@@ -30,9 +30,9 @@ function App() {
               </Route>
             </Switch>
           </div>
-        </InputContextProvider>
-      </DataContextProvider>
-    </Router>
+        </Router>
+      </InputContextProvider>
+    </DataContextProvider>
   );
 }
 

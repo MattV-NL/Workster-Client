@@ -1,26 +1,5 @@
 export const TABLE_ORDER = ['date', 'precip', 'wind'];
 
-export const weatherInputsArray = [
-  {
-    title: 'Date',
-    id: 'date-input',
-    type: 'date',
-    required: true,
-  },
-  {
-    title: 'Precipitation',
-    id: 'precip-input',
-    type: 'number',
-    required: true,
-  },
-  {
-    title: 'Wind Speed',
-    id: 'wind-input',
-    type: 'number',
-    required: true,
-  },
-];
-
 export const workFormArray = [
   {
     title: 'Date',
@@ -58,3 +37,34 @@ export const workFormArray = [
     required: true,
   },
 ];
+
+export const DATE_KEY = 'date-input';
+
+export const PRECIP_KEY = 'precip-input';
+
+export const WIND_KEY = 'wind-input';
+
+export const weatherInputs = new Map(
+  [
+    {
+      title: 'Date',
+      id: DATE_KEY,
+      type: 'date',
+      required: true,
+    },
+    {
+      title: 'Precipitation',
+      id: PRECIP_KEY,
+      type: 'number',
+      required: true,
+    },
+    {
+      title: 'Wind Speed',
+      id: WIND_KEY,
+      type: 'number',
+      required: true,
+    },
+  ].map((weatherInput) => [weatherInput.id, weatherInput])
+);
+
+export const WORK_KEY = '/work';

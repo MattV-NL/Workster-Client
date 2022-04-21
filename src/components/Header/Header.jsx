@@ -1,5 +1,6 @@
 import './Header.scss';
 import { Link } from 'react-router-dom';
+import { WORK_KEY } from '../../constants';
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
         <Link to='/' className='navbar-item'>
           Weather Table
         </Link>
-        <Link to='/work' className='navbar-item'>
+        <Link to={WORK_KEY} className='navbar-item'>
           Work Form
         </Link>
       </div>

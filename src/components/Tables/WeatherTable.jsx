@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataContext';
 import WeatherInput from '../WeatherInput/WeatherInput';
 import WeatherWarning from '../Warnings/WeatherWarning';
-import { weatherInputsArray } from '../../constants';
+import { weatherInputs } from '../../constants';
 import './tables.scss';
 
 const WeatherTable = () => {
@@ -11,7 +11,7 @@ const WeatherTable = () => {
   return (
     <div className='weather-table'>
       <div className='weather-table-header-row'>
-        {weatherInputsArray.map(({ title, id }) => (
+        {[...weatherInputs.values()].map(({ title, id }) => (
           <div key={id}>{title}</div>
         ))}
       </div>
