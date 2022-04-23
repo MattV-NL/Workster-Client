@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import WeatherInput from '../WeatherInput/WeatherInput';
-import WeatherWarning from '../Warnings/WeatherWarning';
+import Warning from '../Warnings/Warning';
 import { weatherInputs } from '../../constants';
 import './tables.scss';
 
@@ -25,7 +25,7 @@ const WeatherTable = () => {
         ))}
       </div>
       <WeatherInput />
-      <WeatherWarning />
+      <Warning />
     </div>
   );
 };

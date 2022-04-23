@@ -1,32 +1,35 @@
 import '../Inputs/inputs.scss';
 import WorkButton from './WorkButton';
 import Input from '../Inputs/Input';
-import { workForm } from '../../constants';
-import { WorkContext } from '../../contexts/WorkContext';
+import { workFormInputs } from '../../constants';
+import { WorkInputContext } from '../../contexts/WorkInputContext';
 import { useContext } from 'react';
+import Warning from '../Warnings/Warning';
 
 const WorkForm = () => {
-  const { workSubmit } = useContext(WorkContext);
+  const { workData } = useContext(WorkInputContext);
 
   return (
     <div className='work-form-layout'>
       <form className='work-form'>
-        {workForm.map(({ label, id, value, type, required, onChange }) => {
+        {[...workFormInputs.values()].map(({ label, id, type, required }) => {
           return (
             <div className='label-input-container' key={id}>
               <label className='work-form-label'>{label}</label>
               <Input
                 id={id}
                 type={type}
-                value={value}
+                value={workData[id].value}
                 required={required}
-                onChange={onChange}
+                onChange={workData[id].onChange}
+                checked={workData[id].value}
               />
             </div>
           );
         })}
       </form>
       <WorkButton />
+      <Warning />
     </div>
   );
 };

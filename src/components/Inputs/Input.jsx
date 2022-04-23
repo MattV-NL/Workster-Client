@@ -1,7 +1,15 @@
 import PropTypes from 'prop-types';
 import '../Tables/tables.scss';
 
-const Input = ({ type, value, placeholder, required, onChange, id }) => (
+const Input = ({
+  type,
+  value,
+  placeholder,
+  required,
+  onChange,
+  id,
+  checked,
+}) => (
   <input
     id={id}
     type={type}
@@ -9,6 +17,7 @@ const Input = ({ type, value, placeholder, required, onChange, id }) => (
     placeholder={placeholder}
     required={required}
     onChange={onChange}
+    checked={checked}
     className='input-element'
   />
 );
@@ -20,6 +29,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.node.isRequired,
   required: PropTypes.bool.isRequired,
+  checked: PropTypes.bool,
 };
 
 export default Input;

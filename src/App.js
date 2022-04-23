@@ -1,7 +1,7 @@
 import Header from './components/Header/Header';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import WeatherInputContextProvider from './contexts/WeatherInputContext';
-import WorkContextProvider from './contexts/WorkContext';
+import WorkInputContextProvider from './contexts/WorkInputContext';
 import WeatherChart from './components/Charts/WeatherChart';
 import WeatherTable from './components/Tables/WeatherTable';
 import WeatherButton from './components/WeatherInput/WeatherButton';
@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WorkTable from './components/Tables/WorkTable';
 import NotFound from './components/NotFound';
 import { NOT_FOUND_KEY, WORK_KEY } from './constants';
+import WorkDataContextProvider from './contexts/WorkDataContext';
 
 function App() {
   return (
@@ -25,10 +26,12 @@ function App() {
                 <WeatherChart />
               </Route>
               <Route exact path={WORK_KEY}>
-                <WorkContextProvider>
-                  <WorkForm />
-                  <WorkTable />
-                </WorkContextProvider>
+                <WorkDataContextProvider>
+                  <WorkInputContextProvider>
+                    <WorkForm />
+                    <WorkTable />
+                  </WorkInputContextProvider>
+                </WorkDataContextProvider>
               </Route>
               <Route>
                 <NotFound path={NOT_FOUND_KEY} />
