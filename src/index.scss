@@ -19,3 +19,13 @@ body {
   gap: 2rem;
   padding: 1rem;
 }
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & .home-link {
+    color: #fff;
+  }
+}
