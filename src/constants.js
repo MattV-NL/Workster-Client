@@ -1,5 +1,3 @@
-export const TABLE_ORDER = ['date', 'precip', 'wind'];
-
 export const workFormArray = [
   {
     title: 'Date',

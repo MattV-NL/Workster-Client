@@ -1,18 +1,18 @@
 import { createContext, useState, useContext, useCallback } from 'react';
-import { DataContext } from './DataContext';
+import { WeatherDataContext } from './WeatherDataContext';
 import { DATE_KEY, PRECIP_KEY, WIND_KEY } from '../constants';
 
-export const InputContext = createContext();
+export const WeatherInputContext = createContext();
 
-const InputContextProvider = ({ children }) => {
-  const { submitWeatherValues } = useContext(DataContext);
+const WeatherInputContextProvider = ({ children }) => {
+  const { submitWeatherValues } = useContext(WeatherDataContext);
 
   const [date, setDate] = useState('');
   const [precip, setPrecip] = useState('');
   const [wind, setWind] = useState('');
   const [warningDisplay, setWarningDisplay] = useState('none');
 
-  const weatherSubmit = useCallback(
+  const weatherDataUpdate = useCallback(
     (e) => {
       if (date && precip && wind) {
         e.preventDefault();
@@ -27,7 +27,7 @@ const InputContextProvider = ({ children }) => {
     [submitWeatherValues, date, precip, wind]
   );
 
-  const submitValues = ({ target: { id, value } }) => {
+  const obtainWeatherValues = ({ target: { id, value } }) => {
     if (id === DATE_KEY) {
       setDate(value);
     } else if (id === PRECIP_KEY) {
@@ -38,21 +38,21 @@ const InputContextProvider = ({ children }) => {
   };
 
   return (
-    <InputContext.Provider
+    <WeatherInputContext.Provider
       value={{
         weatherData: {
-          [DATE_KEY]: { value: date, onChange: submitValues },
-          [PRECIP_KEY]: { value: precip, onChange: submitValues },
-          [WIND_KEY]: { value: wind, onChange: submitValues },
+          [DATE_KEY]: { value: date, onChange: obtainWeatherValues },
+          [PRECIP_KEY]: { value: precip, onChange: obtainWeatherValues },
+          [WIND_KEY]: { value: wind, onChange: obtainWeatherValues },
         },
         warningDisplay,
-        weatherSubmit,
+        weatherDataUpdate,
         setWarningDisplay,
       }}
     >
       {children}
-    </InputContext.Provider>
+    </WeatherInputContext.Provider>
   );
 };
 
-export default InputContextProvider;
+export default WeatherInputContextProvider;

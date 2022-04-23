@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 import { DateTime } from 'luxon';
 
-export const DataContext = createContext();
+export const WeatherDataContext = createContext();
 
 const createDate = () => {
   return new DateTime.utc();
@@ -21,7 +21,7 @@ weatherArray.map(({ date, precip, wind }) => {
   weatherMap.set(parseInt(date.replace(/-/g, '')), { date, precip, wind });
 });
 
-const DataContextProvider = ({ children }) => {
+const WeatherDataContextProvider = ({ children }) => {
   const [weatherValues, setWeatherValues] = useState(weatherArray);
 
   const submitWeatherValues = (date, precip, wind) => {
@@ -31,10 +31,10 @@ const DataContextProvider = ({ children }) => {
   };
 
   return (
-    <DataContext.Provider value={{ weatherValues, submitWeatherValues }}>
+    <WeatherDataContext.Provider value={{ weatherValues, submitWeatherValues }}>
       {children}
-    </DataContext.Provider>
+    </WeatherDataContext.Provider>
   );
 };
 
-export default DataContextProvider;
+export default WeatherDataContextProvider;

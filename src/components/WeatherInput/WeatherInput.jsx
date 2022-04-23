@@ -1,11 +1,11 @@
 import '../Tables/tables.scss';
 import { useContext } from 'react';
-import { InputContext } from '../../contexts/InputContext';
+import { WeatherInputContext } from '../../contexts/WeatherInputContext';
 import Input from '../Inputs/Input';
 import { weatherInputs } from '../../constants';
 
 const WeatherInput = () => {
-  const { weatherData } = useContext(InputContext);
+  const { weatherData } = useContext(WeatherInputContext);
 
   // useMemo(() => {
   //   weatherInputs.map((items) => {

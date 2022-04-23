@@ -1,6 +1,6 @@
 import Header from './components/Header/Header';
-import DataContextProvider from './contexts/DataContext';
-import InputContextProvider from './contexts/InputContext';
+import WeatherDataContextProvider from './contexts/WeatherDataContext';
+import WeatherInputContextProvider from './contexts/WeatherInputContext';
 import WorkContextProvider from './contexts/WorkContext';
 import WeatherChart from './components/Charts/WeatherChart';
 import WeatherTable from './components/Tables/WeatherTable';
@@ -13,8 +13,8 @@ import { NOT_FOUND_KEY, WORK_KEY } from './constants';
 
 function App() {
   return (
-    <DataContextProvider>
-      <InputContextProvider>
+    <WeatherDataContextProvider>
+      <WeatherInputContextProvider>
         <Router>
           <Header />
           <div className='layout'>
@@ -36,8 +36,8 @@ function App() {
             </Switch>
           </div>
         </Router>
-      </InputContextProvider>
-    </DataContextProvider>
+      </WeatherInputContextProvider>
+    </WeatherDataContextProvider>
   );
 }
 

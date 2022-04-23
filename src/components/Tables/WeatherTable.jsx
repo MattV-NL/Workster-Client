@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { DataContext } from '../../contexts/DataContext';
+import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import WeatherInput from '../WeatherInput/WeatherInput';
 import WeatherWarning from '../Warnings/WeatherWarning';
 import { weatherInputs } from '../../constants';
 import './tables.scss';
 
 const WeatherTable = () => {
-  const { weatherValues } = useContext(DataContext);
+  const { weatherValues } = useContext(WeatherDataContext);
 
   return (
     <div className='weather-table'>
