@@ -1,24 +1,17 @@
 import '../Inputs/inputs.scss';
 import WorkButton from './WorkButton';
 import Input from '../Inputs/Input';
-import { workFormArray } from '../../constants';
+import { workForm } from '../../constants';
 import { WorkContext } from '../../contexts/WorkContext';
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 
 const WorkForm = () => {
   const { workSubmit } = useContext(WorkContext);
 
-  useMemo(() => {
-    workFormArray.map((item) => {
-      item.onChange = workSubmit;
-      item.value = '';
-    });
-  });
-
   return (
     <div className='work-form-layout'>
       <form className='work-form'>
-        {workFormArray.map(({ label, id, value, type, required, onChange }) => {
+        {workForm.map(({ label, id, value, type, required, onChange }) => {
           return (
             <div className='label-input-container' key={id}>
               <label className='work-form-label'>{label}</label>

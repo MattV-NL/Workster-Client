@@ -1,4 +1,4 @@
-export const workFormArray = [
+export const workForm = [
   {
     title: 'Date',
     label: 'Date',
