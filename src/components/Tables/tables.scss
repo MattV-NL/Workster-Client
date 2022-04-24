@@ -5,6 +5,12 @@
   background-color: var(--componentBackground);
   display: grid;
   grid-template-rows: [row1-start] 15% [row1-end] 70% [third-line] 15% [last-line];
+  overflow-x: scroll;
+  scrollbar-width: thin;
+}
+
+.weather-table::-webkit-scrollbar {
+  display: none;
 }
 
 .weather-table-header-row {
@@ -40,8 +46,7 @@
   height: auto;
   max-height: 19rem;
   overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  scrollbar-width: thin;
 
   & .weather-row {
     display: grid;
@@ -61,7 +66,17 @@
 }
 
 .weather-table-body::-webkit-scrollbar {
-  display: none;
+  width: 0.5rem;
+}
+
+.weather-table-body::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 10px;
+}
+
+.weather-table-body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 10px;
 }
 
 .work-table {
@@ -69,16 +84,23 @@
   display: grid;
   grid-template-rows: [first] 2rem [last] auto;
   border: solid 1px #000;
-  max-height: 19rem;
-  height: auto;
-  overflow-y: scroll;
   overflow-x: scroll;
-  // scrollbar-width: none;
+  scrollbar-width: thin;
 }
 
-// .work-table::-webkit-scrollbar {
-//   display: none;
-// }
+.work-table::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+.work-table::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 10px;
+}
+
+.work-table::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 10px;
+}
 
 .work-table-header-row {
   border-bottom: solid 1px #000;
@@ -88,6 +110,26 @@
   text-indent: 0.5rem;
   font-size: 1.25rem;
   height: auto;
+}
+.work-table-body {
+  max-height: 19rem;
+  height: auto;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.work-table-body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.work-table-body::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 10px;
+}
+
+.work-table-body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 10px;
 }
 
 .work-table-row {
