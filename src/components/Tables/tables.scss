@@ -158,4 +158,19 @@
 
 .work-cells:last-child {
   border: none;
+  overflow-x: auto;
+}
+
+.work-cells::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+.work-cells::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 10px;
+}
+
+.work-cells::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 10px;
 }
