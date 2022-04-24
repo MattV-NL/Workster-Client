@@ -5,14 +5,23 @@
   background-color: var(--componentBackground);
   display: grid;
   grid-template-rows: [row1-start] 15% [row1-end] 70% [third-line] 15% [last-line];
-  overflow-x: scroll;
+  overflow-x: auto;
   scrollbar-width: thin;
 }
 
 .weather-table::-webkit-scrollbar {
-  display: none;
+  height: 0.5rem;
 }
 
+.weather-table::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 10px;
+}
+
+.weather-table::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 10px;
+}
 .weather-table-header-row {
   border-top: #000 solid 1px;
   border-bottom: #000 solid 1px;
@@ -45,7 +54,7 @@
 .weather-table-body {
   height: auto;
   max-height: 19rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-width: thin;
 
   & .weather-row {
@@ -84,7 +93,7 @@
   display: grid;
   grid-template-rows: [first] 2rem [last] auto;
   border: solid 1px #000;
-  overflow-x: scroll;
+  overflow-x: auto;
   scrollbar-width: thin;
 }
 
@@ -114,7 +123,7 @@
 .work-table-body {
   max-height: 19rem;
   height: auto;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-width: thin;
 }
 
