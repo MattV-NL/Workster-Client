@@ -1,8 +1,8 @@
-import './warnings.scss';
+import './modals.scss';
 import { useCallback, useContext } from 'react';
 import { WeatherInputContext } from '../../contexts/WeatherInputContext';
 
-const Warning = () => {
+const WarningModal = () => {
   const { warningDisplay, setWarningDisplay } = useContext(WeatherInputContext);
 
   const closeWarning = useCallback(() => {
@@ -23,4 +23,4 @@ const Warning = () => {
   );
 };
 
-export default Warning;
+export default WarningModal;
