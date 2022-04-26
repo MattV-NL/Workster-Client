@@ -11,7 +11,7 @@ const WeatherChart = () => {
     c3.generate({
       bindto: '#chart',
       data: {
-        json: weatherValues,
+        json: Array.from(weatherValues.values()),
         keys: {
           x: 'date',
           value: ['precip', 'wind'],

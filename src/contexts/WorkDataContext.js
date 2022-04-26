@@ -7,28 +7,26 @@ const createFormDate = () => {
   return new DateTime.utc();
 };
 
-const workDataArray = Array(1)
-  .fill(createFormDate())
-  .map((item) => ({ formDate: item.toISODate() }));
-
-const workDataMap = new Map();
-
-workDataArray.map(
-  ({ formDate, isOutside, isWelding, isScaffolding, workDetails }) => {
-    workDataMap.set(parseInt(formDate.replace(/-/g, '')), {
-      formDate,
-      isOutside,
-      isWelding,
-      isScaffolding,
-      workDetails,
-    });
-  }
-);
+const createWorkValues = () =>
+  new Map(
+    Array(7)
+      .fill(createFormDate())
+      .map((date, index) => {
+        let nextDate = date.plus({ days: index });
+        return nextDate;
+      })
+      .map((date) => ({
+        date: date.toISODate(),
+        isOutside: null,
+        isWelding: null,
+        isScaffolding: null,
+        workDetails: '',
+      }))
+      .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
+  );
 
 const WorkDataContextProvider = ({ children }) => {
-  const [workValues, setWorkValues] = useState(
-    Array.from(workDataMap.values())
-  );
+  const [workValues, setWorkValues] = useState(createWorkValues());
 
   const submitWorkValues = (
     formDate,
@@ -37,17 +35,18 @@ const WorkDataContextProvider = ({ children }) => {
     isScaffolding,
     workDetails
   ) => {
-    workDataMap.set(parseInt(formDate.replace(/-/g, '')), {
+    const nextWorkDataMap = new Map(workValues);
+    nextWorkDataMap.set(parseInt(formDate.replace(/-/g, '')), {
       formDate,
       isOutside,
       isWelding,
       isScaffolding,
       workDetails,
     });
-    const nextWorkDataMap = new Map(
-      [...workDataMap].sort((a, b) => a[0] - b[0])
+    const sortedWorkDataMap = new Map(
+      [...nextWorkDataMap].sort((a, b) => a[0] - b[0])
     );
-    setWorkValues(Array.from(nextWorkDataMap.values()));
+    setWorkValues(sortedWorkDataMap);
   };
 
   return (

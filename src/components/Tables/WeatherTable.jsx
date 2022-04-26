@@ -16,7 +16,7 @@ const WeatherTable = () => {
         ))}
       </div>
       <div className='weather-table-body'>
-        {weatherValues.map(({ date, precip, wind }) => (
+        {Array.from(weatherValues.values()).map(({ date, precip, wind }) => (
           <div className='weather-row' key={`${date}-${precip}`}>
             <div className='weather-cells'>{date}</div>
             <div className='weather-cells'>{precip}</div>

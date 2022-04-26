@@ -3,6 +3,14 @@ import { workFormInputs } from '../../constants';
 import { useContext } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 
+const displayBooleanInput = (checked) => {
+  if (typeof checked === 'boolean') {
+    return checked ? 'Yes' : 'No';
+  }
+
+  return false;
+};
+
 const WorkTable = () => {
   const { workValues } = useContext(WorkDataContext);
   return (
@@ -13,13 +21,15 @@ const WorkTable = () => {
         ))}
       </div>
       <div className='work-table-body'>
-        {workValues.map(
-          ({ formDate, isOutside, isWelding, isScaffolding, workDetails }) => (
-            <div className='work-table-row' key={formDate}>
-              <div className='work-cells'>{formDate}</div>
-              <div className='work-cells'>{isOutside ? 'Yes' : 'No'}</div>
-              <div className='work-cells'>{isWelding ? 'Yes' : 'No'}</div>
-              <div className='work-cells'>{isScaffolding ? 'Yes' : 'No'}</div>
+        {Array.from(workValues.values()).map(
+          ({ date, isOutside, isWelding, isScaffolding, workDetails }) => (
+            <div className='work-table-row' key={date}>
+              <div className='work-cells'>{date}</div>
+              <div className='work-cells'>{displayBooleanInput(isOutside)}</div>
+              <div className='work-cells'>{displayBooleanInput(isWelding)}</div>
+              <div className='work-cells'>
+                {displayBooleanInput(isScaffolding)}
+              </div>
               <div className='work-cells'>{workDetails}</div>
             </div>
           )

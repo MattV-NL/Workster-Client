@@ -16,29 +16,29 @@ function App() {
   return (
     <WeatherDataContextProvider>
       <WeatherInputContextProvider>
-        <Router>
-          <Header />
-          <div className='layout'>
-            <Switch>
-              <Route exact path={'/'}>
-                <WeatherTable />
-                <WeatherButton />
-                <WeatherChart />
-              </Route>
-              <Route exact path={WORK_KEY}>
-                <WorkDataContextProvider>
-                  <WorkInputContextProvider>
+        <WorkDataContextProvider>
+          <WorkInputContextProvider>
+            <Router>
+              <Header />
+              <div className='layout'>
+                <Switch>
+                  <Route exact path={'/'}>
+                    <WeatherTable />
+                    <WeatherButton />
+                    <WeatherChart />
+                  </Route>
+                  <Route exact path={WORK_KEY}>
                     <WorkForm />
                     <WorkTable />
-                  </WorkInputContextProvider>
-                </WorkDataContextProvider>
-              </Route>
-              <Route>
-                <NotFound path={NOT_FOUND_KEY} />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
+                  </Route>
+                  <Route>
+                    <NotFound path={NOT_FOUND_KEY} />
+                  </Route>
+                </Switch>
+              </div>
+            </Router>
+          </WorkInputContextProvider>
+        </WorkDataContextProvider>
       </WeatherInputContextProvider>
     </WeatherDataContextProvider>
   );

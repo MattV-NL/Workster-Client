@@ -4,23 +4,24 @@ import '../Tables/tables.scss';
 const Input = ({
   type,
   value,
-  placeholder,
+  placeholder = 'enter value',
   required,
   onChange,
   id,
-  checked,
-}) => (
-  <input
-    id={id}
-    type={type}
-    value={value}
-    placeholder={placeholder}
-    required={required}
-    onChange={onChange}
-    checked={checked}
-    className='input-element'
-  />
-);
+}) => {
+  return (
+    <input
+      id={id}
+      type={type}
+      value={value.toString()}
+      placeholder={placeholder}
+      required={required}
+      onChange={onChange}
+      {...(type === `checkbox` ? { checked: value } : {})}
+      className='input-element'
+    />
+  );
+};
 
 Input.propTypes = {
   id: PropTypes.string.isRequired,
@@ -29,7 +30,6 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
   required: PropTypes.bool.isRequired,
-  checked: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 };
 
 export default Input;

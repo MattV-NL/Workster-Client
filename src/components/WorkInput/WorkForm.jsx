@@ -22,7 +22,6 @@ const WorkForm = () => {
                 value={workData[id].value}
                 required={required}
                 onChange={workData[id].onChange}
-                checked={workData[id].value}
               />
             </div>
           );
