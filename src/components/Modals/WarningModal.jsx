@@ -13,7 +13,7 @@ const WarningModal = () => {
       className='warning-message-container'
       style={{ display: `${warningDisplay}` }}
     >
-      <div className='warning-message'>
+      <div className='modal-content'>
         <div className='close-button' onClick={closeWarning}>
           &times;
         </div>

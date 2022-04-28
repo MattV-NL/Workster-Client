@@ -1,19 +1,26 @@
 import './modals.scss';
-import { useCallback, useState } from 'react';
+import { useContext, useCallback } from 'react';
+import { WorkInputContext } from '../../contexts/WorkInputContext';
 
-const WorkDetails = () => {
-  const [modalDisplay, setModalDisplay] = useState('none');
+const WorkDetailsModal = ({ children }) => {
+  const { modalDisplay, setModalDisplay } = useContext(WorkInputContext);
 
-  const controlModal = useCallback(() => {});
-
+  const closeModal = useCallback(() => {
+    setModalDisplay('none');
+  }, [setModalDisplay]);
   return (
-    <div className='workDetails-container'>
-      <div className='workDetails-message'>
-        <div className='workDetails-close-button'>&times;</div>
-        <div className='workDetails-text'>this is a test</div>
+    <div
+      className='work-details-container'
+      style={{ display: `${modalDisplay}` }}
+    >
+      <div className='modal-content'>
+        <div className='close-button' onClick={closeModal}>
+          &times;
+        </div>
+        <div className='work-details-text'>{children}</div>
       </div>
     </div>
   );
 };
 
-export default WorkDetails;
+export default WorkDetailsModal;

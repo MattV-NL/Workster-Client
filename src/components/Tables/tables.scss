@@ -156,9 +156,10 @@
   white-space: nowrap;
 }
 
-.work-cells:last-child {
+.work-cells:nth-last-child(2) {
   border: none;
-  overflow-x: auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .work-cells::-webkit-scrollbar {

@@ -15,24 +15,25 @@ const WorkInputContextProvider = ({ children }) => {
   const { submitWorkValues } = useContext(WorkDataContext);
   const { setWarningDisplay } = useContext(WeatherInputContext);
 
-  const [formDate, setFormDate] = useState('');
+  const [date, setDate] = useState('');
   const [isOutside, setIsOutside] = useState(false);
   const [isWelding, setIsWelding] = useState(false);
   const [isScaffolding, setIsScaffolding] = useState(false);
   const [workDetails, setWorkDetails] = useState('');
+  const [modalDisplay, setModalDisplay] = useState('none');
 
   const workDataUpdate = useCallback(
     (e) => {
-      if (formDate && workDetails) {
+      if (date && workDetails) {
         e.preventDefault();
         submitWorkValues(
-          formDate,
+          date,
           isOutside,
           isWelding,
           isScaffolding,
           workDetails
         );
-        setFormDate('');
+        setDate('');
         setIsOutside(false);
         setIsWelding(false);
         setIsScaffolding(false);
@@ -42,7 +43,7 @@ const WorkInputContextProvider = ({ children }) => {
       }
     },
     [
-      formDate,
+      date,
       isOutside,
       isWelding,
       isScaffolding,
@@ -54,7 +55,7 @@ const WorkInputContextProvider = ({ children }) => {
 
   const obtainWorkValues = ({ target: { value, id } }) => {
     if (id === WORK_DATE_KEY) {
-      setFormDate(value);
+      setDate(value);
     } else if (id === OUTSIDE_KEY) {
       setIsOutside(!isOutside);
     } else if (id === WELD_KEY) {
@@ -70,13 +71,15 @@ const WorkInputContextProvider = ({ children }) => {
     <WorkInputContext.Provider
       value={{
         workData: {
-          [WORK_DATE_KEY]: { value: formDate, onChange: obtainWorkValues },
+          [WORK_DATE_KEY]: { value: date, onChange: obtainWorkValues },
           [OUTSIDE_KEY]: { value: isOutside, onChange: obtainWorkValues },
           [WELD_KEY]: { value: isWelding, onChange: obtainWorkValues },
           [SCAFF_KEY]: { value: isScaffolding, onChange: obtainWorkValues },
           [DETAILS_KEY]: { value: workDetails, onChange: obtainWorkValues },
         },
         workDataUpdate,
+        modalDisplay,
+        setModalDisplay,
       }}
     >
       {children}

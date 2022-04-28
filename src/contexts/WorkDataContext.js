@@ -29,15 +29,15 @@ const WorkDataContextProvider = ({ children }) => {
   const [workValues, setWorkValues] = useState(createWorkValues());
 
   const submitWorkValues = (
-    formDate,
+    date,
     isOutside,
     isWelding,
     isScaffolding,
     workDetails
   ) => {
     const nextWorkDataMap = new Map(workValues);
-    nextWorkDataMap.set(parseInt(formDate.replace(/-/g, '')), {
-      formDate,
+    nextWorkDataMap.set(parseInt(date.replace(/-/g, '')), {
+      date,
       isOutside,
       isWelding,
       isScaffolding,
