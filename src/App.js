@@ -11,6 +11,7 @@ import WorkTable from './components/Tables/WorkTable';
 import NotFound from './components/NotFound';
 import { NOT_FOUND_KEY, WORK_KEY } from './constants';
 import WorkDataContextProvider from './contexts/WorkDataContext';
+import WorkDetails from './components/Modals/WorkDetails';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
                   <Route exact path={WORK_KEY}>
                     <WorkForm />
                     <WorkTable />
+                  </Route>
+                  <Route exact path='/work-details/:id'>
+                    <WorkDetails />
                   </Route>
                   <Route>
                     <NotFound path={NOT_FOUND_KEY} />

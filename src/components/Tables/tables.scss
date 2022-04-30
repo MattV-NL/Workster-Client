@@ -127,6 +127,10 @@
   scrollbar-width: thin;
 }
 
+.work-table-link {
+  text-decoration: none;
+}
+
 .work-table-body::-webkit-scrollbar {
   width: 0.5rem;
 }
@@ -156,7 +160,7 @@
   white-space: nowrap;
 }
 
-.work-cells:nth-last-child(2) {
+.work-cells:last-child {
   border: none;
   text-overflow: ellipsis;
   overflow: hidden;
