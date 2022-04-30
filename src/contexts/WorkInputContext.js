@@ -20,7 +20,6 @@ const WorkInputContextProvider = ({ children }) => {
   const [isWelding, setIsWelding] = useState(false);
   const [isScaffolding, setIsScaffolding] = useState(false);
   const [workDetails, setWorkDetails] = useState('');
-  const [modalDisplay, setModalDisplay] = useState('none');
 
   const workDataUpdate = useCallback(
     (e) => {
@@ -53,33 +52,35 @@ const WorkInputContextProvider = ({ children }) => {
     ]
   );
 
-  const obtainWorkValues = ({ target: { value, id } }) => {
-    if (id === WORK_DATE_KEY) {
-      setDate(value);
-    } else if (id === OUTSIDE_KEY) {
+  const switchWorkValues = ({ target: { id } }) => {
+    if (id === OUTSIDE_KEY) {
       setIsOutside(!isOutside);
     } else if (id === WELD_KEY) {
       setIsWelding(!isWelding);
     } else if (id === SCAFF_KEY) {
       setIsScaffolding(!isScaffolding);
-    } else if (id === DETAILS_KEY) {
-      setWorkDetails(value);
     }
   };
+
+  const onChange =
+    (setterFunction) =>
+    ({ target: { value } }) =>
+      setterFunction(value);
 
   return (
     <WorkInputContext.Provider
       value={{
         workData: {
-          [WORK_DATE_KEY]: { value: date, onChange: obtainWorkValues },
-          [OUTSIDE_KEY]: { value: isOutside, onChange: obtainWorkValues },
-          [WELD_KEY]: { value: isWelding, onChange: obtainWorkValues },
-          [SCAFF_KEY]: { value: isScaffolding, onChange: obtainWorkValues },
-          [DETAILS_KEY]: { value: workDetails, onChange: obtainWorkValues },
+          [WORK_DATE_KEY]: { value: date, onChange: onChange(setDate) },
+          [OUTSIDE_KEY]: { value: isOutside, onChange: switchWorkValues },
+          [WELD_KEY]: { value: isWelding, onChange: switchWorkValues },
+          [SCAFF_KEY]: { value: isScaffolding, onChange: switchWorkValues },
+          [DETAILS_KEY]: {
+            value: workDetails,
+            onChange: onChange(setWorkDetails),
+          },
         },
         workDataUpdate,
-        modalDisplay,
-        setModalDisplay,
       }}
     >
       {children}

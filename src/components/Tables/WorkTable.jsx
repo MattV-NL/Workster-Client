@@ -2,7 +2,7 @@ import './tables.scss';
 import { workFormInputs } from '../../constants';
 import { useContext } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom';
 
 const displayBooleanInput = (checked) => {
   if (typeof checked === 'boolean') {
