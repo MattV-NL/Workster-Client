@@ -7,7 +7,7 @@ const NotFound = () => {
       <h2>Sorry...</h2>
       <p>This page can not be found</p>
       <Link to='/' className='home-link'>
-        Back to the Weather Table
+        Back to the Home Page
       </Link>
     </div>
   );

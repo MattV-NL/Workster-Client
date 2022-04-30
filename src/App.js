@@ -1,17 +1,18 @@
-import Header from './components/Header/Header';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { NOT_FOUND_KEY, WEATHER_KEY, WORK_KEY } from './constants';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import WeatherInputContextProvider from './contexts/WeatherInputContext';
 import WorkInputContextProvider from './contexts/WorkInputContext';
+import WorkDataContextProvider from './contexts/WorkDataContext';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 import WeatherChart from './components/Charts/WeatherChart';
 import WeatherTable from './components/Tables/WeatherTable';
 import WeatherButton from './components/WeatherInput/WeatherButton';
 import WorkForm from './components/WorkInput/WorkForm';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WorkTable from './components/Tables/WorkTable';
-import NotFound from './components/NotFound';
-import { NOT_FOUND_KEY, WORK_KEY } from './constants';
-import WorkDataContextProvider from './contexts/WorkDataContext';
 import WorkDetails from './components/Modals/WorkDetails';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
               <div className='layout'>
                 <Switch>
                   <Route exact path={'/'}>
+                    <Home />
+                  </Route>
+                  <Route exact path={WEATHER_KEY}>
                     <WeatherTable />
                     <WeatherButton />
                     <WeatherChart />
