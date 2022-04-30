@@ -28,6 +28,8 @@
 }
 
 .work-details-container {
+  border: solid 2px #fff;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   background-color: var(--componentBackground);
@@ -38,7 +40,12 @@
   }
 
   & .work-details-content {
+    border: solid 2px var(--buttonHover);
+    border-radius: 8px;
+    padding: 1rem;
     font-size: 1.1rem;
     color: #000;
+    background-color: #fff;
+    word-wrap: break-word;
   }
 }
