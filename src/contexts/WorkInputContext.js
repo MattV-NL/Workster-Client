@@ -52,29 +52,34 @@ const WorkInputContextProvider = ({ children }) => {
     ]
   );
 
-  const switchWorkValues = ({ target: { id } }) => {
-    if (id === OUTSIDE_KEY) {
-      setIsOutside(!isOutside);
-    } else if (id === WELD_KEY) {
-      setIsWelding(!isWelding);
-    } else if (id === SCAFF_KEY) {
-      setIsScaffolding(!isScaffolding);
-    }
-  };
-
   const onChange =
     (setterFunction) =>
-    ({ target: { value } }) =>
-      setterFunction(value);
+    ({ target: { value, id } }) => {
+      if (id === OUTSIDE_KEY) {
+        setIsOutside(!isOutside);
+      } else if (id === WELD_KEY) {
+        setIsWelding(!isWelding);
+      } else if (id === SCAFF_KEY) {
+        setIsScaffolding(!isScaffolding);
+      } else {
+        setterFunction(value);
+      }
+    };
 
   return (
     <WorkInputContext.Provider
       value={{
         workData: {
           [WORK_DATE_KEY]: { value: date, onChange: onChange(setDate) },
-          [OUTSIDE_KEY]: { value: isOutside, onChange: switchWorkValues },
-          [WELD_KEY]: { value: isWelding, onChange: switchWorkValues },
-          [SCAFF_KEY]: { value: isScaffolding, onChange: switchWorkValues },
+          [OUTSIDE_KEY]: {
+            value: isOutside,
+            onChange: onChange(setIsOutside),
+          },
+          [WELD_KEY]: { value: isWelding, onChange: onChange(setIsWelding) },
+          [SCAFF_KEY]: {
+            value: isScaffolding,
+            onChange: onChange(setIsScaffolding),
+          },
           [DETAILS_KEY]: {
             value: workDetails,
             onChange: onChange(setWorkDetails),
