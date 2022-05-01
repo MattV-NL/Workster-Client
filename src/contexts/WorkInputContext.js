@@ -52,9 +52,8 @@ const WorkInputContextProvider = ({ children }) => {
     ]
   );
 
-  const onChange =
-    (setterFunction) =>
-    ({ target: { value, id } }) => {
+  const onChange = (setterFunction) =>
+    useCallback(({ target: { value, id } }) => {
       if (id === OUTSIDE_KEY) {
         setIsOutside(!isOutside);
       } else if (id === WELD_KEY) {
@@ -64,7 +63,7 @@ const WorkInputContextProvider = ({ children }) => {
       } else {
         setterFunction(value);
       }
-    };
+    }, []);
 
   return (
     <WorkInputContext.Provider
