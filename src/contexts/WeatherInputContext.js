@@ -27,23 +27,16 @@ const WeatherInputContextProvider = ({ children }) => {
     [submitWeatherValues, date, precip, wind]
   );
 
-  const obtainWeatherValues = ({ target: { id, value } }) => {
-    if (id === DATE_KEY) {
-      setDate(value);
-    } else if (id === PRECIP_KEY) {
-      setPrecip(value);
-    } else if (id === WIND_KEY) {
-      setWind(value);
-    }
-  };
+  const onChange = (setterFunction) =>
+    useCallback(({ target: { value } }) => setterFunction(value), []);
 
   return (
     <WeatherInputContext.Provider
       value={{
         weatherData: {
-          [DATE_KEY]: { value: date, onChange: obtainWeatherValues },
-          [PRECIP_KEY]: { value: precip, onChange: obtainWeatherValues },
-          [WIND_KEY]: { value: wind, onChange: obtainWeatherValues },
+          [DATE_KEY]: { value: date, onChange: onChange(setDate) },
+          [PRECIP_KEY]: { value: precip, onChange: onChange(setPrecip) },
+          [WIND_KEY]: { value: wind, onChange: onChange(setWind) },
         },
         warningDisplay,
         weatherDataUpdate,
