@@ -53,17 +53,20 @@ const WorkInputContextProvider = ({ children }) => {
   );
 
   const onChange = (setterFunction) =>
-    useCallback(({ target: { value, id } }) => {
-      if (id === OUTSIDE_KEY) {
-        setIsOutside(!isOutside);
-      } else if (id === WELD_KEY) {
-        setIsWelding(!isWelding);
-      } else if (id === SCAFF_KEY) {
-        setIsScaffolding(!isScaffolding);
-      } else {
-        setterFunction(value);
-      }
-    }, []);
+    useCallback(
+      ({ target: { value, id } }) => {
+        if (id === OUTSIDE_KEY) {
+          setIsOutside(!isOutside);
+        } else if (id === WELD_KEY) {
+          setIsWelding(!isWelding);
+        } else if (id === SCAFF_KEY) {
+          setIsScaffolding(!isScaffolding);
+        } else {
+          setterFunction(value);
+        }
+      },
+      [setterFunction]
+    );
 
   return (
     <WorkInputContext.Provider

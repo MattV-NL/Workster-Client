@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useCallback, useState } from 'react';
 import { DateTime } from 'luxon';
 
 export const WeatherDataContext = createContext();
@@ -21,18 +21,21 @@ const createWeatherValues = () =>
 const WeatherDataContextProvider = ({ children }) => {
   const [weatherValues, setWeatherValues] = useState(createWeatherValues());
 
-  const submitWeatherValues = (date, precip, wind) => {
-    const nextWeatherMap = new Map(weatherValues);
-    nextWeatherMap.set(parseInt(date.replace(/-/g, '')), {
-      date,
-      precip,
-      wind,
-    });
-    const sortedWeatherMap = new Map(
-      [...nextWeatherMap].sort((a, b) => a[0] - b[0])
-    );
-    setWeatherValues(sortedWeatherMap);
-  };
+  const submitWeatherValues = useCallback(
+    (date, precip, wind) => {
+      const nextWeatherMap = new Map(weatherValues);
+      nextWeatherMap.set(parseInt(date.replace(/-/g, '')), {
+        date,
+        precip,
+        wind,
+      });
+      const sortedWeatherMap = new Map(
+        [...nextWeatherMap].sort((a, b) => a[0] - b[0])
+      );
+      setWeatherValues(sortedWeatherMap);
+    },
+    [weatherValues]
+  );
 
   return (
     <WeatherDataContext.Provider value={{ weatherValues, submitWeatherValues }}>

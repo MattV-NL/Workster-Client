@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useCallback, useState } from 'react';
 import { DateTime } from 'luxon';
 
 export const WorkDataContext = createContext();
@@ -28,26 +28,23 @@ const createWorkValues = () =>
 const WorkDataContextProvider = ({ children }) => {
   const [workValues, setWorkValues] = useState(createWorkValues());
 
-  const submitWorkValues = (
-    date,
-    isOutside,
-    isWelding,
-    isScaffolding,
-    workDetails
-  ) => {
-    const nextWorkDataMap = new Map(workValues);
-    nextWorkDataMap.set(parseInt(date.replace(/-/g, '')), {
-      date,
-      isOutside,
-      isWelding,
-      isScaffolding,
-      workDetails,
-    });
-    const sortedWorkDataMap = new Map(
-      [...nextWorkDataMap].sort((a, b) => a[0] - b[0])
-    );
-    setWorkValues(sortedWorkDataMap);
-  };
+  const submitWorkValues = useCallback(
+    (date, isOutside, isWelding, isScaffolding, workDetails) => {
+      const nextWorkDataMap = new Map(workValues);
+      nextWorkDataMap.set(parseInt(date.replace(/-/g, '')), {
+        date,
+        isOutside,
+        isWelding,
+        isScaffolding,
+        workDetails,
+      });
+      const sortedWorkDataMap = new Map(
+        [...nextWorkDataMap].sort((a, b) => a[0] - b[0])
+      );
+      setWorkValues(sortedWorkDataMap);
+    },
+    [workValues]
+  );
 
   return (
     <WorkDataContext.Provider value={{ workValues, submitWorkValues }}>
