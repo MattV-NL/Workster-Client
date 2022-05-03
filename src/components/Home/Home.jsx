@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { paths } from '../../constants.js';
 
 const Home = () => {
+  const homeItem = 'home-item';
+
   return (
     <div className='home-container'>
       <div className='welcome-message-title'>Welcome to my App!</div>
@@ -18,10 +20,10 @@ const Home = () => {
         Please Start by selecting one of following options
       </div>
       <Link to={paths.WEATHER} className='link'>
-        <div className='home-item'>Weather</div>
+        <div className={homeItem}>Weather</div>
       </Link>
       <Link to={paths.WORK} className='link'>
-        <div className='home-item'>Work</div>
+        <div className={homeItem}>Work</div>
       </Link>
     </div>
   );
