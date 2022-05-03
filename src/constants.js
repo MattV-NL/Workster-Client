@@ -76,5 +76,3 @@ export const weatherInputs = new Map(
 export const WEATHER_KEY = '/weather';
 
 export const WORK_KEY = '/work';
-
-export const NOT_FOUND_KEY = '*';

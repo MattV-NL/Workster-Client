@@ -27,11 +27,12 @@ const WeatherInputContextProvider = ({ children }) => {
     [submitWeatherValues, date, precip, wind]
   );
 
-  const onChange = (setterFunction) =>
-    useCallback(
-      ({ target: { value } }) => setterFunction(value),
-      [setterFunction]
-    );
+  const onChange = useCallback(
+    (setterFunction) =>
+      ({ target: { value } }) =>
+        setterFunction(value),
+    []
+  );
 
   return (
     <WeatherInputContext.Provider

@@ -52,39 +52,45 @@ const WorkInputContextProvider = ({ children }) => {
     ]
   );
 
-  const onChange = (setterFunction) =>
-    useCallback(
-      ({ target: { value, id } }) => {
-        if (id === OUTSIDE_KEY) {
-          setIsOutside(!isOutside);
-        } else if (id === WELD_KEY) {
-          setIsWelding(!isWelding);
-        } else if (id === SCAFF_KEY) {
-          setIsScaffolding(!isScaffolding);
-        } else {
-          setterFunction(value);
-        }
-      },
-      [setterFunction]
-    );
+  const onChange = useCallback(
+    ({ setterFunction, isBoolean = false }) =>
+      ({ target: { value } }) =>
+        setterFunction(isBoolean ? value !== true.toString() : value),
+    []
+  );
 
   return (
     <WorkInputContext.Provider
       value={{
         workData: {
-          [WORK_DATE_KEY]: { value: date, onChange: onChange(setDate) },
+          [WORK_DATE_KEY]: {
+            value: date,
+            onChange: onChange({ setterFunction: setDate }),
+          },
           [OUTSIDE_KEY]: {
             value: isOutside,
-            onChange: onChange(setIsOutside),
+            onChange: onChange({
+              setterFunction: setIsOutside,
+              isBoolean: true,
+            }),
           },
-          [WELD_KEY]: { value: isWelding, onChange: onChange(setIsWelding) },
+          [WELD_KEY]: {
+            value: isWelding,
+            onChange: onChange({
+              setterFunction: setIsWelding,
+              isBoolean: true,
+            }),
+          },
           [SCAFF_KEY]: {
             value: isScaffolding,
-            onChange: onChange(setIsScaffolding),
+            onChange: onChange({
+              setterFunction: setIsScaffolding,
+              isBoolean: true,
+            }),
           },
           [DETAILS_KEY]: {
             value: workDetails,
-            onChange: onChange(setWorkDetails),
+            onChange: onChange({ setterFunction: setWorkDetails }),
           },
         },
         workDataUpdate,

@@ -7,7 +7,7 @@ const Header = () => {
     <div className='header'>
       <div className='title'>Work / Weather Analyzer</div>
       <div className='navbar'>
-        <Link to={'/'} className='navbar-item'>
+        <Link to='/' className='navbar-item'>
           Home
         </Link>
         <Link to={WEATHER_KEY} className='navbar-item'>

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { NOT_FOUND_KEY, WEATHER_KEY, WORK_KEY } from './constants';
+import { WEATHER_KEY, WORK_KEY } from './constants';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import WeatherInputContextProvider from './contexts/WeatherInputContext';
 import WorkInputContextProvider from './contexts/WorkInputContext';
@@ -40,7 +40,7 @@ function App() {
                     <WorkDetails />
                   </Route>
                   <Route>
-                    <NotFound path={NOT_FOUND_KEY} />
+                    <NotFound />
                   </Route>
                 </Switch>
               </div>

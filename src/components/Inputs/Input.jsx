@@ -13,11 +13,11 @@ const Input = ({
     <input
       id={id}
       type={type}
-      value={value.toString()}
+      value={value}
       placeholder={placeholder}
       required={required}
       onChange={onChange}
-      {...(type === `checkbox` ? { checked: value } : {})}
+      {...(type === `checkbox` ? { checked: !!value } : {})}
       className='input-element'
     />
   );
