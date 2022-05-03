@@ -73,6 +73,8 @@ export const weatherInputs = new Map(
   ].map((weatherInput) => [weatherInput.id, weatherInput])
 );
 
-export const WEATHER_KEY = '/weather';
-
-export const WORK_KEY = '/work';
+export const paths = {
+  HOME: '/home',
+  WEATHER: '/weather',
+  WORK: '/work',
+};

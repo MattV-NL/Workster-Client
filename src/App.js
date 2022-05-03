@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { WEATHER_KEY, WORK_KEY } from './constants';
+import { paths } from './constants';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import WeatherInputContextProvider from './contexts/WeatherInputContext';
 import WorkInputContextProvider from './contexts/WorkInputContext';
@@ -24,15 +24,15 @@ function App() {
               <Header />
               <div className='layout'>
                 <Switch>
-                  <Route exact path={'/'}>
+                  <Route exact path={['/', paths.HOME]}>
                     <Home />
                   </Route>
-                  <Route exact path={WEATHER_KEY}>
+                  <Route exact path={paths.WEATHER}>
                     <WeatherTable />
                     <WeatherButton />
                     <WeatherChart />
                   </Route>
-                  <Route exact path={WORK_KEY}>
+                  <Route exact path={paths.WORK}>
                     <WorkForm />
                     <WorkTable />
                   </Route>

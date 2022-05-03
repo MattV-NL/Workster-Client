@@ -1,6 +1,6 @@
 import './home.scss';
 import { Link } from 'react-router-dom';
-import { WEATHER_KEY, WORK_KEY } from '../../constants.js';
+import { paths } from '../../constants.js';
 
 const Home = () => {
   return (
@@ -17,10 +17,10 @@ const Home = () => {
       <div className='welcome-message'>
         Please Start by selecting one of following options
       </div>
-      <Link to={WEATHER_KEY} className='link'>
+      <Link to={paths.WEATHER} className='link'>
         <div className='home-item'>Weather</div>
       </Link>
-      <Link to={WORK_KEY} className='link'>
+      <Link to={paths.WORK} className='link'>
         <div className='home-item'>Work</div>
       </Link>
     </div>
