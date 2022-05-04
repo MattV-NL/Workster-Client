@@ -4,8 +4,8 @@
 
   & .submit-button {
     color: #fff;
-    border: 2px solid #fff;
-    border-radius: 10px;
+    border: 0.125rem solid #fff;
+    border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     background-color: var(--buttonColor);
     text-align: center;
@@ -19,8 +19,8 @@
 
 .work-form-layout {
   position: relative;
-  border: solid 2px #fff;
-  border-radius: 8px;
+  border: solid 0.125rem #fff;
+  border-radius: 0.5rem;
   background-color: var(--componentBackground);
   padding: 1rem;
 }
@@ -39,7 +39,7 @@
 }
 
 .work-form-label {
-  border-bottom: solid 1px #000;
+  border-bottom: solid 0.0625rem #000;
 }
 
 .checkbox-label {

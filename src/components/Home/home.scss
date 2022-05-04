@@ -1,4 +1,4 @@
-.link {
+.homeLink {
   color: #fff;
   text-decoration: none;
 }
@@ -25,8 +25,8 @@
 .home-item {
   background-color: var(--componentBackground);
   padding: 1rem;
-  border: 2px solid #fff;
-  border-radius: 8px;
+  border: 0.125rem solid #fff;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   font-size: large;

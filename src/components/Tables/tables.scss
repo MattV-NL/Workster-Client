@@ -1,7 +1,7 @@
 .weather-table {
   position: relative;
-  border-radius: 8px;
-  border: solid 2px #fff;
+  border-radius: 0.5rem;
+  border: solid 0.125rem #fff;
   background-color: var(--componentBackground);
   display: grid;
   grid-template-rows: [row1-start] 15% [row1-end] 70% [third-line] 15% [last-line];
@@ -15,15 +15,15 @@
 
 .weather-table::-webkit-scrollbar-track {
   background-color: var(--scrollbarTrack);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 
 .weather-table::-webkit-scrollbar-thumb {
   background-color: var(--scrollbarThumb);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 .weather-table-header-row {
-  border-bottom: #000 solid 1px;
+  border-bottom: #000 solid 0.0625rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-content: center;
@@ -33,7 +33,7 @@
 }
 
 .table-input-row {
-  border-top: #000 solid 1px;
+  border-top: #000 solid 0.0625rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-content: center;
@@ -63,7 +63,7 @@
 
   & .weather-cells {
     text-indent: 1rem;
-    border-right: #000 solid 1px;
+    border-right: #000 solid 0.0625rem;
     padding: 0.5rem 0 0.5rem 0;
     color: #000;
   }
@@ -78,20 +78,20 @@
 
 .weather-table-body::-webkit-scrollbar-track {
   background-color: var(--scrollbarTrack);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 
 .weather-table-body::-webkit-scrollbar-thumb {
   background-color: var(--scrollbarThumb);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 
 .work-table {
   background-color: var(--componentBackground);
   display: grid;
   grid-template-rows: [first] 2rem [last] auto;
-  border: solid 2px #fff;
-  border-radius: 8px;
+  border: solid 0.125rem #fff;
+  border-radius: 0.5rem;
   overflow-x: auto;
   scrollbar-width: thin;
 }
@@ -102,16 +102,16 @@
 
 .work-table::-webkit-scrollbar-track {
   background-color: var(--scrollbarTrack);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 
 .work-table::-webkit-scrollbar-thumb {
   background-color: var(--scrollbarThumb);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 
 .work-table-header-row {
-  border-bottom: solid 1px #000;
+  border-bottom: solid 0.0625rem #000;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-content: center;
@@ -136,12 +136,12 @@
 
 .work-table-body::-webkit-scrollbar-track {
   background-color: var(--scrollbarTrack);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 
 .work-table-body::-webkit-scrollbar-thumb {
   background-color: var(--scrollbarThumb);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 
 .work-table-row {
@@ -153,7 +153,7 @@
 }
 
 .work-cells {
-  border-right: #000 solid 1px;
+  border-right: #000 solid 0.0625rem;
   color: #000;
   padding: 0.5rem 1rem 0.5rem 1rem;
   white-space: nowrap;
@@ -171,10 +171,10 @@
 
 .work-cells::-webkit-scrollbar-track {
   background-color: var(--scrollbarTrack);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 
 .work-cells::-webkit-scrollbar-thumb {
   background-color: var(--scrollbarThumb);
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
