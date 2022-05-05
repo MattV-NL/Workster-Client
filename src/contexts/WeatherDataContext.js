@@ -10,10 +10,7 @@ const createWeatherValues = () =>
   new Map(
     Array(7)
       .fill(createDate())
-      .map((date, index) => {
-        let nextDate = date.plus({ days: index });
-        return nextDate;
-      })
+      .map((date, days) => date.plus({ days }))
       .map((date) => ({ date: date.toISODate(), precip: 0, wind: 0 }))
       .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
   );

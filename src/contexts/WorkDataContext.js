@@ -11,10 +11,7 @@ const createWorkValues = () =>
   new Map(
     Array(7)
       .fill(createFormDate())
-      .map((date, index) => {
-        let nextDate = date.plus({ days: index });
-        return nextDate;
-      })
+      .map((date, days) => date.plus({ days }))
       .map((date) => ({
         date: date.toISODate(),
         isOutside: null,
