@@ -9,10 +9,10 @@ const Home = () => {
     <div className='home-container'>
       <div className='welcome-message-title'>Welcome to my App!</div>
       <div className='welcome-message'>
-        I created this app with my occupation in the construciton industry in
+        I created this app with my occupation in the construction industry in
         mind. So a user can enter in some basic work information that is very
         dependent on weather, and also enter basic weather information that
-        affects their jobs. This will allow the user to see wether or not it
+        affects their jobs. This will allow the user to see whether or not it
         maybe a good idea to revise their work schedule for their particular
         workscope.
       </div>

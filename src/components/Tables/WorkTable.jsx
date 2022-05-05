@@ -25,29 +25,27 @@ const WorkTable = () => {
           ))}
         </div>
         <div className='work-table-body'>
-          {Array.from(workValues.values()).map(
-            ({ date, isOutside, isWelding, isScaffolding, workDetails }) => (
-              <Link
-                className='work-table-link'
-                to={`/work-details/${workValuesKeys.next().value}`}
-                key={date}
-              >
-                <div className='work-table-row'>
-                  <div className='work-cells'>{date}</div>
-                  <div className='work-cells'>
-                    {displayBooleanInput(isOutside)}
-                  </div>
-                  <div className='work-cells'>
-                    {displayBooleanInput(isWelding)}
-                  </div>
-                  <div className='work-cells'>
-                    {displayBooleanInput(isScaffolding)}
-                  </div>
-                  <div className='work-cells'>{workDetails}</div>
+          {Array.from(workValues.values()).map((value) => (
+            <Link
+              className='work-table-link'
+              to={`/work-details/${workValuesKeys.next().value}`}
+              key={value.date}
+            >
+              <div className='work-table-row'>
+                <div className='work-cells'>{value.date}</div>
+                <div className='work-cells'>
+                  {displayBooleanInput(value.isOutside)}
                 </div>
-              </Link>
-            )
-          )}
+                <div className='work-cells'>
+                  {displayBooleanInput(value.isWelding)}
+                </div>
+                <div className='work-cells'>
+                  {displayBooleanInput(value.isScaffolding)}
+                </div>
+                <div className='work-cells'>{value.workDetails}</div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </>
