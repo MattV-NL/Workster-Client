@@ -1,3 +1,8 @@
+# React Project
+
+This is my first react project on my path to becoming a developer!
+This App at the moment will allow the user to track some basic weather information and work information based on the refinery construction industry. I hope to add more features or functionality in the future.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
