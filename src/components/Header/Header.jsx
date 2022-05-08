@@ -10,9 +10,9 @@ const Header = () => {
     <div className='header'>
       <div className='title-container'>
         <div className='title'>Work / Weather Analyzer</div>
-        <div className='logo-container'>
+        <Link to={paths.HOME} className='logo-container'>
           <img className={logo} src={img1} />
-        </div>
+        </Link>
       </div>
       <div className='navbar'>
         <Link to={paths.HOME} className='navbar-item'>
