@@ -3,12 +3,26 @@
   grid-template-rows: [first] fit-content [last] 2rem;
 }
 
-.title {
+.title-container {
+  display: grid;
+  grid-template-columns: [first] 80% [last] 1fr;
   padding-top: 1rem;
   margin: 0 1rem;
   font-size: 2.25rem;
-  display: flex;
-  justify-content: flex-start;
+
+  & .title {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+  }
+
+  & .logo-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  & .logo {
+    width: 5rem;
+  }
 }
 
 .navbar {

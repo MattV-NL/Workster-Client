@@ -1,11 +1,19 @@
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import { paths } from '../../constants';
+import img1 from '../../images/logo.png';
+
+const logo = 'logo';
 
 const Header = () => {
   return (
     <div className='header'>
-      <div className='title'>Work / Weather Analyzer</div>
+      <div className='title-container'>
+        <div className='title'>Work / Weather Analyzer</div>
+        <div className='logo-container'>
+          <img className={logo} src={img1} />
+        </div>
+      </div>
       <div className='navbar'>
         <Link to={paths.HOME} className='navbar-item'>
           Home
