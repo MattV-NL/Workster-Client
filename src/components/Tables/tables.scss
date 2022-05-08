@@ -33,7 +33,7 @@
 }
 
 .table-input-row {
-  border-top: #000 solid 0.0625rem;
+  margin: 0 0.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-content: center;
@@ -53,6 +53,7 @@
   height: auto;
   max-height: 19rem;
   overflow-y: auto;
+  border-bottom: #000 solid 0.0625rem;
   scrollbar-width: thin;
 
   & .weather-row {
