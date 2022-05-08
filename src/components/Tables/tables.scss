@@ -29,11 +29,14 @@
   align-content: center;
   height: auto;
   font-size: 1.25rem;
+}
+
+.header-item:first-child {
   text-indent: 0.5rem;
 }
 
 .table-input-row {
-  margin: 0 0.5rem;
+  margin-right: 0.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-content: center;

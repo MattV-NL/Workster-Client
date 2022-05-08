@@ -12,7 +12,9 @@ const WeatherTable = () => {
     <div className='weather-table'>
       <div className='weather-table-header-row'>
         {[...weatherInputs.values()].map(({ title, id }) => (
-          <div key={id}>{title}</div>
+          <div key={id} className='header-item'>
+            {title}
+          </div>
         ))}
       </div>
       <div className='weather-table-body'>
