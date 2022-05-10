@@ -13,6 +13,7 @@ import WorkForm from './components/WorkInput/WorkForm';
 import WorkTable from './components/Tables/WorkTable';
 import WorkDetails from './components/Modals/WorkDetails';
 import NotFound from './components/NotFound';
+import WorkChart from './components/Charts/WorkChart';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                   <Route exact path={paths.WORK}>
                     <WorkForm />
                     <WorkTable />
+                    <WorkChart />
                   </Route>
                   <Route exact path='/work-details/:id'>
                     <WorkDetails />
