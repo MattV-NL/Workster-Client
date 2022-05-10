@@ -11,8 +11,8 @@ const WorkChart = () => {
   let weldCounter = 0;
   let scaffCounter = 0;
 
-  const workDataValues = Array.from(workValues.values()).map(
-    ({ date, isOutside, isWelding, isScaffolding }) => {
+  Array.from(workValues.values()).map(
+    ({ isOutside, isWelding, isScaffolding }) => {
       if (isOutside) {
         outCounter++;
         isOutside = outCounter;
@@ -25,17 +25,22 @@ const WorkChart = () => {
         scaffCounter++;
         isScaffolding = scaffCounter;
       }
-      return { date, isOutside, isWelding, isScaffolding };
     }
   );
-
-  console.log(workDataValues);
 
   useEffect(() => {
     c3.generate({
       bindto: '#chart',
       data: {
-        json: workDataValues,
+        json: [
+          {
+            isOutside: outCounter,
+          },
+          {
+            isWelding: weldCounter,
+          },
+          { isScaffolding: scaffCounter },
+        ],
         keys: {
           value: ['isOutside', 'isWelding', 'isScaffolding'],
         },
@@ -48,11 +53,17 @@ const WorkChart = () => {
       },
       bar: {
         width: {
-          ratio: 0.5, // this makes bar width 50% of length between ticks
+          ratio: 0.8,
+        },
+      },
+      axis: {
+        x: {
+          type: 'category',
+          categories: ['outside', 'welding', 'scaffolding'],
         },
       },
     });
-  }, [workDataValues]);
+  }, [outCounter, weldCounter, scaffCounter]);
   return <div id='chart'></div>;
 };
 
