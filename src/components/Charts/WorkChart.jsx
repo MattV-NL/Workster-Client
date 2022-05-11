@@ -15,32 +15,27 @@ const WorkChart = () => {
     ({ isOutside, isWelding, isScaffolding }) => {
       if (isOutside) {
         outCounter++;
-        isOutside = outCounter;
       }
       if (isWelding) {
         weldCounter++;
-        isWelding = weldCounter;
       }
       if (isScaffolding) {
         scaffCounter++;
-        isScaffolding = scaffCounter;
       }
     }
   );
+
+  const workDataArr = [
+    { isOutside: outCounter },
+    { isWelding: weldCounter },
+    { isScaffolding: scaffCounter },
+  ];
 
   useEffect(() => {
     c3.generate({
       bindto: '#chart',
       data: {
-        json: [
-          {
-            isOutside: outCounter,
-          },
-          {
-            isWelding: weldCounter,
-          },
-          { isScaffolding: scaffCounter },
-        ],
+        json: workDataArr,
         keys: {
           value: ['isOutside', 'isWelding', 'isScaffolding'],
         },
@@ -59,7 +54,7 @@ const WorkChart = () => {
       axis: {
         x: {
           type: 'category',
-          categories: ['outside', 'welding', 'scaffolding'],
+          categories: ['', '', ''],
         },
       },
     });
