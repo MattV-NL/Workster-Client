@@ -46,9 +46,9 @@ const WorkChart = () => {
         },
         type: 'bar',
         names: {
-          isOutside: 'Number of days work will be outside',
-          isWelding: 'Number of days there will be welding',
-          isScaffolding: 'Number of days that required scaffolding support',
+          isOutside: 'Outside',
+          isWelding: 'Welding',
+          isScaffolding: 'Scaffolding',
         },
       },
       bar: {
@@ -60,6 +60,12 @@ const WorkChart = () => {
         x: {
           type: 'category',
           categories: ['', '', ''],
+        },
+        y: {
+          label: {
+            text: 'Number of days for each task in the work scope',
+            position: 'outer-middle',
+          },
         },
       },
     });
