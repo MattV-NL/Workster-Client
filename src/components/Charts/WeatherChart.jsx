@@ -7,8 +7,6 @@ import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 const WeatherChart = () => {
   const { weatherValues } = useContext(WeatherDataContext);
 
-  console.log(Array.from(weatherValues.values()));
-
   useEffect(() => {
     c3.generate({
       bindto: '#chart',
