@@ -43,8 +43,14 @@ const WorkDataContextProvider = ({ children }) => {
     [workValues]
   );
 
+  const clearWorkValues = useCallback(() => {
+    setWorkValues(createWorkValues());
+  }, []);
+
   return (
-    <WorkDataContext.Provider value={{ workValues, submitWorkValues }}>
+    <WorkDataContext.Provider
+      value={{ workValues, submitWorkValues, clearWorkValues }}
+    >
       {children}
     </WorkDataContext.Provider>
   );

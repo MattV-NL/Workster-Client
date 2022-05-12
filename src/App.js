@@ -15,6 +15,7 @@ import WorkDetails from './components/Modals/WorkDetails';
 import NotFound from './components/NotFound';
 import WorkChart from './components/Charts/WorkChart';
 import WeatherResetButton from './components/WeatherInput/WeatherResetButton';
+import WorkResetButton from './components/WorkInput/WorkResetButton';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                     <WorkForm />
                     <WorkTable />
                     <WorkChart />
+                    <WorkResetButton />
                   </Route>
                   <Route exact path='/work-details/:id'>
                     <WorkDetails />
