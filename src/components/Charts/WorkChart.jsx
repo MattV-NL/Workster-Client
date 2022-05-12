@@ -39,6 +39,11 @@ const WorkChart = () => {
         keys: {
           value: ['isOutside', 'isWelding', 'isScaffolding'],
         },
+        colors: {
+          isOutside: '#0000ff',
+          isWelding: '#4444d4',
+          isScaffolding: '#5c5cfa',
+        },
         type: 'bar',
         names: {
           isOutside: 'Number of days work will be outside',

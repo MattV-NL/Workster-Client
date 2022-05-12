@@ -17,8 +17,8 @@ const WeatherChart = () => {
           value: ['precip', 'wind'],
         },
         colors: {
-          precip: '#0000ff',
-          wind: '#D5840E',
+          precip: '#4444d4',
+          wind: '#0000f4',
         },
         names: {
           precip: 'Precipitation',
