@@ -58,7 +58,7 @@ const WorkChart = () => {
         },
       },
     });
-  }, [outCounter, weldCounter, scaffCounter]);
+  }, [workDataArr]);
   return <div id='chart'></div>;
 };
 

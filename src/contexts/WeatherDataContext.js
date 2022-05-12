@@ -34,8 +34,14 @@ const WeatherDataContextProvider = ({ children }) => {
     [weatherValues]
   );
 
+  const clearWeatherValues = useCallback(() => {
+    setWeatherValues(createWeatherValues());
+  }, []);
+
   return (
-    <WeatherDataContext.Provider value={{ weatherValues, submitWeatherValues }}>
+    <WeatherDataContext.Provider
+      value={{ weatherValues, submitWeatherValues, clearWeatherValues }}
+    >
       {children}
     </WeatherDataContext.Provider>
   );
