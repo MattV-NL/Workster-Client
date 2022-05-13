@@ -66,11 +66,14 @@ const WorkChart = () => {
             text: 'Number of days for each task in the work scope',
             position: 'outer-middle',
           },
+          tick: {
+            values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+          },
         },
       },
     });
   }, [workDataArr]);
-  return <div id='chart'></div>;
+  return <div id='chart' className='work-chart'></div>;
 };
 
 export default WorkChart;
