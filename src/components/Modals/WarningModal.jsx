@@ -1,6 +1,6 @@
-import './modals.scss';
 import { useCallback, useContext } from 'react';
 import { WeatherInputContext } from '../../contexts/WeatherInputContext';
+import Modal from '../Modals/Modal';
 
 const WarningModal = () => {
   const { warningDisplay, setWarningDisplay } = useContext(WeatherInputContext);
@@ -9,17 +9,9 @@ const WarningModal = () => {
     setWarningDisplay('none');
   }, [setWarningDisplay]);
   return (
-    <div
-      className='warning-message-container'
-      style={{ display: `${warningDisplay}` }}
-    >
-      <div className='modal-content'>
-        <div className='close-button' onClick={closeWarning}>
-          &times;
-        </div>
-        <div className='warning-text'>Please enter all Information</div>
-      </div>
-    </div>
+    <Modal display={warningDisplay} onClick={closeWarning}>
+      Please enter all information
+    </Modal>
   );
 };
 
