@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import WeatherInput from '../WeatherInput/WeatherInput';
-import WarningModal from '../Modals/WarningModal';
 import { weatherInputs } from '../../constants';
 import './tables.scss';
 

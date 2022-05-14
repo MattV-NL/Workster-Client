@@ -1,22 +1,16 @@
 .warning-message-container {
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  //not finished yet still wokring on styling
-
-  & .warning-text {
-    grid-column-start: 2;
-    display: flex;
-    justify-content: center;
-    cursor: default;
-  }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
 }
 
 .modal-content {
   background-color: var(--buttonColor);
   border-radius: 0.5rem;
   border: solid #fff 0.125rem;
-  padding: 0 1rem 1rem 1rem;
+  padding: 0rem 1rem 1rem 1rem;
   display: grid;
   grid-template-columns: [first] fit-content [second] 0rem [last] fit-content;
 }
@@ -25,6 +19,37 @@
   grid-column-start: 3;
   font-size: large;
   cursor: pointer;
+}
+
+.close-button:hover {
+  color: #f00;
+}
+
+.modal-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+
+  & #yes-button {
+    background-color: var(--componentBackground);
+  }
+
+  & #no-button {
+    background-color: var(--componentBackground);
+  }
+}
+
+#yes-button:hover,
+#no-button:hover {
+  background-color: var(--buttonHover);
 }
 
 .work-details-container {
