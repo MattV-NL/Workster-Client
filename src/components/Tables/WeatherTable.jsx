@@ -27,7 +27,6 @@ const WeatherTable = () => {
         ))}
       </div>
       <WeatherInput />
-      <WarningModal />
     </div>
   );
 };

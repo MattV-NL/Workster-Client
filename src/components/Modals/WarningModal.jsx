@@ -1,15 +1,16 @@
 import { useCallback, useContext } from 'react';
 import { WeatherInputContext } from '../../contexts/WeatherInputContext';
-import Modal from '../Modals/Modal';
+import Modal from './Modal';
 
 const WarningModal = () => {
-  const { warningDisplay, setWarningDisplay } = useContext(WeatherInputContext);
+  const { inputWarningDisplay, setInputWarningDisplay } =
+    useContext(WeatherInputContext);
 
   const closeWarning = useCallback(() => {
-    setWarningDisplay('none');
-  }, [setWarningDisplay]);
+    setInputWarningDisplay('none');
+  }, [setInputWarningDisplay]);
   return (
-    <Modal display={warningDisplay} onClick={closeWarning}>
+    <Modal display={inputWarningDisplay} onClick={closeWarning}>
       Please enter all information
     </Modal>
   );

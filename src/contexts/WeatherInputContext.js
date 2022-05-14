@@ -10,6 +10,7 @@ const WeatherInputContextProvider = ({ children }) => {
   const [date, setDate] = useState('');
   const [precip, setPrecip] = useState('');
   const [wind, setWind] = useState('');
+  const [inputWarningDisplay, setInputWarningDisplay] = useState('none');
   const [warningDisplay, setWarningDisplay] = useState('none');
 
   const weatherDataUpdate = useCallback(
@@ -21,7 +22,7 @@ const WeatherInputContextProvider = ({ children }) => {
         setPrecip('');
         setWind('');
       } else {
-        setWarningDisplay('flex');
+        setInputWarningDisplay('flex');
       }
     },
     [submitWeatherValues, date, precip, wind]
@@ -42,8 +43,10 @@ const WeatherInputContextProvider = ({ children }) => {
           [PRECIP_KEY]: { value: precip, onChange: onChange(setPrecip) },
           [WIND_KEY]: { value: wind, onChange: onChange(setWind) },
         },
-        warningDisplay,
         weatherDataUpdate,
+        inputWarningDisplay,
+        setInputWarningDisplay,
+        warningDisplay,
         setWarningDisplay,
       }}
     >

@@ -1,11 +1,15 @@
-import { useContext } from 'react';
-import { WorkDataContext } from '../../contexts/WorkDataContext';
+import { useContext, useCallback } from 'react';
+import { WeatherInputContext } from '../../contexts/WeatherInputContext';
 import Button from '../Inputs/Button';
 
 const WorkResetButton = () => {
-  const { clearWorkValues } = useContext(WorkDataContext);
+  const { setWarningDisplay } = useContext(WeatherInputContext);
 
-  return <Button onClick={clearWorkValues}>Reset Work Info</Button>;
+  const openWarning = useCallback(() => {
+    setWarningDisplay('flex');
+  }, [setWarningDisplay]);
+
+  return <Button onClick={openWarning}>Reset Work Info</Button>;
 };
 
 export default WorkResetButton;

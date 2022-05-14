@@ -13,7 +13,7 @@ export const WorkInputContext = createContext();
 
 const WorkInputContextProvider = ({ children }) => {
   const { submitWorkValues } = useContext(WorkDataContext);
-  const { setWarningDisplay } = useContext(WeatherInputContext);
+  const { setInputWarningDisplay } = useContext(WeatherInputContext);
 
   const [date, setDate] = useState('');
   const [isOutside, setIsOutside] = useState(false);
@@ -38,7 +38,7 @@ const WorkInputContextProvider = ({ children }) => {
         setIsScaffolding(false);
         setWorkDetails('');
       } else {
-        setWarningDisplay('flex');
+        setInputWarningDisplay('flex');
       }
     },
     [
@@ -47,7 +47,7 @@ const WorkInputContextProvider = ({ children }) => {
       isWelding,
       isScaffolding,
       workDetails,
-      setWarningDisplay,
+      setInputWarningDisplay,
       submitWorkValues,
     ]
   );

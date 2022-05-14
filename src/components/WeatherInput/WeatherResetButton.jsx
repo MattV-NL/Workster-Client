@@ -1,11 +1,14 @@
-import { useContext } from 'react';
-import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import Button from '../Inputs/Button';
+import { useCallback, useContext } from 'react';
+import { WeatherInputContext } from '../../contexts/WeatherInputContext';
 
 const WeatherResetButton = () => {
-  const { clearWeatherValues } = useContext(WeatherDataContext);
+  const { setWarningDisplay } = useContext(WeatherInputContext);
 
-  return <Button onClick={clearWeatherValues}>Clear Weather Info</Button>;
+  const openWarning = useCallback(() => {
+    setWarningDisplay('flex');
+  }, [setWarningDisplay]);
+  return <Button onClick={openWarning}>Clear Weather Info</Button>;
 };
 
 export default WeatherResetButton;

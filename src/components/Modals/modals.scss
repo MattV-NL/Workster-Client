@@ -1,7 +1,8 @@
 .warning-message-container {
-  position: absolute;
-  top: 50%;
-  left: 30%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  //not finished yet still wokring on styling
 
   & .warning-text {
     grid-column-start: 2;
@@ -17,7 +18,7 @@
   border: solid #fff 0.125rem;
   padding: 0 1rem 1rem 1rem;
   display: grid;
-  grid-template-columns: [first] 3rem [line2] fit-content [line3] 3rem [end];
+  grid-template-columns: [first] fit-content [second] 0rem [last] fit-content;
 }
 
 .close-button {

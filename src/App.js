@@ -16,6 +16,8 @@ import NotFound from './components/NotFound';
 import WorkChart from './components/Charts/WorkChart';
 import WeatherResetButton from './components/WeatherInput/WeatherResetButton';
 import WorkResetButton from './components/WorkInput/WorkResetButton';
+import ResetWarningModal from './components/Modals/ResetWarningModal';
+import WarningModal from './components/Modals/WarningModal';
 
 function App() {
   return (
@@ -35,12 +37,16 @@ function App() {
                     <WeatherButton />
                     <WeatherChart />
                     <WeatherResetButton />
+                    <WarningModal />
+                    <ResetWarningModal />
                   </Route>
                   <Route exact path={paths.WORK}>
                     <WorkForm />
                     <WorkTable />
                     <WorkChart />
                     <WorkResetButton />
+                    <WarningModal />
+                    <ResetWarningModal />
                   </Route>
                   <Route exact path='/work-details/:id'>
                     <WorkDetails />

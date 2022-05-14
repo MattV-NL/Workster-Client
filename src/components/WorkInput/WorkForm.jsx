@@ -28,7 +28,6 @@ const WorkForm = () => {
         })}
       </form>
       <WorkButton />
-      <WarningModal />
     </div>
   );
 };
