@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useCallback } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import './c3.min.css';
 import c3 from 'c3';
@@ -26,10 +26,15 @@ const WorkChart = () => {
   );
 
   const workDataArr = [
-    { isOutside: outCounter },
-    { isWelding: weldCounter },
-    { isScaffolding: scaffCounter },
+    { id: 'isOutside', value: outCounter },
+    { id: 'isWelding', value: weldCounter },
+    { id: 'isScaffolding', value: scaffCounter },
   ];
+
+  const values = useCallback(
+    () => workDataArr.map((item) => item.value),
+    [workDataArr]
+  );
 
   useEffect(() => {
     c3.generate({
@@ -37,7 +42,8 @@ const WorkChart = () => {
       data: {
         json: workDataArr,
         keys: {
-          value: ['isOutside', 'isWelding', 'isScaffolding'],
+          x: 'id',
+          value: ['value'],
         },
         colors: {
           isOutside: '#0000ff',
@@ -67,7 +73,7 @@ const WorkChart = () => {
             position: 'outer-middle',
           },
           tick: {
-            values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+            values: values,
           },
         },
       },
