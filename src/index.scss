@@ -3,13 +3,15 @@
   --componentBackground: #677680;
   --buttonColor: #1a4c6d;
   --buttonHover: #0f2f44;
+  --scrollbarTrack: #47535b;
+  --scrollbarThumb: #2b3841;
 }
 
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
   background-color: var(--background);
+  color: #fff;
 }
 
 .layout {
@@ -18,4 +20,14 @@ body {
   justify-content: space-between;
   gap: 2rem;
   padding: 1rem;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & .home-link {
+    color: #fff;
+  }
 }

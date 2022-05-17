@@ -1,21 +1,11 @@
 import '../Tables/tables.scss';
 import { useContext } from 'react';
-import { InputContext } from '../../contexts/InputContext';
+import { WeatherInputContext } from '../../contexts/WeatherInputContext';
 import Input from '../Inputs/Input';
 import { weatherInputs } from '../../constants';
 
 const WeatherInput = () => {
-  const { weatherData } = useContext(InputContext);
-
-  // useMemo(() => {
-  //   weatherInputs.map((items) => {
-  //     items.onChange = submitValues;
-  //   });
-  //   weatherInputs[0].value = date;
-  //   weatherInputsArray[1].value = precip;
-  //   weatherInputsArray[2].value = wind;
-  //   // I know there must be a better way to do this part but I couldn't think of it at the time
-  // }, [date, precip, wind]);
+  const { weatherData } = useContext(WeatherInputContext);
 
   return (
     <div className='table-input-row'>

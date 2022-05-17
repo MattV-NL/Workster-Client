@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { InputContext } from '../../contexts/InputContext';
+import { WeatherInputContext } from '../../contexts/WeatherInputContext';
 import Button from '../Inputs/Button';
 
 const WeatherButton = () => {
-  const { weatherSubmit } = useContext(InputContext);
+  const { weatherDataUpdate } = useContext(WeatherInputContext);
 
-  return <Button onClick={weatherSubmit}>Enter Weather Info</Button>;
+  return <Button onClick={weatherDataUpdate}>Enter Weather Info</Button>;
 };
 
 export default WeatherButton;

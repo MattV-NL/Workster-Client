@@ -1,14 +1,28 @@
 .header {
   display: grid;
-  grid-template-rows: [first] 4rem [last] 2rem;
+  grid-template-rows: [first] fit-content [last] 2rem;
 }
 
-.title {
+.title-container {
+  display: grid;
+  grid-template-columns: [first] 80% [last] 1fr;
   padding-top: 1rem;
   margin: 0 1rem;
-  font-size: 2rem;
-  display: flex;
-  justify-content: flex-start;
+  font-size: 2.25rem;
+
+  & .title {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+  }
+
+  & .logo-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  & .logo {
+    width: 5rem;
+  }
 }
 
 .navbar {
@@ -16,7 +30,8 @@
   align-items: center;
   gap: 1rem;
   justify-content: flex-end;
-  margin: 0 1rem;
+  margin: 1rem;
+  border-bottom: solid 0.125rem #fff;
 
   & .navbar-item {
     cursor: pointer;
