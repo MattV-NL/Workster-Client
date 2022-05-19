@@ -3,6 +3,7 @@ import './c3.min.css';
 import c3 from 'c3';
 import { useEffect, useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
+import Chart from './Chart';
 
 const WeatherChart = () => {
   const { weatherValues } = useContext(WeatherDataContext);
@@ -41,7 +42,7 @@ const WeatherChart = () => {
     });
   }, [weatherValues]);
 
-  return <div id='chart'></div>;
+  return <Chart id={'chart'} />;
 };
 
 export default WeatherChart;

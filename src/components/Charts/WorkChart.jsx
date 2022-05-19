@@ -2,7 +2,7 @@ import { useContext, useEffect, useCallback, useMemo } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import './c3.min.css';
 import c3 from 'c3';
-import './charts.scss';
+import Chart from './Chart';
 
 const WorkChart = () => {
   const { workValues } = useContext(WorkDataContext);
@@ -43,6 +43,11 @@ const WorkChart = () => {
           isScaffolding: '#5c5cfa',
         },
         type: 'bar',
+        names: {
+          isOutside: 'Outside',
+          isWelding: 'Welding',
+          isScaffolding: 'Scaffolding',
+        },
       },
       bar: {
         width: {
@@ -61,7 +66,7 @@ const WorkChart = () => {
       },
     });
   }, [json]);
-  return <div id='chart'></div>;
+  return <Chart id={'chart'} className={'work-chart'} />;
 };
 
 export default WorkChart;

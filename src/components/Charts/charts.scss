@@ -3,4 +3,15 @@
   padding-top: 2rem;
   border: solid 0.125rem #fff;
   border-radius: 0.5rem;
+  color: #000;
+}
+
+.work-chart {
+  .c3-axis-x {
+    .tick {
+      tspan {
+        display: none;
+      }
+    }
+  }
 }
