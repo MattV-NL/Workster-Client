@@ -41,6 +41,7 @@ const WeatherChart = () => {
       },
     });
   }, [weatherValues]);
+  //this is a test
 
   return <Chart id={'chart'} className={'weather-chart'} />;
 };
