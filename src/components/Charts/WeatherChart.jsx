@@ -42,7 +42,7 @@ const WeatherChart = () => {
     });
   }, [weatherValues]);
 
-  return <Chart id={'chart'} />;
+  return <Chart id={'chart'} className={'weather-chart'} />;
 };
 
 export default WeatherChart;

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useCallback, useMemo } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import './c3.min.css';
 import c3 from 'c3';
