@@ -1,4 +1,4 @@
-import './modals.scss';
+import './workdetails.scss';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';

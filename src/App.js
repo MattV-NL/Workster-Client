@@ -11,7 +11,7 @@ import WeatherTable from './components/Tables/WeatherTable';
 import WeatherButton from './components/WeatherInput/WeatherButton';
 import WorkForm from './components/WorkInput/WorkForm';
 import WorkTable from './components/Tables/WorkTable';
-import WorkDetails from './components/Modals/WorkDetails';
+import WorkDetails from './components/WorkDetails/WorkDetails';
 import NotFound from './components/NotFound';
 import WorkChart from './components/Charts/WorkChart';
 import WeatherResetButton from './components/WeatherInput/WeatherResetButton';

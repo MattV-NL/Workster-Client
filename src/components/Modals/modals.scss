@@ -51,26 +51,3 @@
 #no-button:hover {
   background-color: var(--buttonHover);
 }
-
-.work-details-container {
-  border: solid 0.125rem #fff;
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--componentBackground);
-  padding: 1rem;
-
-  & .work-details-header {
-    font-size: 1.5rem;
-  }
-
-  & .work-details-content {
-    border: solid 0.125rem var(--buttonHover);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    font-size: 1.125rem;
-    color: #000;
-    background-color: #fff;
-    word-wrap: break-word;
-  }
-}
