@@ -18,6 +18,7 @@ import WeatherResetButton from './components/WeatherInput/WeatherResetButton';
 import WorkResetButton from './components/WorkInput/WorkResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
 import WarningModal from './components/Modals/WarningModal';
+import Compare from './components/Compare/Compare';
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
                     <WorkResetButton />
                     <WarningModal />
                     <ResetWarningModal />
+                  </Route>
+                  <Route exact path={paths.COMPARE}>
+                    <Compare />
                   </Route>
                   <Route exact path='/work-details/:id'>
                     <WorkDetails />

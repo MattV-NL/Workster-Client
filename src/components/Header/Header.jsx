@@ -24,6 +24,9 @@ const Header = () => {
         <Link to={paths.WORK} className='navbar-item'>
           Work Form
         </Link>
+        <Link to={paths.COMPARE} className='navbar-item'>
+          Compare
+        </Link>
       </div>
     </div>
   );

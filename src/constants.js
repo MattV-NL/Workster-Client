@@ -78,4 +78,5 @@ export const paths = {
   HOME: '/home',
   WEATHER: '/weather',
   WORK: '/work',
+  COMPARE: '/compare',
 };
