@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import Button from '../Inputs/Button';
@@ -23,26 +23,20 @@ const Compare = () => {
   could also display both charts on this page to add content
   */
 
-  const compareValues = () => {
-    Array.from(weatherValues.values()).map(({ precip, wind }) => {
-      Array.from(workValues.values()).map(
-        ({ isOutside, isWelding, isScaffolding }) => {
-          if (
-            (precip > 20 || wind > 40) &&
-            (isOutside || isWelding || isScaffolding)
-          ) {
-            console.log(
-              'perhaps reconsider you work schedule, there is weather on days where you have work planned that is not suited to deal with weather'
-            );
-          } else {
-            console.log(
-              'Great! Your schedule has no conflicts with the weather'
-            );
-          }
+  const compareValues = useCallback(() => {
+    weatherValues.forEach(({ precip, wind }) => {
+      workValues.forEach(({ isOutside, isWelding, isScaffolding }) => {
+        if (
+          (precip > 20 || wind > 40) &&
+          (isOutside || isWelding || isScaffolding)
+        ) {
+          console.log('conflict');
+        } else {
+          console.log('no conflict');
         }
-      );
+      });
     });
-  };
+  }, [workValues, weatherValues]);
 
   return (
     <div>
