@@ -27,12 +27,10 @@ const Compare = () => {
 
   return (
     <div className='compare-page-layout'>
-      <Button onClick={compareValues}>Compare Work and Weather</Button>
       <div className='compare-message'>
-        {isConflict
-          ? 'You may want to look at your work scope and see if something can be rescheduled since there is work you have scheduled with special conditions during days or harsh weather.'
-          : 'Great! there are no scheduling conflicts with the weather information you have entered.'}
+        {isConflict ? 'conflict' : 'no conflict'}
       </div>
+      <Button onClick={compareValues}>Compare Work and Weather</Button>
     </div>
   );
 };
