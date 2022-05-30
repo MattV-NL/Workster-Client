@@ -29,7 +29,7 @@ const WorkChart = () => {
 
   useEffect(() => {
     c3.generate({
-      bindto: '#chart',
+      bindto: '#work-chart',
       data: {
         json,
         keys: {
@@ -66,7 +66,7 @@ const WorkChart = () => {
       },
     });
   }, [json]);
-  return <Chart id={'chart'} className={'work-chart'} />;
+  return <Chart id={'work-chart'} className={'work-chart'} />;
 };
 
 export default WorkChart;

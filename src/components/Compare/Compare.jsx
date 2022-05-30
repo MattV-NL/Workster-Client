@@ -1,27 +1,14 @@
-import { useContext, useCallback } from 'react';
+import { useContext, useCallback, useState } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import Button from '../Inputs/Button';
+import './compare.scss';
 
 const Compare = () => {
   const { weatherValues } = useContext(WeatherDataContext);
   const { workValues } = useContext(WorkDataContext);
 
-  /*
-  Compare the maps to see if there is significant weather on days
-  where there is work outside, with welding or scaffolding as in the form
-  */
-
-  /*
-  for each item in the maps (keys should always be the same) if the values 
-  in the work object are true (not including the date) then check the
-  values from the weather object and if there are below a threshold return
-  a message
-
-  if they are not below a threshold return a seperate message
-
-  could also display both charts on this page to add content
-  */
+  const [isConflict, setIsConflict] = useState(false);
 
   const compareValues = useCallback(() => {
     weatherValues.forEach(({ precip, wind }) => {
@@ -30,17 +17,22 @@ const Compare = () => {
           (precip > 20 || wind > 40) &&
           (isOutside || isWelding || isScaffolding)
         ) {
-          console.log('conflict');
+          setIsConflict(true);
         } else {
-          console.log('no conflict');
+          // setIsConflict(false);
         }
       });
     });
-  }, [workValues, weatherValues]);
+  }, [workValues, weatherValues, setIsConflict]);
 
   return (
-    <div>
+    <div className='compare-page-layout'>
       <Button onClick={compareValues}>Compare Work and Weather</Button>
+      <div className='compare-message'>
+        {isConflict
+          ? 'You may want to look at your work scope and see if something can be rescheduled since there is work you have scheduled with special conditions during days or harsh weather.'
+          : 'Great! there are no scheduling conflicts with the weather information you have entered.'}
+      </div>
     </div>
   );
 };
