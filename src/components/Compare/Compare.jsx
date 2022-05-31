@@ -1,36 +1,32 @@
-import { useContext, useCallback, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
-import Button from '../Inputs/Button';
 import './compare.scss';
 
 const Compare = () => {
   const { weatherValues } = useContext(WeatherDataContext);
   const { workValues } = useContext(WorkDataContext);
+  const [isConflict, setIsConflict] = useState(null);
 
-  const [isConflict, setIsConflict] = useState(false);
+  useEffect(() => {
+    const nextConflict = [
+      ...new Set([...weatherValues.keys(), ...workValues.keys()]),
+    ].some((date) => {
+      const { precip, wind } = weatherValues.get(date) || {};
+      const { isOutside, isWelding, isScaffolding } =
+        workValues.get(date) || {};
 
-  const compareValues = useCallback(() => {
-    weatherValues.forEach(({ precip, wind }) => {
-      workValues.forEach(({ isOutside, isWelding, isScaffolding }) => {
-        if (
-          (precip > 20 || wind > 40) &&
-          (isOutside || isWelding || isScaffolding)
-        ) {
-          setIsConflict(true);
-        } else {
-          // setIsConflict(false);
-        }
-      });
+      return !!(
+        (precip > 20 || wind > 40) &&
+        (isOutside || isWelding || isScaffolding)
+      );
     });
+    setIsConflict(nextConflict);
   }, [workValues, weatherValues, setIsConflict]);
 
   return (
-    <div className='compare-page-layout'>
-      <div className='compare-message'>
-        {isConflict ? 'conflict' : 'no conflict'}
-      </div>
-      <Button onClick={compareValues}>Compare Work and Weather</Button>
+    <div className={isConflict ? 'alert' : 'no-alert'}>
+      {isConflict === false && 'No'} Conflict
     </div>
   );
 };

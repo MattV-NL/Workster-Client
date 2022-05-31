@@ -49,9 +49,6 @@ function App() {
                     <WarningModal />
                     <ResetWarningModal />
                   </Route>
-                  <Route exact path={paths.COMPARE}>
-                    <Compare />
-                  </Route>
                   <Route exact path='/work-details/:id'>
                     <WorkDetails />
                   </Route>
