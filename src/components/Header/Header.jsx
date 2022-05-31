@@ -2,6 +2,7 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import { paths } from '../../constants';
 import img1 from '../../images/logo.png';
+import Compare from '../Compare/Compare';
 
 const logo = 'logo';
 
@@ -24,6 +25,7 @@ const Header = () => {
         <Link to={paths.WORK} className='navbar-item'>
           Work Form
         </Link>
+        <Compare />
       </div>
     </div>
   );

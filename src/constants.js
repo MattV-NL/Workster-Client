@@ -59,13 +59,13 @@ export const weatherInputs = new Map(
       required: true,
     },
     {
-      title: 'Precipitation',
+      title: 'Precipitation (mm)',
       id: PRECIP_KEY,
       type: 'number',
       required: true,
     },
     {
-      title: 'Wind Speed',
+      title: 'Wind Speed (km/hr)',
       id: WIND_KEY,
       type: 'number',
       required: true,
@@ -78,4 +78,5 @@ export const paths = {
   HOME: '/home',
   WEATHER: '/weather',
   WORK: '/work',
+  COMPARE: '/compare',
 };

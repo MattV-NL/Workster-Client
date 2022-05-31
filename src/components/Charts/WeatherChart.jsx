@@ -10,7 +10,7 @@ const WeatherChart = () => {
 
   useEffect(() => {
     c3.generate({
-      bindto: '#chart',
+      bindto: '#weather-chart',
       data: {
         json: Array.from(weatherValues.values()),
         keys: {
@@ -42,7 +42,7 @@ const WeatherChart = () => {
     });
   }, [weatherValues]);
 
-  return <Chart id={'chart'} className={'weather-chart'} />;
+  return <Chart id={'weather-chart'} className={'weather-chart'} />;
 };
 
 export default WeatherChart;
