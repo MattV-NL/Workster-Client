@@ -40,7 +40,12 @@ const WeatherDataContextProvider = ({ children }) => {
 
   return (
     <WeatherDataContext.Provider
-      value={{ weatherValues, submitWeatherValues, clearWeatherValues }}
+      value={{
+        weatherValues,
+        submitWeatherValues,
+        clearWeatherValues,
+        setWeatherValues,
+      }}
     >
       {children}
     </WeatherDataContext.Provider>

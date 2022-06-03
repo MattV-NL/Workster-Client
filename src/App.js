@@ -18,6 +18,7 @@ import WeatherResetButton from './components/WeatherInput/WeatherResetButton';
 import WorkResetButton from './components/WorkInput/WorkResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
 import WarningModal from './components/Modals/WarningModal';
+import SortTable from './components/SortTable/SortTable';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
                     <Home />
                   </Route>
                   <Route exact path={paths.WEATHER}>
+                    <SortTable />
                     <WeatherTable />
                     <WeatherButton />
                     <WeatherChart />
