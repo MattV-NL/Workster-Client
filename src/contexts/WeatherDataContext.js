@@ -17,6 +17,7 @@ const createWeatherValues = () =>
 
 const WeatherDataContextProvider = ({ children }) => {
   const [weatherValues, setWeatherValues] = useState(createWeatherValues());
+  const [tableOrder, setTableOrder] = useState(false);
 
   const submitWeatherValues = useCallback(
     (date, precip, wind) => {
@@ -26,12 +27,19 @@ const WeatherDataContextProvider = ({ children }) => {
         precip,
         wind,
       });
-      const sortedWeatherMap = new Map(
-        [...nextWeatherMap].sort((a, b) => a[0] - b[0])
-      );
-      setWeatherValues(sortedWeatherMap);
+      if (tableOrder) {
+        const reverseSortWeatherMap = new Map(
+          [...nextWeatherMap].sort((a, b) => b[0] - a[0])
+        );
+        setWeatherValues(reverseSortWeatherMap);
+      } else {
+        const sortWeatherMap = new Map(
+          [...nextWeatherMap].sort((a, b) => a[0] - b[0])
+        );
+        setWeatherValues(sortWeatherMap);
+      }
     },
-    [weatherValues]
+    [weatherValues, tableOrder]
   );
 
   const clearWeatherValues = useCallback(() => {
@@ -45,6 +53,8 @@ const WeatherDataContextProvider = ({ children }) => {
         submitWeatherValues,
         clearWeatherValues,
         setWeatherValues,
+        tableOrder,
+        setTableOrder,
       }}
     >
       {children}

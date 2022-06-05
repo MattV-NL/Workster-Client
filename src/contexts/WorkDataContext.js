@@ -24,6 +24,7 @@ const createWorkValues = () =>
 
 const WorkDataContextProvider = ({ children }) => {
   const [workValues, setWorkValues] = useState(createWorkValues());
+  const [tableOrder, setTableOrder] = useState(false);
 
   const submitWorkValues = useCallback(
     (date, isOutside, isWelding, isScaffolding, workDetails) => {
@@ -35,12 +36,19 @@ const WorkDataContextProvider = ({ children }) => {
         isScaffolding,
         workDetails,
       });
-      const sortedWorkDataMap = new Map(
-        [...nextWorkDataMap].sort((a, b) => a[0] - b[0])
-      );
-      setWorkValues(sortedWorkDataMap);
+      if (tableOrder) {
+        const reverseSortWorkMap = new Map(
+          [...nextWorkDataMap].sort((a, b) => b[0] - a[0])
+        );
+        setWorkValues(reverseSortWorkMap);
+      } else {
+        const sortWorkMap = new Map(
+          [...nextWorkDataMap].sort((a, b) => a[0] - b[0])
+        );
+        setWorkValues(sortWorkMap);
+      }
     },
-    [workValues]
+    [workValues, tableOrder]
   );
 
   const clearWorkValues = useCallback(() => {
@@ -49,7 +57,14 @@ const WorkDataContextProvider = ({ children }) => {
 
   return (
     <WorkDataContext.Provider
-      value={{ workValues, submitWorkValues, clearWorkValues }}
+      value={{
+        workValues,
+        setWorkValues,
+        submitWorkValues,
+        clearWorkValues,
+        tableOrder,
+        setTableOrder,
+      }}
     >
       {children}
     </WorkDataContext.Provider>
