@@ -7,7 +7,7 @@ const SortWorkTable = () => {
   const { tableOrder, setTableOrder, workValues, setWorkValues } =
     useContext(WorkDataContext);
 
-  const handleClick = useCallback(() => {
+  const changeTableOrder = useCallback(() => {
     if (tableOrder) {
       const sortedWorkMap = new Map(
         [...workValues].sort((a, b) => a[0] - b[0])
@@ -25,7 +25,7 @@ const SortWorkTable = () => {
 
   return (
     <div className='sort-button-container'>
-      <Button onClick={handleClick}>Reverse Table Order</Button>
+      <Button onClick={changeTableOrder}>Reverse Table Order</Button>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const SortWeatherTable = () => {
   const { tableOrder, setTableOrder, weatherValues, setWeatherValues } =
     useContext(WeatherDataContext);
 
-  const handleClick = useCallback(() => {
+  const changeTableOrder = useCallback(() => {
     if (tableOrder) {
       const sortedWeatherMap = new Map(
         [...weatherValues].sort((a, b) => a[0] - b[0])
@@ -25,7 +25,7 @@ const SortWeatherTable = () => {
 
   return (
     <div className='sort-button-container'>
-      <Button onClick={handleClick}>Reverse Table Order</Button>
+      <Button onClick={changeTableOrder}>Reverse Table Order</Button>
     </div>
   );
 };
