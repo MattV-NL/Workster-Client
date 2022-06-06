@@ -31,7 +31,7 @@ function App() {
               <Header />
               <div className='layout'>
                 <Switch>
-                  <Route exact path={['/', paths.HOME, paths.LANDING]}>
+                  <Route exact path={['/', paths.HOME]}>
                     <Home />
                   </Route>
                   <Route exact path={paths.WEATHER}>
