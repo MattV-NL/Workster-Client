@@ -77,5 +77,4 @@ export const paths = {
   HOME: '/Work-Weather-Analyzer',
   WEATHER: '/weather',
   WORK: '/work',
-  COMPARE: '/compare',
 };
