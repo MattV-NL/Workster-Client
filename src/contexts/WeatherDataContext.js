@@ -15,8 +15,12 @@ const createWeatherValues = () =>
       .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
   );
 
+const sortTable = (tableOrder) => (a, b) =>
+  tableOrder ? a[0] - b[0] : b[0] - a[0];
+
 const WeatherDataContextProvider = ({ children }) => {
   const [weatherValues, setWeatherValues] = useState(createWeatherValues());
+  const [tableOrder, setTableOrder] = useState(false);
 
   const submitWeatherValues = useCallback(
     (date, precip, wind) => {
@@ -26,12 +30,12 @@ const WeatherDataContextProvider = ({ children }) => {
         precip,
         wind,
       });
-      const sortedWeatherMap = new Map(
-        [...nextWeatherMap].sort((a, b) => a[0] - b[0])
+      const reverseSortWeatherMap = new Map(
+        [...nextWeatherMap].sort(sortTable(tableOrder))
       );
-      setWeatherValues(sortedWeatherMap);
+      setWeatherValues(reverseSortWeatherMap);
     },
-    [weatherValues]
+    [weatherValues, tableOrder]
   );
 
   const clearWeatherValues = useCallback(() => {
@@ -40,7 +44,14 @@ const WeatherDataContextProvider = ({ children }) => {
 
   return (
     <WeatherDataContext.Provider
-      value={{ weatherValues, submitWeatherValues, clearWeatherValues }}
+      value={{
+        weatherValues,
+        submitWeatherValues,
+        clearWeatherValues,
+        setWeatherValues,
+        tableOrder,
+        setTableOrder,
+      }}
     >
       {children}
     </WeatherDataContext.Provider>
