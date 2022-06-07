@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Work-Weather-Analyzer/static/css/main.5ebe7944.css",
-    "main.js": "/Work-Weather-Analyzer/static/js/main.b87cf19a.js",
+    "main.css": "/Work-Weather-Analyzer/static/css/main.9588ace3.css",
+    "main.js": "/Work-Weather-Analyzer/static/js/main.208f024a.js",
     "static/js/787.7bccd639.chunk.js": "/Work-Weather-Analyzer/static/js/787.7bccd639.chunk.js",
     "static/media/logo.png": "/Work-Weather-Analyzer/static/media/logo.2a9242b8fb144d828815.png",
     "index.html": "/Work-Weather-Analyzer/index.html",
-    "main.5ebe7944.css.map": "/Work-Weather-Analyzer/static/css/main.5ebe7944.css.map",
-    "main.b87cf19a.js.map": "/Work-Weather-Analyzer/static/js/main.b87cf19a.js.map",
+    "main.9588ace3.css.map": "/Work-Weather-Analyzer/static/css/main.9588ace3.css.map",
+    "main.208f024a.js.map": "/Work-Weather-Analyzer/static/js/main.208f024a.js.map",
     "787.7bccd639.chunk.js.map": "/Work-Weather-Analyzer/static/js/787.7bccd639.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ebe7944.css",
-    "static/js/main.b87cf19a.js"
+    "static/css/main.9588ace3.css",
+    "static/js/main.208f024a.js"
   ]
 }
