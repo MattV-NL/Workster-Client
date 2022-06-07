@@ -22,6 +22,9 @@ const createWorkValues = () =>
       .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
   );
 
+const sortTable = (tableOrder) => (a, b) =>
+  tableOrder ? a[0] - b[0] : b[0] - a[0];
+
 const WorkDataContextProvider = ({ children }) => {
   const [workValues, setWorkValues] = useState(createWorkValues());
   const [tableOrder, setTableOrder] = useState(false);
@@ -36,17 +39,10 @@ const WorkDataContextProvider = ({ children }) => {
         isScaffolding,
         workDetails,
       });
-      if (tableOrder) {
-        const reverseSortWorkMap = new Map(
-          [...nextWorkDataMap].sort((a, b) => b[0] - a[0])
-        );
-        setWorkValues(reverseSortWorkMap);
-      } else {
-        const sortWorkMap = new Map(
-          [...nextWorkDataMap].sort((a, b) => a[0] - b[0])
-        );
-        setWorkValues(sortWorkMap);
-      }
+      const sortWorkMap = new Map(
+        [...nextWorkDataMap].sort(sortTable(tableOrder))
+      );
+      setWorkValues(sortWorkMap);
     },
     [workValues, tableOrder]
   );

@@ -15,6 +15,9 @@ const createWeatherValues = () =>
       .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
   );
 
+const sortTable = (tableOrder) => (a, b) =>
+  tableOrder ? a[0] - b[0] : b[0] - a[0];
+
 const WeatherDataContextProvider = ({ children }) => {
   const [weatherValues, setWeatherValues] = useState(createWeatherValues());
   const [tableOrder, setTableOrder] = useState(false);
@@ -27,17 +30,10 @@ const WeatherDataContextProvider = ({ children }) => {
         precip,
         wind,
       });
-      if (tableOrder) {
-        const reverseSortWeatherMap = new Map(
-          [...nextWeatherMap].sort((a, b) => b[0] - a[0])
-        );
-        setWeatherValues(reverseSortWeatherMap);
-      } else {
-        const sortWeatherMap = new Map(
-          [...nextWeatherMap].sort((a, b) => a[0] - b[0])
-        );
-        setWeatherValues(sortWeatherMap);
-      }
+      const reverseSortWeatherMap = new Map(
+        [...nextWeatherMap].sort(sortTable(tableOrder))
+      );
+      setWeatherValues(reverseSortWeatherMap);
     },
     [weatherValues, tableOrder]
   );

@@ -3,7 +3,7 @@ import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import Button from '../Inputs/Button';
 import './sortTable.scss';
 
-const whatever = (tableOrder) => (a, b) =>
+const sortTable = (tableOrder) => (a, b) =>
   tableOrder ? a[0] - b[0] : b[0] - a[0];
 
 const SortWeatherTable = () => {
@@ -12,7 +12,7 @@ const SortWeatherTable = () => {
 
   const changeTableOrder = useCallback(() => {
     const sortedWeatherMap = new Map(
-      [...weatherValues].sort(whatever(tableOrder))
+      [...weatherValues].sort(sortTable(tableOrder))
     );
     setWeatherValues(sortedWeatherMap);
     setTableOrder(!tableOrder);
