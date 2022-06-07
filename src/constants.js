@@ -75,6 +75,6 @@ export const weatherInputs = new Map(
 
 export const paths = {
   HOME: '/Work-Weather-Analyzer',
-  WEATHER: '/weather',
-  WORK: '/work',
+  WEATHER: '/Work-Weather-Analyzer/weather',
+  WORK: '/Work-Weather-Analyzer/work',
 };
