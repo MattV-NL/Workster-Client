@@ -1,17 +1,18 @@
 import './inputs.scss';
 import PropTypes from 'prop-types';
+import { Button } from 'antd';
 
-const Button = ({ onClick, children, id }) => (
+const ButtonInput = ({ onClick, children, id }) => (
   <div className='submit-button-container'>
-    <div className='submit-button' onClick={onClick} id={id}>
+    <Button type='primary' onClick={onClick} id={id}>
       {children}
-    </div>
+    </Button>
   </div>
 );
 
-Button.propTypes = {
+ButtonInput.propTypes = {
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 
-export default Button;
+export default ButtonInput;
