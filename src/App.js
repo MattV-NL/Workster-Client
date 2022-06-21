@@ -18,7 +18,6 @@ import WeatherResetButton from './components/WeatherInput/WeatherResetButton';
 import WorkResetButton from './components/WorkInput/WorkResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
 import WarningModal from './components/Modals/WarningModal';
-import Compare from './components/Compare/Compare';
 
 function App() {
   return (
