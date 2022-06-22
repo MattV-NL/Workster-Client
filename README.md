@@ -1,5 +1,5 @@
 ## Description
-This is a project using React.js that I created with my background of the construction industry in mind. https://mattv-nl.github.io/Work-Weather-Analyzer/
+This is a project using React.js that I created with my background of the construction industry in mind. [https://mattv-nl.github.io/Work-Weather-Analyzer/](https://github.com/MattV-NL/Work-Weather-Analyzer)
 
 This project will allow a user to enter information regarding the work they have in their work scope as well as information about the weather affecting their work scope. The app will then display the information in charts and tables for the user to see.
 
