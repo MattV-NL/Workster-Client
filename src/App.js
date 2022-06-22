@@ -27,34 +27,36 @@ function App() {
           <WorkInputContextProvider>
             <Router>
               <Header />
-              <div className='layout'>
-                <Switch>
-                  <Route exact path={['/', paths.HOME, paths.LANDING]}>
-                    <Home />
-                  </Route>
-                  <Route exact path={paths.WEATHER}>
-                    <WeatherTable />
-                    <WeatherButton />
-                    <WeatherChart />
-                    <WeatherResetButton />
-                    <WarningModal />
-                    <ResetWarningModal />
-                  </Route>
-                  <Route exact path={paths.WORK}>
-                    <WorkForm />
-                    <WorkTable />
-                    <WorkChart />
-                    <WorkResetButton />
-                    <WarningModal />
-                    <ResetWarningModal />
-                  </Route>
-                  <Route exact path='/work-details/:id'>
-                    <WorkDetails />
-                  </Route>
-                  <Route>
-                    <NotFound />
-                  </Route>
-                </Switch>
+              <div className='layout-center'>
+                <div className='layout'>
+                  <Switch>
+                    <Route exact path={['/', paths.HOME, paths.LANDING]}>
+                      <Home />
+                    </Route>
+                    <Route exact path={paths.WEATHER}>
+                      <WeatherTable />
+                      <WeatherButton />
+                      <WeatherChart />
+                      <WeatherResetButton />
+                      <WarningModal />
+                      <ResetWarningModal />
+                    </Route>
+                    <Route exact path={paths.WORK}>
+                      <WorkForm />
+                      <WorkTable />
+                      <WorkChart />
+                      <WorkResetButton />
+                      <WarningModal />
+                      <ResetWarningModal />
+                    </Route>
+                    <Route exact path='/work-details/:id'>
+                      <WorkDetails />
+                    </Route>
+                    <Route>
+                      <NotFound />
+                    </Route>
+                  </Switch>
+                </div>
               </div>
             </Router>
           </WorkInputContextProvider>
