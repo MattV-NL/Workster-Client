@@ -21,7 +21,6 @@ import WarningModal from './components/Modals/WarningModal';
 import SortWeatherTable from './components/SortTable/SortWeatherTable';
 import SortWorkTable from './components/SortTable/SortWorkTable';
 
-
 function App() {
   return (
     <WeatherDataContextProvider>
@@ -33,10 +32,11 @@ function App() {
               <div className='layout-center'>
                 <div className='layout'>
                   <Switch>
-                    <Route exact path={['/', paths.HOME, paths.LANDING]}>
+                    <Route exact path={['/', paths.HOME]}>
                       <Home />
                     </Route>
                     <Route exact path={paths.WEATHER}>
+                      <SortWeatherTable />
                       <WeatherTable />
                       <WeatherButton />
                       <WeatherChart />
@@ -46,6 +46,7 @@ function App() {
                     </Route>
                     <Route exact path={paths.WORK}>
                       <WorkForm />
+                      <SortWorkTable />
                       <WorkTable />
                       <WorkChart />
                       <WorkResetButton />

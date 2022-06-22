@@ -20,12 +20,18 @@ const Home = () => {
       <div className='welcome-message'>
         Please Start by selecting one of following options
       </div>
-      <Link to={paths.WEATHER} className='homeLink'>
-        <Button className={homeItem}>Weather</Button>
-      </Link>
-      <Link to={paths.WORK} className='homeLink'>
-        <Button className={homeItem}>Work</Button>
-      </Link>
+
+      <Button className={homeItem}>
+        <Link to={paths.WEATHER} className='homeLink'>
+          Weather
+        </Link>
+      </Button>
+
+      <Button className={homeItem}>
+        <Link to={paths.WORK} className='homeLink'>
+          Work
+        </Link>
+      </Button>
     </div>
   );
 };
