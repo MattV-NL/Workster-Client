@@ -11,7 +11,7 @@ const WorkDetails = () => {
 
   return (
     <div className='work-details-container'>
-      <h2>Work planned for {workData.date}</h2>
+      <h3>Work planned for {workData.date}</h3>
       <div className='work-details-content'>
         <p>
           {workData.isOutside ? 'Work will be outside' : 'Work will be inside'}

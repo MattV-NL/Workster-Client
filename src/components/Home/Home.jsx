@@ -1,6 +1,7 @@
 import './home.scss';
 import { Link } from 'react-router-dom';
 import { paths } from '../../constants.js';
+import Button from '../Inputs/Button';
 
 const Home = () => {
   const homeItem = 'home-item';
@@ -20,10 +21,10 @@ const Home = () => {
         Please Start by selecting one of following options
       </div>
       <Link to={paths.WEATHER} className='homeLink'>
-        <div className={homeItem}>Weather</div>
+        <Button className={homeItem}>Weather</Button>
       </Link>
       <Link to={paths.WORK} className='homeLink'>
-        <div className={homeItem}>Work</div>
+        <Button className={homeItem}>Work</Button>
       </Link>
     </div>
   );
