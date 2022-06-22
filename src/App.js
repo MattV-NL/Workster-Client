@@ -21,6 +21,7 @@ import WarningModal from './components/Modals/WarningModal';
 import SortWeatherTable from './components/SortTable/SortWeatherTable';
 import SortWorkTable from './components/SortTable/SortWorkTable';
 
+
 function App() {
   return (
     <WeatherDataContextProvider>
@@ -29,36 +30,36 @@ function App() {
           <WorkInputContextProvider>
             <Router>
               <Header />
-              <div className='layout'>
-                <Switch>
-                  <Route exact path={['/', paths.HOME]}>
-                    <Home />
-                  </Route>
-                  <Route exact path={paths.WEATHER}>
-                    <SortWeatherTable />
-                    <WeatherTable />
-                    <WeatherButton />
-                    <WeatherChart />
-                    <WeatherResetButton />
-                    <WarningModal />
-                    <ResetWarningModal />
-                  </Route>
-                  <Route exact path={paths.WORK}>
-                    <WorkForm />
-                    <SortWorkTable />
-                    <WorkTable />
-                    <WorkChart />
-                    <WorkResetButton />
-                    <WarningModal />
-                    <ResetWarningModal />
-                  </Route>
-                  <Route exact path='/work-details/:id'>
-                    <WorkDetails />
-                  </Route>
-                  <Route>
-                    <NotFound />
-                  </Route>
-                </Switch>
+              <div className='layout-center'>
+                <div className='layout'>
+                  <Switch>
+                    <Route exact path={['/', paths.HOME, paths.LANDING]}>
+                      <Home />
+                    </Route>
+                    <Route exact path={paths.WEATHER}>
+                      <WeatherTable />
+                      <WeatherButton />
+                      <WeatherChart />
+                      <WeatherResetButton />
+                      <WarningModal />
+                      <ResetWarningModal />
+                    </Route>
+                    <Route exact path={paths.WORK}>
+                      <WorkForm />
+                      <WorkTable />
+                      <WorkChart />
+                      <WorkResetButton />
+                      <WarningModal />
+                      <ResetWarningModal />
+                    </Route>
+                    <Route exact path='/work-details/:id'>
+                      <WorkDetails />
+                    </Route>
+                    <Route>
+                      <NotFound />
+                    </Route>
+                  </Switch>
+                </div>
               </div>
             </Router>
           </WorkInputContextProvider>

@@ -10,8 +10,14 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
   background-color: var(--background);
   color: #fff;
+}
+
+.layout-center {
+  display: flex;
+  justify-content: center;
 }
 
 .layout {
@@ -20,6 +26,8 @@ body {
   justify-content: space-between;
   gap: 2rem;
   padding: 1rem;
+  max-width: 50rem;
+  width: auto;
 }
 
 .not-found {
