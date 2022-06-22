@@ -22,8 +22,12 @@ const createWorkValues = () =>
       .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
   );
 
+const sortTable = (tableOrder) => (a, b) =>
+  tableOrder ? a[0] - b[0] : b[0] - a[0];
+
 const WorkDataContextProvider = ({ children }) => {
   const [workValues, setWorkValues] = useState(createWorkValues());
+  const [tableOrder, setTableOrder] = useState(false);
 
   const submitWorkValues = useCallback(
     (date, isOutside, isWelding, isScaffolding, workDetails) => {
@@ -35,12 +39,12 @@ const WorkDataContextProvider = ({ children }) => {
         isScaffolding,
         workDetails,
       });
-      const sortedWorkDataMap = new Map(
-        [...nextWorkDataMap].sort((a, b) => a[0] - b[0])
+      const sortWorkMap = new Map(
+        [...nextWorkDataMap].sort(sortTable(tableOrder))
       );
-      setWorkValues(sortedWorkDataMap);
+      setWorkValues(sortWorkMap);
     },
-    [workValues]
+    [workValues, tableOrder]
   );
 
   const clearWorkValues = useCallback(() => {
@@ -49,7 +53,14 @@ const WorkDataContextProvider = ({ children }) => {
 
   return (
     <WorkDataContext.Provider
-      value={{ workValues, submitWorkValues, clearWorkValues }}
+      value={{
+        workValues,
+        setWorkValues,
+        submitWorkValues,
+        clearWorkValues,
+        tableOrder,
+        setTableOrder,
+      }}
     >
       {children}
     </WorkDataContext.Provider>

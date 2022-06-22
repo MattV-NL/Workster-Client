@@ -18,6 +18,9 @@ import WeatherResetButton from './components/WeatherInput/WeatherResetButton';
 import WorkResetButton from './components/WorkInput/WorkResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
 import WarningModal from './components/Modals/WarningModal';
+import SortWeatherTable from './components/SortTable/SortWeatherTable';
+import SortWorkTable from './components/SortTable/SortWorkTable';
+
 
 function App() {
   return (
