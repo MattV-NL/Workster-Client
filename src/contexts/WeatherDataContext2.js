@@ -1,42 +1,13 @@
 import { createContext, useState, useCallback } from 'react';
+import { API_KEY } from '../constants';
 
 export const WeatherDataContext2 = createContext();
 
 let lon = -52.7314;
 let lat = 47.6666;
-let key = 'c4aa91c492141719621c2f09ce2559a3';
 let lang = 'en';
 let units = 'metric';
-let url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang=${lang}`;
-
-// const fetchWeather = () => {
-//   fetch(url)
-//     .then((resp) => {
-//       if (!resp.ok) throw new Error(resp.statusText);
-//       return resp.json();
-//     })
-//     .then((data) => {
-//       storeWeatherData(data);
-//     })
-//     .catch(console.err);
-// };
-
-// const storeWeatherData = ({ list }) => {
-//   const weatherDataMap = new Map(
-//     list
-//       .map(({ dt, wind, pop }) => {
-//         let date = new Date(dt * 1000).toDateString();
-//         let precip = pop * 100;
-//         let windSpeed = wind.speed * 3.6;
-//         return {
-//           date,
-//           precip,
-//           windSpeed,
-//         };
-//       })
-//       .map((list) => [list.date, list])
-//   );
-// };
+let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=${units}&lang${lang}`;
 
 const WeatherDataContextProvider2 = ({ children }) => {
   const [weatherValues2, setWeatherValues2] = useState();
@@ -53,28 +24,13 @@ const WeatherDataContextProvider2 = ({ children }) => {
       .catch(console.err);
   };
 
-  const storeWeatherData = ({ list }) => {
-    const weatherDataMap = new Map(
-      list
-        .map(({ dt, wind, pop }) => {
-          let date = new Date(dt * 1000).toDateString();
-          let precip = pop * 100;
-          let windSpeed = wind.speed * 3.6;
-          return {
-            date,
-            precip,
-            windSpeed,
-          };
-        })
-        .map((list) => [list.date, list])
-    );
-
+  const storeWeatherData = ({ daily }) => {
+    const weatherDataMap = new Map(daily.map((day) => [day.dt, day]));
     setWeatherValues2(weatherDataMap);
+    console.log(weatherValues2);
   };
 
-  const initWeatherValues = useCallback(fetchWeather);
-
-  console.log(weatherValues2);
+  const initWeatherValues = useCallback(fetchWeather, [fetchWeather]);
 
   return (
     <WeatherDataContext2.Provider

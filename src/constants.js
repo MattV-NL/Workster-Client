@@ -50,7 +50,9 @@ export const PRECIP_KEY = 'precip-input';
 
 export const WIND_KEY = 'wind-input';
 
-export const weatherInputs = new Map(
+export const API_KEY = 'c4aa91c492141719621c2f09ce2559a3';
+
+export const weatherHeader = new Map(
   [
     {
       title: 'Date',
@@ -70,7 +72,7 @@ export const weatherInputs = new Map(
       type: 'number',
       required: true,
     },
-  ].map((weatherInput) => [weatherInput.id, weatherInput])
+  ].map((weatherHeader) => [weatherHeader.id, weatherHeader])
 );
 
 export const paths = {

@@ -22,6 +22,7 @@ import SortWeatherTable from './components/SortTable/SortWeatherTable';
 import SortWorkTable from './components/SortTable/SortWorkTable';
 import WeatherDataContextProvider2 from './contexts/WeatherDataContext2';
 import FetchButton from './components/WeatherInput/FetchButton';
+import WeatherTable2 from './components/Tables/WeatherTable2';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
                       <Route exact path={paths.WEATHER}>
                         <SortWeatherTable />
                         <WeatherTable />
+                        {/* <WeatherTable2 /> */}
                         <WeatherButton />
                         <FetchButton />
                         <WeatherChart />

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import WeatherInput from '../WeatherInput/WeatherInput';
-import { weatherInputs } from '../../constants';
+import { weatherHeader } from '../../constants';
 import './tables.scss';
 
 const WeatherTable = () => {
@@ -10,7 +10,7 @@ const WeatherTable = () => {
   return (
     <div className='weather-table'>
       <div className='weather-table-header-row'>
-        {[...weatherInputs.values()].map(({ title, id }) => (
+        {[...weatherHeader.values()].map(({ title, id }) => (
           <div key={id} className='header-item'>
             {title}
           </div>
