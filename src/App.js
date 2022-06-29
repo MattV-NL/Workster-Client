@@ -21,6 +21,7 @@ import WarningModal from './components/Modals/WarningModal';
 import SortWeatherTable from './components/SortTable/SortWeatherTable';
 import SortWorkTable from './components/SortTable/SortWorkTable';
 import WeatherDataContextProvider2 from './contexts/WeatherDataContext2';
+import FetchButton from './components/WeatherInput/FetchButton';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
                         <SortWeatherTable />
                         <WeatherTable />
                         <WeatherButton />
+                        <FetchButton />
                         <WeatherChart />
                         <WeatherResetButton />
                         <WarningModal />
