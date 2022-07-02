@@ -29,8 +29,24 @@ const WeatherDataContextProvider2 = ({ children }) => {
     setWeatherValues2(weatherDataMap);
   };
 
+  let weatherChartArray = Array(7).fill({});
+
+  const setupChart = () => {
+    weatherChartArray = Array.from(weatherDataMap.values()).map(
+      ({ dt, pop, wind_speed }) => {
+        let date = new Date(dt * 1000).toDateString();
+        let precip = pop * 100;
+        let wind = wind_speed * 3.6;
+        return { date, precip, wind };
+      }
+    );
+    console.log(weatherChartArray);
+  };
+
   return (
-    <WeatherDataContext2.Provider value={{ weatherValues2, setWeather }}>
+    <WeatherDataContext2.Provider
+      value={{ weatherValues2, setWeather, weatherChartArray, setupChart }}
+    >
       {children}
     </WeatherDataContext2.Provider>
   );

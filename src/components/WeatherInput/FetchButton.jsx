@@ -3,9 +3,14 @@ import { WeatherDataContext2 } from '../../contexts/WeatherDataContext2';
 import Button from '../Inputs/Button';
 
 const FetchButton = () => {
-  const { setWeather } = useContext(WeatherDataContext2);
+  const { setWeather, setupChart } = useContext(WeatherDataContext2);
 
-  return <Button onClick={setWeather}>Get Weather Info</Button>;
+  const handleClick = () => {
+    setWeather();
+    setupChart();
+  };
+
+  return <Button onClick={handleClick}>Get Weather Info</Button>;
 };
 
 export default FetchButton;
