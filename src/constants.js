@@ -50,8 +50,6 @@ export const PRECIP_KEY = 'precip-input';
 
 export const WIND_KEY = 'wind-input';
 
-export const API_KEY = 'c4aa91c492141719621c2f09ce2559a3';
-
 export const weatherHeader = new Map(
   [
     {
@@ -61,7 +59,7 @@ export const weatherHeader = new Map(
       required: true,
     },
     {
-      title: 'Precipitation (mm)',
+      title: 'Chance of Rain (%)',
       id: PRECIP_KEY,
       type: 'number',
       required: true,

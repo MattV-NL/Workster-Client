@@ -40,10 +40,9 @@ function App() {
                         <Home />
                       </Route>
                       <Route exact path={paths.WEATHER}>
-                        <SortWeatherTable />
-                        <WeatherTable />
-                        {/* <WeatherTable2 /> */}
-                        <WeatherButton />
+                        {/* <SortWeatherTable /> */}
+                        <WeatherTable2 />
+                        {/* <WeatherButton /> */}
                         <FetchButton />
                         <WeatherChart />
                         <WeatherResetButton />
