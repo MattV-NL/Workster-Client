@@ -11,6 +11,7 @@ const WeatherChart = () => {
   const { weatherChartArray } = useContext(WeatherDataContext2);
 
   console.log(weatherChartArray);
+  //not functional yet, still working out how to apply the data to the chart
 
   useEffect(() => {
     c3.generate({
