@@ -1,5 +1,4 @@
-import { createContext, useContext, useState } from 'react';
-import { LocationContext } from './LocationContext';
+import { createContext, useCallback, useState } from 'react';
 
 export const WeatherDataContext2 = createContext();
 let weatherDataMap;
@@ -25,8 +24,6 @@ const success = (pos) => {
   console.log(userLoc);
 };
 
-navigator.geolocation.getCurrentPosition(success, error, options);
-
 let lang = 'en';
 let units = 'metric';
 let key = 'c4aa91c492141719621c2f09ce2559a3';
@@ -45,17 +42,16 @@ const storeWeatherData = ({ daily }) => {
 fetchWeather().catch((err) => console.log(err));
 
 const WeatherDataContextProvider2 = ({ children }) => {
-  const { userLoc } = useContext(LocationContext);
   const [weatherValues2, setWeatherValues2] = useState();
   const [weatherChartValues, setWeatherChartValues] = useState(
     Array(7).fill({})
   );
 
-  const setWeather = () => {
+  const setWeather = useCallback(() => {
     setWeatherValues2(weatherDataMap);
-  };
+  }, [setWeatherValues2]);
 
-  const setupChart = () => {
+  const setupChart = useCallback(() => {
     setWeatherChartValues(
       Array.from(weatherDataMap.values()).map(({ dt, pop, wind_speed }) => {
         let date = new Date(dt * 1000).toDateString();
@@ -68,11 +64,21 @@ const WeatherDataContextProvider2 = ({ children }) => {
         };
       })
     );
-  };
+  }, [setWeatherChartValues]);
+
+  const getLocation = useCallback(() => {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }, []);
 
   return (
     <WeatherDataContext2.Provider
-      value={{ weatherValues2, setWeather, weatherChartValues, setupChart }}
+      value={{
+        weatherValues2,
+        setWeather,
+        weatherChartValues,
+        setupChart,
+        getLocation,
+      }}
     >
       {children}
     </WeatherDataContext2.Provider>
