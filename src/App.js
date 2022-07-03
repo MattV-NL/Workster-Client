@@ -23,56 +23,57 @@ import SortWorkTable from './components/SortTable/SortWorkTable';
 import WeatherDataContextProvider2 from './contexts/WeatherDataContext2';
 import FetchButton from './components/WeatherInput/FetchButton';
 import WeatherTable2 from './components/Tables/WeatherTable2';
+import LocationContextProvider from './contexts/LocationContext';
 
 function App() {
   return (
-    <WeatherDataContextProvider2>
-      <WeatherDataContextProvider>
-        <WeatherInputContextProvider>
-          <WorkDataContextProvider>
-            <WorkInputContextProvider>
-              <Router>
-                <Header />
-                <div className='layout-center'>
-                  <div className='layout'>
-                    <Switch>
-                      <Route exact path={['/', paths.HOME]}>
-                        <Home />
-                      </Route>
-                      <Route exact path={paths.WEATHER}>
-                        {/* <SortWeatherTable /> */}
-                        <WeatherTable2 />
-                        {/* <WeatherButton /> */}
-                        <FetchButton />
-                        <WeatherChart />
-                        <WeatherResetButton />
-                        <WarningModal />
-                        <ResetWarningModal />
-                      </Route>
-                      <Route exact path={paths.WORK}>
-                        <WorkForm />
-                        <SortWorkTable />
-                        <WorkTable />
-                        <WorkChart />
-                        <WorkResetButton />
-                        <WarningModal />
-                        <ResetWarningModal />
-                      </Route>
-                      <Route exact path='/work-details/:id'>
-                        <WorkDetails />
-                      </Route>
-                      <Route>
-                        <NotFound />
-                      </Route>
-                    </Switch>
+    <LocationContextProvider>
+      <WeatherDataContextProvider2>
+        <WeatherDataContextProvider>
+          <WeatherInputContextProvider>
+            <WorkDataContextProvider>
+              <WorkInputContextProvider>
+                <Router>
+                  <Header />
+                  <div className='layout-center'>
+                    <div className='layout'>
+                      <Switch>
+                        <Route exact path={['/', paths.HOME]}>
+                          <Home />
+                        </Route>
+                        <Route exact path={paths.WEATHER}>
+                          <WeatherTable2 />
+                          <FetchButton />
+                          <WeatherChart />
+                          <WeatherResetButton />
+                          <WarningModal />
+                          <ResetWarningModal />
+                        </Route>
+                        <Route exact path={paths.WORK}>
+                          <WorkForm />
+                          <SortWorkTable />
+                          <WorkTable />
+                          <WorkChart />
+                          <WorkResetButton />
+                          <WarningModal />
+                          <ResetWarningModal />
+                        </Route>
+                        <Route exact path='/work-details/:id'>
+                          <WorkDetails />
+                        </Route>
+                        <Route>
+                          <NotFound />
+                        </Route>
+                      </Switch>
+                    </div>
                   </div>
-                </div>
-              </Router>
-            </WorkInputContextProvider>
-          </WorkDataContextProvider>
-        </WeatherInputContextProvider>
-      </WeatherDataContextProvider>
-    </WeatherDataContextProvider2>
+                </Router>
+              </WorkInputContextProvider>
+            </WorkDataContextProvider>
+          </WeatherInputContextProvider>
+        </WeatherDataContextProvider>
+      </WeatherDataContextProvider2>
+    </LocationContextProvider>
   );
 }
 

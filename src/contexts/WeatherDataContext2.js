@@ -1,14 +1,36 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
+import { LocationContext } from './LocationContext';
 
 export const WeatherDataContext2 = createContext();
+let weatherDataMap;
+let userLoc = {
+  lat: 0,
+  lon: 0,
+};
 
-let lon = -52.7314;
-let lat = 47.6666;
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+const error = (err) => {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+};
+
+const success = (pos) => {
+  const crd = pos.coords;
+  userLoc.lat = crd.latitude;
+  userLoc.lon = crd.longitude;
+  console.log(userLoc);
+};
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
 let lang = 'en';
 let units = 'metric';
 let key = 'c4aa91c492141719621c2f09ce2559a3';
-let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=${units}&lang${lang}`;
-let weatherDataMap;
+let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${userLoc.lat}&lon=${userLoc.lon}&appid=${key}&units=${units}&lang${lang}`;
 
 const fetchWeather = async () => {
   const response = await fetch(url);
@@ -23,6 +45,7 @@ const storeWeatherData = ({ daily }) => {
 fetchWeather().catch((err) => console.log(err));
 
 const WeatherDataContextProvider2 = ({ children }) => {
+  const { userLoc } = useContext(LocationContext);
   const [weatherValues2, setWeatherValues2] = useState();
   const [weatherChartValues, setWeatherChartValues] = useState(
     Array(7).fill({})

@@ -4,7 +4,7 @@
   border: solid 0.125rem #fff;
   background-color: var(--componentBackground);
   display: grid;
-  grid-template-rows: [row1-start] 15% [row1-end] 70% [third-line] 15% [last-line];
+  grid-template-rows: [row1-start] 15% [row1-end] 85% [third-line];
   overflow-x: auto;
   scrollbar-width: thin;
 }
@@ -27,29 +27,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-content: center;
-  height: auto;
+  height: fit-content;
+  padding: 0.8rem;
   font-size: 1rem;
 }
 
 .header-item:first-child {
   text-indent: 0.5rem;
-}
-
-.table-input-row {
-  margin-right: 0.5rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-content: center;
-  height: auto;
-
-  & .input-cells {
-    display: flex;
-    justify-content: center;
-  }
-
-  & .input-element {
-    width: 100%;
-  }
 }
 
 .weather-table-body {
