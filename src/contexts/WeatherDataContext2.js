@@ -24,28 +24,32 @@ fetchWeather().catch((err) => console.log(err));
 
 const WeatherDataContextProvider2 = ({ children }) => {
   const [weatherValues2, setWeatherValues2] = useState();
+  const [weatherChartValues, setWeatherChartValues] = useState(
+    Array(7).fill({})
+  );
 
   const setWeather = () => {
     setWeatherValues2(weatherDataMap);
   };
 
-  let weatherChartArray = Array(7).fill({});
-
   const setupChart = () => {
-    weatherChartArray = Array.from(weatherDataMap.values()).map(
-      ({ dt, pop, wind_speed }) => {
+    setWeatherChartValues(
+      Array.from(weatherDataMap.values()).map(({ dt, pop, wind_speed }) => {
         let date = new Date(dt * 1000).toDateString();
         let precip = pop * 100;
         let wind = wind_speed * 3.6;
-        return { date, precip, wind };
-      }
+        return {
+          date,
+          precip: parseFloat(precip.toFixed(2)),
+          wind: parseFloat(wind.toFixed(2)),
+        };
+      })
     );
-    console.log(weatherChartArray);
   };
 
   return (
     <WeatherDataContext2.Provider
-      value={{ weatherValues2, setWeather, weatherChartArray, setupChart }}
+      value={{ weatherValues2, setWeather, weatherChartValues, setupChart }}
     >
       {children}
     </WeatherDataContext2.Provider>
