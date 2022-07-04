@@ -1,0 +1,21 @@
+#weather-chart,
+#work-chart {
+  background-color: var(--componentBackground);
+  padding-top: 2rem;
+  border: solid 0.125rem #fff;
+  border-radius: 0.5rem;
+  color: #000;
+  max-width: 50rem;
+  width: auto;
+  min-width: 22.4rem;
+}
+
+.work-chart {
+  .c3-axis-x {
+    .tick {
+      tspan {
+        display: none;
+      }
+    }
+  }
+}

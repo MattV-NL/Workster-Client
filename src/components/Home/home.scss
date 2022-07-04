@@ -1,0 +1,37 @@
+.homeLink {
+  color: #fff;
+  text-decoration: none;
+}
+
+.home-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.welcome-message-title {
+  display: flex;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.welcome-message {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.home-item {
+  background-color: var(--componentBackground);
+  padding: 1rem;
+  border: 0.125rem solid #fff;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.home-item:hover {
+  background-color: var(--buttonColor);
+}

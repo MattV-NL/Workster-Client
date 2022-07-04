@@ -1,0 +1,184 @@
+.weather-table {
+  position: relative;
+  border-radius: 0.5rem;
+  border: solid 0.125rem #fff;
+  background-color: var(--componentBackground);
+  display: grid;
+  grid-template-rows: [row1-start] 15% [row1-end] 70% [third-line] 15% [last-line];
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.weather-table::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+.weather-table::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 0.5rem;
+}
+
+.weather-table::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 0.5rem;
+}
+.weather-table-header-row {
+  border-bottom: #000 solid 0.0625rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-content: center;
+  height: auto;
+  font-size: 1rem;
+}
+
+.header-item:first-child {
+  text-indent: 0.5rem;
+}
+
+.table-input-row {
+  margin-right: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-content: center;
+  height: auto;
+
+  & .input-cells {
+    display: flex;
+    justify-content: center;
+  }
+
+  & .input-element {
+    width: 100%;
+  }
+}
+
+.weather-table-body {
+  height: auto;
+  max-height: 19rem;
+  overflow-y: auto;
+  border-bottom: #000 solid 0.0625rem;
+  scrollbar-width: thin;
+
+  & .weather-row {
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  & .weather-cells {
+    text-indent: 1rem;
+    border-right: #000 solid 0.0625rem;
+    padding: 0.5rem 0 0.5rem 0;
+    color: #000;
+  }
+  & .weather-cells:last-child {
+    border: none;
+  }
+}
+
+.weather-table-body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.weather-table-body::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 0.5rem;
+}
+
+.weather-table-body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 0.5rem;
+}
+
+.work-table {
+  background-color: var(--componentBackground);
+  display: grid;
+  grid-template-rows: [first] 2rem [last] auto;
+  border: solid 0.125rem #fff;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.work-table::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+.work-table::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 0.5rem;
+}
+
+.work-table::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 0.5rem;
+}
+
+.work-table-header-row {
+  border-bottom: solid 0.0625rem #000;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-content: center;
+  text-indent: 0.5rem;
+  font-size: 1rem;
+  height: auto;
+}
+.work-table-body {
+  max-height: 19rem;
+  height: auto;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.work-table-link {
+  text-decoration: none;
+}
+
+.work-table-body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.work-table-body::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 0.5rem;
+}
+
+.work-table-body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 0.5rem;
+}
+
+.work-table-row {
+  color: #000;
+  height: auto;
+  min-height: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.work-cells {
+  border-right: #000 solid 0.0625rem;
+  color: #000;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  white-space: nowrap;
+}
+
+.work-cells:last-child {
+  border: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.work-cells::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+.work-cells::-webkit-scrollbar-track {
+  background-color: var(--scrollbarTrack);
+  border-radius: 0.5rem;
+}
+
+.work-cells::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: 0.5rem;
+}

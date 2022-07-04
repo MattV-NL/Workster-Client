@@ -1,0 +1,43 @@
+.header {
+  display: grid;
+  grid-template-rows: [first] fit-content [last] 2rem;
+}
+
+.title-container {
+  display: grid;
+  grid-template-columns: [first] 80% [last] 1fr;
+  padding-top: 1rem;
+  margin: 0 1rem;
+  font-size: 2rem;
+
+  & .title {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+  }
+
+  & .logo-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  & .logo {
+    width: 5rem;
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin: 1rem;
+  border-bottom: solid 0.125rem #fff;
+
+  & .navbar-item {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+.navbar-item:visited {
+  color: #fff;
+}

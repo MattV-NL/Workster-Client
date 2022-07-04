@@ -1,0 +1,41 @@
+:root {
+  --background: #20232a;
+  --componentBackground: #677680;
+  --buttonColor: #1a4c6d;
+  --buttonHover: #0f2f44;
+  --scrollbarTrack: #47535b;
+  --scrollbarThumb: #2b3841;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  background-color: var(--background);
+  color: #fff;
+}
+
+.layout-center {
+  display: flex;
+  justify-content: center;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 50rem;
+  width: auto;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & .home-link {
+    color: #fff;
+  }
+}
