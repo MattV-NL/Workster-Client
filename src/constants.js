@@ -78,3 +78,12 @@ export const paths = {
   WEATHER: '/Work-Weather-Analyzer/weather',
   WORK: '/Work-Weather-Analyzer/work',
 };
+export const LOCATION_KEY = 'location';
+
+export const locationInput = {
+  title: 'Location',
+  label: 'Location',
+  id: LOCATION_KEY,
+  type: 'text',
+  required: false,
+};
