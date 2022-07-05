@@ -20,58 +20,53 @@ import SortWorkTable from './components/SortTable/SortWorkTable';
 import WeatherDataContextProvider2 from './contexts/WeatherDataContext2';
 import FetchButton from './components/WeatherInput/FetchButton';
 import WeatherTable2 from './components/Tables/WeatherTable2';
-import LocationInput from './components/WeatherInput/LocationInput';
-import LocationContextProvider from './contexts/LocationContext';
 
 function App() {
   return (
     <WeatherDataContextProvider2>
-      <LocationContextProvider>
-        <WeatherDataContextProvider>
-          <WeatherInputContextProvider>
-            <WorkDataContextProvider>
-              <WorkInputContextProvider>
-                <Router>
-                  <Header />
-                  <div className='layout-center'>
-                    <div className='layout'>
-                      <Switch>
-                        <Route exact path={['/', paths.HOME]}>
-                          <Home />
-                        </Route>
-                        <Route exact path={paths.WEATHER}>
-                          <LocationInput />
-                          <FetchButton />
-                          <WeatherTable2 />
-                          <WeatherChart />
-                          <WeatherResetButton />
-                          <WarningModal />
-                          <ResetWarningModal />
-                        </Route>
-                        <Route exact path={paths.WORK}>
-                          <WorkForm />
-                          <SortWorkTable />
-                          <WorkTable />
-                          <WorkChart />
-                          <WorkResetButton />
-                          <WarningModal />
-                          <ResetWarningModal />
-                        </Route>
-                        <Route exact path='/work-details/:id'>
-                          <WorkDetails />
-                        </Route>
-                        <Route>
-                          <NotFound />
-                        </Route>
-                      </Switch>
-                    </div>
+      <WeatherDataContextProvider>
+        <WeatherInputContextProvider>
+          <WorkDataContextProvider>
+            <WorkInputContextProvider>
+              <Router>
+                <Header />
+                <div className='layout-center'>
+                  <div className='layout'>
+                    <Switch>
+                      <Route exact path={['/', paths.HOME]}>
+                        <Home />
+                      </Route>
+                      <Route exact path={paths.WEATHER}>
+                        <FetchButton />
+                        <WeatherTable2 />
+                        <WeatherChart />
+                        <WeatherResetButton />
+                        <WarningModal />
+                        <ResetWarningModal />
+                      </Route>
+                      <Route exact path={paths.WORK}>
+                        <WorkForm />
+                        <SortWorkTable />
+                        <WorkTable />
+                        <WorkChart />
+                        <WorkResetButton />
+                        <WarningModal />
+                        <ResetWarningModal />
+                      </Route>
+                      <Route exact path='/work-details/:id'>
+                        <WorkDetails />
+                      </Route>
+                      <Route>
+                        <NotFound />
+                      </Route>
+                    </Switch>
                   </div>
-                </Router>
-              </WorkInputContextProvider>
-            </WorkDataContextProvider>
-          </WeatherInputContextProvider>
-        </WeatherDataContextProvider>
-      </LocationContextProvider>
+                </div>
+              </Router>
+            </WorkInputContextProvider>
+          </WorkDataContextProvider>
+        </WeatherInputContextProvider>
+      </WeatherDataContextProvider>
     </WeatherDataContextProvider2>
   );
 }

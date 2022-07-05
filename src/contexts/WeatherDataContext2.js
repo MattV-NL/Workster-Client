@@ -1,4 +1,5 @@
 import { createContext, useCallback, useState } from 'react';
+import { DateTime } from 'luxon';
 
 export const WeatherDataContext2 = createContext();
 let weatherDataMap;
@@ -27,16 +28,21 @@ const success = (pos) => {
 let lang = 'en';
 let units = 'metric';
 let key = 'c4aa91c492141719621c2f09ce2559a3';
-let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${userLoc.lat}&lon=${userLoc.lon}&appid=${key}&units=${units}&lang${lang}`;
+let weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${userLoc.lat}&lon=${userLoc.lon}&appid=${key}&units=${units}&lang${lang}`;
 
 const fetchWeather = async () => {
-  const response = await fetch(url);
+  const response = await fetch(weatherURL);
   const data = await response.json();
   storeWeatherData(data);
 };
 
+const createDate = (time) =>
+  parseInt(new DateTime.fromMillis(time).toISODate().replace(/-/g, ''));
+
 const storeWeatherData = ({ daily }) => {
-  weatherDataMap = new Map(daily.map((day) => [day.dt, day]));
+  weatherDataMap = new Map(
+    daily.map((day) => [createDate(day.dt * 1000), day])
+  );
 };
 
 fetchWeather().catch((err) => console.log(err));
@@ -54,7 +60,7 @@ const WeatherDataContextProvider2 = ({ children }) => {
   const setupChart = useCallback(() => {
     setWeatherChartValues(
       Array.from(weatherDataMap.values()).map(({ dt, pop, wind_speed }) => {
-        let date = new Date(dt * 1000).toDateString();
+        let date = createDate(dt * 1000);
         let precip = pop * 100;
         let wind = wind_speed * 3.6;
         return {
@@ -70,12 +76,20 @@ const WeatherDataContextProvider2 = ({ children }) => {
     navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
 
+  const weatherChartMap = new Map(
+    weatherChartValues.map((data) => [data.date, data])
+  );
+
+  console.log(weatherChartMap);
+
   return (
     <WeatherDataContext2.Provider
       value={{
+        weatherDataMap,
         weatherValues2,
         setWeather,
         weatherChartValues,
+        weatherChartMap,
         setupChart,
         getLocation,
       }}
