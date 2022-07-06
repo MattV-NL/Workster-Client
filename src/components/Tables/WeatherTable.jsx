@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
-import WeatherInput from '../WeatherInput/WeatherInput';
 import { weatherHeader } from '../../constants';
 import './tables.scss';
 
 const WeatherTable = () => {
   const { weatherValues } = useContext(WeatherDataContext);
+
+  const weatherTableMap = new Map(weatherValues);
 
   return (
     <div className='weather-table'>
@@ -17,15 +18,24 @@ const WeatherTable = () => {
         ))}
       </div>
       <div className='weather-table-body'>
-        {Array.from(weatherValues.values()).map(({ date, precip, wind }) => (
-          <div className='weather-row' key={`${date}-${precip}`}>
-            <div className='weather-cells'>{date}</div>
-            <div className='weather-cells'>{precip}</div>
-            <div className='weather-cells'>{wind}</div>
-          </div>
-        ))}
+        {Array.from(weatherTableMap.values()).map(({ dt, pop, wind_speed }) => {
+          let date = new Date(dt * 1000).toDateString();
+          let precip = pop * 100;
+          let windSpeed = wind_speed * 3.6;
+
+          return (
+            <div className='weather-row' key={`${date}-${precip}`}>
+              <div className='weather-cells'>{date}</div>
+              <div className='weather-cells'>
+                {parseFloat(precip.toFixed(2))}
+              </div>
+              <div className='weather-cells'>
+                {parseFloat(windSpeed.toFixed(2))}
+              </div>
+            </div>
+          );
+        })}
       </div>
-      <WeatherInput />
     </div>
   );
 };

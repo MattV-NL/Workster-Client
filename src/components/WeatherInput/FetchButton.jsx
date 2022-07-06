@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { WeatherDataContext2 } from '../../contexts/WeatherDataContext2';
+import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import Button from '../Inputs/Button';
 
 const FetchButton = () => {
-  const { setWeather, setupChart } = useContext(WeatherDataContext2);
+  const { setWeather, setupChart } = useContext(WeatherDataContext);
 
   const handleClick = () => {
     setWeather();

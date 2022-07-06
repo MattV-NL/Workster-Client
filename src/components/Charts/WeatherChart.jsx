@@ -2,11 +2,11 @@ import './charts.scss';
 import './c3.min.css';
 import c3 from 'c3';
 import { useEffect, useContext } from 'react';
-import { WeatherDataContext2 } from '../../contexts/WeatherDataContext2';
+import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import Chart from './Chart';
 
 const WeatherChart = () => {
-  const { weatherChartValues } = useContext(WeatherDataContext2);
+  const { weatherChartValues } = useContext(WeatherDataContext);
 
   useEffect(() => {
     c3.generate({

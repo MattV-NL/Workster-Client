@@ -1,7 +1,7 @@
 import { createContext, useCallback, useState } from 'react';
 import { DateTime } from 'luxon';
 
-export const WeatherDataContext2 = createContext();
+export const WeatherDataContext = createContext();
 let weatherDataMap;
 let userLoc = {
   lat: 0,
@@ -46,15 +46,15 @@ const storeWeatherData = ({ daily }) => {
 
 fetchWeather().catch((err) => console.log(err));
 
-const WeatherDataContextProvider2 = ({ children }) => {
-  const [weatherValues2, setWeatherValues2] = useState();
+const WeatherDataContextProvider = ({ children }) => {
+  const [weatherValues, setWeatherValues] = useState();
   const [weatherChartValues, setWeatherChartValues] = useState(
     Array(7).fill({})
   );
 
   const setWeather = useCallback(() => {
-    setWeatherValues2(weatherDataMap);
-  }, [setWeatherValues2]);
+    setWeatherValues(weatherDataMap);
+  }, [setWeatherValues]);
 
   const setupChart = useCallback(() => {
     setWeatherChartValues(
@@ -80,9 +80,9 @@ const WeatherDataContextProvider2 = ({ children }) => {
   );
 
   return (
-    <WeatherDataContext2.Provider
+    <WeatherDataContext.Provider
       value={{
-        weatherValues2,
+        weatherValues,
         setWeather,
         weatherChartValues,
         weatherChartMap,
@@ -91,8 +91,8 @@ const WeatherDataContextProvider2 = ({ children }) => {
       }}
     >
       {children}
-    </WeatherDataContext2.Provider>
+    </WeatherDataContext.Provider>
   );
 };
 
-export default WeatherDataContextProvider2;
+export default WeatherDataContextProvider;

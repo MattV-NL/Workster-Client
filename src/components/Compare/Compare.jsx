@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import { WeatherDataContext2 } from '../../contexts/WeatherDataContext2';
+import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import './compare.scss';
 
 const Compare = () => {
-  const { weatherChartMap } = useContext(WeatherDataContext2);
+  const { weatherChartMap } = useContext(WeatherDataContext);
   const { workValues } = useContext(WorkDataContext);
   const [isConflict, setIsConflict] = useState(null);
 
