@@ -50,7 +50,7 @@ export const PRECIP_KEY = 'precip-input';
 
 export const WIND_KEY = 'wind-input';
 
-export const weatherInputs = new Map(
+export const weatherHeader = new Map(
   [
     {
       title: 'Date',
@@ -59,7 +59,7 @@ export const weatherInputs = new Map(
       required: true,
     },
     {
-      title: 'Precipitation (mm)',
+      title: 'Chance of Rain (%)',
       id: PRECIP_KEY,
       type: 'number',
       required: true,
@@ -70,11 +70,20 @@ export const weatherInputs = new Map(
       type: 'number',
       required: true,
     },
-  ].map((weatherInput) => [weatherInput.id, weatherInput])
+  ].map((weatherHeader) => [weatherHeader.id, weatherHeader])
 );
 
 export const paths = {
   HOME: '/Work-Weather-Analyzer',
   WEATHER: '/Work-Weather-Analyzer/weather',
   WORK: '/Work-Weather-Analyzer/work',
+};
+export const LOCATION_KEY = 'location';
+
+export const locationInput = {
+  title: 'Location',
+  label: 'Location',
+  id: LOCATION_KEY,
+  type: 'text',
+  required: false,
 };

@@ -1,9 +1,9 @@
 import { useContext, useCallback } from 'react';
-import { WeatherInputContext } from '../../contexts/WeatherInputContext';
+import { WorkInputContext } from '../../contexts/WorkInputContext';
 import Button from '../Inputs/Button';
 
 const WorkResetButton = () => {
-  const { setWarningDisplay } = useContext(WeatherInputContext);
+  const { setWarningDisplay } = useContext(WorkInputContext);
 
   const openWarning = useCallback(() => {
     setWarningDisplay('flex');

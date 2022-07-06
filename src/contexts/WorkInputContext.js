@@ -6,20 +6,20 @@ import {
   WELD_KEY,
   WORK_DATE_KEY,
 } from '../constants';
-import { WeatherInputContext } from './WeatherInputContext';
 import { WorkDataContext } from './WorkDataContext';
 
 export const WorkInputContext = createContext();
 
 const WorkInputContextProvider = ({ children }) => {
   const { submitWorkValues } = useContext(WorkDataContext);
-  const { setInputWarningDisplay } = useContext(WeatherInputContext);
 
   const [date, setDate] = useState('');
   const [isOutside, setIsOutside] = useState(false);
   const [isWelding, setIsWelding] = useState(false);
   const [isScaffolding, setIsScaffolding] = useState(false);
   const [workDetails, setWorkDetails] = useState('');
+  const [inputWarningDisplay, setInputWarningDisplay] = useState('none');
+  const [warningDisplay, setWarningDisplay] = useState('none');
 
   const workDataUpdate = useCallback(
     (e) => {
@@ -62,6 +62,10 @@ const WorkInputContextProvider = ({ children }) => {
   return (
     <WorkInputContext.Provider
       value={{
+        inputWarningDisplay,
+        setInputWarningDisplay,
+        warningDisplay,
+        setWarningDisplay,
         workData: {
           [WORK_DATE_KEY]: {
             value: date,

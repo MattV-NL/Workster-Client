@@ -1,27 +1,24 @@
 import { useCallback, useContext } from 'react';
-import { WeatherInputContext } from '../../contexts/WeatherInputContext';
-import { WeatherDataContext } from '../../contexts/WeatherDataContext';
+import { WorkInputContext } from '../../contexts/WorkInputContext';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import Modal from './Modal';
 import Button from '../Inputs/Button';
 import './modals.scss';
 
 const ResetWarningModal = () => {
-  const { warningDisplay, setWarningDisplay } = useContext(WeatherInputContext);
-  const { clearWeatherValues } = useContext(WeatherDataContext);
+  const { warningDisplay, setWarningDisplay } = useContext(WorkInputContext);
   const { clearWorkValues } = useContext(WorkDataContext);
 
   const handleClick = useCallback(
     ({ target: { id } }) => {
       if (id === 'yes-button') {
-        clearWeatherValues();
         clearWorkValues();
         setWarningDisplay('none');
       } else {
         setWarningDisplay('none');
       }
     },
-    [setWarningDisplay, clearWeatherValues, clearWorkValues]
+    [setWarningDisplay, clearWorkValues]
   );
 
   return (

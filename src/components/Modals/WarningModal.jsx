@@ -1,10 +1,10 @@
 import { useCallback, useContext } from 'react';
-import { WeatherInputContext } from '../../contexts/WeatherInputContext';
+import { WorkInputContext } from '../../contexts/WorkInputContext';
 import Modal from './Modal';
 
 const WarningModal = () => {
   const { inputWarningDisplay, setInputWarningDisplay } =
-    useContext(WeatherInputContext);
+    useContext(WorkInputContext);
 
   const closeWarning = useCallback(() => {
     setInputWarningDisplay('none');

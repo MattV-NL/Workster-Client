@@ -2,55 +2,92 @@ import { createContext, useCallback, useState } from 'react';
 import { DateTime } from 'luxon';
 
 export const WeatherDataContext = createContext();
-
-const createDate = () => {
-  return new DateTime.utc();
+let weatherDataMap;
+let userLoc = {
+  lat: 0,
+  lon: 0,
 };
-const createWeatherValues = () =>
-  new Map(
-    Array(7)
-      .fill(createDate())
-      .map((date, days) => date.plus({ days }))
-      .map((date) => ({ date: date.toISODate(), precip: 0, wind: 0 }))
-      .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
-  );
 
-const sortTable = (tableOrder) => (a, b) =>
-  tableOrder ? a[0] - b[0] : b[0] - a[0];
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+const error = (err) => {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+};
+
+const success = (pos) => {
+  const crd = pos.coords;
+  userLoc.lat = crd.latitude;
+  userLoc.lon = crd.longitude;
+};
+
+let lang = 'en';
+let units = 'metric';
+let key = 'c4aa91c492141719621c2f09ce2559a3';
+let weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${userLoc.lat}&lon=${userLoc.lon}&appid=${key}&units=${units}&lang${lang}`;
+
+const fetchWeather = async () => {
+  const response = await fetch(weatherURL);
+  const data = await response.json();
+  storeWeatherData(data);
+};
+
+const createDate = (time) =>
+  parseInt(new DateTime.fromMillis(time).toISODate().replace(/-/g, ''));
+
+const storeWeatherData = ({ daily }) => {
+  weatherDataMap = new Map(
+    daily.map((day) => [createDate(day.dt * 1000), day])
+  );
+};
+
+fetchWeather().catch((err) => console.log(err));
 
 const WeatherDataContextProvider = ({ children }) => {
-  const [weatherValues, setWeatherValues] = useState(createWeatherValues());
-  const [tableOrder, setTableOrder] = useState(false);
-
-  const submitWeatherValues = useCallback(
-    (date, precip, wind) => {
-      const nextWeatherMap = new Map(weatherValues);
-      nextWeatherMap.set(parseInt(date.replace(/-/g, '')), {
-        date,
-        precip,
-        wind,
-      });
-      const reverseSortWeatherMap = new Map(
-        [...nextWeatherMap].sort(sortTable(tableOrder))
-      );
-      setWeatherValues(reverseSortWeatherMap);
-    },
-    [weatherValues, tableOrder]
+  const [weatherValues, setWeatherValues] = useState();
+  const [weatherChartValues, setWeatherChartValues] = useState(
+    Array(7).fill({})
   );
 
-  const clearWeatherValues = useCallback(() => {
-    setWeatherValues(createWeatherValues());
+  const setWeather = useCallback(() => {
+    setWeatherValues(weatherDataMap);
+  }, [setWeatherValues]);
+
+  const setupChart = useCallback(() => {
+    setWeatherChartValues(
+      Array.from(weatherDataMap.values()).map(({ dt, pop, wind_speed }) => {
+        let date = new DateTime.fromMillis(dt * 1000).toISODate();
+        let precip = pop * 100;
+        let wind = wind_speed * 3.6;
+        return {
+          date,
+          precip: parseFloat(precip.toFixed(2)),
+          wind: parseFloat(wind.toFixed(2)),
+        };
+      })
+    );
+  }, [setWeatherChartValues]);
+
+  const getLocation = useCallback(() => {
+    navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
+
+  const weatherChartMap = new Map(
+    weatherChartValues.map((data) => [data.date, data])
+  );
 
   return (
     <WeatherDataContext.Provider
       value={{
         weatherValues,
-        submitWeatherValues,
-        clearWeatherValues,
-        setWeatherValues,
-        tableOrder,
-        setTableOrder,
+        setWeather,
+        weatherChartValues,
+        weatherChartMap,
+        setupChart,
+        getLocation,
       }}
     >
       {children}

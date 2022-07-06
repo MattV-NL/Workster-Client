@@ -6,13 +6,13 @@ import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import Chart from './Chart';
 
 const WeatherChart = () => {
-  const { weatherValues } = useContext(WeatherDataContext);
+  const { weatherChartValues } = useContext(WeatherDataContext);
 
   useEffect(() => {
     c3.generate({
       bindto: '#weather-chart',
       data: {
-        json: Array.from(weatherValues.values()),
+        json: weatherChartValues,
         keys: {
           x: 'date',
           value: ['precip', 'wind'],
@@ -22,25 +22,24 @@ const WeatherChart = () => {
           wind: '#0000f4',
         },
         names: {
-          precip: 'Precipitation',
-          wind: 'Wind Speed',
+          precip: 'Chance of Precipitation (%)',
+          wind: 'Wind Speed (km/hr)',
         },
         types: {
           precip: 'bar',
-          wind: 'spline',
+          wind: 'line',
         },
       },
       axis: {
         x: {
-          type: 'timeseries',
+          type: 'category',
           tick: {
             rotate: -45,
-            format: '%Y-%m-%d',
           },
         },
       },
     });
-  }, [weatherValues]);
+  }, [weatherChartValues]);
 
   return <Chart id={'weather-chart'} className={'weather-chart'} />;
 };
