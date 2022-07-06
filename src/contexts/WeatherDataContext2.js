@@ -22,7 +22,6 @@ const success = (pos) => {
   const crd = pos.coords;
   userLoc.lat = crd.latitude;
   userLoc.lon = crd.longitude;
-  console.log(userLoc);
 };
 
 let lang = 'en';
@@ -60,7 +59,7 @@ const WeatherDataContextProvider2 = ({ children }) => {
   const setupChart = useCallback(() => {
     setWeatherChartValues(
       Array.from(weatherDataMap.values()).map(({ dt, pop, wind_speed }) => {
-        let date = createDate(dt * 1000);
+        let date = new DateTime.fromMillis(dt * 1000).toISODate();
         let precip = pop * 100;
         let wind = wind_speed * 3.6;
         return {
@@ -80,12 +79,9 @@ const WeatherDataContextProvider2 = ({ children }) => {
     weatherChartValues.map((data) => [data.date, data])
   );
 
-  console.log(weatherChartMap);
-
   return (
     <WeatherDataContext2.Provider
       value={{
-        weatherDataMap,
         weatherValues2,
         setWeather,
         weatherChartValues,
