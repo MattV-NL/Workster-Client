@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Work-Weather-Analyzer/static/css/main.22d566ec.css",
-    "main.js": "/Work-Weather-Analyzer/static/js/main.09436430.js",
+    "main.js": "/Work-Weather-Analyzer/static/js/main.d6d664e9.js",
     "static/js/787.7bccd639.chunk.js": "/Work-Weather-Analyzer/static/js/787.7bccd639.chunk.js",
     "static/media/logo.png": "/Work-Weather-Analyzer/static/media/logo.2a9242b8fb144d828815.png",
     "index.html": "/Work-Weather-Analyzer/index.html",
     "main.22d566ec.css.map": "/Work-Weather-Analyzer/static/css/main.22d566ec.css.map",
-    "main.09436430.js.map": "/Work-Weather-Analyzer/static/js/main.09436430.js.map",
+    "main.d6d664e9.js.map": "/Work-Weather-Analyzer/static/js/main.d6d664e9.js.map",
     "787.7bccd639.chunk.js.map": "/Work-Weather-Analyzer/static/js/787.7bccd639.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.22d566ec.css",
-    "static/js/main.09436430.js"
+    "static/js/main.d6d664e9.js"
   ]
 }
