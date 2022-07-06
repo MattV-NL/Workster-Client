@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { WeatherDataContext2 } from '../../contexts/WeatherDataContext2';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import './compare.scss';
