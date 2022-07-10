@@ -18,7 +18,17 @@ import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import FetchButton from './components/WeatherInput/FetchButton';
 import WeatherTable from './components/Tables/WeatherTable';
 
+// working on server side code in conjuction with client side
+
+import { useEffect } from 'react';
+
 function App() {
+  useEffect(() => {
+    fetch('/api')
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <WeatherDataContextProvider>
       <WorkDataContextProvider>
