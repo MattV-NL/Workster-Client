@@ -23,12 +23,6 @@ import WeatherTable from './components/Tables/WeatherTable';
 import { useEffect } from 'react';
 
 function App() {
-  useEffect(() => {
-    fetch('/api')
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
-
   return (
     <WeatherDataContextProvider>
       <WorkDataContextProvider>
@@ -44,6 +38,9 @@ function App() {
                   <Route exact path={paths.WEATHER}>
                     <FetchButton />
                     <WeatherTable />
+                    <form action='../../post' method='post' className='form'>
+                      <button type='submit'>connected?</button>
+                    </form>
                     <WeatherChart />
                   </Route>
                   <Route exact path={paths.WORK}>
