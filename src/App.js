@@ -18,10 +18,6 @@ import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import FetchButton from './components/WeatherInput/FetchButton';
 import WeatherTable from './components/Tables/WeatherTable';
 
-// working on server side code in conjuction with client side
-
-import { useEffect } from 'react';
-
 function App() {
   return (
     <WeatherDataContextProvider>
@@ -38,9 +34,6 @@ function App() {
                   <Route exact path={paths.WEATHER}>
                     <FetchButton />
                     <WeatherTable />
-                    <form action='../../post' method='post' className='form'>
-                      <button type='submit'>connected?</button>
-                    </form>
                     <WeatherChart />
                   </Route>
                   <Route exact path={paths.WORK}>
