@@ -2,7 +2,10 @@ import { createContext, useCallback, useState } from 'react';
 import { DateTime } from 'luxon';
 
 export const WeatherDataContext = createContext();
-let weatherDataMap;
+// working on table functionality with server side code
+let weatherData = Array(7).fill({ dt: 0, pop: 0, wind_speed: 0 });
+let weatherDataMap = new Map(weatherData.map((data) => [data.dt, data]));
+// end of new
 let userLoc = {
   lat: 0,
   lon: 0,
