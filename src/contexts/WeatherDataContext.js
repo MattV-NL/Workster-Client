@@ -49,7 +49,7 @@ const storeWeatherData = ({ daily }) => {
   );
 };
 
-fetchWeather().catch((err) => console.log(err));
+// fetchWeather().catch((err) => console.log(err));
 
 const WeatherDataContextProvider = ({ children }) => {
   const [weatherValues, setWeatherValues] = useState();
@@ -87,6 +87,7 @@ const WeatherDataContextProvider = ({ children }) => {
   return (
     <WeatherDataContext.Provider
       value={{
+        fetchWeather,
         weatherValues,
         setWeather,
         weatherChartValues,
