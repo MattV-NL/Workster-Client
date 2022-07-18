@@ -7,13 +7,17 @@ const FetchButton = () => {
     useContext(WeatherDataContext);
 
   // working on getting position to server
-  const lat = 47.65;
-  const lon = -52.74;
-  const posData = { lat, lon };
+  const coords = {
+    lat: 47.65,
+    lon: -52.73,
+  };
 
-  const options = {
+  const optionsPOST = {
     method: 'POST',
-    body: posData,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(coords),
   };
 
   const sendCoords = async () => {

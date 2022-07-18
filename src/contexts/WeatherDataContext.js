@@ -30,8 +30,8 @@ const success = (pos) => {
 let lang = 'en';
 let units = 'metric';
 let key = 'c4aa91c492141719621c2f09ce2559a3';
-// let weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${userLoc.lat}&lon=${userLoc.lon}&appid=${key}&units=${units}&lang${lang}`;
-let weatherURL = `http://localhost:8080/api?lat=${userLoc.lat}&lon=${userLoc.lon}&appid=${key}&units=${units}&lang${lang}`;
+// ask about this in meeting
+let weatherURL = `http://localhost:8000/api?lat=${userLoc.lat}&lon=${userLoc.lon}&appid=${key}&units=${units}&lang${lang}`;
 
 const fetchWeather = async () => {
   const response = await fetch(weatherURL);
