@@ -1,40 +1,15 @@
 import { createContext, useCallback, useState } from 'react';
 import { DateTime } from 'luxon';
+import { SERVER_URL } from '../constants';
 
 export const WeatherDataContext = createContext();
 // working on table functionality with server side code
 let weatherData = Array(7).fill({ dt: 0, pop: 0, wind_speed: 0 });
 let weatherDataMap = new Map(weatherData.map((data) => [data.dt, data]));
 // end of new
-let userLoc = {
-  lat: 0,
-  lon: 0,
-};
-
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0,
-};
-
-const error = (err) => {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-};
-
-const success = (pos) => {
-  const crd = pos.coords;
-  userLoc.lat = crd.latitude;
-  userLoc.lon = crd.longitude;
-};
-
-let lang = 'en';
-let units = 'metric';
-let key = 'c4aa91c492141719621c2f09ce2559a3';
-// ask about this in meeting
-let weatherURL = `http://localhost:8000/api?lat=${userLoc.lat}&lon=${userLoc.lon}&appid=${key}&units=${units}&lang${lang}`;
 
 const fetchWeather = async () => {
-  const response = await fetch(weatherURL);
+  const response = await fetch(SERVER_URL.weather);
   const data = await response.json();
   console.log(data);
   storeWeatherData(data);
@@ -76,10 +51,6 @@ const WeatherDataContextProvider = ({ children }) => {
     );
   }, [setWeatherChartValues]);
 
-  const getLocation = useCallback(() => {
-    navigator.geolocation.getCurrentPosition(success, error, options);
-  }, []);
-
   const weatherChartMap = new Map(
     weatherChartValues.map((data) => [data.date, data])
   );
@@ -93,7 +64,6 @@ const WeatherDataContextProvider = ({ children }) => {
         weatherChartValues,
         weatherChartMap,
         setupChart,
-        getLocation,
       }}
     >
       {children}

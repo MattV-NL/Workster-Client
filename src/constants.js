@@ -87,3 +87,8 @@ export const locationInput = {
   type: 'text',
   required: false,
 };
+
+export const SERVER_URL = {
+  position: 'http://localhost:8000/api/position',
+  weather: 'http://localhost:8000/api/weather',
+};

@@ -1,5 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
+import { SERVER_URL } from '../../constants';
 import Button from '../Inputs/Button';
 
 const FetchButton = () => {
@@ -7,29 +8,46 @@ const FetchButton = () => {
     useContext(WeatherDataContext);
 
   // working on getting position to server
-  const coords = {
-    lat: 47.65,
-    lon: -52.73,
+  let userLoc = {
+    lat: '',
+    lon: '',
   };
 
-  const optionsPOST = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(coords),
+  const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
   };
 
-  const sendCoords = async () => {
-    const response = await fetch('/api', options);
-    const position = await response.json();
-    console.log(position);
+  const error = (err) => {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
   };
+
+  const success = async (pos) => {
+    const crd = pos.coords;
+    userLoc.lat = crd.latitude;
+    userLoc.lon = crd.longitude;
+
+    const optionsPOST = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userLoc),
+    };
+
+    const response = await fetch(SERVER_URL.position, optionsPOST);
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const getLocation = useCallback(() => {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }, [success]);
 
   const handleClick2 = () => {
-    sendCoords().catch((err) => console.log(err));
+    getLocation();
   };
-
   // end of new
 
   const handleClick = () => {
