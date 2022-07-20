@@ -8,10 +8,7 @@ const FetchButton = () => {
     useContext(WeatherDataContext);
 
   // working on getting position to server
-  let userLoc = {
-    lat: '',
-    lon: '',
-  };
+  let lat, lon;
 
   const options = {
     enableHighAccuracy: true,
@@ -24,19 +21,21 @@ const FetchButton = () => {
   };
 
   const success = async (pos) => {
+    // const optionsPOST = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(userLoc),
+    // };
+
     const crd = pos.coords;
-    userLoc.lat = crd.latitude;
-    userLoc.lon = crd.longitude;
+    lat = crd.latitude;
+    lon = crd.longitude;
+    console.log(lat, lon);
 
-    const optionsPOST = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userLoc),
-    };
-
-    const response = await fetch(SERVER_URL.position, optionsPOST);
+    const apiUrl = `http://localhost:8000/api/weather2/${lat},${lon}`;
+    const response = await fetch(apiUrl);
     const data = await response.json();
     console.log(data);
   };
