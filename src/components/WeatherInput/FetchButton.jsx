@@ -21,20 +21,12 @@ const FetchButton = () => {
   };
 
   const success = async (pos) => {
-    // const optionsPOST = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(userLoc),
-    // };
-
     const crd = pos.coords;
     lat = crd.latitude;
     lon = crd.longitude;
     console.log(lat, lon);
 
-    const apiUrl = `http://localhost:8000/api/weather2/${lat},${lon}`;
+    const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
     console.log(data);
