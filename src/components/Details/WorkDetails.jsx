@@ -1,4 +1,4 @@
-import './workdetails.scss';
+import './details.scss';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
@@ -10,9 +10,9 @@ const WorkDetails = () => {
   const workData = workValues.get(parseInt(id));
 
   return (
-    <div className='work-details-container'>
+    <div className='details-container'>
       <h3>Work planned for {workData.date}</h3>
-      <div className='work-details-content'>
+      <div className='details-content'>
         <p>
           {workData.isOutside ? 'Work will be outside' : 'Work will be inside'}
         </p>

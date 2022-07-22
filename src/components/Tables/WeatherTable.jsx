@@ -2,12 +2,13 @@ import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { weatherHeader } from '../../constants';
 import './tables.scss';
+import { Link } from 'react-router-dom';
 
 const WeatherTable = () => {
   const { weatherValues } = useContext(WeatherDataContext);
-
   const weatherTableMap = new Map(weatherValues);
 
+  const weatherValuesKeys = weatherTableMap.keys();
   return (
     <div className='weather-table'>
       <div className='weather-table-header-row'>
@@ -24,15 +25,21 @@ const WeatherTable = () => {
           let windSpeed = wind_speed * 3.6;
 
           return (
-            <div className='weather-row' key={`${date}-${precip}`}>
-              <div className='weather-cells'>{date}</div>
-              <div className='weather-cells'>
-                {parseFloat(precip.toFixed(2))}
+            <Link
+              className='weather-table-link'
+              to={`/weather-details/${weatherValuesKeys.next().value}`}
+              key={date}
+            >
+              <div className='weather-row' key={`${date}-${precip}`}>
+                <div className='weather-cells'>{date}</div>
+                <div className='weather-cells'>
+                  {parseFloat(precip.toFixed(2))}
+                </div>
+                <div className='weather-cells'>
+                  {parseFloat(windSpeed.toFixed(2))}
+                </div>
               </div>
-              <div className='weather-cells'>
-                {parseFloat(windSpeed.toFixed(2))}
-              </div>
-            </div>
+            </Link>
           );
         })}
       </div>

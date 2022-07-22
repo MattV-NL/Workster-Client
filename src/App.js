@@ -7,7 +7,8 @@ import Home from './components/Home/Home';
 import WeatherChart from './components/Charts/WeatherChart';
 import WorkForm from './components/WorkInput/WorkForm';
 import WorkTable from './components/Tables/WorkTable';
-import WorkDetails from './components/WorkDetails/WorkDetails';
+import WorkDetails from './components/Details/WorkDetails';
+import WeatherDetails from './components/Details/WeatherDetails';
 import NotFound from './components/NotFound';
 import WorkChart from './components/Charts/WorkChart';
 import WorkResetButton from './components/WorkInput/WorkResetButton';
@@ -35,6 +36,9 @@ function App() {
                     <FetchButton />
                     <WeatherTable />
                     <WeatherChart />
+                  </Route>
+                  <Route exact path={'/weather-details/:id'}>
+                    <WeatherDetails />
                   </Route>
                   <Route exact path={paths.WORK}>
                     <WorkForm />

@@ -53,7 +53,6 @@ const WeatherDataContextProvider = ({ children }) => {
     const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
-    console.log(data);
     storeWeatherData(data);
     setWeather();
     setupChart();
@@ -92,6 +91,7 @@ const WeatherDataContextProvider = ({ children }) => {
   return (
     <WeatherDataContext.Provider
       value={{
+        weatherDataMap,
         getLocation,
         weatherValues,
         weatherChartValues,
