@@ -50,8 +50,6 @@ const WeatherDataContextProvider = ({ children }) => {
     const crd = pos.coords;
     lat = crd.latitude;
     lon = crd.longitude;
-    console.log(lat, lon);
-
     const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -91,7 +89,6 @@ const WeatherDataContextProvider = ({ children }) => {
     );
     setWeatherChartValues(nextWeatherMap);
   }, [setWeatherChartValues]);
-
   return (
     <WeatherDataContext.Provider
       value={{
