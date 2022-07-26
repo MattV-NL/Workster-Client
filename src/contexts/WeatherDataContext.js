@@ -1,6 +1,12 @@
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useCallback, useState, useContext } from 'react';
 import { DateTime } from 'luxon';
-import { SERVER_URL } from '../constants';
+import {
+  GEOLOCATION_KEY,
+  LATITUDE_KEY,
+  LONGITUDE_KEY,
+  SERVER_URL,
+} from '../constants';
+import { PositionContext } from './PositionContext';
 
 export const WeatherDataContext = createContext();
 let lat, lon, weatherDataMap;
@@ -42,31 +48,13 @@ const storeWeatherData = ({ daily }) => {
 };
 
 const WeatherDataContextProvider = ({ children }) => {
+  const { positionData } = useContext(PositionContext);
   const [weatherValues, setWeatherValues] = useState();
   const [weatherChartValues, setWeatherChartValues] =
     useState(createWeatherValues);
 
-  const success = async (pos) => {
-    const crd = pos.coords;
-    lat = crd.latitude;
-    lon = crd.longitude;
-    const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    storeWeatherData(data);
-    setWeather();
-    setupChart();
-  };
-
-  const getLocation = () => {
-    navigator.geolocation.getCurrentPosition(success, error, options);
-  };
-
   const setWeather = useCallback(() => {
     setWeatherValues(weatherDataMap);
-  }, [setWeatherValues]);
-
-  const setupChart = useCallback(() => {
     const nextWeatherArray = Array.from(weatherDataMap.values()).map(
       ({ dt, pop, wind_speed }) => {
         let date = new DateTime.fromMillis(dt * 1000).toISODate();
@@ -87,7 +75,40 @@ const WeatherDataContextProvider = ({ children }) => {
       ])
     );
     setWeatherChartValues(nextWeatherMap);
-  }, [setWeatherChartValues]);
+  }, [setWeatherValues, setWeatherChartValues]);
+
+  const success = useCallback(
+    async (pos) => {
+      const crd = pos.coords;
+      lat = crd.latitude;
+      lon = crd.longitude;
+      const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      storeWeatherData(data);
+      setWeather();
+    },
+    [setWeather]
+  );
+
+  const getLocation = useCallback(async () => {
+    if (positionData[GEOLOCATION_KEY].value) {
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    } else {
+      const crd = {
+        latitude: positionData[LATITUDE_KEY].value,
+        longitude: positionData[LONGITUDE_KEY].value,
+      };
+      lat = crd.latitude;
+      lon = crd.longitude;
+      const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      storeWeatherData(data);
+      setWeather();
+    }
+  }, [positionData, setWeather, success]);
+
   return (
     <WeatherDataContext.Provider
       value={{

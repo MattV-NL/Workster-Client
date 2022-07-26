@@ -23,8 +23,9 @@ import PositionContextProvider from './contexts/PositionContext';
 
 function App() {
   return (
-    <WeatherDataContextProvider>
-      <PositionContextProvider>
+    <PositionContextProvider>
+      {' '}
+      <WeatherDataContextProvider>
         <WorkDataContextProvider>
           <WorkInputContextProvider>
             <Router>
@@ -65,8 +66,8 @@ function App() {
             </Router>
           </WorkInputContextProvider>
         </WorkDataContextProvider>
-      </PositionContextProvider>
-    </WeatherDataContextProvider>
+      </WeatherDataContextProvider>
+    </PositionContextProvider>
   );
 }
 

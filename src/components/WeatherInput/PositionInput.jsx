@@ -1,37 +1,30 @@
 import Input from '../Inputs/Input';
+import { positionFormInputs } from '../../constants';
 import '../Inputs/inputs.scss';
-
-const onChange = () => {
-  console.log('to be determined');
-};
+import { useContext } from 'react';
+import { PositionContext } from '../../contexts/PositionContext';
 
 const PositionInput = () => {
+  const { positionData } = useContext(PositionContext);
   return (
     <div className='work-form-layout'>
       <form className='work-form'>
-        <div className='label-input-container'>
-          <label className='work-form-label' htmlFor='latitude'>
-            Latitude
-          </label>
-          <Input
-            id='latitude'
-            type='number'
-            value=''
-            required='false'
-            onChange={onChange}
-          />
-
-          <label className='work-form-label' htmlFor='longitude'>
-            Latitude
-          </label>
-          <Input
-            id='longitude'
-            type='number'
-            value=''
-            required='false'
-            onChange={onChange}
-          />
-        </div>
+        {[...positionFormInputs.values()].map(
+          ({ label, id, type, required }) => {
+            return (
+              <div className='label-input-container' key={id}>
+                <label className='work-form-label'>{label}</label>
+                <Input
+                  id={id}
+                  type={type}
+                  value={positionData[id].value}
+                  required={required}
+                  onChange={positionData[id].onChange}
+                />
+              </div>
+            );
+          }
+        )}
       </form>
     </div>
   );
