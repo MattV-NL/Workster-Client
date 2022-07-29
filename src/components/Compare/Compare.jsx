@@ -4,15 +4,15 @@ import { WorkDataContext } from '../../contexts/WorkDataContext';
 import './compare.scss';
 
 const Compare = () => {
-  const { weatherChartMap } = useContext(WeatherDataContext);
+  const { weatherChartValues } = useContext(WeatherDataContext);
   const { workValues } = useContext(WorkDataContext);
   const [isConflict, setIsConflict] = useState(null);
 
   useEffect(() => {
     const nextConflict = [
-      ...new Set([...weatherChartMap.keys(), ...workValues.keys()]),
+      ...new Set([...weatherChartValues.keys(), ...workValues.keys()]),
     ].some((date) => {
-      const { precip, wind } = weatherChartMap.get(date) || {};
+      const { precip, wind } = weatherChartValues.get(date) || {};
       const { isOutside, isWelding, isScaffolding } =
         workValues.get(date) || {};
 
@@ -22,7 +22,7 @@ const Compare = () => {
       );
     });
     setIsConflict(nextConflict);
-  }, [workValues, weatherChartMap, setIsConflict]);
+  }, [workValues, weatherChartValues, setIsConflict]);
 
   return (
     <div className={isConflict ? 'alert' : 'no-alert'}>

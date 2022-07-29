@@ -3,6 +3,9 @@ export const OUTSIDE_KEY = 'outside-input';
 export const WELD_KEY = 'welding-input';
 export const SCAFF_KEY = 'scaffolding-input';
 export const DETAILS_KEY = 'details-input';
+export const LATITUDE_KEY = 'latitude-input';
+export const LONGITUDE_KEY = 'longitude-input';
+export const GEOLOCATION_KEY = 'geolocation-input';
 
 export const workFormInputs = new Map(
   [
@@ -40,6 +43,32 @@ export const workFormInputs = new Map(
       id: DETAILS_KEY,
       type: 'text',
       required: true,
+    },
+  ].map((item) => [item.id, item])
+);
+
+export const positionFormInputs = new Map(
+  [
+    {
+      title: 'Latitude',
+      label: 'Latitude',
+      id: LATITUDE_KEY,
+      type: 'number',
+      required: false,
+    },
+    {
+      title: 'Longitude',
+      label: 'Longitude',
+      id: LONGITUDE_KEY,
+      type: 'number',
+      required: false,
+    },
+    {
+      title: 'Geolocation',
+      label: 'Use Current Position',
+      id: GEOLOCATION_KEY,
+      type: 'checkbox',
+      required: false,
     },
   ].map((item) => [item.id, item])
 );
@@ -86,4 +115,8 @@ export const locationInput = {
   id: LOCATION_KEY,
   type: 'text',
   required: false,
+};
+
+export const SERVER_URL = {
+  weather: 'http://localhost:8000/api/weather/',
 };

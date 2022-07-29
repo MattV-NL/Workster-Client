@@ -45,3 +45,10 @@
 .checkbox-label {
   color: #000;
 }
+
+.position-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}

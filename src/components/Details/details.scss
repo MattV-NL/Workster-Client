@@ -1,4 +1,4 @@
-.work-details-container {
+.details-container {
   border: solid 0.125rem #fff;
   border-radius: 0.5rem;
   display: flex;
@@ -6,7 +6,7 @@
   background-color: var(--componentBackground);
   padding: 1rem;
 
-  & .work-details-content {
+  & .details-content {
     border: solid 0.125rem var(--buttonHover);
     border-radius: 0.5rem;
     padding: 1rem;

@@ -1,16 +1,19 @@
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import Button from '../Inputs/Button';
 
 const FetchButton = () => {
-  const { setWeather, setupChart } = useContext(WeatherDataContext);
+  const { getLocation } = useContext(WeatherDataContext);
 
-  const handleClick = () => {
-    setWeather();
-    setupChart();
-  };
+  const handleClick = useCallback(() => {
+    getLocation();
+  }, [getLocation]);
 
-  return <Button onClick={handleClick}>Get Weather Info</Button>;
+  return (
+    <div>
+      <Button onClick={handleClick}>Get Weather Info</Button>
+    </div>
+  );
 };
 
 export default FetchButton;
