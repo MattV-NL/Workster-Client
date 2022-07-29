@@ -18,6 +18,7 @@ const PositionContextProvider = ({ children }) => {
   return (
     <PositionContext.Provider
       value={{
+        setGeoLocate,
         positionData: {
           [LATITUDE_KEY]: {
             value: latitude,

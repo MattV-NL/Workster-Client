@@ -48,7 +48,7 @@ const storeWeatherData = ({ daily }) => {
 };
 
 const WeatherDataContextProvider = ({ children }) => {
-  const { positionData } = useContext(PositionContext);
+  const { positionData, setGeoLocate } = useContext(PositionContext);
   const [weatherValues, setWeatherValues] = useState();
   const [weatherChartValues, setWeatherChartValues] =
     useState(createWeatherValues);
@@ -87,8 +87,9 @@ const WeatherDataContextProvider = ({ children }) => {
       const data = await response.json();
       storeWeatherData(data);
       setWeather();
+      setGeoLocate(false);
     },
-    [setWeather]
+    [setWeather, setGeoLocate]
   );
 
   const getLocation = useCallback(async () => {
@@ -109,6 +110,12 @@ const WeatherDataContextProvider = ({ children }) => {
     }
   }, [positionData, setWeather, success]);
 
+  const clearWeatherValues = useCallback(() => {
+    setWeatherChartValues(createWeatherValues());
+    setWeatherValues('');
+    setGeoLocate(false);
+  }, [setGeoLocate]);
+
   return (
     <WeatherDataContext.Provider
       value={{
@@ -116,6 +123,7 @@ const WeatherDataContextProvider = ({ children }) => {
         getLocation,
         weatherValues,
         weatherChartValues,
+        clearWeatherValues,
       }}
     >
       {children}
