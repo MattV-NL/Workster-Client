@@ -13,7 +13,8 @@ import NotFound from './components/NotFound';
 import WorkChart from './components/Charts/WorkChart';
 import ResetButton from './components/WorkInput/ResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
-import WarningModal from './components/Modals/WarningModal';
+import WeatherWarningModal from './components/Modals/WeatherWarningModal';
+import WorkWarningModal from './components/Modals/WorkWarningModal';
 import SortWorkTable from './components/SortTable/SortWorkTable';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import FetchButton from './components/WeatherInput/FetchButton';
@@ -41,7 +42,7 @@ function App() {
                       <WeatherTable />
                       <WeatherChart />
                       <ResetButton />
-                      <WarningModal />
+                      <WeatherWarningModal />
                       <ResetWarningModal />
                     </Route>
                     <Route exact path={'/weather-details/:id'}>
@@ -53,7 +54,7 @@ function App() {
                       <WorkTable />
                       <WorkChart />
                       <ResetButton />
-                      <WarningModal />
+                      <WorkWarningModal />
                       <ResetWarningModal />
                     </Route>
                     <Route exact path='/work-details/:id'>

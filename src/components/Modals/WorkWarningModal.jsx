@@ -1,19 +1,19 @@
 import { useCallback, useContext } from 'react';
-import { WorkInputContext } from '../../contexts/WorkInputContext';
+import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import Modal from './Modal';
 
-const WarningModal = () => {
+const WorkWarningModal = () => {
   const { inputWarningDisplay, setInputWarningDisplay } =
-    useContext(WorkInputContext);
+    useContext(WeatherDataContext);
 
   const closeWarning = useCallback(() => {
     setInputWarningDisplay('none');
   }, [setInputWarningDisplay]);
   return (
     <Modal display={inputWarningDisplay} onClick={closeWarning}>
-      Please enter all information
+      Please enter at least a date and some details about the work to be done.
     </Modal>
   );
 };
 
-export default WarningModal;
+export default WorkWarningModal;

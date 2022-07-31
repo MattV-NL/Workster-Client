@@ -52,6 +52,7 @@ const WeatherDataContextProvider = ({ children }) => {
   const [weatherValues, setWeatherValues] = useState();
   const [weatherChartValues, setWeatherChartValues] =
     useState(createWeatherValues);
+  const [inputWarningDisplay, setInputWarningDisplay] = useState('none');
 
   const setWeather = useCallback(() => {
     setWeatherValues(weatherDataMap);
@@ -93,20 +94,27 @@ const WeatherDataContextProvider = ({ children }) => {
   );
 
   const getLocation = useCallback(async () => {
-    if (positionData[GEOLOCATION_KEY].value) {
-      navigator.geolocation.getCurrentPosition(success, error, options);
+    if (
+      positionData[GEOLOCATION_KEY].value ||
+      positionData[LATITUDE_KEY.value && positionData[LONGITUDE_KEY].value]
+    ) {
+      if (positionData[GEOLOCATION_KEY].value) {
+        navigator.geolocation.getCurrentPosition(success, error, options);
+      } else {
+        const crd = {
+          latitude: positionData[LATITUDE_KEY].value,
+          longitude: positionData[LONGITUDE_KEY].value,
+        };
+        lat = crd.latitude;
+        lon = crd.longitude;
+        const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        storeWeatherData(data);
+        setWeather();
+      }
     } else {
-      const crd = {
-        latitude: positionData[LATITUDE_KEY].value,
-        longitude: positionData[LONGITUDE_KEY].value,
-      };
-      lat = crd.latitude;
-      lon = crd.longitude;
-      const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      storeWeatherData(data);
-      setWeather();
+      setInputWarningDisplay('flex');
     }
   }, [positionData, setWeather, success]);
 
@@ -123,6 +131,8 @@ const WeatherDataContextProvider = ({ children }) => {
         getLocation,
         weatherValues,
         weatherChartValues,
+        inputWarningDisplay,
+        setInputWarningDisplay,
         clearWeatherValues,
       }}
     >
