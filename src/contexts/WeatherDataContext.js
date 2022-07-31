@@ -48,7 +48,8 @@ const storeWeatherData = ({ daily }) => {
 };
 
 const WeatherDataContextProvider = ({ children }) => {
-  const { positionData, setGeoLocate } = useContext(PositionContext);
+  const { positionData, setGeoLocate, setLatitude, setLongitude } =
+    useContext(PositionContext);
   const [weatherValues, setWeatherValues] = useState();
   const [weatherChartValues, setWeatherChartValues] =
     useState(createWeatherValues);
@@ -96,7 +97,7 @@ const WeatherDataContextProvider = ({ children }) => {
   const getLocation = useCallback(async () => {
     if (
       positionData[GEOLOCATION_KEY].value ||
-      positionData[LATITUDE_KEY.value && positionData[LONGITUDE_KEY].value]
+      (positionData[LATITUDE_KEY].value && positionData[LONGITUDE_KEY].value)
     ) {
       if (positionData[GEOLOCATION_KEY].value) {
         navigator.geolocation.getCurrentPosition(success, error, options);
@@ -112,6 +113,8 @@ const WeatherDataContextProvider = ({ children }) => {
         const data = await response.json();
         storeWeatherData(data);
         setWeather();
+        setLatitude('');
+        setLongitude('');
       }
     } else {
       setInputWarningDisplay('flex');
@@ -122,6 +125,8 @@ const WeatherDataContextProvider = ({ children }) => {
     setWeatherChartValues(createWeatherValues());
     setWeatherValues('');
     setGeoLocate(false);
+    setLatitude('');
+    setLongitude('');
   }, [setGeoLocate]);
 
   return (
