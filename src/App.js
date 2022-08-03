@@ -21,6 +21,7 @@ import FetchButton from './components/WeatherInput/FetchButton';
 import WeatherTable from './components/Tables/WeatherTable';
 import PositionInput from './components/WeatherInput/PositionInput';
 import PositionContextProvider from './contexts/PositionContext';
+import WeatherChart2 from './components/Charts/WeatherChart2';
 
 function App() {
   return (
@@ -40,7 +41,8 @@ function App() {
                       <PositionInput />
                       <FetchButton />
                       <WeatherTable />
-                      <WeatherChart />
+                      {/* <WeatherChart /> */}
+                      <WeatherChart2 />
                       <ResetButton />
                       <WeatherWarningModal />
                       <ResetWarningModal />
