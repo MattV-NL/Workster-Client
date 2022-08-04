@@ -1,33 +1,30 @@
-import { useContext, useState, useEffect } from 'react';
-import { DualAxes } from '@ant-design/plots';
+import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
+import { DualAxes } from '@ant-design/plots';
 
 const WeatherChart2 = () => {
   const { weatherChartValues } = useContext(WeatherDataContext);
-  const [config, setConfig] = useState();
 
-  // not yet working, attemping to get antd chart working instead of c3
-  // to use antd ui elements
+  const weatherChartMap = new Map(weatherChartValues);
+  console.log('chart rendered');
 
-  useEffect(() => {
-    const data = [Array.from([weatherChartValues.values()])];
-    setConfig({
-      data: [data, data],
-      xField: 'date',
-      yField: ['wind', 'precip'],
-      geometryOptions: [
-        {
-          geometry: 'column',
-        },
-        {
-          geometry: 'line',
-          lineStyle: {
-            lineWidth: 2,
-          },
-        },
-      ],
-    });
-  }, [setConfig, weatherChartValues]);
+  const data = Array.from(weatherChartMap.values());
+
+  const config = {
+    data: [data, data],
+    xField: 'date',
+    yField: ['precip', 'wind'],
+    geometryOptions: [
+      {
+        geometry: 'line',
+        color: '#5B8FF9',
+      },
+      {
+        geometry: 'line',
+        color: '#5AD8A6',
+      },
+    ],
+  };
 
   return <DualAxes {...config} />;
 };
