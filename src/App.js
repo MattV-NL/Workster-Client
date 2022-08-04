@@ -4,13 +4,11 @@ import WorkInputContextProvider from './contexts/WorkInputContext';
 import WorkDataContextProvider from './contexts/WorkDataContext';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
-import WeatherChart from './components/Charts/WeatherChart';
 import WorkForm from './components/WorkInput/WorkForm';
 import WorkTable from './components/Tables/WorkTable';
 import WorkDetails from './components/Details/WorkDetails';
 import WeatherDetails from './components/Details/WeatherDetails';
 import NotFound from './components/NotFound';
-import WorkChart from './components/Charts/WorkChart';
 import ResetButton from './components/WorkInput/ResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
 import WeatherWarningModal from './components/Modals/WeatherWarningModal';
@@ -22,6 +20,7 @@ import WeatherTable from './components/Tables/WeatherTable';
 import PositionInput from './components/WeatherInput/PositionInput';
 import PositionContextProvider from './contexts/PositionContext';
 import WeatherChart2 from './components/Charts/WeatherChart2';
+import WorkChart2 from './components/Charts/WorkChart2';
 
 function App() {
   return (
@@ -41,7 +40,6 @@ function App() {
                       <PositionInput />
                       <FetchButton />
                       <WeatherTable />
-                      {/* <WeatherChart /> */}
                       <WeatherChart2 />
                       <ResetButton />
                       <WeatherWarningModal />
@@ -54,7 +52,7 @@ function App() {
                       <WorkForm />
                       <SortWorkTable />
                       <WorkTable />
-                      <WorkChart />
+                      <WorkChart2 />
                       <ResetButton />
                       <WorkWarningModal />
                       <ResetWarningModal />
