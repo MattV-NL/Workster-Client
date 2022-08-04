@@ -119,7 +119,7 @@ const WeatherDataContextProvider = ({ children }) => {
     } else {
       setInputWarningDisplay('flex');
     }
-  }, [positionData, setWeather, success]);
+  }, [positionData, setWeather, success, setLatitude, setLongitude]);
 
   const clearWeatherValues = useCallback(() => {
     setWeatherChartValues(createWeatherValues());
@@ -127,7 +127,7 @@ const WeatherDataContextProvider = ({ children }) => {
     setGeoLocate(false);
     setLatitude('');
     setLongitude('');
-  }, [setGeoLocate]);
+  }, [setGeoLocate, setLatitude, setLongitude]);
 
   return (
     <WeatherDataContext.Provider
