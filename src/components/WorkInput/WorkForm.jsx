@@ -1,6 +1,6 @@
 import '../Inputs/inputs.scss';
 import WorkButton from './WorkButton';
-import Input from '../Inputs/Input';
+import Input2 from '../Inputs/Input';
 import { workFormInputs } from '../../constants';
 import { WorkInputContext } from '../../contexts/WorkInputContext';
 import { useContext } from 'react';
@@ -15,7 +15,7 @@ const WorkForm = () => {
           return (
             <div className='label-input-container' key={id}>
               <label className='work-form-label'>{label}</label>
-              <Input
+              <Input2
                 id={id}
                 type={type}
                 value={workData[id].value}

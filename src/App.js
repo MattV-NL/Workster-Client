@@ -19,8 +19,8 @@ import FetchButton from './components/WeatherInput/FetchButton';
 import WeatherTable from './components/Tables/WeatherTable';
 import PositionInput from './components/WeatherInput/PositionInput';
 import PositionContextProvider from './contexts/PositionContext';
-import WeatherChart2 from './components/Charts/WeatherChart2';
-import WorkChart2 from './components/Charts/WorkChart2';
+import WeatherChart from './components/Charts/WeatherChart';
+import WorkChart from './components/Charts/WorkChart';
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
                       <PositionInput />
                       <FetchButton />
                       <WeatherTable />
-                      <WeatherChart2 />
+                      <WeatherChart />
                       <ResetButton />
                       <WeatherWarningModal />
                       <ResetWarningModal />
@@ -52,7 +52,7 @@ function App() {
                       <WorkForm />
                       <SortWorkTable />
                       <WorkTable />
-                      <WorkChart2 />
+                      <WorkChart />
                       <ResetButton />
                       <WorkWarningModal />
                       <ResetWarningModal />
