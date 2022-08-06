@@ -1,6 +1,6 @@
 import { useContext, useCallback } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
-import Button from '../Inputs/Button';
+import { Button } from 'antd';
 
 const FetchButton = () => {
   const { getLocation } = useContext(WeatherDataContext);
@@ -11,7 +11,9 @@ const FetchButton = () => {
 
   return (
     <div>
-      <Button onClick={handleClick}>Get Weather Info</Button>
+      <Button type='primaty' onClick={handleClick}>
+        Get Weather Info
+      </Button>
     </div>
   );
 };

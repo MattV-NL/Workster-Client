@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.22.3",
     "c3": "^0.7.20",
+    "craco-antd": "^2.0.0",
     "d3": "^7.3.0",
     "luxon": "^2.3.1",
     "prettier": "^2.6.2",
