@@ -6,6 +6,8 @@ export const DETAILS_KEY = 'details-input';
 export const LATITUDE_KEY = 'latitude-input';
 export const LONGITUDE_KEY = 'longitude-input';
 export const GEOLOCATION_KEY = 'geolocation-input';
+export const USERNAME_KEY = 'username-input';
+export const PASSWORD_KEY = 'password-input';
 
 export const workFormInputs = new Map(
   [
@@ -69,6 +71,25 @@ export const positionFormInputs = new Map(
       id: GEOLOCATION_KEY,
       type: 'checkbox',
       required: false,
+    },
+  ].map((item) => [item.id, item])
+);
+
+export const loginFormInputs = new Map(
+  [
+    {
+      title: 'username',
+      label: 'Username',
+      id: 'username-input',
+      type: 'text',
+      required: true,
+    },
+    {
+      title: 'password',
+      label: 'Password',
+      id: 'password-input',
+      type: 'password',
+      required: true,
     },
   ].map((item) => [item.id, item])
 );

@@ -1,15 +1,21 @@
 import { useContext, useCallback } from 'react';
-import { WorkInputContext } from '../../contexts/WorkInputContext';
-import Button from '../Inputs/Button';
+import { WeatherDataContext } from '../../contexts/WeatherDataContext';
+import ButtonComp from '../Inputs/Button';
 
 const ResetButton = () => {
-  const { setWarningDisplay } = useContext(WorkInputContext);
+  const { setIsModalVisible } = useContext(WeatherDataContext);
 
-  const openWarning = useCallback(() => {
-    setWarningDisplay('flex');
-  }, [setWarningDisplay]);
+  const showModal = useCallback(() => {
+    setIsModalVisible(true);
+  }, [setIsModalVisible]);
 
-  return <Button onClick={openWarning}>Reset Info</Button>;
+  return (
+    <div className='button-container'>
+      <ButtonComp type='primary' onClick={showModal}>
+        Reset Info
+      </ButtonComp>
+    </div>
+  );
 };
 
 export default ResetButton;

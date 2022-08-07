@@ -1,7 +1,7 @@
 import { useCallback, useContext } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
-import Button from '../Inputs/Button';
 import './sortTable.scss';
+import ButtonComp from '../Inputs/Button';
 
 const sortTable = (tableOrder) => (a, b) =>
   tableOrder ? a[0] - b[0] : b[0] - a[0];
@@ -18,7 +18,9 @@ const SortWorkTable = () => {
 
   return (
     <div className='sort-button-container'>
-      <Button onClick={changeTableOrder}>Reverse Table Order</Button>
+      <ButtonComp type='primary' onClick={changeTableOrder}>
+        Reverse Table Order
+      </ButtonComp>
     </div>
   );
 };

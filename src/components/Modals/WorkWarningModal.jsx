@@ -1,18 +1,25 @@
 import { useCallback, useContext } from 'react';
-import { WeatherDataContext } from '../../contexts/WeatherDataContext';
-import Modal from './Modal';
+import { Modal } from 'antd';
+import { WorkInputContext } from '../../contexts/WorkInputContext';
 
 const WorkWarningModal = () => {
-  const { inputWarningDisplay, setInputWarningDisplay } =
-    useContext(WeatherDataContext);
+  const { isWorkModalVisible, setIsWorkModalVisible } =
+    useContext(WorkInputContext);
+  const handleOkCancel = useCallback(() => {
+    setIsWorkModalVisible(false);
+  }, [setIsWorkModalVisible]);
 
-  const closeWarning = useCallback(() => {
-    setInputWarningDisplay('none');
-  }, [setInputWarningDisplay]);
   return (
-    <Modal display={inputWarningDisplay} onClick={closeWarning}>
-      Please enter at least a date and some details about the work to be done.
-    </Modal>
+    <div>
+      <Modal
+        title='Wait!'
+        visible={isWorkModalVisible}
+        onOk={handleOkCancel}
+        onCancel={handleOkCancel}
+      >
+        Please enter at least a date and some details about the work to be done.
+      </Modal>
+    </div>
   );
 };
 

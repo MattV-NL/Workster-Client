@@ -25,19 +25,10 @@
   }
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin: 1rem;
-  border-bottom: solid 0.125rem #fff;
-
-  & .navbar-item {
-    cursor: pointer;
-    text-decoration: none;
-  }
+.ant-menu-overflow {
+  background-color: var(--backgroundColor);
 }
-.navbar-item:visited {
+
+.ant-menu-horizontal > .ant-menu-item a {
   color: #fff;
 }

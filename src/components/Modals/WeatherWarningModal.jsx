@@ -1,16 +1,22 @@
 import { useCallback, useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
-import Modal from './Modal';
+import { Modal } from 'antd';
 
 const WeatherWarningModal = () => {
-  const { inputWarningDisplay, setInputWarningDisplay } =
+  const { isWeatherModalVisible, setIsWeatherModalVisible } =
     useContext(WeatherDataContext);
 
-  const closeWarning = useCallback(() => {
-    setInputWarningDisplay('none');
-  }, [setInputWarningDisplay]);
+  const handleOkCancel = useCallback(() => {
+    setIsWeatherModalVisible(false);
+  }, [setIsWeatherModalVisible]);
+
   return (
-    <Modal display={inputWarningDisplay} onClick={closeWarning}>
+    <Modal
+      title='Wait!'
+      visible={isWeatherModalVisible}
+      onOk={handleOkCancel}
+      onCancel={handleOkCancel}
+    >
       Please either select either your current location or enter your
       coordinates.
     </Modal>
