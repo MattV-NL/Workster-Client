@@ -6,21 +6,18 @@ import {
   WELD_KEY,
   WORK_DATE_KEY,
 } from '../constants';
-import { WeatherDataContext } from './WeatherDataContext';
 import { WorkDataContext } from './WorkDataContext';
 
 export const WorkInputContext = createContext();
 
 const WorkInputContextProvider = ({ children }) => {
   const { submitWorkValues } = useContext(WorkDataContext);
-  const { setInputWarningDisplay } = useContext(WeatherDataContext);
-
   const [date, setDate] = useState('');
   const [isOutside, setIsOutside] = useState(false);
   const [isWelding, setIsWelding] = useState(false);
   const [isScaffolding, setIsScaffolding] = useState(false);
   const [workDetails, setWorkDetails] = useState('');
-  const [warningDisplay, setWarningDisplay] = useState('none');
+  const [isWorkModalVisible, setIsWorkModalVisible] = useState(false);
 
   const workDataUpdate = useCallback(
     (e) => {
@@ -39,7 +36,7 @@ const WorkInputContextProvider = ({ children }) => {
         setIsScaffolding(false);
         setWorkDetails('');
       } else {
-        setInputWarningDisplay('flex');
+        setIsWorkModalVisible(true);
       }
     },
     [
@@ -48,7 +45,7 @@ const WorkInputContextProvider = ({ children }) => {
       isWelding,
       isScaffolding,
       workDetails,
-      setInputWarningDisplay,
+      setIsWorkModalVisible,
       submitWorkValues,
     ]
   );
@@ -63,8 +60,6 @@ const WorkInputContextProvider = ({ children }) => {
   return (
     <WorkInputContext.Provider
       value={{
-        warningDisplay,
-        setWarningDisplay,
         workData: {
           [WORK_DATE_KEY]: {
             value: date,
@@ -97,6 +92,8 @@ const WorkInputContextProvider = ({ children }) => {
           },
         },
         workDataUpdate,
+        isWorkModalVisible,
+        setIsWorkModalVisible,
       }}
     >
       {children}

@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { paths } from './constants';
 import WorkInputContextProvider from './contexts/WorkInputContext';
 import WorkDataContextProvider from './contexts/WorkDataContext';
-import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import WorkForm from './components/WorkInput/WorkForm';
 import WorkTable from './components/Tables/WorkTable';
@@ -21,6 +20,7 @@ import PositionInput from './components/WeatherInput/PositionInput';
 import PositionContextProvider from './contexts/PositionContext';
 import WeatherChart from './components/Charts/WeatherChart';
 import WorkChart from './components/Charts/WorkChart';
+import TitleNav from './components/Header/TitleNav';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         <WorkDataContextProvider>
           <WorkInputContextProvider>
             <Router>
-              <Header />
+              <TitleNav />
               <div className='layout-center'>
                 <div className='layout'>
                   <Switch>

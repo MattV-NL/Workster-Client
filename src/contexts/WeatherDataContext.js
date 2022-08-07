@@ -53,7 +53,8 @@ const WeatherDataContextProvider = ({ children }) => {
   const [weatherValues, setWeatherValues] = useState();
   const [weatherChartValues, setWeatherChartValues] =
     useState(createWeatherValues);
-  const [inputWarningDisplay, setInputWarningDisplay] = useState('none');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isWeatherModalVisible, setIsWeatherModalVisible] = useState(false);
 
   const setWeather = useCallback(() => {
     setWeatherValues(weatherDataMap);
@@ -117,9 +118,16 @@ const WeatherDataContextProvider = ({ children }) => {
         setLongitude('');
       }
     } else {
-      setInputWarningDisplay('flex');
+      setIsWeatherModalVisible(true);
     }
-  }, [positionData, setWeather, success, setLatitude, setLongitude]);
+  }, [
+    positionData,
+    setWeather,
+    success,
+    setLatitude,
+    setLongitude,
+    setIsWeatherModalVisible,
+  ]);
 
   const clearWeatherValues = useCallback(() => {
     setWeatherChartValues(createWeatherValues());
@@ -136,8 +144,10 @@ const WeatherDataContextProvider = ({ children }) => {
         getLocation,
         weatherValues,
         weatherChartValues,
-        inputWarningDisplay,
-        setInputWarningDisplay,
+        isModalVisible,
+        setIsModalVisible,
+        isWeatherModalVisible,
+        setIsWeatherModalVisible,
         clearWeatherValues,
       }}
     >
