@@ -1,47 +1,32 @@
-import './charts.scss';
-import './c3.min.css';
-import c3 from 'c3';
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
-import Chart from './Chart';
+import { DualAxes } from '@ant-design/plots';
 
 const WeatherChart = () => {
   const { weatherChartValues } = useContext(WeatherDataContext);
 
-  useEffect(() => {
-    c3.generate({
-      bindto: '#weather-chart',
-      data: {
-        json: weatherChartValues,
-        keys: {
-          x: 'date',
-          value: ['precip', 'wind'],
-        },
-        colors: {
-          precip: '#4444d4',
-          wind: '#0000f4',
-        },
-        names: {
-          precip: 'Chance of Precipitation (%)',
-          wind: 'Wind Speed (km/hr)',
-        },
-        types: {
-          precip: 'bar',
-          wind: 'line',
-        },
-      },
-      axis: {
-        x: {
-          type: 'category',
-          tick: {
-            rotate: -45,
-          },
-        },
-      },
-    });
-  }, [weatherChartValues]);
+  const weatherChartMap = new Map(weatherChartValues);
+  console.log('chart rendered');
 
-  return <Chart id={'weather-chart'} className={'weather-chart'} />;
+  const data = Array.from(weatherChartMap.values());
+
+  const config = {
+    data: [data, data],
+    xField: 'date',
+    yField: ['precip', 'wind'],
+    geometryOptions: [
+      {
+        geometry: 'line',
+        color: '#5B8FF9',
+      },
+      {
+        geometry: 'line',
+        color: '#5AD8A6',
+      },
+    ],
+  };
+
+  return <DualAxes {...config} />;
 };
 
 export default WeatherChart;

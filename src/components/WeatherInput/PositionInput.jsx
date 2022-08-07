@@ -1,4 +1,4 @@
-import Input from '../Inputs/Input';
+import InputComp from '../Inputs/Input';
 import { positionFormInputs } from '../../constants';
 import '../Inputs/inputs.scss';
 import { useContext } from 'react';
@@ -14,7 +14,7 @@ const PositionInput = () => {
             return (
               <div className='label-input-container' key={id}>
                 <label className='work-form-label'>{label}</label>
-                <Input
+                <InputComp
                   id={id}
                   type={type}
                   value={positionData[id].value}

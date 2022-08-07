@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import '../Tables/tables.scss';
+import { Input } from 'antd';
 
-const Input = ({
+const InputComp = ({
   type,
   value,
   placeholder = 'enter value',
@@ -10,7 +11,7 @@ const Input = ({
   id,
 }) => {
   return (
-    <input
+    <Input
       id={id}
       type={type}
       value={value}
@@ -23,7 +24,7 @@ const Input = ({
   );
 };
 
-Input.propTypes = {
+InputComp.propTypes = {
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
@@ -36,4 +37,4 @@ Input.propTypes = {
   required: PropTypes.bool.isRequired,
 };
 
-export default Input;
+export default InputComp;
