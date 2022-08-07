@@ -1,15 +1,15 @@
 import { useContext } from 'react';
 import { WorkInputContext } from '../../contexts/WorkInputContext';
-import Button2 from '../Inputs/Button';
+import ButtonComp from '../Inputs/Button';
 
 const WorkButton = () => {
   const { workDataUpdate } = useContext(WorkInputContext);
 
   return (
     <div className='button-container'>
-      <Button2 type='primary' onClick={workDataUpdate}>
+      <ButtonComp type='primary' onClick={workDataUpdate}>
         Enter Work Info
-      </Button2>
+      </ButtonComp>
     </div>
   );
 };

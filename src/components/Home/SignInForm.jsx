@@ -1,8 +1,8 @@
-import Input2 from '../Inputs/Input';
+import InputComp from '../Inputs/Input';
 import { loginFormInputs, USERNAME_KEY, PASSWORD_KEY } from '../../constants';
 import '../Inputs/inputs.scss';
 import { useState, useCallback } from 'react';
-import Button2 from '../Inputs/Button';
+import ButtonComp from '../Inputs/Button';
 
 const SignInForm = () => {
   const [username, setUsername] = useState('');
@@ -41,7 +41,7 @@ const SignInForm = () => {
           return (
             <div className='label-input-container' key={id}>
               <label className='work-form-label'>{label}</label>
-              <Input2
+              <InputComp
                 id={id}
                 type={type}
                 value={logInData[id].value}
@@ -52,9 +52,9 @@ const SignInForm = () => {
             </div>
           );
         })}
-        <Button2 type='primary' onClick={handleClick}>
+        <ButtonComp type='primary' onClick={handleClick}>
           Log In
-        </Button2>
+        </ButtonComp>
       </div>
     </div>
   );
