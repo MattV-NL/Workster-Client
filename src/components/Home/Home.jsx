@@ -1,11 +1,7 @@
 import './home.scss';
-import { Link } from 'react-router-dom';
-import { paths } from '../../constants.js';
-import Button2 from '../Inputs/Button';
+import SignInForm from './SignInForm';
 
 const Home = () => {
-  const homeItem = 'home-item';
-
   return (
     <div className='home-container'>
       <div className='welcome-message-title'>Welcome to my App!</div>
@@ -19,21 +15,8 @@ const Home = () => {
         scheduling confilct where there may be work on a day with harsher
         weather.
       </div>
-      <div className='welcome-message'>
-        Please Start by selecting one of following options
-      </div>
-
-      <Button2 type='primary' className={homeItem}>
-        <Link to={paths.WEATHER} className='homeLink'>
-          Weather
-        </Link>
-      </Button2>
-
-      <Button2 type='primary' className={homeItem}>
-        <Link to={paths.WORK} className='homeLink'>
-          Work
-        </Link>
-      </Button2>
+      <div className='welcome-message'>Please Start by signing in</div>
+      <SignInForm />
     </div>
   );
 };
