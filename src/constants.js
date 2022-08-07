@@ -100,42 +100,35 @@ export const PRECIP_KEY = 'precip-input';
 
 export const WIND_KEY = 'wind-input';
 
-export const weatherHeader = new Map(
+export const weatherTableColumns = new Map(
   [
     {
       title: 'Date',
-      id: DATE_KEY,
-      type: 'date',
-      required: true,
+      dataIndex: 'date',
+      key: 'date',
     },
     {
-      title: 'Chance of Rain (%)',
-      id: PRECIP_KEY,
-      type: 'number',
-      required: true,
+      title: 'Chance of Precipitaion (%)',
+      dataIndex: 'precip',
+      key: 'precip',
     },
     {
       title: 'Wind Speed (km/hr)',
-      id: WIND_KEY,
-      type: 'number',
-      required: true,
+      dataIndex: 'windSpeed',
+      key: 'windSpeed',
     },
-  ].map((weatherHeader) => [weatherHeader.id, weatherHeader])
+    {
+      title: 'More Weather Info',
+      dataIndex: 'details',
+      key: 'details',
+    },
+  ].map((item) => [item.key, item])
 );
 
 export const paths = {
   HOME: '/Work-Weather-Analyzer',
   WEATHER: '/Work-Weather-Analyzer/weather',
   WORK: '/Work-Weather-Analyzer/work',
-};
-export const LOCATION_KEY = 'location';
-
-export const locationInput = {
-  title: 'Location',
-  label: 'Location',
-  id: LOCATION_KEY,
-  type: 'text',
-  required: false,
 };
 
 export const SERVER_URL = {
