@@ -27,8 +27,8 @@ const WeatherTable = () => {
 
       return {
         date,
-        precip,
-        windSpeed,
+        precip: precip.toFixed(2),
+        windSpeed: windSpeed.toFixed(2),
         details,
       };
     }

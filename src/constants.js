@@ -125,6 +125,36 @@ export const weatherTableColumns = new Map(
   ].map((item) => [item.key, item])
 );
 
+export const workTableColoumns = new Map(
+  [
+    {
+      title: 'Date',
+      dataIndex: 'date',
+      key: 'date',
+    },
+    {
+      title: 'Outside',
+      dataIndex: 'isOutside',
+      key: 'isOutside',
+    },
+    {
+      title: 'Scaffolding',
+      dataIndex: 'isScaffolding',
+      key: 'isScaffolding',
+    },
+    {
+      title: 'Welding',
+      dataIndex: 'isWelding',
+      key: 'isWelding',
+    },
+    {
+      title: 'Work Details',
+      dataIndex: 'details',
+      key: 'details',
+    },
+  ].map((item) => [item.key, item])
+);
+
 export const paths = {
   HOME: '/Work-Weather-Analyzer',
   WEATHER: '/Work-Weather-Analyzer/weather',
