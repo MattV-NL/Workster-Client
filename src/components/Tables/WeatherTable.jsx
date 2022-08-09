@@ -36,7 +36,11 @@ const WeatherTable = () => {
 
   datasource.map((item) => (item.key = n++));
 
-  return <Table dataSource={datasource} columns={columns} />;
+  return (
+    <div className='table'>
+      <Table dataSource={datasource} columns={columns} />
+    </div>
+  );
 };
 
 export default WeatherTable;

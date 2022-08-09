@@ -1,20 +1,11 @@
-.submit-button-container {
+.button-container {
   display: flex;
   justify-content: center;
+}
 
-  & .submit-button {
-    color: #fff;
-    border: 0.125rem solid #fff;
-    border-radius: 0.5rem;
-    padding: 0.5rem 2rem;
-    background-color: var(--buttonColor);
-    text-align: center;
-  }
-
-  & .submit-button:hover {
-    background-color: var(--buttonHover);
-    cursor: pointer;
-  }
+.new-button {
+  background-color: var(--buttonColor);
+  border-color: #fff;
 }
 
 .work-form-layout {

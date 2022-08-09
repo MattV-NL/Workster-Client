@@ -1,30 +1,30 @@
 import { useContext, useMemo } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import { Column } from '@ant-design/plots';
+import './charts.scss';
 
 const WorkChart = () => {
   const { workValues } = useContext(WorkDataContext);
 
-  const json = useMemo(() => {
+  const data = useMemo(() => {
     const arrWork = [...workValues.values()];
 
     return [
       {
-        id: 'isOutside',
+        id: 'Outside',
         count: arrWork.filter(({ isOutside }) => isOutside).length,
       },
       {
-        id: 'isWelding',
+        id: 'Welding',
         count: arrWork.filter(({ isWelding }) => isWelding).length,
       },
       {
-        id: 'isScaffolding',
+        id: 'Scaffolding',
         count: arrWork.filter(({ isScaffolding }) => isScaffolding).length,
       },
     ];
   }, [workValues]);
 
-  const data = json;
   const config = {
     data,
     xField: 'id',
@@ -33,13 +33,23 @@ const WorkChart = () => {
       position: 'middle',
       style: {
         fill: '#FFFFFF',
-        opacity: 0.6,
+        opacity: 1,
       },
     },
     xAxis: {
       label: {
-        autoHide: true,
-        autoRotate: false,
+        position: 'bottom',
+        style: {
+          fill: '#fff',
+        },
+      },
+    },
+    yAxis: {
+      label: {
+        style: {
+          fill: '#fff',
+          fontSize: 12,
+        },
       },
     },
     meta: {
@@ -51,7 +61,15 @@ const WorkChart = () => {
       },
     },
   };
-  return <Column {...config} />;
+
+  return (
+    <div className='chart'>
+      <div className='chart-title'>
+        Number of Instances of Each Task in Work Scope
+      </div>
+      <Column {...config} />
+    </div>
+  );
 };
 
 export default WorkChart;

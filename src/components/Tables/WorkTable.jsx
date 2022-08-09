@@ -39,7 +39,11 @@ const WorkTable = () => {
 
   const columns = Array.from(workTableColoumns.values());
 
-  return <Table dataSource={datasource} columns={columns} />;
+  return (
+    <div className='table'>
+      <Table dataSource={datasource} columns={columns} />
+    </div>
+  );
 };
 
 export default WorkTable;

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Button } from 'antd';
 
 const ButtonComp = ({ onClick, children, id, type }) => (
-  <div className='submit-button-container'>
-    <Button type={type} onClick={onClick} id={id}>
+  <div className='button-container'>
+    <Button className='new-button' type={type} onClick={onClick} id={id}>
       {children}
     </Button>
   </div>
