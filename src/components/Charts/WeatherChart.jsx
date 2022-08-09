@@ -39,9 +39,14 @@ const WeatherChart = () => {
         Chance of Precipitation and Wind Speed on a Given Day
       </div>
       <div className='weather-chart-container'>
-        <div className='chart-axis-label'>Chance of Precipitation</div>
+        <div className='chart-axis'>
+          <div className='chart-axis-label'>Chance of Precipitation</div>
+        </div>
+
         <DualAxes {...config} />
-        <div className='chart-axis-label'>Wind Speed in Km/Hr</div>
+        <div className='chart-axis'>
+          <div className='chart-axis-label'>Wind Speed in Km/Hr</div>
+        </div>
       </div>
     </div>
   );
