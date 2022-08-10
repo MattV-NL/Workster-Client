@@ -21,6 +21,7 @@ import PositionContextProvider from './contexts/PositionContext';
 import WeatherChart from './components/Charts/WeatherChart';
 import WorkChart from './components/Charts/WorkChart';
 import TitleNav from './components/Header/TitleNav';
+import AuthenticationContextProvider from './contexts/AuthenticationContext';
 
 function App() {
   return (
@@ -28,45 +29,47 @@ function App() {
       <WeatherDataContextProvider>
         <WorkDataContextProvider>
           <WorkInputContextProvider>
-            <Router>
-              <TitleNav />
-              <div className='layout-center'>
-                <div className='layout'>
-                  <Switch>
-                    <Route exact path={['/', paths.HOME]}>
-                      <Home />
-                    </Route>
-                    <Route exact path={paths.WEATHER}>
-                      <PositionInput />
-                      <FetchButton />
-                      <WeatherTable />
-                      <WeatherChart />
-                      <ResetButton />
-                      <WeatherWarningModal />
-                      <ResetWarningModal />
-                    </Route>
-                    <Route exact path={'/weather-details/:id'}>
-                      <WeatherDetails />
-                    </Route>
-                    <Route exact path={paths.WORK}>
-                      <WorkForm />
-                      <SortWorkTable />
-                      <WorkTable />
-                      <WorkChart />
-                      <ResetButton />
-                      <WorkWarningModal />
-                      <ResetWarningModal />
-                    </Route>
-                    <Route exact path='/work-details/:id'>
-                      <WorkDetails />
-                    </Route>
-                    <Route>
-                      <NotFound />
-                    </Route>
-                  </Switch>
+            <AuthenticationContextProvider>
+              <Router>
+                <TitleNav />
+                <div className='layout-center'>
+                  <div className='layout'>
+                    <Switch>
+                      <Route exact path={['/', paths.HOME]}>
+                        <Home />
+                      </Route>
+                      <Route exact path={paths.WEATHER}>
+                        <PositionInput />
+                        <FetchButton />
+                        <WeatherTable />
+                        <WeatherChart />
+                        <ResetButton />
+                        <WeatherWarningModal />
+                        <ResetWarningModal />
+                      </Route>
+                      <Route exact path={'/weather-details/:id'}>
+                        <WeatherDetails />
+                      </Route>
+                      <Route exact path={paths.WORK}>
+                        <WorkForm />
+                        <SortWorkTable />
+                        <WorkTable />
+                        <WorkChart />
+                        <ResetButton />
+                        <WorkWarningModal />
+                        <ResetWarningModal />
+                      </Route>
+                      <Route exact path='/work-details/:id'>
+                        <WorkDetails />
+                      </Route>
+                      <Route>
+                        <NotFound />
+                      </Route>
+                    </Switch>
+                  </div>
                 </div>
-              </div>
-            </Router>
+              </Router>
+            </AuthenticationContextProvider>
           </WorkInputContextProvider>
         </WorkDataContextProvider>
       </WeatherDataContextProvider>
