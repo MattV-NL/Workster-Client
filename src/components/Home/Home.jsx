@@ -1,5 +1,5 @@
 import './home.scss';
-import SignInForm from './SignInForm';
+import LogInForm from './LogInForm';
 
 const Home = () => {
   return (
@@ -15,8 +15,10 @@ const Home = () => {
         scheduling confilct where there may be work on a day with harsher
         weather.
       </div>
-      <div className='welcome-message'>Please Start by signing in</div>
-      <SignInForm />
+      <div className='welcome-message'>
+        Please Start by Registering or Signing In
+      </div>
+      <LogInForm />
     </div>
   );
 };
