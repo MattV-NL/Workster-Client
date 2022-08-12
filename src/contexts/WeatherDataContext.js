@@ -55,6 +55,7 @@ const WeatherDataContextProvider = ({ children }) => {
     useState(createWeatherValues);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isWeatherModalVisible, setIsWeatherModalVisible] = useState(false);
+  const [isWeatherDetailsVisible, setIsWeatherDetailsVisible] = useState(false);
 
   const setWeather = useCallback(() => {
     setWeatherValues(weatherDataMap);
@@ -148,6 +149,8 @@ const WeatherDataContextProvider = ({ children }) => {
         setIsModalVisible,
         isWeatherModalVisible,
         setIsWeatherModalVisible,
+        isWeatherDetailsVisible,
+        setIsWeatherDetailsVisible,
         clearWeatherValues,
       }}
     >

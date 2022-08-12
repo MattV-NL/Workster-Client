@@ -4,12 +4,20 @@ import './tables.scss';
 import { Link } from 'react-router-dom';
 import { Table } from 'antd';
 import { weatherTableColumns } from '../../constants';
+import WeatherDetailsModal from '../Modals/WeatherDetailsModal';
 
 let n = 1;
 const WeatherTable = () => {
-  const { weatherValues } = useContext(WeatherDataContext);
+  const { weatherValues, setIsWeatherDetailsVisible, weatherDataMap } =
+    useContext(WeatherDataContext);
   const weatherTableMap = new Map(weatherValues);
   const weatherValuesKeys = weatherTableMap.keys();
+
+  const showDetails = (id) => {
+    setIsWeatherDetailsVisible(true);
+    const weatherData = weatherDataMap.get(parseInt(id));
+    console.log(weatherData);
+  };
   const columns = Array.from(weatherTableColumns.values());
   const datasource = Array.from(weatherTableMap.values()).map(
     ({ dt, pop, wind_speed }) => {
@@ -17,13 +25,13 @@ const WeatherTable = () => {
       let precip = pop * 100;
       let windSpeed = wind_speed * 3.6;
       let details = (
-        <Link
-          to={`/weather-details/${weatherValuesKeys.next().value}`}
-          key={date}
-        >
-          More details...
-        </Link>
+        <div onClick={showDetails(weatherValuesKeys.next().value)}>
+          More Details...
+        </div>
       );
+
+      // onClick, open modal, the modal should show weather details based
+      // on the id.
 
       return {
         date,
