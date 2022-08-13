@@ -28,6 +28,7 @@ const sortTable = (tableOrder) => (a, b) =>
 const WorkDataContextProvider = ({ children }) => {
   const [workValues, setWorkValues] = useState(createWorkValues());
   const [tableOrder, setTableOrder] = useState(false);
+  const [isWorkDetailsVisible, setIsWorkDetailsVisible] = useState(false);
 
   const submitWorkValues = useCallback(
     (date, isOutside, isWelding, isScaffolding, workDetails) => {
@@ -60,6 +61,8 @@ const WorkDataContextProvider = ({ children }) => {
         clearWorkValues,
         tableOrder,
         setTableOrder,
+        isWorkDetailsVisible,
+        setIsWorkDetailsVisible,
       }}
     >
       {children}

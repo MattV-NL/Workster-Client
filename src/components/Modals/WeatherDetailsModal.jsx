@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { Modal } from 'antd';
 
-const WeatherDetailsModal = ({ children }) => {
+const WeatherDetailsModal = ({ children, title }) => {
   const { isWeatherDetailsVisible, setIsWeatherDetailsVisible } =
     useContext(WeatherDataContext);
   const handleOkCancel = () => {
@@ -10,9 +10,9 @@ const WeatherDetailsModal = ({ children }) => {
   };
   return (
     <Modal
-      title='Detailed Weather Information'
+      title={title}
       visible={isWeatherDetailsVisible}
-      onOK={handleOkCancel}
+      onOk={handleOkCancel}
       onCancel={handleOkCancel}
     >
       {children}

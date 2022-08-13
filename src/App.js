@@ -5,8 +5,6 @@ import WorkDataContextProvider from './contexts/WorkDataContext';
 import Home from './components/Home/Home';
 import WorkForm from './components/WorkInput/WorkForm';
 import WorkTable from './components/Tables/WorkTable';
-import WorkDetails from './components/Details/WorkDetails';
-import WeatherDetails from './components/Details/WeatherDetails';
 import NotFound from './components/NotFound';
 import ResetButton from './components/WorkInput/ResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
@@ -47,9 +45,6 @@ function App() {
                         <WeatherWarningModal />
                         <ResetWarningModal />
                       </Route>
-                      <Route exact path={'/weather-details/:id'}>
-                        <WeatherDetails />
-                      </Route>
                       <Route exact path={paths.WORK}>
                         <WorkForm />
                         <SortWorkTable />
@@ -58,9 +53,6 @@ function App() {
                         <ResetButton />
                         <WorkWarningModal />
                         <ResetWarningModal />
-                      </Route>
-                      <Route exact path='/work-details/:id'>
-                        <WorkDetails />
                       </Route>
                       <Route>
                         <NotFound />
