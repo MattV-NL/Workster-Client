@@ -27,7 +27,17 @@ const AuthenticationContextProvider = ({ children }) => {
     });
     const data = await response.json();
     console.log(data);
-  }, [usernameReg, emailReg, passwordReg]);
+    setUsernameReg('');
+    setPasswordReg('');
+    setEmailReg('');
+  }, [
+    usernameReg,
+    emailReg,
+    passwordReg,
+    setUsernameReg,
+    setPasswordReg,
+    setEmailReg,
+  ]);
 
   const handleClickLogin = useCallback(async () => {
     const loginData = {
@@ -43,7 +53,9 @@ const AuthenticationContextProvider = ({ children }) => {
     });
     const data = await response.json();
     console.log(data);
-  }, [username, password]);
+    setUsername('');
+    setPassword('');
+  }, [username, password, setUsername, setPassword]);
 
   return (
     <AuthenticationContext.Provider
