@@ -6,31 +6,37 @@ export const AuthenticationContext = createContext();
 
 const AuthenticationContextProvider = ({ children }) => {
   const { onChange } = useContext(WorkInputContext);
-  const [usernameReg, setUsernameReg] = useState('');
-  const [passwordReg, setPasswordReg] = useState('');
-  const [emailReg, setEmailReg] = useState('');
+  const [usernameReg, setUsernameReg] = useState(null);
+  const [passwordReg, setPasswordReg] = useState(null);
+  const [emailReg, setEmailReg] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState(false);
 
   const handleClickReg = useCallback(async () => {
-    const loginData = {
-      username: usernameReg,
-      password: passwordReg,
-      email: emailReg,
-    };
-    const response = await fetch(`http://localhost:8000/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(loginData),
-    });
-    const data = await response.json();
-    console.log(data);
-    setUsernameReg('');
-    setPasswordReg('');
-    setEmailReg('');
+    if (usernameReg || passwordReg || emailReg) {
+      const loginData = {
+        username: usernameReg,
+        password: passwordReg,
+        email: emailReg,
+      };
+      const response = await fetch(`http://localhost:8000/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginData),
+      });
+      const data = await response.json();
+      console.log(data);
+      setUsernameReg('');
+      setPasswordReg('');
+      setEmailReg('');
+    } else {
+      console.log({
+        message: 'please enter a username, email, and password to register.',
+      });
+    }
   }, [
     usernameReg,
     emailReg,
@@ -41,22 +47,30 @@ const AuthenticationContextProvider = ({ children }) => {
   ]);
 
   const handleClickLogin = useCallback(async () => {
-    const loginData = {
-      username: username,
-      password: password,
-    };
-    const response = await fetch(`http://localhost:8000/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(loginData),
-    });
-    const data = await response.json();
-    console.log(data);
-    setUsername('');
-    setPassword('');
-    setLoginStatus(true);
+    if (username || password) {
+      const loginData = {
+        username: username,
+        password: password,
+      };
+      const response = await fetch(`http://localhost:8000/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginData),
+      });
+      const data = await response.json();
+      console.log(data);
+      if (data.status) {
+        setLoginStatus(true);
+      }
+      setUsername('');
+      setPassword('');
+    } else {
+      console.log({
+        message: 'please enter your username and password to login.',
+      });
+    }
   }, [username, password, setUsername, setPassword]);
 
   return (
