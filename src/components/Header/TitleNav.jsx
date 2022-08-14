@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { paths } from '../../constants';
 import img1 from '../../images/logo.png';
 import Compare from '../Compare/Compare';
+import LoginStatus from './LoginStatus';
 import { Menu } from 'antd';
 
 const logo = 'logo';
@@ -35,6 +36,10 @@ const items = [
   {
     label: <Compare />,
     key: 'compare',
+  },
+  {
+    label: <LoginStatus />,
+    key: 'login',
   },
 ];
 

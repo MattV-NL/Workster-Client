@@ -11,6 +11,7 @@ const AuthenticationContextProvider = ({ children }) => {
   const [emailReg, setEmailReg] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loginStatus, setLoginStatus] = useState(false);
 
   const handleClickReg = useCallback(async () => {
     const loginData = {
@@ -55,6 +56,7 @@ const AuthenticationContextProvider = ({ children }) => {
     console.log(data);
     setUsername('');
     setPassword('');
+    setLoginStatus(true);
   }, [username, password, setUsername, setPassword]);
 
   return (
@@ -86,6 +88,8 @@ const AuthenticationContextProvider = ({ children }) => {
         },
         handleClickReg,
         handleClickLogin,
+        loginStatus,
+        setLoginStatus,
       }}
     >
       {children}
