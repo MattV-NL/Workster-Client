@@ -14,7 +14,7 @@ const AuthenticationContextProvider = ({ children }) => {
   const [loginStatus, setLoginStatus] = useState(false);
 
   const handleClickReg = useCallback(async () => {
-    if (usernameReg || passwordReg || emailReg) {
+    if (usernameReg && passwordReg && emailReg) {
       const loginData = {
         username: usernameReg,
         password: passwordReg,
@@ -47,7 +47,7 @@ const AuthenticationContextProvider = ({ children }) => {
   ]);
 
   const handleClickLogin = useCallback(async () => {
-    if (username || password) {
+    if (username && password) {
       const loginData = {
         username: username,
         password: password,
@@ -61,7 +61,8 @@ const AuthenticationContextProvider = ({ children }) => {
       });
       const data = await response.json();
       console.log(data);
-      if (data.status) {
+      localStorage.setItem('token', data.token);
+      if (data.auth) {
         setLoginStatus(true);
       }
       setUsername('');

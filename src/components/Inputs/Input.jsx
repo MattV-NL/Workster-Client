@@ -33,7 +33,8 @@ InputComp.propTypes = {
     PropTypes.string,
     PropTypes.bool,
     PropTypes.number,
-  ]).isRequired,
+    PropTypes.node.isRequired,
+  ]),
   required: PropTypes.bool.isRequired,
 };
 
