@@ -4,7 +4,7 @@ import { Button } from 'antd';
 
 const ButtonComp = ({ onClick, children, id, type }) => (
   <div className='button-container'>
-    <Button className='new-button' type={type} onClick={onClick} id={id}>
+    <Button className='button' type={type} onClick={onClick} id={id}>
       {children}
     </Button>
   </div>

@@ -24,7 +24,9 @@ const Home = () => {
       <ButtonComp type='primary' onClick={checkAuth}>
         Check Authentication Status
       </ButtonComp>
-      <div>{authStatus ? 'User Authenticated' : 'Authentication Failed'}</div>
+      <div className={authStatus ? 'auth-valid' : 'auth-failed'}>
+        {authStatus ? 'User Authenticated' : 'Authentication Failed'}
+      </div>
     </div>
   );
 };

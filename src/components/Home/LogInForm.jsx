@@ -11,13 +11,13 @@ const LogInForm = () => {
   );
 
   return (
-    <div className='work-form-layout'>
-      <div className='work-form'>
-        <h3>Register Here</h3>
+    <div className='form-layout'>
+      <div className='form'>
+        <div className='form-header'>Register Here</div>
         {[...regFormInputs.values()].map(({ label, id, type, required }) => {
           return (
             <div className='label-input-container' key={id}>
-              <label className='work-form-label'>{label}</label>
+              <label className='form-label'>{label}</label>
               <InputComp
                 id={id + label}
                 type={type}
@@ -32,11 +32,11 @@ const LogInForm = () => {
         <ButtonComp type='primary' onClick={handleClickReg}>
           Register
         </ButtonComp>
-        <h3>Log In Here</h3>
+        <div className='form-header'>Log In Here</div>
         {[...loginFormInputs.values()].map(({ label, id, type, required }) => {
           return (
             <div className='label-input-container' key={id}>
-              <label className='work-form-label'>{label}</label>
+              <label className='form-label'>{label}</label>
               <InputComp
                 id={id + type}
                 type={type}
