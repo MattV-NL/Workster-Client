@@ -22,7 +22,7 @@ const Home = () => {
       </div>
       <LogInForm />
       <ButtonComp type='primary' onClick={checkAuth}>
-        Check Authentication Status
+        Check Authorization Status
       </ButtonComp>
       <div className={authStatus ? 'auth-valid' : 'auth-failed'}>
         {authStatus ? 'User Authorized' : 'Authorization Failed'}
