@@ -25,7 +25,7 @@ const Home = () => {
         Check Authentication Status
       </ButtonComp>
       <div className={authStatus ? 'auth-valid' : 'auth-failed'}>
-        {authStatus ? 'User Authenticated' : 'Authentication Failed'}
+        {authStatus ? 'User Authorized' : 'Authorization Failed'}
       </div>
     </div>
   );
