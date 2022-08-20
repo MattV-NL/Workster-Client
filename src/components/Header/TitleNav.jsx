@@ -52,7 +52,7 @@ const TitleNav = () => {
           <img className={logo} src={img1} alt='logo' />
         </Link>
       </div>
-      <Menu mode='horizontal' items={items} />
+      <Menu mode='horizontal' items={items} className='top-navbar-menu' />
     </div>
   );
 };

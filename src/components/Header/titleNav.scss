@@ -6,7 +6,7 @@
 .title-container {
   display: grid;
   grid-template-columns: [first] 80% [last] 1fr;
-  padding-top: 1rem;
+  padding: 1rem 0;
   margin: 0 1rem;
   font-size: 2rem;
 
@@ -41,4 +41,9 @@
 .not-logged-in {
   color: rgb(226, 59, 59);
   font-weight: bolder;
+}
+
+.top-navbar-menu {
+  border-top: 1px solid #f0f0f0;
+  border-bottom: none;
 }
