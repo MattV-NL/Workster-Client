@@ -4,6 +4,7 @@ import { Dropdown, Menu, Space } from 'antd';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { Link } from 'react-router-dom';
 import { paths } from '../../constants';
+import { SERVER_URL } from '../../constants';
 
 const LoginStatus = () => {
   const [authStatus, setAuthStatus] = useState(false);
@@ -11,7 +12,7 @@ const LoginStatus = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const response = await fetch('http://localhost:8000/authCheck', {
+      const response = await fetch(SERVER_URL.authCheck, {
         headers: {
           'x-access-token': localStorage.getItem('token'),
         },

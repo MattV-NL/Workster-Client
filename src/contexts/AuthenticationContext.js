@@ -1,6 +1,11 @@
 import { createContext, useContext, useCallback, useState } from 'react';
 import { WorkInputContext } from './WorkInputContext';
-import { USERNAME_KEY, PASSWORD_KEY, EMAIL_KEY } from '../constants';
+import {
+  USERNAME_KEY,
+  PASSWORD_KEY,
+  EMAIL_KEY,
+  SERVER_URL,
+} from '../constants';
 
 export const AuthenticationContext = createContext();
 
@@ -20,7 +25,7 @@ const AuthenticationContextProvider = ({ children }) => {
         password: passwordReg,
         email: emailReg,
       };
-      const response = await fetch(`http://localhost:8000/register`, {
+      const response = await fetch(SERVER_URL.register, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +57,7 @@ const AuthenticationContextProvider = ({ children }) => {
         username: username,
         password: password,
       };
-      const response = await fetch(`http://localhost:8000/login`, {
+      const response = await fetch(SERVER_URL.login, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
