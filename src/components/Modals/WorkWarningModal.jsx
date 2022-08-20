@@ -10,16 +10,14 @@ const WorkWarningModal = () => {
   }, [setIsWorkModalVisible]);
 
   return (
-    <div>
-      <Modal
-        title='Wait!'
-        visible={isWorkModalVisible}
-        onOk={handleOkCancel}
-        onCancel={handleOkCancel}
-      >
-        Please enter at least a date and some details about the work to be done.
-      </Modal>
-    </div>
+    <Modal
+      title='Wait!'
+      visible={isWorkModalVisible}
+      onOk={handleOkCancel}
+      onCancel={handleOkCancel}
+    >
+      Please enter at least a date and some details about the work to be done.
+    </Modal>
   );
 };
 

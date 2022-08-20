@@ -8,6 +8,7 @@ export const LONGITUDE_KEY = 'longitude-input';
 export const GEOLOCATION_KEY = 'geolocation-input';
 export const USERNAME_KEY = 'username-input';
 export const PASSWORD_KEY = 'password-input';
+export const EMAIL_KEY = 'email-input';
 
 export const workFormInputs = new Map(
   [
@@ -81,6 +82,32 @@ export const loginFormInputs = new Map(
       title: 'username',
       label: 'Username',
       id: 'username-input',
+      type: 'text',
+      required: true,
+    },
+    {
+      title: 'password',
+      label: 'Password',
+      id: 'password-input',
+      type: 'password',
+      required: true,
+    },
+  ].map((item) => [item.id, item])
+);
+
+export const regFormInputs = new Map(
+  [
+    {
+      title: 'username',
+      label: 'Username',
+      id: 'username-input',
+      type: 'text',
+      required: true,
+    },
+    {
+      title: 'email',
+      label: 'Email',
+      id: 'email-input',
       type: 'text',
       required: true,
     },

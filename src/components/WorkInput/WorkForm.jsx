@@ -9,12 +9,12 @@ const WorkForm = () => {
   const { workData } = useContext(WorkInputContext);
 
   return (
-    <div className='work-form-layout'>
-      <form className='work-form'>
+    <div className='form-layout'>
+      <form className='form'>
         {[...workFormInputs.values()].map(({ label, id, type, required }) => {
           return (
             <div className='label-input-container' key={id}>
-              <label className='work-form-label'>{label}</label>
+              <label className='form-label'>{label}</label>
               <InputComp
                 id={id}
                 type={type}

@@ -94,6 +94,7 @@ const WorkInputContextProvider = ({ children }) => {
         workDataUpdate,
         isWorkModalVisible,
         setIsWorkModalVisible,
+        onChange,
       }}
     >
       {children}

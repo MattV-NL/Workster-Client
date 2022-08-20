@@ -32,3 +32,13 @@
 .ant-menu-horizontal > .ant-menu-item a {
   color: #fff;
 }
+
+.logged-in {
+  color: green;
+  font-weight: bolder;
+}
+
+.not-logged-in {
+  color: rgb(226, 59, 59);
+  font-weight: bolder;
+}
