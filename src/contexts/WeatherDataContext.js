@@ -115,8 +115,8 @@ const WeatherDataContextProvider = ({ children }) => {
       navigator.geolocation.getCurrentPosition(
         async (pos) => {
           const crd = pos.coords;
-          lat = crd.latitude;
-          lon = crd.longitude;
+          lat = crd.latitude.toPrecision(6);
+          lon = crd.longitude.toPrecision(6);
           const coordsJSON = {
             user_id: data.user_id,
             lat,
