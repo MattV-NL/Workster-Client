@@ -136,18 +136,21 @@ const WeatherDataContextProvider = ({ children }) => {
         options
       );
     } else {
-      lat = positionData[LATITUDE_KEY].value;
-      lon = positionData[LONGITUDE_KEY].value;
-      const coords = {
+      lat = parseFloat(positionData[LATITUDE_KEY].value);
+      lon = parseFloat(positionData[LONGITUDE_KEY].value);
+
+      const coordsJSON = {
+        user_id: data.user_id,
         lat,
         lon,
       };
+
       const sendResponse = await fetch(SERVER_URL.saveLocation, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(coords),
+        body: JSON.stringify(coordsJSON),
       });
       const sendData = sendResponse.json();
       console.log(sendData, 'manual input');
