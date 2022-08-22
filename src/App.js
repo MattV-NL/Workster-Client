@@ -20,6 +20,7 @@ import WeatherChart from './components/Charts/WeatherChart';
 import WorkChart from './components/Charts/WorkChart';
 import TitleNav from './components/Header/TitleNav';
 import AuthenticationContextProvider from './contexts/AuthenticationContext';
+import Account from '../src/components/Account/Account';
 
 function App() {
   return (
@@ -53,6 +54,9 @@ function App() {
                         <ResetButton />
                         <WorkWarningModal />
                         <ResetWarningModal />
+                      </Route>
+                      <Route exact path={paths.ACCOUNT}>
+                        <Account />
                       </Route>
                       <Route>
                         <NotFound />

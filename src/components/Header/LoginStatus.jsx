@@ -1,28 +1,16 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Space } from 'antd';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { Link } from 'react-router-dom';
 import { paths } from '../../constants';
-import { SERVER_URL } from '../../constants';
 
 const LoginStatus = () => {
-  const [authStatus, setAuthStatus] = useState(false);
-  const { loginStatus } = useContext(AuthenticationContext);
+  const { authStatus, checkAuth } = useContext(AuthenticationContext);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const response = await fetch(SERVER_URL.authCheck, {
-        headers: {
-          'x-access-token': localStorage.getItem('token'),
-        },
-      });
-      const data = await response.json();
-      console.log(data);
-      setAuthStatus(data);
-    };
     checkAuth();
-  }, [setAuthStatus, loginStatus]);
+  }, [checkAuth]);
 
   const menuItems = [
     {
@@ -36,7 +24,11 @@ const LoginStatus = () => {
       key: '1',
     },
     {
-      label: 'Settings',
+      label: (
+        <Link to={paths.ACCOUNT} className='navbar-item'>
+          Account
+        </Link>
+      ),
       key: '2',
     },
   ];

@@ -17,6 +17,7 @@ const AuthenticationContextProvider = ({ children }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState(false);
+  const [authStatus, setAuthStatus] = useState(false);
 
   const handleClickReg = useCallback(async () => {
     if (usernameReg && passwordReg && emailReg) {
@@ -65,7 +66,6 @@ const AuthenticationContextProvider = ({ children }) => {
         body: JSON.stringify(loginData),
       });
       const data = await response.json();
-      console.log(data);
       localStorage.setItem('token', data.token);
       if (data.auth) {
         setLoginStatus(true);
@@ -78,6 +78,16 @@ const AuthenticationContextProvider = ({ children }) => {
       });
     }
   }, [username, password, setUsername, setPassword]);
+
+  const checkAuth = useCallback(async () => {
+    const response = await fetch(SERVER_URL.authCheck, {
+      headers: {
+        'x-access-token': localStorage.getItem('token'),
+      },
+    });
+    const data = await response.json();
+    setAuthStatus(data);
+  }, [setAuthStatus, loginStatus]);
 
   return (
     <AuthenticationContext.Provider
@@ -110,6 +120,9 @@ const AuthenticationContextProvider = ({ children }) => {
         handleClickLogin,
         loginStatus,
         setLoginStatus,
+        authStatus,
+        setAuthStatus,
+        checkAuth,
       }}
     >
       {children}

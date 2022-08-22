@@ -191,15 +191,17 @@ export const workTableColoumns = new Map(
 );
 
 export const paths = {
-  HOME: '/Work-Weather-Analyzer',
-  WEATHER: '/Work-Weather-Analyzer/weather',
-  WORK: '/Work-Weather-Analyzer/work',
+  HOME: '/',
+  WEATHER: '/weather',
+  WORK: '/work',
+  ACCOUNT: '/account',
 };
 
 export const SERVER_URL = {
-  authCheck: 'http://localhost:8000/authCheck',
-  saveLocation: 'http://localhost:8000/saveLocation',
+  authCheck: 'http://localhost:8000/auth_check',
+  saveLocation: 'http://localhost:8000/save_location',
   login: 'http://localhost:8000/login',
   register: 'http://localhost:8000/register',
   weather: 'http://localhost:8000/api/weather/',
+  getLocations: 'http://localhost:8000/get_locations',
 };
