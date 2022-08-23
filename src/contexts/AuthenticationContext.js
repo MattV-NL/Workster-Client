@@ -18,6 +18,8 @@ const AuthenticationContextProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState(false);
   const [authStatus, setAuthStatus] = useState(false);
+  const [isRegModalVisible, setIsRegModalVisible] = useState(false);
+  const [isAccountModalVisible, setIsAccountModalVisible] = useState(false);
 
   const handleClickReg = useCallback(async () => {
     if (usernameReg && passwordReg && emailReg) {
@@ -39,6 +41,7 @@ const AuthenticationContextProvider = ({ children }) => {
       setPasswordReg('');
       setEmailReg('');
     } else {
+      setIsRegModalVisible(true);
       console.log({
         message: 'please enter a username, email, and password to register.',
       });
@@ -73,6 +76,7 @@ const AuthenticationContextProvider = ({ children }) => {
       setUsername('');
       setPassword('');
     } else {
+      setIsRegModalVisible(true);
       console.log({
         message: 'please enter your username and password to login.',
       });
@@ -123,6 +127,10 @@ const AuthenticationContextProvider = ({ children }) => {
         authStatus,
         setAuthStatus,
         checkAuth,
+        isRegModalVisible,
+        setIsRegModalVisible,
+        isAccountModalVisible,
+        setIsAccountModalVisible,
       }}
     >
       {children}

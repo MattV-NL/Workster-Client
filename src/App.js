@@ -21,6 +21,8 @@ import WorkChart from './components/Charts/WorkChart';
 import TitleNav from './components/Header/TitleNav';
 import AuthenticationContextProvider from './contexts/AuthenticationContext';
 import Account from '../src/components/Account/Account';
+import RegLoginModal from './components/Modals/RegLoginModal';
+import AccountPageModal from './components/Modals/AccountPageModal';
 
 function App() {
   return (
@@ -36,6 +38,7 @@ function App() {
                     <Switch>
                       <Route exact path={['/', paths.HOME]}>
                         <Home />
+                        <RegLoginModal />
                       </Route>
                       <Route exact path={paths.WEATHER}>
                         <PositionInput />
@@ -57,6 +60,7 @@ function App() {
                       </Route>
                       <Route exact path={paths.ACCOUNT}>
                         <Account />
+                        <AccountPageModal />
                       </Route>
                       <Route>
                         <NotFound />

@@ -1,25 +1,35 @@
-import { useContext, useCallback, useState } from 'react';
+import { useContext, useCallback, useState, useEffect } from 'react';
 import { SERVER_URL } from '../../constants';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import './account.scss';
 import ButtonComp from '../Inputs/Button';
 
 const Account = () => {
-  const { authStatus } = useContext(AuthenticationContext);
+  const { authStatus, setIsAccountModalVisible } = useContext(
+    AuthenticationContext
+  );
   const [locations, setLocations] = useState([]);
 
-  const getLocations = useCallback(async () => {
-    const userData = authStatus;
-    const response = await fetch(SERVER_URL.getLocations, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    });
-    const data = await response.json();
-    setLocations(data);
-  }, [authStatus, setLocations]);
+  useEffect(() => {
+    const getLocations = async () => {
+      const userData = authStatus;
+      if (authStatus.auth) {
+        const response = await fetch(SERVER_URL.getLocations, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        });
+        const data = await response.json();
+        setLocations(data);
+      } else {
+        setIsAccountModalVisible(true);
+        console.log({ message: 'please login to get your saved locations' });
+      }
+    };
+    getLocations();
+  }, [authStatus, setLocations, setIsAccountModalVisible]);
 
   return (
     <div className='page-layout'>
@@ -37,9 +47,6 @@ const Account = () => {
               </div>
             );
           })}
-          <ButtonComp type='primary' onClick={getLocations}>
-            Get Locations
-          </ButtonComp>
         </div>
       </div>
     </div>
