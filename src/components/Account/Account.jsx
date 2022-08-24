@@ -1,8 +1,7 @@
-import { useContext, useCallback, useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { SERVER_URL } from '../../constants';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import './account.scss';
-import ButtonComp from '../Inputs/Button';
 
 const Account = () => {
   const { authStatus, setIsAccountModalVisible } = useContext(
@@ -13,7 +12,7 @@ const Account = () => {
   useEffect(() => {
     const getLocations = async () => {
       const userData = authStatus;
-      if (authStatus.auth) {
+      if (await authStatus.auth) {
         const response = await fetch(SERVER_URL.getLocations, {
           method: 'POST',
           headers: {

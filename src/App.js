@@ -10,7 +10,6 @@ import ResetButton from './components/WorkInput/ResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
 import WeatherWarningModal from './components/Modals/WeatherWarningModal';
 import WorkWarningModal from './components/Modals/WorkWarningModal';
-import SortWorkTable from './components/SortTable/SortWorkTable';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import FetchButton from './components/WeatherInput/FetchButton';
 import WeatherTable from './components/Tables/WeatherTable';
@@ -51,7 +50,6 @@ function App() {
                       </Route>
                       <Route exact path={paths.WORK}>
                         <WorkForm />
-                        <SortWorkTable />
                         <WorkTable />
                         <WorkChart />
                         <ResetButton />
