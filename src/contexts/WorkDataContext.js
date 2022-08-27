@@ -22,16 +22,12 @@ const createWorkValues = () =>
       .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
   );
 
-const sortTable = (tableOrder) => (a, b) =>
-  tableOrder ? a[0] - b[0] : b[0] - a[0];
-
 const WorkDataContextProvider = ({ children }) => {
   const [workValues, setWorkValues] = useState(createWorkValues());
-  const [tableOrder, setTableOrder] = useState(false);
   const [isWorkDetailsVisible, setIsWorkDetailsVisible] = useState(false);
 
   const submitWorkValues = useCallback(
-    (date, isOutside, isWelding, isScaffolding, workDetails) => {
+    (date, isOutside, isWelding, isScaffolding, workDetails, workLocation) => {
       const nextWorkDataMap = new Map(workValues);
       nextWorkDataMap.set(parseInt(date.replace(/-/g, '')), {
         date,
@@ -39,15 +35,12 @@ const WorkDataContextProvider = ({ children }) => {
         isWelding,
         isScaffolding,
         workDetails,
+        workLocation,
       });
-      const sortWorkMap = new Map(
-        [...nextWorkDataMap].sort(sortTable(tableOrder))
-      );
-      setWorkValues(sortWorkMap);
+      setWorkValues(nextWorkDataMap);
     },
-    [workValues, tableOrder]
+    [workValues]
   );
-
   const clearWorkValues = useCallback(() => {
     setWorkValues(createWorkValues());
   }, []);
@@ -59,8 +52,6 @@ const WorkDataContextProvider = ({ children }) => {
         setWorkValues,
         submitWorkValues,
         clearWorkValues,
-        tableOrder,
-        setTableOrder,
         isWorkDetailsVisible,
         setIsWorkDetailsVisible,
       }}

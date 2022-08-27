@@ -39,6 +39,7 @@ const WorkTable = () => {
               : 'No scaffolding needed for this job'}
           </div>
           <div>{workData.workDetails}</div>
+          {/* <div>{workData.workLocation ? workData.workLocation : ''}</div> */}
         </>
       );
     },
@@ -66,11 +67,11 @@ const WorkTable = () => {
       isScaffolding: displayBooleanInput(value.isScaffolding),
       isWelding: displayBooleanInput(value.isWelding),
       details,
+      workLocation: 'right here',
     };
   });
 
   datasource.map((item) => (item.key = n++));
-
   const columns = Array.from(workTableColoumns.values());
 
   return (

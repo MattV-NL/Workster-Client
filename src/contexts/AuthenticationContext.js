@@ -69,6 +69,7 @@ const AuthenticationContextProvider = ({ children }) => {
         body: JSON.stringify(loginData),
       });
       const data = await response.json();
+      console.log(data);
       localStorage.setItem('token', data.token);
       if (data.auth) {
         setLoginStatus(true);
@@ -90,7 +91,9 @@ const AuthenticationContextProvider = ({ children }) => {
       },
     });
     const data = await response.json();
+    console.log(data);
     setAuthStatus(data);
+    return data;
   }, [setAuthStatus, loginStatus]);
 
   return (

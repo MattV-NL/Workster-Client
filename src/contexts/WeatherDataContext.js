@@ -109,7 +109,7 @@ const WeatherDataContextProvider = ({ children }) => {
       },
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     if (positionData[GEOLOCATION_KEY].value) {
       navigator.geolocation.getCurrentPosition(
@@ -144,7 +144,6 @@ const WeatherDataContextProvider = ({ children }) => {
         lat,
         lon,
       };
-
       const sendResponse = await fetch(SERVER_URL.saveLocation, {
         method: 'POST',
         headers: {

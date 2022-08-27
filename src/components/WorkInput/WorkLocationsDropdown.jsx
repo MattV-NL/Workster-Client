@@ -9,7 +9,6 @@ const WorkLocationsDropdown = () => {
   const { authStatus } = useContext(AuthenticationContext);
   const { setWorkLocation } = useContext(WorkInputContext);
   const [workLocations, setWorkLocations] = useState([]);
-  let key = 1;
   useEffect(() => {
     const getLocations = async () => {
       const userData = authStatus;
@@ -30,19 +29,19 @@ const WorkLocationsDropdown = () => {
     getLocations();
   }, [authStatus]);
 
-  const newWorkLocationsArray = Array.from(workLocations).map((item) => {
+  const newWorkLocationsArray = Array.from(workLocations).map((item, index) => {
     return {
+      key: index++,
       label: (
         <div
           onClick={() => {
-            setWorkLocation(item);
+            setWorkLocation({ coordinates: item });
           }}
         >
-          <div>Location {key}</div>
+          <div>Location {index++}</div>
           Latitude: {item.latitude} Longitude: {item.longitude}
         </div>
       ),
-      key: key++,
     };
   });
 

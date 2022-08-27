@@ -107,8 +107,8 @@ const WorkInputContextProvider = ({ children }) => {
         isWorkModalVisible,
         setIsWorkModalVisible,
         onChange,
-        workLocation,
         setWorkLocation,
+        workLocation,
       }}
     >
       {children}
