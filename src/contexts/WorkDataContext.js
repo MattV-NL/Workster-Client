@@ -3,6 +3,8 @@ import { DateTime } from 'luxon';
 
 export const WorkDataContext = createContext();
 
+const sortTable = (a, b) => a[0] - b[0];
+
 const createFormDate = () => {
   return new DateTime.utc();
 };
@@ -41,7 +43,8 @@ const WorkDataContextProvider = ({ children }) => {
         workDetails,
         workLocation,
       });
-      setWorkValues(nextWorkDataMap);
+      const sortedWorkMap = new Map([...nextWorkDataMap].sort(sortTable));
+      setWorkValues(sortedWorkMap);
     },
     [workValues]
   );
