@@ -1,6 +1,11 @@
 import { createContext, useContext, useCallback, useState } from 'react';
 import { WorkInputContext } from './WorkInputContext';
-import { USERNAME_KEY, PASSWORD_KEY, EMAIL_KEY } from '../constants';
+import {
+  USERNAME_KEY,
+  PASSWORD_KEY,
+  EMAIL_KEY,
+  SERVER_URL,
+} from '../constants';
 
 export const AuthenticationContext = createContext();
 
@@ -12,6 +17,9 @@ const AuthenticationContextProvider = ({ children }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState(false);
+  const [authStatus, setAuthStatus] = useState(false);
+  const [isRegModalVisible, setIsRegModalVisible] = useState(false);
+  const [isAccountModalVisible, setIsAccountModalVisible] = useState(false);
 
   const handleClickReg = useCallback(async () => {
     if (usernameReg && passwordReg && emailReg) {
@@ -20,7 +28,7 @@ const AuthenticationContextProvider = ({ children }) => {
         password: passwordReg,
         email: emailReg,
       };
-      const response = await fetch(`http://localhost:8000/register`, {
+      const response = await fetch(SERVER_URL.register, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,6 +41,7 @@ const AuthenticationContextProvider = ({ children }) => {
       setPasswordReg('');
       setEmailReg('');
     } else {
+      setIsRegModalVisible(true);
       console.log({
         message: 'please enter a username, email, and password to register.',
       });
@@ -52,7 +61,7 @@ const AuthenticationContextProvider = ({ children }) => {
         username: username,
         password: password,
       };
-      const response = await fetch(`http://localhost:8000/login`, {
+      const response = await fetch(SERVER_URL.login, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,11 +77,24 @@ const AuthenticationContextProvider = ({ children }) => {
       setUsername('');
       setPassword('');
     } else {
+      setIsRegModalVisible(true);
       console.log({
         message: 'please enter your username and password to login.',
       });
     }
   }, [username, password, setUsername, setPassword]);
+
+  const checkAuth = useCallback(async () => {
+    const response = await fetch(SERVER_URL.authCheck, {
+      headers: {
+        'x-access-token': localStorage.getItem('token'),
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+    setAuthStatus(data);
+    return data;
+  }, [setAuthStatus, loginStatus]);
 
   return (
     <AuthenticationContext.Provider
@@ -105,6 +127,13 @@ const AuthenticationContextProvider = ({ children }) => {
         handleClickLogin,
         loginStatus,
         setLoginStatus,
+        authStatus,
+        setAuthStatus,
+        checkAuth,
+        isRegModalVisible,
+        setIsRegModalVisible,
+        isAccountModalVisible,
+        setIsAccountModalVisible,
       }}
     >
       {children}

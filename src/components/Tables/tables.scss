@@ -10,8 +10,17 @@
   border-radius: 0.5rem;
   background-color: var(--componentBackground);
   padding: 1rem;
+  max-width: 35rem;
+}
+
+.work-table {
+  overflow-x: scroll;
 }
 
 .ant-table-thead {
   font-size: 0.95rem;
+}
+
+.ant-dropdown-trigger {
+  color: #fff;
 }

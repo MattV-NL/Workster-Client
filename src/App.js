@@ -10,7 +10,6 @@ import ResetButton from './components/WorkInput/ResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
 import WeatherWarningModal from './components/Modals/WeatherWarningModal';
 import WorkWarningModal from './components/Modals/WorkWarningModal';
-import SortWorkTable from './components/SortTable/SortWorkTable';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import FetchButton from './components/WeatherInput/FetchButton';
 import WeatherTable from './components/Tables/WeatherTable';
@@ -20,6 +19,9 @@ import WeatherChart from './components/Charts/WeatherChart';
 import WorkChart from './components/Charts/WorkChart';
 import TitleNav from './components/Header/TitleNav';
 import AuthenticationContextProvider from './contexts/AuthenticationContext';
+import Account from '../src/components/Account/Account';
+import RegLoginModal from './components/Modals/RegLoginModal';
+import AccountPageModal from './components/Modals/AccountPageModal';
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
                     <Switch>
                       <Route exact path={['/', paths.HOME]}>
                         <Home />
+                        <RegLoginModal />
                       </Route>
                       <Route exact path={paths.WEATHER}>
                         <PositionInput />
@@ -47,12 +50,15 @@ function App() {
                       </Route>
                       <Route exact path={paths.WORK}>
                         <WorkForm />
-                        <SortWorkTable />
                         <WorkTable />
                         <WorkChart />
                         <ResetButton />
                         <WorkWarningModal />
                         <ResetWarningModal />
+                      </Route>
+                      <Route exact path={paths.ACCOUNT}>
+                        <Account />
+                        <AccountPageModal />
                       </Route>
                       <Route>
                         <NotFound />

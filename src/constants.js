@@ -6,6 +6,7 @@ export const DETAILS_KEY = 'details-input';
 export const LATITUDE_KEY = 'latitude-input';
 export const LONGITUDE_KEY = 'longitude-input';
 export const GEOLOCATION_KEY = 'geolocation-input';
+export const SAVE_LOCATION_KEY = 'save-location-input';
 export const USERNAME_KEY = 'username-input';
 export const PASSWORD_KEY = 'password-input';
 export const EMAIL_KEY = 'email-input';
@@ -70,6 +71,13 @@ export const positionFormInputs = new Map(
       title: 'Geolocation',
       label: 'Use Current Position',
       id: GEOLOCATION_KEY,
+      type: 'checkbox',
+      required: false,
+    },
+    {
+      title: 'SaveLocation',
+      label: 'Save Location',
+      id: SAVE_LOCATION_KEY,
       type: 'checkbox',
       required: false,
     },
@@ -152,7 +160,7 @@ export const weatherTableColumns = new Map(
   ].map((item) => [item.key, item])
 );
 
-export const workTableColoumns = new Map(
+export const workTableColumns = new Map(
   [
     {
       title: 'Date',
@@ -179,15 +187,26 @@ export const workTableColoumns = new Map(
       dataIndex: 'details',
       key: 'details',
     },
+    {
+      title: 'Work Location',
+      dataIndex: 'workLocation',
+      key: 'workLocation',
+    },
   ].map((item) => [item.key, item])
 );
 
 export const paths = {
-  HOME: '/Work-Weather-Analyzer',
-  WEATHER: '/Work-Weather-Analyzer/weather',
-  WORK: '/Work-Weather-Analyzer/work',
+  HOME: '/',
+  WEATHER: '/weather',
+  WORK: '/work',
+  ACCOUNT: '/account',
 };
 
 export const SERVER_URL = {
+  authCheck: 'http://localhost:8000/auth_check',
+  saveLocation: 'http://localhost:8000/save_location',
+  login: 'http://localhost:8000/login',
+  register: 'http://localhost:8000/register',
   weather: 'http://localhost:8000/api/weather/',
+  getLocations: 'http://localhost:8000/get_locations',
 };

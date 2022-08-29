@@ -18,6 +18,10 @@ const WorkInputContextProvider = ({ children }) => {
   const [isScaffolding, setIsScaffolding] = useState(false);
   const [workDetails, setWorkDetails] = useState('');
   const [isWorkModalVisible, setIsWorkModalVisible] = useState(false);
+  const [workLocation, setWorkLocation] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
 
   const workDataUpdate = useCallback(
     (e) => {
@@ -28,13 +32,18 @@ const WorkInputContextProvider = ({ children }) => {
           isOutside,
           isWelding,
           isScaffolding,
-          workDetails
+          workDetails,
+          workLocation
         );
         setDate('');
         setIsOutside(false);
         setIsWelding(false);
         setIsScaffolding(false);
         setWorkDetails('');
+        setWorkLocation({
+          latitude: 0,
+          longitude: 0,
+        });
       } else {
         setIsWorkModalVisible(true);
       }
@@ -47,6 +56,7 @@ const WorkInputContextProvider = ({ children }) => {
       workDetails,
       setIsWorkModalVisible,
       submitWorkValues,
+      workLocation,
     ]
   );
 
@@ -95,6 +105,8 @@ const WorkInputContextProvider = ({ children }) => {
         isWorkModalVisible,
         setIsWorkModalVisible,
         onChange,
+        setWorkLocation,
+        workLocation,
       }}
     >
       {children}

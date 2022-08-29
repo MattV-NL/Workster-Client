@@ -3,10 +3,13 @@ import WorkButton from './WorkButton';
 import InputComp from '../Inputs/Input';
 import { workFormInputs } from '../../constants';
 import { WorkInputContext } from '../../contexts/WorkInputContext';
+import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { useContext } from 'react';
+import WorkLocationsDropdown from './WorkLocationsDropdown';
 
 const WorkForm = () => {
   const { workData } = useContext(WorkInputContext);
+  const { authStatus } = useContext(AuthenticationContext);
 
   return (
     <div className='form-layout'>
@@ -25,6 +28,7 @@ const WorkForm = () => {
             </div>
           );
         })}
+        {authStatus.auth ? <WorkLocationsDropdown /> : ''}
       </form>
       <WorkButton />
     </div>
