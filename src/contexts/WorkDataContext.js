@@ -18,6 +18,10 @@ const createWorkValues = () =>
         isWelding: null,
         isScaffolding: null,
         workDetails: '',
+        workLocation: {
+          latitude: 0,
+          longitude: 0,
+        },
       }))
       .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
   );

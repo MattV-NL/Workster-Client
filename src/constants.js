@@ -160,7 +160,7 @@ export const weatherTableColumns = new Map(
   ].map((item) => [item.key, item])
 );
 
-export const workTableColoumns = new Map(
+export const workTableColumns = new Map(
   [
     {
       title: 'Date',
@@ -186,6 +186,11 @@ export const workTableColoumns = new Map(
       title: 'Work Details',
       dataIndex: 'details',
       key: 'details',
+    },
+    {
+      title: 'Work Location',
+      dataIndex: 'workLocation',
+      key: 'workLocation',
     },
   ].map((item) => [item.key, item])
 );

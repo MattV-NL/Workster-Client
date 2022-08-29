@@ -21,6 +21,7 @@ const Account = () => {
           body: JSON.stringify(userData),
         });
         const data = await response.json();
+        console.log(data);
         setLocations(data);
       } else {
         setIsAccountModalVisible(true);
@@ -35,12 +36,10 @@ const Account = () => {
       <div className='page'>
         <h2 className='page-header'>{authStatus.username}</h2>
         <div className='location-container'>
-          <div>Saved Locations</div>
-          {locations.map((item, index) => {
-            index++;
+          <div className='page-label'>Saved Locations</div>
+          {locations.map((item) => {
             return (
               <div key={item.latitude}>
-                <div className='page-label'>Location {index}</div>
                 <div>Latitude: {item.latitude}</div>
                 <div>Longitude: {item.longitude}</div>
               </div>

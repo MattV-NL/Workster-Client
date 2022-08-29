@@ -29,21 +29,21 @@ const WorkLocationsDropdown = () => {
     getLocations();
   }, [authStatus]);
 
-  const newWorkLocationsArray = Array.from(workLocations).map((item, index) => {
-    return {
-      key: index++,
-      label: (
-        <div
-          onClick={() => {
-            setWorkLocation({ coordinates: item });
-          }}
-        >
-          <div>Location {index++}</div>
-          Latitude: {item.latitude} Longitude: {item.longitude}
-        </div>
-      ),
-    };
-  });
+  const newWorkLocationsArray = Array.from(workLocations).map(
+    ({ latitude, longitude }) => {
+      return {
+        label: (
+          <div
+            onClick={() => {
+              setWorkLocation({ latitude, longitude });
+            }}
+          >
+            Latitude: {latitude} Longitude: {longitude}
+          </div>
+        ),
+      };
+    }
+  );
 
   const menu = <Menu items={newWorkLocationsArray} />;
 
