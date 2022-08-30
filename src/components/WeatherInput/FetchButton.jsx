@@ -1,22 +1,17 @@
 import { useContext, useCallback } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { PositionContext } from '../../contexts/PositionContext';
+import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import ButtonComp from '../Inputs/Button';
-import { SERVER_URL } from '../../constants';
 
 const FetchButton = () => {
   const { getLocation, sendLocation } = useContext(WeatherDataContext);
   const { saveLocation } = useContext(PositionContext);
+  const { authStatus } = useContext(AuthenticationContext);
 
   const handleClick = useCallback(async () => {
     if (saveLocation) {
-      const response = await fetch(SERVER_URL.authCheck, {
-        headers: {
-          'x-access-token': localStorage.getItem('token'),
-        },
-      });
-      const data = await response.json();
-      if (data.auth) {
+      if (authStatus) {
         sendLocation();
         getLocation();
       } else {
@@ -25,7 +20,7 @@ const FetchButton = () => {
     } else {
       getLocation();
     }
-  }, [getLocation, saveLocation, sendLocation]);
+  }, [getLocation, saveLocation, sendLocation, authStatus]);
 
   return (
     <div className='button-container'>

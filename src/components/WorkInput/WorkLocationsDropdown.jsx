@@ -7,7 +7,7 @@ import { WorkInputContext } from '../../contexts/WorkInputContext';
 
 const WorkLocationsDropdown = () => {
   const { authStatus } = useContext(AuthenticationContext);
-  const { setWorkLocation } = useContext(WorkInputContext);
+  const { workLocation, setWorkLocation } = useContext(WorkInputContext);
   const [workLocations, setWorkLocations] = useState([]);
   useEffect(() => {
     const getLocations = async () => {
@@ -30,12 +30,12 @@ const WorkLocationsDropdown = () => {
   }, [authStatus]);
 
   const newWorkLocationsArray = Array.from(workLocations).map(
-    ({ latitude, longitude }) => {
+    ({ latitude, longitude, location_id }) => {
       return {
         label: (
           <div
             onClick={() => {
-              setWorkLocation({ latitude, longitude });
+              setWorkLocation({ latitude, longitude, location_id });
             }}
           >
             Latitude: {latitude} Longitude: {longitude}
@@ -48,16 +48,23 @@ const WorkLocationsDropdown = () => {
   const menu = <Menu items={newWorkLocationsArray} />;
 
   return (
-    <div>
-      <Dropdown overlay={menu} trigger={['click']}>
-        <a onClick={(e) => e.preventDefault()}>
-          <Space>
-            Work Locations
-            <DownOutlined />
-          </Space>
-        </a>
-      </Dropdown>
-    </div>
+    <>
+      <div>
+        <Dropdown overlay={menu} trigger={['click']}>
+          <a onClick={(e) => e.preventDefault()}>
+            <Space>
+              Work Locations
+              <DownOutlined />
+            </Space>
+          </a>
+        </Dropdown>
+      </div>
+      <div>
+        {workLocation.location_id > 0
+          ? `Selected Location: Latitude: ${workLocation.latitude} Longitude: ${workLocation.longitude}`
+          : ''}
+      </div>
+    </>
   );
 };
 

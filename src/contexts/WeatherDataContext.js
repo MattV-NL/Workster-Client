@@ -109,7 +109,6 @@ const WeatherDataContextProvider = ({ children }) => {
       },
     });
     const data = await response.json();
-    // console.log(data);
 
     if (positionData[GEOLOCATION_KEY].value) {
       navigator.geolocation.getCurrentPosition(

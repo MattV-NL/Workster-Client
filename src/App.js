@@ -22,6 +22,7 @@ import AuthenticationContextProvider from './contexts/AuthenticationContext';
 import Account from '../src/components/Account/Account';
 import RegLoginModal from './components/Modals/RegLoginModal';
 import AccountPageModal from './components/Modals/AccountPageModal';
+import SaveWorkButton from './components/WorkInput/SaveWorkButton';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
                       <Route exact path={paths.WORK}>
                         <WorkForm />
                         <WorkTable />
+                        <SaveWorkButton />
                         <WorkChart />
                         <ResetButton />
                         <WorkWarningModal />

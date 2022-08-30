@@ -21,6 +21,7 @@ const WorkInputContextProvider = ({ children }) => {
   const [workLocation, setWorkLocation] = useState({
     latitude: 0,
     longitude: 0,
+    location_id: 0,
   });
 
   const workDataUpdate = useCallback(
@@ -43,6 +44,7 @@ const WorkInputContextProvider = ({ children }) => {
         setWorkLocation({
           latitude: 0,
           longitude: 0,
+          location_id: 0,
         });
       } else {
         setIsWorkModalVisible(true);

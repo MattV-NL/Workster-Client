@@ -209,4 +209,5 @@ export const SERVER_URL = {
   register: 'http://localhost:8000/register',
   weather: 'http://localhost:8000/api/weather/',
   getLocations: 'http://localhost:8000/get_locations',
+  saveWorkInformation: 'http://localhost:8000/save_work_information',
 };
