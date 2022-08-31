@@ -6,6 +6,8 @@ import { WorkInputContext } from '../../contexts/WorkInputContext';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { useContext } from 'react';
 import WorkLocationsDropdown from './WorkLocationsDropdown';
+import { DeleteOutlined } from '@ant-design/icons';
+import { Space } from 'antd';
 
 const WorkForm = () => {
   const { workData } = useContext(WorkInputContext);
@@ -31,6 +33,15 @@ const WorkForm = () => {
         {authStatus.auth ? <WorkLocationsDropdown /> : ''}
       </form>
       <WorkButton />
+      <div
+        className='delete-button-container'
+        onClick={() => {
+          console.log('clicked, will eventually clear table');
+        }}
+      >
+        Clear form <Space />
+        <DeleteOutlined className='delete-button' />
+      </div>
     </div>
   );
 };

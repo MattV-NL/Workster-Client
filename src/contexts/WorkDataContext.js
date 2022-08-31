@@ -5,8 +5,9 @@ export const WorkDataContext = createContext();
 const sortTable = (a, b) => a[0] - b[0];
 
 const WorkDataContextProvider = ({ children }) => {
-  const [workValues, setWorkValues] = useState();
+  const [workValues, setWorkValues] = useState(new Map());
   const [isWorkDetailsVisible, setIsWorkDetailsVisible] = useState(false);
+  const [saveWorkModalVisible, setSaveWorkModalVisible] = useState(false);
 
   const submitWorkValues = useCallback(
     (date, isOutside, isWelding, isScaffolding, workDetails, workLocation) => {
@@ -25,7 +26,7 @@ const WorkDataContextProvider = ({ children }) => {
     [workValues]
   );
   const clearWorkValues = useCallback(() => {
-    setWorkValues();
+    setWorkValues(new Map());
   }, []);
 
   return (
@@ -37,6 +38,8 @@ const WorkDataContextProvider = ({ children }) => {
         clearWorkValues,
         isWorkDetailsVisible,
         setIsWorkDetailsVisible,
+        saveWorkModalVisible,
+        setSaveWorkModalVisible,
       }}
     >
       {children}

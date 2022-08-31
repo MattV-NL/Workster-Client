@@ -1,5 +1,5 @@
 import './tables.scss';
-import { useContext, useCallback, useState, useMemo } from 'react';
+import { useContext, useCallback, useState } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import { workTableColumns } from '../../constants';
 import { Table } from 'antd';
@@ -18,15 +18,14 @@ const WorkTable = () => {
   const { authStatus } = useContext(AuthenticationContext);
   const { workValues, setIsWorkDetailsVisible } = useContext(WorkDataContext);
   const [workDetailsKey, setWorkDetailsKey] = useState('');
-  const workTableMap = useMemo(() => new Map(workValues), [workValues]);
-  const workValuesKeys = workTableMap.keys();
+  const workValuesKeys = workValues.keys();
 
   const workDetails = useCallback(
     (key) => {
       if (!key) {
         return;
       } else {
-        const workData = workTableMap.get(parseInt(key));
+        const workData = workValues.get(parseInt(key));
 
         return (
           <>
@@ -57,7 +56,7 @@ const WorkTable = () => {
     [workValues]
   );
 
-  const datasource = Array.from(workTableMap.values()).map((value) => {
+  const datasource = Array.from(workValues.values()).map((value) => {
     let detailsKey = workValuesKeys.next().value;
     let lat = value.workLocation.latitude;
     let lon = value.workLocation.longitude;

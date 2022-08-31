@@ -2,6 +2,9 @@ import { useContext, useState, useEffect } from 'react';
 import { SERVER_URL } from '../../constants';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import './account.scss';
+import { Table } from 'antd';
+import { locationsTableColumns } from '../../constants';
+let n = 1;
 
 const Account = () => {
   const { authStatus, setIsAccountModalVisible } = useContext(
@@ -21,7 +24,6 @@ const Account = () => {
           body: JSON.stringify(userData),
         });
         const data = await response.json();
-        console.log(data);
         setLocations(data);
       } else {
         setIsAccountModalVisible(true);
@@ -31,21 +33,15 @@ const Account = () => {
     getLocations();
   }, [authStatus, setLocations, setIsAccountModalVisible]);
 
+  const datasource = locations;
+  datasource.map((item) => (item.key = n++));
+
   return (
     <div className='page-layout'>
       <div className='page'>
         <h2 className='page-header'>{authStatus.username}</h2>
-        <div className='location-container'>
-          <div className='page-label'>Saved Locations</div>
-          {locations.map((item) => {
-            return (
-              <div key={item.latitude}>
-                <div>Latitude: {item.latitude}</div>
-                <div>Longitude: {item.longitude}</div>
-              </div>
-            );
-          })}
-        </div>
+        <div className='page-laebl'>Saved Locations</div>
+        <Table dataSource={datasource} columns={locationsTableColumns} />
       </div>
     </div>
   );

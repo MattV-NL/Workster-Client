@@ -195,6 +195,19 @@ export const workTableColumns = new Map(
   ].map((item) => [item.key, item])
 );
 
+export const locationsTableColumns = [
+  {
+    title: 'Latitude',
+    dataIndex: 'latitude',
+    key: 'latitude',
+  },
+  {
+    title: 'Longitude',
+    dataIndex: 'longitude',
+    key: 'longitude',
+  },
+];
+
 export const paths = {
   HOME: '/',
   WEATHER: '/weather',

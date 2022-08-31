@@ -23,6 +23,7 @@ import Account from '../src/components/Account/Account';
 import RegLoginModal from './components/Modals/RegLoginModal';
 import AccountPageModal from './components/Modals/AccountPageModal';
 import SaveWorkButton from './components/WorkInput/SaveWorkButton';
+import SaveWorkModal from './components/Modals/SaveWorkModal';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
                         <ResetButton />
                         <WorkWarningModal />
                         <ResetWarningModal />
+                        <SaveWorkModal />
                       </Route>
                       <Route exact path={paths.ACCOUNT}>
                         <Account />

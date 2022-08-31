@@ -5,10 +5,9 @@ import './charts.scss';
 
 const WorkChart = () => {
   const { workValues } = useContext(WorkDataContext);
-  const workChartValues = useMemo(() => new Map(workValues), [workValues]);
 
   const data = useMemo(() => {
-    const arrWork = [...workChartValues.values()];
+    const arrWork = [...workValues.values()];
 
     return [
       {
@@ -24,7 +23,7 @@ const WorkChart = () => {
         count: arrWork.filter(({ isScaffolding }) => isScaffolding).length,
       },
     ];
-  }, [workChartValues]);
+  }, [workValues]);
 
   const config = {
     data,
