@@ -6,6 +6,7 @@ import {
   EMAIL_KEY,
   SERVER_URL,
 } from '../constants';
+import { checkToken } from '../restAPI/auth';
 
 export const AuthenticationContext = createContext();
 
@@ -69,7 +70,6 @@ const AuthenticationContextProvider = ({ children }) => {
         body: JSON.stringify(loginData),
       });
       const data = await response.json();
-      console.log(data);
       localStorage.setItem('token', data.token);
       if (data.auth) {
         setLoginStatus(true);
@@ -85,15 +85,7 @@ const AuthenticationContextProvider = ({ children }) => {
   }, [username, password, setUsername, setPassword]);
 
   const checkAuth = useCallback(async () => {
-    const response = await fetch(SERVER_URL.authCheck, {
-      headers: {
-        'x-access-token': localStorage.getItem('token'),
-      },
-    });
-    const data = await response.json();
-    console.log(data);
-    setAuthStatus(data);
-    return data;
+    setAuthStatus(await checkToken(localStorage.getItem('token')));
   }, [setAuthStatus, loginStatus]);
 
   return (
