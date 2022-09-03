@@ -24,6 +24,7 @@ import RegLoginModal from './components/Modals/RegLoginModal';
 import AccountPageModal from './components/Modals/AccountPageModal';
 import SaveWorkButton from './components/WorkInput/SaveWorkButton';
 import SaveWorkModal from './components/Modals/SaveWorkModal';
+import SavedWork from './components/Account/SavedWork';
 
 function App() {
   return (
@@ -63,6 +64,9 @@ function App() {
                       <Route exact path={paths.ACCOUNT}>
                         <Account />
                         <AccountPageModal />
+                      </Route>
+                      <Route exact path={`${paths.SAVED_WORK}:location_id`}>
+                        <SavedWork />
                       </Route>
                       <Route>
                         <NotFound />

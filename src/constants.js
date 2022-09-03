@@ -198,13 +198,51 @@ export const workTableColumns = new Map(
 export const locationsTableColumns = [
   {
     title: 'Latitude',
-    dataIndex: 'latitude',
-    key: 'latitude',
+    dataIndex: 'latitudeLink',
+    key: 'latitudeLink',
   },
   {
     title: 'Longitude',
-    dataIndex: 'longitude',
-    key: 'longitude',
+    dataIndex: 'longitudeLink',
+    key: 'longitudeLink',
+  },
+];
+
+export const workInformationTableColumns = [
+  {
+    title: 'Date',
+    dataIndex: 'date',
+    key: 'date',
+  },
+  {
+    title: 'Outside',
+    dataIndex: 'isOutside',
+    key: 'isOutside',
+  },
+  {
+    title: 'Scaffolding',
+    dataIndex: 'isScaffolding',
+    key: 'isScaffolding',
+  },
+  {
+    title: 'Welding',
+    dataIndex: 'isWelding',
+    key: 'isWelding',
+  },
+  {
+    title: 'Work Details',
+    dataIndex: 'workDetails',
+    key: 'workDetails',
+  },
+  {
+    title: 'Date Saved',
+    dataIndex: 'createdAt',
+    key: 'createdAt',
+  },
+  {
+    title: '',
+    dataIndex: 'deleteRow',
+    key: 'deleteRow',
   },
 ];
 
@@ -213,6 +251,7 @@ export const paths = {
   WEATHER: '/weather',
   WORK: '/work',
   ACCOUNT: '/account',
+  SAVED_WORK: '/account/saved_location_',
 };
 
 export const SERVER_URL = {
@@ -223,4 +262,5 @@ export const SERVER_URL = {
   weather: 'http://localhost:8000/api/weather/',
   getLocations: 'http://localhost:8000/get_locations',
   saveWorkInformation: 'http://localhost:8000/save_work_information',
+  getWorkInformation: 'http://localhost:8000/get_work_information/',
 };

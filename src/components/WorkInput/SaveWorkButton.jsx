@@ -9,20 +9,14 @@ const SaveWorkButton = () => {
   const { workValues, setSaveWorkModalVisible } = useContext(WorkDataContext);
 
   const sendWorkInformation = useCallback(async (workValue) => {
-    const workValueJSON = {
-      date: workValue.date,
-      isOutside: workValue.isOutside,
-      isWelding: workValue.isWelding,
-      isScaffolding: workValue.isScaffolding,
-      workDetails: workValue.workDetails,
-      location_id: workValue.workLocation.location_id,
-    };
+    const newWorkValue = { ...workValue };
+    delete newWorkValue.details;
     const response = await fetch(SERVER_URL.saveWorkInformation, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(workValueJSON),
+      body: JSON.stringify(newWorkValue),
     });
     const serverMessage = await response.json();
     console.log(serverMessage);
