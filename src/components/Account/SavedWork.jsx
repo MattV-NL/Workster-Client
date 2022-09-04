@@ -1,15 +1,19 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { SERVER_URL, workInformationTableColumns } from '../../constants';
 import './account.scss';
 import { Table } from 'antd';
 import { displayBooleanInput } from '../../restAPI/displayBool';
 import { DateTime } from 'luxon';
 import { DeleteOutlined } from '@ant-design/icons';
+import DeleteWorkDataModal from '../Modals/DeleteWorkDataModal';
+import { WorkDataContext } from '../../contexts/WorkDataContext';
 
 const SavedWork = () => {
   const { location_id } = useParams();
   const [workInformation, setWorkInformation] = useState([]);
+  const { setDeleteWorkModalVisible, deleteWorkModalVisible } =
+    useContext(WorkDataContext);
 
   useEffect(() => {
     const getSavedWork = async () => {
@@ -18,7 +22,7 @@ const SavedWork = () => {
       setWorkInformation(await response.json());
     };
     getSavedWork();
-  }, [location_id]);
+  }, [location_id, deleteWorkModalVisible]);
 
   const workInfoMap = new Map(
     workInformation.map((item) => [item.information_id, item])
@@ -34,17 +38,19 @@ const SavedWork = () => {
       work_details,
       location_id,
       deleteIcon,
+      information_id,
     }) => {
       const newDate = DateTime.fromISO(date).toFormat('yyyy-MM-dd');
       const createdDate = DateTime.fromISO(created_at).toFormat('yyyy-MM-dd');
-      const deleteRow = (deleteIcon = (
-        <div
-          onClick={() => {
-            console.log('delete');
-          }}
-        >
-          <DeleteOutlined />
-        </div>
+      const deleteRowIcon = (deleteIcon = (
+        <>
+          <DeleteOutlined
+            onClick={() => {
+              setDeleteWorkModalVisible(true);
+            }}
+          />
+          <DeleteWorkDataModal children={information_id} />
+        </>
       ));
 
       return {
@@ -55,7 +61,7 @@ const SavedWork = () => {
         createdAt: createdDate,
         workDetails: work_details,
         location_id,
-        deleteRow,
+        deleteRowIcon,
       };
     }
   );

@@ -8,6 +8,7 @@ const WorkDataContextProvider = ({ children }) => {
   const [workValues, setWorkValues] = useState(new Map());
   const [isWorkDetailsVisible, setIsWorkDetailsVisible] = useState(false);
   const [saveWorkModalVisible, setSaveWorkModalVisible] = useState(false);
+  const [deleteWorkModalVisible, setDeleteWorkModalVisible] = useState(false);
 
   const submitWorkValues = useCallback(
     (date, isOutside, isWelding, isScaffolding, workDetails, workLocation) => {
@@ -40,6 +41,8 @@ const WorkDataContextProvider = ({ children }) => {
         setIsWorkDetailsVisible,
         saveWorkModalVisible,
         setSaveWorkModalVisible,
+        deleteWorkModalVisible,
+        setDeleteWorkModalVisible,
       }}
     >
       {children}

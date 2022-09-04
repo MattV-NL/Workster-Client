@@ -241,8 +241,8 @@ export const workInformationTableColumns = [
   },
   {
     title: '',
-    dataIndex: 'deleteRow',
-    key: 'deleteRow',
+    dataIndex: 'deleteRowIcon',
+    key: 'deleteRowIcon',
   },
 ];
 
@@ -263,4 +263,5 @@ export const SERVER_URL = {
   getLocations: 'http://localhost:8000/get_locations',
   saveWorkInformation: 'http://localhost:8000/save_work_information',
   getWorkInformation: 'http://localhost:8000/get_work_information/',
+  deleteWorkInformation: 'http://localhost:8000/delete_work_information',
 };
