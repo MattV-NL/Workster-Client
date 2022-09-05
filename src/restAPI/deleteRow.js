@@ -1,7 +1,4 @@
-export const deleteRow = async (apiURL, rowId) => {
-  const packagedInfo = {
-    rowId,
-  };
+export const deleteRow = async (apiURL, packagedInfo) => {
   const response = await fetch(apiURL, {
     method: 'POST',
     headers: {

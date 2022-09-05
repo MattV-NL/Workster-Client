@@ -13,9 +13,12 @@ const DeleteWorkDataModal = ({ children }) => {
   }, [setDeleteWorkModalVisible]);
 
   const handleOk = useCallback(async () => {
+    const packagedInfo = {
+      information_id: children,
+    };
     const response = await deleteRow(
       SERVER_URL.deleteWorkInformation,
-      children
+      packagedInfo
     );
     console.log(response);
     setDeleteWorkModalVisible(false);

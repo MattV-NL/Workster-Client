@@ -206,6 +206,11 @@ export const locationsTableColumns = [
     dataIndex: 'longitudeLink',
     key: 'longitudeLink',
   },
+  {
+    title: '',
+    dataIndex: 'deleteRowIcon',
+    key: 'deleteRowIcon',
+  },
 ];
 
 export const workInformationTableColumns = [
@@ -264,4 +269,5 @@ export const SERVER_URL = {
   saveWorkInformation: 'http://localhost:8000/save_work_information',
   getWorkInformation: 'http://localhost:8000/get_work_information/',
   deleteWorkInformation: 'http://localhost:8000/delete_work_information',
+  deleteLocation: 'http://localhost:8000/delete_location',
 };

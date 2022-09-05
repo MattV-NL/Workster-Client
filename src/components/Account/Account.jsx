@@ -3,12 +3,17 @@ import { paths, SERVER_URL, locationsTableColumns } from '../../constants';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import './account.scss';
 import { Table } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { PositionContext } from '../../contexts/PositionContext';
+import DeleteLocationModal from '../Modals/DeleteLocationModal';
 
 const Account = () => {
   const { authStatus, setIsAccountModalVisible } = useContext(
     AuthenticationContext
   );
+  const { deleteLocationModalVisible, setDeleteLocationModalVisible } =
+    useContext(PositionContext);
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
@@ -21,15 +26,19 @@ const Account = () => {
           },
           body: JSON.stringify(authStatus),
         });
-        const data = await response.json();
-        setLocations(data);
+        setLocations(await response.json());
       } else {
         setIsAccountModalVisible(true);
         console.log({ message: 'please login to get your saved locations' });
       }
     };
     getLocations();
-  }, [authStatus, setLocations, setIsAccountModalVisible]);
+  }, [
+    authStatus,
+    setLocations,
+    setIsAccountModalVisible,
+    deleteLocationModalVisible,
+  ]);
 
   const datasource = locations.map((location) => {
     const latitudeLink = (location.latitudeLink = (
@@ -42,13 +51,24 @@ const Account = () => {
         {location.longitude}
       </Link>
     ));
+    const deleteRowIcon = (location.deleteIcon = (
+      <>
+        <DeleteOutlined
+          onClick={() => {
+            setDeleteLocationModalVisible(true);
+          }}
+        />
+        <DeleteLocationModal children={location.location_id} />
+      </>
+    ));
     return {
       latitudeLink,
       longitudeLink,
+      deleteRowIcon,
     };
   });
 
-  datasource.map((item, index) => (item.key = index++));
+  datasource.map((item, index) => (item.key = index));
 
   return (
     <div className='page-layout'>

@@ -13,6 +13,8 @@ const PositionContextProvider = ({ children }) => {
   const [longitude, setLongitude] = useState('');
   const [geoLocate, setGeoLocate] = useState(false);
   const [saveLocation, setSaveLocation] = useState(false);
+  const [deleteLocationModalVisible, setDeleteLocationModalVisible] =
+    useState(false);
 
   const onChange = useCallback(
     ({ setterFunction, isBoolean = false }) =>
@@ -53,6 +55,8 @@ const PositionContextProvider = ({ children }) => {
             }),
           },
         },
+        deleteLocationModalVisible,
+        setDeleteLocationModalVisible,
       }}
     >
       {children}
