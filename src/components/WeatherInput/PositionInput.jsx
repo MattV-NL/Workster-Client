@@ -3,12 +3,16 @@ import { positionFormInputs } from '../../constants';
 import '../Inputs/inputs.scss';
 import { useContext } from 'react';
 import { PositionContext } from '../../contexts/PositionContext';
+import { AuthenticationContext } from '../../contexts/AuthenticationContext';
+import LocationDropdown from './LocationDropdown';
 
 const PositionInput = () => {
   const { positionData } = useContext(PositionContext);
+  const { authStatus } = useContext(AuthenticationContext);
   return (
     <div className='form-layout'>
       <form className='form'>
+        {authStatus.auth ? <LocationDropdown /> : ''}
         {[...positionFormInputs.values()].map(
           ({ label, id, type, required }) => {
             return (

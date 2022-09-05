@@ -3,12 +3,13 @@ import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { SERVER_URL } from '../../constants';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Space } from 'antd';
-import { WorkInputContext } from '../../contexts/WorkInputContext';
+import { PositionContext } from '../../contexts/PositionContext';
 
-const WorkLocationsDropdown = () => {
+const LocationDropdown = () => {
   const { authStatus } = useContext(AuthenticationContext);
-  const { workLocation, setWorkLocation } = useContext(WorkInputContext);
   const [workLocations, setWorkLocations] = useState([]);
+  const { setLatitude, setLongitude } = useContext(PositionContext);
+
   useEffect(() => {
     const getLocations = async () => {
       const userData = authStatus;
@@ -29,12 +30,13 @@ const WorkLocationsDropdown = () => {
   }, [authStatus]);
 
   const newWorkLocationsArray = Array.from(workLocations).map(
-    ({ latitude, longitude, location_id }) => {
+    ({ latitude, longitude }) => {
       return {
         label: (
           <div
             onClick={() => {
-              setWorkLocation({ latitude, longitude, location_id });
+              setLatitude(latitude);
+              setLongitude(longitude);
             }}
           >
             Latitude: {latitude} Longitude: {longitude}
@@ -47,24 +49,15 @@ const WorkLocationsDropdown = () => {
   const menu = <Menu items={newWorkLocationsArray} />;
 
   return (
-    <>
-      <div>
-        <Dropdown overlay={menu} trigger={['click']}>
-          <a onClick={(e) => e.preventDefault()}>
-            <Space>
-              Work Locations
-              <DownOutlined />
-            </Space>
-          </a>
-        </Dropdown>
-      </div>
-      <div>
-        {workLocation.location_id > 0
-          ? `Selected Location: Latitude: ${workLocation.latitude} Longitude: ${workLocation.longitude}`
-          : ''}
-      </div>
-    </>
+    <Dropdown overlay={menu} trigger={['click']}>
+      <a onClick={(e) => e.preventDefault()}>
+        <Space>
+          Saved Locations
+          <DownOutlined />
+        </Space>
+      </a>
+    </Dropdown>
   );
 };
 
-export default WorkLocationsDropdown;
+export default LocationDropdown;
