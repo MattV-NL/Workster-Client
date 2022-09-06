@@ -7,11 +7,14 @@ import {
   WORK_DATE_KEY,
 } from '../constants';
 import { WorkDataContext } from './WorkDataContext';
+import { onChange } from '../restAPI/onChange';
+import { AuthenticationContext } from './AuthenticationContext';
 
 export const WorkInputContext = createContext();
 
 const WorkInputContextProvider = ({ children }) => {
   const { submitWorkValues } = useContext(WorkDataContext);
+  const { authStatus } = useContext(AuthenticationContext);
   const [date, setDate] = useState('');
   const [isOutside, setIsOutside] = useState(false);
   const [isWelding, setIsWelding] = useState(false);
@@ -26,28 +29,48 @@ const WorkInputContextProvider = ({ children }) => {
 
   const workDataUpdate = useCallback(
     (e) => {
-      if (date && workDetails) {
-        e.preventDefault();
-        submitWorkValues(
-          date,
-          isOutside,
-          isWelding,
-          isScaffolding,
-          workDetails,
-          workLocation
-        );
-        setDate('');
-        setIsOutside(false);
-        setIsWelding(false);
-        setIsScaffolding(false);
-        setWorkDetails('');
-        setWorkLocation({
-          latitude: 0,
-          longitude: 0,
-          location_id: 0,
-        });
+      if (authStatus.auth) {
+        if (date && workDetails && workLocation.location_id > 0) {
+          e.preventDefault();
+          submitWorkValues(
+            date,
+            isOutside,
+            isWelding,
+            isScaffolding,
+            workDetails,
+            workLocation
+          );
+          setDate('');
+          setIsOutside(false);
+          setIsWelding(false);
+          setIsScaffolding(false);
+          setWorkDetails('');
+          setWorkLocation({
+            latitude: 0,
+            longitude: 0,
+            location_id: 0,
+          });
+        } else {
+          setIsWorkModalVisible(true);
+        }
       } else {
-        setIsWorkModalVisible(true);
+        if (date && workDetails) {
+          e.preventDefault();
+          submitWorkValues(
+            date,
+            isOutside,
+            isWelding,
+            isScaffolding,
+            workDetails
+          );
+          setDate('');
+          setIsOutside(false);
+          setIsWelding(false);
+          setIsScaffolding(false);
+          setWorkDetails('');
+        } else {
+          setIsWorkModalVisible(true);
+        }
       }
     },
     [
@@ -59,14 +82,8 @@ const WorkInputContextProvider = ({ children }) => {
       setIsWorkModalVisible,
       submitWorkValues,
       workLocation,
+      authStatus,
     ]
-  );
-
-  const onChange = useCallback(
-    ({ setterFunction, isBoolean = false }) =>
-      ({ target: { value } }) =>
-        setterFunction(isBoolean ? value !== true.toString() : value),
-    []
   );
 
   return (
@@ -106,7 +123,6 @@ const WorkInputContextProvider = ({ children }) => {
         workDataUpdate,
         isWorkModalVisible,
         setIsWorkModalVisible,
-        onChange,
         setWorkLocation,
         workLocation,
       }}

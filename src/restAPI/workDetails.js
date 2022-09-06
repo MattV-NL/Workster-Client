@@ -20,10 +20,6 @@ export const workDetails = (workValues, key) => {
             : 'No scaffolding needed for this job'}
         </div>
         <div>{workData.workDetails}</div>
-        {/* <div>
-          Latitude: {workData.workLocation.latitude} <br /> Longitude:
-          {workData.workLocation.longitude}
-        </div> */}
       </>
     );
   }

@@ -17,6 +17,7 @@ const WorkWarningModal = () => {
       onCancel={handleOkCancel}
     >
       Please enter at least a date and some details about the work to be done.
+      If you're logged in, please select a location as well.
     </Modal>
   );
 };

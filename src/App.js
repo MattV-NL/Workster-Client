@@ -28,11 +28,11 @@ import SavedWork from './components/Account/SavedWork';
 
 function App() {
   return (
-    <PositionContextProvider>
-      <WeatherDataContextProvider>
-        <WorkDataContextProvider>
-          <WorkInputContextProvider>
-            <AuthenticationContextProvider>
+    <AuthenticationContextProvider>
+      <PositionContextProvider>
+        <WeatherDataContextProvider>
+          <WorkDataContextProvider>
+            <WorkInputContextProvider>
               <Router>
                 <TitleNav />
                 <div className='layout-center'>
@@ -75,11 +75,11 @@ function App() {
                   </div>
                 </div>
               </Router>
-            </AuthenticationContextProvider>
-          </WorkInputContextProvider>
-        </WorkDataContextProvider>
-      </WeatherDataContextProvider>
-    </PositionContextProvider>
+            </WorkInputContextProvider>
+          </WorkDataContextProvider>
+        </WeatherDataContextProvider>
+      </PositionContextProvider>
+    </AuthenticationContextProvider>
   );
 }
 

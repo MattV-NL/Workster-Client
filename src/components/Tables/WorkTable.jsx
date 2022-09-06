@@ -16,8 +16,7 @@ const WorkTable = () => {
 
   const datasource = Array.from(workValues.values()).map((value, index) => {
     let detailsKey = workValuesKeys.next().value;
-    let lat = value.workLocation.latitude;
-    let lon = value.workLocation.longitude;
+    let lat, lon;
 
     const details = (value.details = (
       <div
@@ -30,6 +29,8 @@ const WorkTable = () => {
       </div>
     ));
     if (authStatus.auth) {
+      lat = value.workLocation.latitude;
+      lon = value.workLocation.longitude;
       return {
         date: value.date,
         isOutside: displayBooleanInput(value.isOutside),

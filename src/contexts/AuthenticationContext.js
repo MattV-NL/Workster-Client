@@ -1,5 +1,4 @@
-import { createContext, useContext, useCallback, useState } from 'react';
-import { WorkInputContext } from './WorkInputContext';
+import { createContext, useCallback, useState } from 'react';
 import {
   USERNAME_KEY,
   PASSWORD_KEY,
@@ -7,11 +6,11 @@ import {
   SERVER_URL,
 } from '../constants';
 import { checkToken } from '../restAPI/auth';
+import { onChange } from '../restAPI/onChange';
 
 export const AuthenticationContext = createContext();
 
 const AuthenticationContextProvider = ({ children }) => {
-  const { onChange } = useContext(WorkInputContext);
   const [usernameReg, setUsernameReg] = useState(null);
   const [passwordReg, setPasswordReg] = useState(null);
   const [emailReg, setEmailReg] = useState(null);
