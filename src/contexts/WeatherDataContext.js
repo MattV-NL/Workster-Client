@@ -7,39 +7,16 @@ import {
   SERVER_URL,
 } from '../constants';
 import { PositionContext } from './PositionContext';
+import { manualLocationInput } from '../restAPI/location';
+import {
+  createWeatherValues,
+  replaceDate,
+} from '../utilityFunc/WeatherDataInit';
+import { error, options } from '../utilityFunc/geolocation';
+import { AuthenticationContext } from './AuthenticationContext';
 
 export const WeatherDataContext = createContext();
 let lat, lon, weatherDataMap;
-
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0,
-};
-
-const error = (err) => {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-};
-
-const createDate = () => {
-  return new DateTime.utc();
-};
-
-const createWeatherValues = () =>
-  new Map(
-    Array(7)
-      .fill(createDate())
-      .map((date, days) => date.plus({ days }))
-      .map((date) => ({
-        date: date.toISODate(),
-        precip: 0,
-        wind: 0,
-      }))
-      .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
-  );
-
-const replaceDate = (time) =>
-  parseInt(new DateTime.fromMillis(time).toISODate().replace(/-/g, ''));
 
 const storeWeatherData = ({ daily }) => {
   weatherDataMap = new Map(
@@ -55,6 +32,7 @@ const WeatherDataContextProvider = ({ children }) => {
     setLongitude,
     setSaveLocation,
   } = useContext(PositionContext);
+  const { authStatus } = useContext(AuthenticationContext);
   const [weatherValues, setWeatherValues] = useState();
   const [weatherChartValues, setWeatherChartValues] =
     useState(createWeatherValues);
@@ -76,7 +54,6 @@ const WeatherDataContextProvider = ({ children }) => {
         };
       }
     );
-
     const nextWeatherMap = new Map(
       nextWeatherArray.map((data) => [
         parseInt(data.date.replace(/-/g, '')),
@@ -93,8 +70,7 @@ const WeatherDataContextProvider = ({ children }) => {
       lon = crd.longitude;
       const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
       const response = await fetch(apiUrl);
-      const data = await response.json();
-      storeWeatherData(data);
+      storeWeatherData(await response.json());
       setWeather();
       setGeoLocate(false);
       setSaveLocation(false);
@@ -103,13 +79,6 @@ const WeatherDataContextProvider = ({ children }) => {
   );
 
   const sendLocation = useCallback(async () => {
-    const response = await fetch(SERVER_URL.authCheck, {
-      headers: {
-        'x-access-token': localStorage.getItem('token'),
-      },
-    });
-    const data = await response.json();
-
     if (positionData[GEOLOCATION_KEY].value) {
       navigator.geolocation.getCurrentPosition(
         async (pos) => {
@@ -117,7 +86,7 @@ const WeatherDataContextProvider = ({ children }) => {
           lat = crd.latitude.toPrecision(6);
           lon = crd.longitude.toPrecision(6);
           const coordsJSON = {
-            user_id: data.user_id,
+            user_id: authStatus.user_id,
             lat,
             lon,
           };
@@ -139,7 +108,7 @@ const WeatherDataContextProvider = ({ children }) => {
       lon = parseFloat(positionData[LONGITUDE_KEY].value);
 
       const coordsJSON = {
-        user_id: data.user_id,
+        user_id: authStatus.user_id,
         lat,
         lon,
       };
@@ -153,7 +122,7 @@ const WeatherDataContextProvider = ({ children }) => {
       const sendData = sendResponse.json();
       console.log(sendData, 'manual input');
     }
-  }, [positionData]);
+  }, [positionData, authStatus.user_id]);
 
   const getLocation = useCallback(async () => {
     if (
@@ -163,16 +132,12 @@ const WeatherDataContextProvider = ({ children }) => {
       if (positionData[GEOLOCATION_KEY].value) {
         navigator.geolocation.getCurrentPosition(success, error, options);
       } else {
-        const crd = {
-          latitude: positionData[LATITUDE_KEY].value,
-          longitude: positionData[LONGITUDE_KEY].value,
-        };
-        lat = crd.latitude;
-        lon = crd.longitude;
-        const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        storeWeatherData(data);
+        storeWeatherData(
+          await manualLocationInput(
+            positionData[LATITUDE_KEY].value,
+            positionData[LONGITUDE_KEY].value
+          )
+        );
         setWeather();
         setLatitude('');
         setLongitude('');

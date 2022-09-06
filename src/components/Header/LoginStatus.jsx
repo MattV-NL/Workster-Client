@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Space } from 'antd';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
@@ -6,11 +6,7 @@ import { Link } from 'react-router-dom';
 import { paths } from '../../constants';
 
 const LoginStatus = () => {
-  const { authStatus, checkAuth } = useContext(AuthenticationContext);
-
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
+  const { authStatus } = useContext(AuthenticationContext);
 
   const menuItems = [
     {
