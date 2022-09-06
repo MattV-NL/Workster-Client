@@ -6,7 +6,6 @@ import { weatherTableColumns } from '../../constants';
 import WeatherDetailsModal from '../Modals/WeatherDetailsModal';
 import { DateTime } from 'luxon';
 
-let n = 1;
 const WeatherTable = () => {
   const { weatherValues, setIsWeatherDetailsVisible } =
     useContext(WeatherDataContext);
@@ -19,7 +18,7 @@ const WeatherTable = () => {
 
   const columns = Array.from(weatherTableColumns.values());
   const datasource = Array.from(weatherTableMap.values()).map(
-    ({ dt, pop, wind_speed }) => {
+    ({ dt, pop, wind_speed }, index) => {
       let detailsKey = weatherValuesKeys.next().value;
       let date = new Date(dt * 1000).toDateString();
       let precip = pop * 100;
@@ -41,11 +40,10 @@ const WeatherTable = () => {
         precip: precip.toFixed(2),
         windSpeed: windSpeed.toFixed(2),
         details,
+        key: index,
       };
     }
   );
-
-  datasource.map((item) => (item.key = n++));
 
   const weatherDetails = useCallback(
     (key) => {

@@ -1,45 +1,28 @@
-import { createContext, useContext, useCallback, useState } from 'react';
-import { WorkInputContext } from './WorkInputContext';
-import {
-  USERNAME_KEY,
-  PASSWORD_KEY,
-  EMAIL_KEY,
-  SERVER_URL,
-} from '../constants';
+import { createContext, useCallback, useState, useEffect } from 'react';
+import { USERNAME_KEY, PASSWORD_KEY, EMAIL_KEY } from '../constants';
+import { checkToken, attemptLogin, attemptReg } from '../restAPI/auth';
+import { onChange } from '../restAPI/onChange';
 
 export const AuthenticationContext = createContext();
 
 const AuthenticationContextProvider = ({ children }) => {
-  const { onChange } = useContext(WorkInputContext);
   const [usernameReg, setUsernameReg] = useState(null);
   const [passwordReg, setPasswordReg] = useState(null);
   const [emailReg, setEmailReg] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginStatus, setLoginStatus] = useState(false);
   const [authStatus, setAuthStatus] = useState(false);
   const [isRegModalVisible, setIsRegModalVisible] = useState(false);
   const [isAccountModalVisible, setIsAccountModalVisible] = useState(false);
 
   const handleClickReg = useCallback(async () => {
-    if (usernameReg && passwordReg && emailReg) {
-      const loginData = {
-        username: usernameReg,
-        password: passwordReg,
-        email: emailReg,
-      };
-      const response = await fetch(SERVER_URL.register, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
-      });
-      const data = await response.json();
-      console.log(data);
+    if (attemptReg(usernameReg, passwordReg, emailReg)) {
       setUsernameReg('');
       setPasswordReg('');
       setEmailReg('');
+      console.log({
+        message: 'registration successful',
+      });
     } else {
       setIsRegModalVisible(true);
       console.log({
@@ -56,24 +39,8 @@ const AuthenticationContextProvider = ({ children }) => {
   ]);
 
   const handleClickLogin = useCallback(async () => {
-    if (username && password) {
-      const loginData = {
-        username: username,
-        password: password,
-      };
-      const response = await fetch(SERVER_URL.login, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
-      });
-      const data = await response.json();
-      console.log(data);
-      localStorage.setItem('token', data.token);
-      if (data.auth) {
-        setLoginStatus(true);
-      }
+    if (attemptLogin(username, password)) {
+      setAuthStatus(await checkToken(localStorage.getItem('token')));
       setUsername('');
       setPassword('');
     } else {
@@ -82,19 +49,14 @@ const AuthenticationContextProvider = ({ children }) => {
         message: 'please enter your username and password to login.',
       });
     }
-  }, [username, password, setUsername, setPassword]);
+  }, [username, password, setUsername, setPassword, setAuthStatus]);
 
-  const checkAuth = useCallback(async () => {
-    const response = await fetch(SERVER_URL.authCheck, {
-      headers: {
-        'x-access-token': localStorage.getItem('token'),
-      },
-    });
-    const data = await response.json();
-    console.log(data);
-    setAuthStatus(data);
-    return data;
-  }, [setAuthStatus, loginStatus]);
+  useEffect(() => {
+    const checkAuth = async () => {
+      setAuthStatus(await checkToken(localStorage.getItem('token')));
+    };
+    checkAuth();
+  }, [authStatus]);
 
   return (
     <AuthenticationContext.Provider
@@ -125,11 +87,7 @@ const AuthenticationContextProvider = ({ children }) => {
         },
         handleClickReg,
         handleClickLogin,
-        loginStatus,
-        setLoginStatus,
         authStatus,
-        setAuthStatus,
-        checkAuth,
         isRegModalVisible,
         setIsRegModalVisible,
         isAccountModalVisible,

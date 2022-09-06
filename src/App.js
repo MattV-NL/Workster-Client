@@ -22,14 +22,17 @@ import AuthenticationContextProvider from './contexts/AuthenticationContext';
 import Account from '../src/components/Account/Account';
 import RegLoginModal from './components/Modals/RegLoginModal';
 import AccountPageModal from './components/Modals/AccountPageModal';
+import SaveWorkButton from './components/WorkInput/SaveWorkButton';
+import SaveWorkModal from './components/Modals/SaveWorkModal';
+import SavedWork from './components/Account/SavedWork';
 
 function App() {
   return (
-    <PositionContextProvider>
-      <WeatherDataContextProvider>
-        <WorkDataContextProvider>
-          <WorkInputContextProvider>
-            <AuthenticationContextProvider>
+    <AuthenticationContextProvider>
+      <PositionContextProvider>
+        <WeatherDataContextProvider>
+          <WorkDataContextProvider>
+            <WorkInputContextProvider>
               <Router>
                 <TitleNav />
                 <div className='layout-center'>
@@ -51,14 +54,19 @@ function App() {
                       <Route exact path={paths.WORK}>
                         <WorkForm />
                         <WorkTable />
+                        <SaveWorkButton />
                         <WorkChart />
                         <ResetButton />
                         <WorkWarningModal />
                         <ResetWarningModal />
+                        <SaveWorkModal />
                       </Route>
                       <Route exact path={paths.ACCOUNT}>
                         <Account />
                         <AccountPageModal />
+                      </Route>
+                      <Route exact path={`${paths.SAVED_WORK}:location_id`}>
+                        <SavedWork />
                       </Route>
                       <Route>
                         <NotFound />
@@ -67,11 +75,11 @@ function App() {
                   </div>
                 </div>
               </Router>
-            </AuthenticationContextProvider>
-          </WorkInputContextProvider>
-        </WorkDataContextProvider>
-      </WeatherDataContextProvider>
-    </PositionContextProvider>
+            </WorkInputContextProvider>
+          </WorkDataContextProvider>
+        </WeatherDataContextProvider>
+      </PositionContextProvider>
+    </AuthenticationContextProvider>
   );
 }
 

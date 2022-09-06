@@ -1,36 +1,14 @@
 import { createContext, useCallback, useState } from 'react';
-import { DateTime } from 'luxon';
 
 export const WorkDataContext = createContext();
 
 const sortTable = (a, b) => a[0] - b[0];
 
-const createFormDate = () => {
-  return new DateTime.utc();
-};
-
-const createWorkValues = () =>
-  new Map(
-    Array(7)
-      .fill(createFormDate())
-      .map((date, days) => date.plus({ days }))
-      .map((date) => ({
-        date: date.toISODate(),
-        isOutside: null,
-        isWelding: null,
-        isScaffolding: null,
-        workDetails: '',
-        workLocation: {
-          latitude: 0,
-          longitude: 0,
-        },
-      }))
-      .map((data) => [parseInt(data.date.replace(/-/g, '')), data])
-  );
-
 const WorkDataContextProvider = ({ children }) => {
-  const [workValues, setWorkValues] = useState(createWorkValues());
+  const [workValues, setWorkValues] = useState(new Map());
   const [isWorkDetailsVisible, setIsWorkDetailsVisible] = useState(false);
+  const [saveWorkModalVisible, setSaveWorkModalVisible] = useState(false);
+  const [deleteWorkModalVisible, setDeleteWorkModalVisible] = useState(false);
 
   const submitWorkValues = useCallback(
     (date, isOutside, isWelding, isScaffolding, workDetails, workLocation) => {
@@ -49,7 +27,7 @@ const WorkDataContextProvider = ({ children }) => {
     [workValues]
   );
   const clearWorkValues = useCallback(() => {
-    setWorkValues(createWorkValues());
+    setWorkValues(new Map());
   }, []);
 
   return (
@@ -61,6 +39,10 @@ const WorkDataContextProvider = ({ children }) => {
         clearWorkValues,
         isWorkDetailsVisible,
         setIsWorkDetailsVisible,
+        saveWorkModalVisible,
+        setSaveWorkModalVisible,
+        deleteWorkModalVisible,
+        setDeleteWorkModalVisible,
       }}
     >
       {children}

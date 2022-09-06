@@ -53,3 +53,13 @@
   justify-content: center;
   color: rgb(226, 59, 59);
 }
+
+.delete-button-container:hover {
+  cursor: pointer;
+}
+
+.delete-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+}

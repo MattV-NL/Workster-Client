@@ -5,14 +5,8 @@ import { workTableColumns } from '../../constants';
 import { Table } from 'antd';
 import WorkDetailsModal from '../Modals/WorkDetailsModal';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
-
-let n = 1;
-const displayBooleanInput = (checked) => {
-  if (typeof checked === 'boolean') {
-    return checked ? 'Yes' : 'No';
-  }
-  return false;
-};
+import { displayBooleanInput } from '../../restAPI/displayBool';
+import { workDetails } from '../../restAPI/workDetails';
 
 const WorkTable = () => {
   const { authStatus } = useContext(AuthenticationContext);
@@ -20,60 +14,23 @@ const WorkTable = () => {
   const [workDetailsKey, setWorkDetailsKey] = useState('');
   const workValuesKeys = workValues.keys();
 
-  const workDetails = useCallback(
-    (key) => {
-      if (!key) {
-        return 'no work details saved for this date';
-      } else {
-        const workData = workValues.get(parseInt(key));
-
-        return (
-          <>
-            <div>
-              {workData.isOutside
-                ? 'Work will be outside'
-                : 'Work will be inside'}
-            </div>
-            <div>
-              {workData.isWelding
-                ? 'This job requires welding'
-                : 'No welding needed for this job'}
-            </div>
-            <div>
-              {workData.isScaffolding
-                ? 'Scaffolding will be required for this job'
-                : 'No scaffolding needed for this job'}
-            </div>
-            <div>{workData.workDetails}</div>
-            <div>
-              Latitude: {workData.workLocation.latitude} <br /> Longitude:{' '}
-              {workData.workLocation.longitude}
-            </div>
-          </>
-        );
-      }
-    },
-    [workValues]
-  );
-
-  const datasource = Array.from(workValues.values()).map((value) => {
+  const datasource = Array.from(workValues.values()).map((value, index) => {
     let detailsKey = workValuesKeys.next().value;
-    let lat = value.workLocation.latitude;
-    let lon = value.workLocation.longitude;
+    let lat, lon;
 
-    let details = (value.details = (
-      <>
-        <div
-          onClick={() => {
-            setWorkDetailsKey(detailsKey);
-            setIsWorkDetailsVisible(true);
-          }}
-        >
-          More Details...
-        </div>
-      </>
+    const details = (value.details = (
+      <div
+        onClick={() => {
+          setWorkDetailsKey(detailsKey);
+          setIsWorkDetailsVisible(true);
+        }}
+      >
+        More Details...
+      </div>
     ));
     if (authStatus.auth) {
+      lat = value.workLocation.latitude;
+      lon = value.workLocation.longitude;
       return {
         date: value.date,
         isOutside: displayBooleanInput(value.isOutside),
@@ -81,6 +38,7 @@ const WorkTable = () => {
         isWelding: displayBooleanInput(value.isWelding),
         details,
         workLocation: `${lat}, ${lon}`,
+        key: index,
       };
     } else {
       return {
@@ -89,14 +47,13 @@ const WorkTable = () => {
         isScaffolding: displayBooleanInput(value.isScaffolding),
         isWelding: displayBooleanInput(value.isWelding),
         details,
+        key: index,
       };
     }
   });
 
-  datasource.map((item) => (item.key = n++));
-
   const dynamicColumns = useCallback(() => {
-    if (!!authStatus.auth) {
+    if (authStatus.auth) {
       const newWorkTableColumns = Array.from(workTableColumns.values());
       return newWorkTableColumns;
     } else {
@@ -112,7 +69,7 @@ const WorkTable = () => {
     <div className='table work-table'>
       <Table dataSource={datasource} columns={columns} />
       <WorkDetailsModal title={`Work Details`}>
-        {workDetails(workDetailsKey)}
+        {workDetails(workValues, workDetailsKey)}
       </WorkDetailsModal>
     </div>
   );
