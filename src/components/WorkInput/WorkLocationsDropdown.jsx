@@ -1,34 +1,20 @@
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
-import { SERVER_URL } from '../../constants';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Space } from 'antd';
 import { WorkInputContext } from '../../contexts/WorkInputContext';
+import { PositionContext } from '../../contexts/PositionContext';
+import { getLocations } from '../../restAPI/getAccountLocations';
 
 const WorkLocationsDropdown = () => {
   const { authStatus } = useContext(AuthenticationContext);
+  const { accountLocations, setAccountLocations } = useContext(PositionContext);
   const { workLocation, setWorkLocation } = useContext(WorkInputContext);
-  const [workLocations, setWorkLocations] = useState([]);
   useEffect(() => {
-    const getLocations = async () => {
-      const userData = authStatus;
-      if (await authStatus.auth) {
-        const response = await fetch(SERVER_URL.getLocations, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userData),
-        });
-        setWorkLocations(await response.json());
-      } else {
-        console.log({ message: 'please login to get your saved locations' });
-      }
-    };
-    getLocations();
-  }, [authStatus]);
+    getLocations(authStatus, setAccountLocations);
+  }, [authStatus, setAccountLocations]);
 
-  const newWorkLocationsArray = Array.from(workLocations).map(
+  const newWorkLocationsArray = Array.from(accountLocations).map(
     ({ latitude, longitude, location_id }) => {
       return {
         label: (

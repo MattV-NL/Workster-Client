@@ -1,4 +1,4 @@
-import { useContext, useMemo, useCallback, useState } from 'react';
+import { useContext, useCallback, useState } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import './tables.scss';
 import { Table } from 'antd';
@@ -9,15 +9,11 @@ import { DateTime } from 'luxon';
 const WeatherTable = () => {
   const { weatherValues, setIsWeatherDetailsVisible } =
     useContext(WeatherDataContext);
-  const weatherTableMap = useMemo(
-    () => new Map(weatherValues),
-    [weatherValues]
-  );
-  const weatherValuesKeys = weatherTableMap.keys();
+  const weatherValuesKeys = weatherValues.keys();
   const [weatherDetailsKey, setWeatherDetailsKey] = useState('');
 
   const columns = Array.from(weatherTableColumns.values());
-  const datasource = Array.from(weatherTableMap.values()).map(
+  const datasource = Array.from(weatherValues.values()).map(
     ({ dt, pop, wind_speed }, index) => {
       let detailsKey = weatherValuesKeys.next().value;
       let date = new Date(dt * 1000).toDateString();
@@ -50,7 +46,7 @@ const WeatherTable = () => {
       if (!key) {
         return 'no details yet, please enter location information to retrieve the weather details';
       } else {
-        const weatherData = weatherTableMap.get(parseInt(key));
+        const weatherData = weatherValues.get(parseInt(key));
         const getTime = (millis) =>
           new DateTime.fromMillis(millis * 1000).toLocaleString(
             DateTime.TIME_SIMPLE
@@ -73,7 +69,7 @@ const WeatherTable = () => {
         );
       }
     },
-    [weatherTableMap]
+    [weatherValues]
   );
 
   return (
