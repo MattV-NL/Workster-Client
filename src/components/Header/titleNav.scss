@@ -1,3 +1,11 @@
+.ant-menu-overflow {
+  background-color: unset;
+}
+
+.ant-menu-horizontal > .ant-menu-item a {
+  color: unset;
+}
+
 .header {
   display: grid;
   grid-template-rows: [first] fit-content [last] 2rem;
@@ -25,25 +33,20 @@
   }
 }
 
-.ant-menu-overflow {
-  background-color: var(--backgroundColor);
-}
-
-.ant-menu-horizontal > .ant-menu-item a {
+.dark-menu-container {
   color: #fff;
 }
 
-.logged-in {
-  color: green;
-  font-weight: bolder;
-}
-
-.not-logged-in {
-  color: rgb(226, 59, 59);
-  font-weight: bolder;
+.light-menu-container {
+  color: #000;
 }
 
 .top-navbar-menu {
   border-top: 1px solid #f0f0f0;
   border-bottom: none;
+}
+
+.logged-in {
+  color: green;
+  font-weight: bolder;
 }

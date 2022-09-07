@@ -11,8 +11,10 @@ import { getLocations } from '../../restAPI/getAccountLocations';
 import AccountSettingsLink from './AccountSettingsLink';
 import Logout from './Logout';
 import ButtonComp from '../Inputs/Button';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const Account = () => {
+  const { darkMode } = useContext(DarkModeContext);
   const { authStatus, setIsAccountModalVisible } = useContext(
     AuthenticationContext
   );
@@ -63,21 +65,29 @@ const Account = () => {
   datasource.map((item, index) => (item.key = index));
 
   return (
-    <div className='page-layout'>
+    <div className={darkMode ? 'dark-page-layout' : 'light-page-layout'}>
       <div className='page'>
         {authStatus.auth ? (
           <>
-            <div className='page-header'>{authStatus.username}</div>
+            <div
+              className={darkMode ? 'dark-page-header' : 'light-page-header'}
+            >
+              {authStatus.username}
+            </div>
             <div className='page-navbar'>
               <AccountSettingsLink />
               <Logout />
             </div>
-            <div className='page-label'>Saved Locations</div>
-            <Table
-              dataSource={datasource}
-              columns={locationsTableColumns}
-              className='locations-table'
-            />
+            <div className={darkMode ? 'dark-page-label' : 'light-page-label'}>
+              Saved Locations
+            </div>
+            <div
+              className={
+                darkMode ? 'dark-locations-table' : 'light-locations-table'
+              }
+            >
+              <Table dataSource={datasource} columns={locationsTableColumns} />
+            </div>
           </>
         ) : (
           <>

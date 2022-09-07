@@ -1,4 +1,12 @@
-.page-layout {
+.light-page-layout {
+  position: relative;
+  border: solid 0.125rem var(--darkBackground);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  min-width: 25rem;
+}
+
+.dark-page-layout {
   position: relative;
   border: solid 0.125rem #fff;
   border-radius: 0.5rem;
@@ -7,13 +15,22 @@
   min-width: 25rem;
 }
 
-.page-header {
+.light-page-header {
+  color: #000;
+  font-size: 1.25rem;
+}
+
+.dark-page-header {
   color: #fff;
   font-size: 1.25rem;
 }
 
-.page-label {
+.light-page-label {
   border-bottom: solid 0.0625rem #000;
+}
+
+.dark-page-label {
+  border-bottom: solid 0.0625rem #fff;
 }
 
 .location-container {
@@ -29,8 +46,32 @@
   padding-bottom: 1rem;
 }
 
-.locations-table a {
-  color: #fff;
+.dark-locations-table,
+.dark-table {
+  background-color: var(--componentBackground);
+
+  & a {
+    color: #fff;
+  }
+
+  & .ant-table-tbody,
+  .ant-table-thead > tr > th {
+    background-color: var(--componentBackground);
+    color: #fff;
+  }
+}
+
+.light-locations-table,
+.light-table {
+  & a {
+    color: #000;
+  }
+
+  & .ant-table-tbody,
+  .ant-table-thead > tr > th {
+    background-color: #fff;
+    color: #000;
+  }
 }
 
 .page-navbar {
@@ -39,7 +80,17 @@
   gap: 1rem;
 }
 
-.page-navbar-item {
+.dark-navbar-item {
   cursor: pointer;
   color: #fff;
+}
+
+.light-navbar-item {
+  cursor: pointer;
+  color: #000;
+}
+
+.account-setting {
+  display: flex;
+  gap: 1rem;
 }

@@ -8,8 +8,10 @@ import { DateTime } from 'luxon';
 import { DeleteOutlined } from '@ant-design/icons';
 import DeleteWorkDataModal from '../Modals/DeleteWorkDataModal';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const SavedWork = () => {
+  const { darkMode } = useContext(DarkModeContext);
   const { location_id } = useParams();
   const [workInformation, setWorkInformation] = useState([]);
   const { setDeleteWorkModalVisible, deleteWorkModalVisible } =
@@ -68,7 +70,7 @@ const SavedWork = () => {
   datasource.map((item, index) => (item.key = index));
 
   return (
-    <div className='page-layout'>
+    <div className={darkMode ? 'dark-table' : 'light-table'}>
       <Table dataSource={datasource} columns={workInformationTableColumns} />
     </div>
   );

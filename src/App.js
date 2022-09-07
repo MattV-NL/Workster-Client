@@ -1,3 +1,4 @@
+import './app.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { paths } from './constants';
 import WorkInputContextProvider from './contexts/WorkInputContext';
@@ -25,58 +26,64 @@ import SaveWorkButton from './components/WorkInput/SaveWorkButton';
 import SaveWorkModal from './components/Modals/SaveWorkModal';
 import SavedWork from './components/Account/SavedWork';
 import AccountSettings from './components/Account/AccountSettings';
+import { DarkModeContext } from './contexts/DarkModeContext';
+import { useContext } from 'react';
 
 function App() {
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
     <AuthenticationContextProvider>
       <PositionContextProvider>
         <WeatherDataContextProvider>
           <WorkDataContextProvider>
             <WorkInputContextProvider>
-              <Router>
-                <TitleNav />
-                <div className='layout-center'>
-                  <div className='layout'>
-                    <Switch>
-                      <Route exact path={['/', paths.HOME]}>
-                        <Home />
-                        <RegLoginModal />
-                      </Route>
-                      <Route exact path={paths.WEATHER}>
-                        <PositionInput />
-                        <FetchButton />
-                        <WeatherTable />
-                        <WeatherChart />
-                        <ResetButton />
-                        <WeatherWarningModal />
-                        <ResetWarningModal />
-                      </Route>
-                      <Route exact path={paths.WORK}>
-                        <WorkForm />
-                        <WorkTable />
-                        <SaveWorkButton />
-                        <WorkChart />
-                        <ResetButton />
-                        <WorkWarningModal />
-                        <ResetWarningModal />
-                        <SaveWorkModal />
-                      </Route>
-                      <Route exact path={paths.ACCOUNT}>
-                        <Account />
-                      </Route>
-                      <Route exact path={`${paths.SAVED_WORK}:location_id`}>
-                        <SavedWork />
-                      </Route>
-                      <Route exact path={paths.SETTINGS}>
-                        <AccountSettings />
-                      </Route>
-                      <Route>
-                        <NotFound />
-                      </Route>
-                    </Switch>
+              <div className={darkMode ? 'dark-body' : 'light-body'}>
+                <Router>
+                  <TitleNav />
+                  <div className='layout-center'>
+                    <div className='layout'>
+                      <Switch>
+                        <Route exact path={['/', paths.HOME]}>
+                          <Home />
+                          <RegLoginModal />
+                        </Route>
+                        <Route exact path={paths.WEATHER}>
+                          <PositionInput />
+                          <FetchButton />
+                          <WeatherTable />
+                          <WeatherChart />
+                          <ResetButton />
+                          <WeatherWarningModal />
+                          <ResetWarningModal />
+                        </Route>
+                        <Route exact path={paths.WORK}>
+                          <WorkForm />
+                          <WorkTable />
+                          <SaveWorkButton />
+                          <WorkChart />
+                          <ResetButton />
+                          <WorkWarningModal />
+                          <ResetWarningModal />
+                          <SaveWorkModal />
+                        </Route>
+                        <Route exact path={paths.ACCOUNT}>
+                          <Account />
+                        </Route>
+                        <Route exact path={`${paths.SAVED_WORK}:location_id`}>
+                          <SavedWork />
+                        </Route>
+                        <Route exact path={paths.SETTINGS}>
+                          <AccountSettings />
+                        </Route>
+                        <Route>
+                          <NotFound />
+                        </Route>
+                      </Switch>
+                    </div>
                   </div>
-                </div>
-              </Router>
+                </Router>
+              </div>
             </WorkInputContextProvider>
           </WorkDataContextProvider>
         </WeatherDataContextProvider>

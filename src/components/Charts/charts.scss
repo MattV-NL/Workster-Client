@@ -1,12 +1,25 @@
-.chart {
+.light-chart {
   position: relative;
-  border: solid 0.125rem #fff;
+  border: solid 0.125rem var(--darkBackground);
   border-radius: 0.5rem;
-  background-color: var(--componentBackground);
   padding: 1rem;
 }
 
-.chart-title {
+.light-chart-title {
+  display: flex;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.dark-chart {
+  position: relative;
+  border: solid 0.125rem #fff;
+  background-color: var(--componentBackground);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.dark-chart-title {
   display: flex;
   justify-content: center;
   font-size: 1.1rem;
@@ -19,7 +32,8 @@
 }
 
 .chart-axis {
-  padding-top: 2.5rem;
+  padding-top: 2.25rem;
+  margin-left: -1rem;
 }
 
 .chart-axis-label {

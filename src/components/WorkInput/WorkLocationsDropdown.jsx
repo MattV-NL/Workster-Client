@@ -5,11 +5,13 @@ import { Dropdown, Menu, Space } from 'antd';
 import { WorkInputContext } from '../../contexts/WorkInputContext';
 import { PositionContext } from '../../contexts/PositionContext';
 import { getLocations } from '../../restAPI/getAccountLocations';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const WorkLocationsDropdown = () => {
   const { authStatus } = useContext(AuthenticationContext);
   const { accountLocations, setAccountLocations } = useContext(PositionContext);
   const { workLocation, setWorkLocation } = useContext(WorkInputContext);
+  const { darkMode } = useContext(DarkModeContext);
   useEffect(() => {
     getLocations(authStatus, setAccountLocations);
   }, [authStatus, setAccountLocations]);
@@ -34,7 +36,7 @@ const WorkLocationsDropdown = () => {
 
   return (
     <>
-      <div>
+      <div className={darkMode ? 'dark-dropdown' : 'light-dropdown'}>
         <Dropdown overlay={menu} trigger={['click']}>
           <a onClick={(e) => e.preventDefault()}>
             <Space>

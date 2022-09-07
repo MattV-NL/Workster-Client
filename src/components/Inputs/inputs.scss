@@ -8,11 +8,18 @@
   border-color: #fff;
 }
 
-.form-layout {
+.dark-form-layout {
   position: relative;
   border: solid 0.125rem #fff;
   border-radius: 0.5rem;
   background-color: var(--componentBackground);
+  padding: 1rem;
+}
+
+.light-form-layout {
+  position: relative;
+  border: solid 0.125rem var(--buttonColor);
+  border-radius: 0.5rem;
   padding: 1rem;
 }
 
@@ -29,17 +36,33 @@
   gap: 1rem;
 }
 
-.form-label {
+.dark-form-label {
+  border-bottom: solid 0.0625rem #000;
+}
+.light-form-label {
   border-bottom: solid 0.0625rem #000;
 }
 
-.checkbox-label {
+.dark-checkbox-label {
   color: #000;
 }
 
-.form-header {
+.light-checkbox-label {
+  color: #fff;
+}
+
+.dark-form-header {
   color: #fff;
   font-size: 1rem;
+}
+
+.light-form-header {
+  color: #000;
+  font-size: 1rem;
+}
+
+.light-dropdown a {
+  color: #000;
 }
 
 .auth-valid {

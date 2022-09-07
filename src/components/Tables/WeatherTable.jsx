@@ -5,8 +5,10 @@ import { Table } from 'antd';
 import { weatherTableColumns } from '../../constants';
 import WeatherDetailsModal from '../Modals/WeatherDetailsModal';
 import { DateTime } from 'luxon';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const WeatherTable = () => {
+  const { darkMode } = useContext(DarkModeContext);
   const { weatherValues, setIsWeatherDetailsVisible } =
     useContext(WeatherDataContext);
   const weatherValuesKeys = weatherValues.keys();
@@ -73,7 +75,7 @@ const WeatherTable = () => {
   );
 
   return (
-    <div className='table'>
+    <div className={darkMode ? 'dark-weather-table' : 'light-weather-table'}>
       <Table dataSource={datasource} columns={columns} />
       <WeatherDetailsModal title={`Weather Details`}>
         {weatherDetails(weatherDetailsKey)}
