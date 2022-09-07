@@ -1,28 +1,19 @@
 import { createContext, useCallback, useState, useContext } from 'react';
 import { DateTime } from 'luxon';
-import {
-  GEOLOCATION_KEY,
-  LATITUDE_KEY,
-  LONGITUDE_KEY,
-  SERVER_URL,
-} from '../constants';
+import { GEOLOCATION_KEY, LATITUDE_KEY, LONGITUDE_KEY } from '../constants';
 import { PositionContext } from './PositionContext';
-import { manualLocationInput } from '../restAPI/location';
+import { createWeatherValues, replaceDate } from '../restAPI/WeatherDataInit';
 import {
-  createWeatherValues,
-  replaceDate,
-} from '../utilityFunc/WeatherDataInit';
-import { error, options } from '../utilityFunc/geolocation';
+  error,
+  options,
+  getCoordinates,
+  sendCoordinatesGeolocate,
+  sendCoordinatesManual,
+  manualLocationInput,
+} from '../restAPI/handleLocation';
 import { AuthenticationContext } from './AuthenticationContext';
 
 export const WeatherDataContext = createContext();
-let lat, lon, weatherDataMap;
-
-const storeWeatherData = ({ daily }) => {
-  weatherDataMap = new Map(
-    daily.map((day) => [replaceDate(day.dt * 1000), day])
-  );
-};
 
 const WeatherDataContextProvider = ({ children }) => {
   const {
@@ -33,16 +24,24 @@ const WeatherDataContextProvider = ({ children }) => {
     setSaveLocation,
   } = useContext(PositionContext);
   const { authStatus } = useContext(AuthenticationContext);
-  const [weatherValues, setWeatherValues] = useState();
+  const [weatherValues, setWeatherValues] = useState(new Map());
   const [weatherChartValues, setWeatherChartValues] =
     useState(createWeatherValues);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isWeatherModalVisible, setIsWeatherModalVisible] = useState(false);
   const [isWeatherDetailsVisible, setIsWeatherDetailsVisible] = useState(false);
 
-  const setWeather = useCallback(() => {
-    setWeatherValues(weatherDataMap);
-    const nextWeatherArray = Array.from(weatherDataMap.values()).map(
+  const storeWeatherData = useCallback(
+    ({ daily }) => {
+      setWeatherValues(
+        new Map(daily.map((day) => [replaceDate(day.dt * 1000), day]))
+      );
+    },
+    [setWeatherValues]
+  );
+
+  const setupWeatherTable = useCallback(() => {
+    const nextWeatherArray = Array.from(weatherValues.values()).map(
       ({ dt, pop, wind_speed }) => {
         let date = new DateTime.fromMillis(dt * 1000).toISODate();
         let precip = pop * 100;
@@ -61,66 +60,33 @@ const WeatherDataContextProvider = ({ children }) => {
       ])
     );
     setWeatherChartValues(nextWeatherMap);
-  }, [setWeatherValues, setWeatherChartValues]);
+  }, [weatherValues, setWeatherChartValues]);
 
   const success = useCallback(
     async (pos) => {
-      const crd = pos.coords;
-      lat = crd.latitude;
-      lon = crd.longitude;
-      const apiUrl = `${SERVER_URL.weather}${lat},${lon}`;
-      const response = await fetch(apiUrl);
-      storeWeatherData(await response.json());
-      setWeather();
+      storeWeatherData(await getCoordinates(pos));
+      setupWeatherTable();
       setGeoLocate(false);
       setSaveLocation(false);
     },
-    [setWeather, setGeoLocate, setSaveLocation]
+    [setupWeatherTable, setGeoLocate, setSaveLocation, storeWeatherData]
   );
 
   const sendLocation = useCallback(async () => {
     if (positionData[GEOLOCATION_KEY].value) {
       navigator.geolocation.getCurrentPosition(
         async (pos) => {
-          const crd = pos.coords;
-          lat = crd.latitude.toPrecision(6);
-          lon = crd.longitude.toPrecision(6);
-          const coordsJSON = {
-            user_id: authStatus.user_id,
-            lat,
-            lon,
-          };
-          const sendResponse = await fetch(SERVER_URL.saveLocation, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(coordsJSON),
-          });
-          const sendData = sendResponse.json();
-          console.log(sendData, 'geolocate');
+          sendCoordinatesGeolocate(pos, authStatus.user_id);
         },
         error,
         options
       );
     } else {
-      lat = parseFloat(positionData[LATITUDE_KEY].value);
-      lon = parseFloat(positionData[LONGITUDE_KEY].value);
-
-      const coordsJSON = {
-        user_id: authStatus.user_id,
-        lat,
-        lon,
-      };
-      const sendResponse = await fetch(SERVER_URL.saveLocation, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(coordsJSON),
-      });
-      const sendData = sendResponse.json();
-      console.log(sendData, 'manual input');
+      sendCoordinatesManual(
+        positionData[LATITUDE_KEY].value,
+        positionData[LONGITUDE_KEY].value,
+        authStatus.user_id
+      );
     }
   }, [positionData, authStatus.user_id]);
 
@@ -138,7 +104,7 @@ const WeatherDataContextProvider = ({ children }) => {
             positionData[LONGITUDE_KEY].value
           )
         );
-        setWeather();
+        setupWeatherTable();
         setLatitude('');
         setLongitude('');
         setSaveLocation(false);
@@ -148,12 +114,13 @@ const WeatherDataContextProvider = ({ children }) => {
     }
   }, [
     positionData,
-    setWeather,
+    setupWeatherTable,
     success,
     setLatitude,
     setLongitude,
     setIsWeatherModalVisible,
     setSaveLocation,
+    storeWeatherData,
   ]);
 
   const clearWeatherValues = useCallback(() => {
@@ -167,7 +134,6 @@ const WeatherDataContextProvider = ({ children }) => {
   return (
     <WeatherDataContext.Provider
       value={{
-        weatherDataMap,
         sendLocation,
         getLocation,
         weatherValues,

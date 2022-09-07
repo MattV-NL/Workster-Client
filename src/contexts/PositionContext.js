@@ -15,6 +15,7 @@ const PositionContextProvider = ({ children }) => {
   const [saveLocation, setSaveLocation] = useState(false);
   const [deleteLocationModalVisible, setDeleteLocationModalVisible] =
     useState(false);
+  const [accountLocations, setAccountLocations] = useState([]);
 
   const onChange = useCallback(
     ({ setterFunction, isBoolean = false }) =>
@@ -57,6 +58,8 @@ const PositionContextProvider = ({ children }) => {
         },
         deleteLocationModalVisible,
         setDeleteLocationModalVisible,
+        accountLocations,
+        setAccountLocations,
       }}
     >
       {children}

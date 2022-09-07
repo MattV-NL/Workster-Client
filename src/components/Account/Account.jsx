@@ -1,5 +1,5 @@
-import { useContext, useState, useEffect } from 'react';
-import { paths, SERVER_URL, locationsTableColumns } from '../../constants';
+import { useContext, useEffect } from 'react';
+import { paths, locationsTableColumns } from '../../constants';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import './account.scss';
 import { Table } from 'antd';
@@ -7,40 +7,29 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { PositionContext } from '../../contexts/PositionContext';
 import DeleteLocationModal from '../Modals/DeleteLocationModal';
+import { getLocations } from '../../restAPI/getAccountLocations';
 
 const Account = () => {
   const { authStatus, setIsAccountModalVisible } = useContext(
     AuthenticationContext
   );
-  const { deleteLocationModalVisible, setDeleteLocationModalVisible } =
-    useContext(PositionContext);
-  const [locations, setLocations] = useState([]);
+  const {
+    deleteLocationModalVisible,
+    setDeleteLocationModalVisible,
+    accountLocations,
+    setAccountLocations,
+  } = useContext(PositionContext);
 
   useEffect(() => {
-    const getLocations = async () => {
-      if (await authStatus.auth) {
-        const response = await fetch(SERVER_URL.getLocations, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(authStatus),
-        });
-        setLocations(await response.json());
-      } else {
-        setIsAccountModalVisible(true);
-        console.log({ message: 'please login to get your saved locations' });
-      }
-    };
-    getLocations();
+    getLocations(authStatus, setAccountLocations, setIsAccountModalVisible);
   }, [
     authStatus,
-    setLocations,
+    setAccountLocations,
     setIsAccountModalVisible,
     deleteLocationModalVisible,
   ]);
 
-  const datasource = locations.map((location) => {
+  const datasource = accountLocations.map((location) => {
     const latitudeLink = (location.latitudeLink = (
       <Link to={`${paths.SAVED_WORK}${location.location_id}`}>
         {location.latitude}
