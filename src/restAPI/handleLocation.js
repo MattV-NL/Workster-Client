@@ -66,5 +66,5 @@ export const manualLocationInput = async (latitude, longitude) => {
   };
   const apiURL = `${SERVER_URL.weather}${crd.latitude},${crd.longitude}`;
   const response = await fetch(apiURL);
-  return await response.json();
+  return response.json();
 };

@@ -6,7 +6,7 @@ export const checkToken = async (token) => {
       'x-access-token': token,
     },
   });
-  return await response.json();
+  return response.json();
 };
 
 export const attemptLogin = async (username, password) => {
