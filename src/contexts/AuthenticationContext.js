@@ -56,7 +56,8 @@ const AuthenticationContextProvider = ({ children }) => {
       setAuthStatus(await checkToken(localStorage.getItem('token')));
     };
     checkAuth();
-  }, [authStatus]);
+    console.log('ran');
+  }, [setAuthStatus]);
 
   return (
     <AuthenticationContext.Provider

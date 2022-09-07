@@ -257,6 +257,7 @@ export const paths = {
   WORK: '/work',
   ACCOUNT: '/account',
   SAVED_WORK: '/account/saved_location_',
+  SETTINGS: '/account/settings',
 };
 
 export const SERVER_URL = {

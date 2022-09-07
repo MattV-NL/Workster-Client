@@ -32,3 +32,14 @@
 .locations-table a {
   color: #fff;
 }
+
+.page-navbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.page-navbar-item {
+  cursor: pointer;
+  color: #fff;
+}

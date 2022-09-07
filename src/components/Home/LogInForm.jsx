@@ -4,6 +4,7 @@ import '../Inputs/inputs.scss';
 import { useContext } from 'react';
 import ButtonComp from '../Inputs/Button';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
+import { FormOutlined, LoginOutlined } from '@ant-design/icons';
 
 const LogInForm = () => {
   const { handleClickReg, handleClickLogin, logInData, regData } = useContext(
@@ -30,7 +31,8 @@ const LogInForm = () => {
           );
         })}
         <ButtonComp type='primary' onClick={handleClickReg}>
-          Register
+          <FormOutlined />
+          {'   '}Register
         </ButtonComp>
         <div className='form-header'>Log In Here</div>
         {[...loginFormInputs.values()].map(({ label, id, type, required }) => {
@@ -49,7 +51,8 @@ const LogInForm = () => {
           );
         })}
         <ButtonComp type='primary' onClick={handleClickLogin}>
-          Log In
+          <LoginOutlined />
+          {'   '}Log In
         </ButtonComp>
       </div>
     </div>
