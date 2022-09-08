@@ -11,7 +11,7 @@ const FetchButton = () => {
 
   const handleClick = useCallback(async () => {
     if (saveLocation) {
-      if (authStatus) {
+      if (await authStatus.auth) {
         sendLocation();
         getLocation();
       } else {
