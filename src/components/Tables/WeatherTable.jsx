@@ -6,9 +6,11 @@ import { weatherTableColumns } from '../../constants';
 import WeatherDetailsModal from '../Modals/WeatherDetailsModal';
 import { DateTime } from 'luxon';
 import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UnitsContext } from '../../contexts/UnitsContext';
 
 const WeatherTable = () => {
   const { darkMode } = useContext(DarkModeContext);
+  const { units } = useContext(UnitsContext);
   const { weatherValues, setIsWeatherDetailsVisible } =
     useContext(WeatherDataContext);
   const weatherValuesKeys = weatherValues.keys();
@@ -17,11 +19,14 @@ const WeatherTable = () => {
   const columns = Array.from(weatherTableColumns.values());
   const datasource = Array.from(weatherValues.values()).map(
     ({ dt, pop, wind_speed }, index) => {
-      let detailsKey = weatherValuesKeys.next().value;
-      let date = new Date(dt * 1000).toDateString();
-      let precip = pop * 100;
-      let windSpeed = wind_speed * 3.6;
-      let details = (
+      const detailsKey = weatherValuesKeys.next().value;
+      const date = new Date(dt * 1000).toDateString();
+      const precip = pop * 100;
+      let windSpeed = wind_speed;
+      if (units === 'metric' || units === 'standard') {
+        windSpeed = wind_speed * 3.6;
+      }
+      const details = (
         <>
           <div
             onClick={() => {
@@ -44,7 +49,7 @@ const WeatherTable = () => {
   );
 
   const weatherDetails = useCallback(
-    (key) => {
+    (key, units) => {
       if (!key) {
         return 'no details yet, please enter location information to retrieve the weather details';
       } else {
@@ -53,20 +58,37 @@ const WeatherTable = () => {
           new DateTime.fromMillis(millis * 1000).toLocaleString(
             DateTime.TIME_SIMPLE
           );
-        const getWindSpeed = (wind) => parseFloat((wind * 3.6).toFixed(2));
-
+        const getWindSpeed = (wind) => {
+          if (units === 'metric' || units === 'standard') {
+            return `${parseFloat((wind * 3.6).toFixed(2))}km/hr`;
+          } else {
+            return `${parseFloat(wind.toFixed(2))}mi/hr`;
+          }
+        };
+        const getTemp = (temp) => {
+          if (units === 'metric') {
+            return `${temp}\u00b0C`;
+          } else if (units === 'standard') {
+            return `${temp}K`;
+          } else {
+            return `${temp}\u00b0F`;
+          }
+        };
         return (
           <ul>
             <li>Sunrise: {getTime(weatherData.sunrise)}</li>
             <li>Sunset: {getTime(weatherData.sunset)}</li>
             <li>Humidity: {weatherData.humidity}%</li>
-            <li>Dewpoint: {weatherData.dew_point}&#176;C</li>
-            <li>Morning Temperature: {weatherData.feels_like.morn}&#176;C</li>
-            <li>Day Temperature: {weatherData.feels_like.day}&#176;C</li>
-            <li>Evening Temperature: {weatherData.feels_like.eve}&#176;C</li>
-            <li>Night Temperature: {weatherData.feels_like.night}&#176;C</li>
+            <li>Dewpoint: {getTemp(weatherData.dew_point)}</li>
+            <li>Morning Temperature: {getTemp(weatherData.feels_like.morn)}</li>
+            <li>Day Temperature: {getTemp(weatherData.feels_like.day)}</li>
+            <li>Evening Temperature: {getTemp(weatherData.feels_like.eve)}</li>
+            <li>Night Temperature: {getTemp(weatherData.feels_like.night)}</li>
             <li>Wind Direction: {weatherData.wind_deg}&#176;</li>
-            <li>Wind Speed: {getWindSpeed(weatherData.wind_speed)}km/hr</li>
+            <li>Wind Speed: {getWindSpeed(weatherData.wind_speed)}</li>
+            <li>
+              Precentage Chance of Precipitation: {weatherData.pop * 100}%
+            </li>
           </ul>
         );
       }
@@ -74,12 +96,18 @@ const WeatherTable = () => {
     [weatherValues]
   );
 
+  console.log(weatherValues);
+
   return (
     <div className={darkMode ? 'dark-weather-table' : 'light-weather-table'}>
       <Table dataSource={datasource} columns={columns} />
-      <WeatherDetailsModal title={`Weather Details`}>
-        {weatherDetails(weatherDetailsKey)}
-      </WeatherDetailsModal>
+      {weatherValues.size === 0 ? (
+        ''
+      ) : (
+        <WeatherDetailsModal title={`Weather Details`}>
+          {weatherDetails(weatherDetailsKey, units)}
+        </WeatherDetailsModal>
+      )}
     </div>
   );
 };

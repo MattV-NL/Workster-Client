@@ -11,6 +11,7 @@ import {
   manualLocationInput,
 } from '../restAPI/handleLocation';
 import { AuthenticationContext } from './AuthenticationContext';
+import { UnitsContext } from './UnitsContext';
 
 export const WeatherDataContext = createContext();
 
@@ -22,6 +23,7 @@ const WeatherDataContextProvider = ({ children }) => {
     setLongitude,
     setSaveLocation,
   } = useContext(PositionContext);
+  const { units } = useContext(UnitsContext);
   const { authStatus } = useContext(AuthenticationContext);
   const [weatherValues, setWeatherValues] = useState(new Map());
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -39,11 +41,11 @@ const WeatherDataContextProvider = ({ children }) => {
 
   const success = useCallback(
     async (pos) => {
-      storeWeatherData(await getCoordinates(pos));
+      storeWeatherData(await getCoordinates(pos, units));
       setGeoLocate(false);
       setSaveLocation(false);
     },
-    [setGeoLocate, setSaveLocation, storeWeatherData]
+    [setGeoLocate, setSaveLocation, storeWeatherData, units]
   );
 
   const sendLocation = useCallback(async () => {

@@ -70,9 +70,13 @@ const WorkTable = () => {
   return (
     <div className={darkMode ? 'dark-table' : 'light-table'}>
       <Table dataSource={datasource} columns={columns} />
-      <WorkDetailsModal title={`Work Details`}>
-        {workDetails(workValues, workDetailsKey)}
-      </WorkDetailsModal>
+      {workValues.size === 0 ? (
+        ''
+      ) : (
+        <WorkDetailsModal title={`Work Details`}>
+          {workDetails(workValues, workDetailsKey)}
+        </WorkDetailsModal>
+      )}
     </div>
   );
 };

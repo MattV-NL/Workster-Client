@@ -16,6 +16,7 @@ const AuthenticationContextProvider = ({ children }) => {
   );
   const [isRegModalVisible, setIsRegModalVisible] = useState(false);
   const [isAccountModalVisible, setIsAccountModalVisible] = useState(false);
+  const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
   const handleClickReg = useCallback(async () => {
     if (attemptReg(usernameReg, passwordReg, emailReg)) {
@@ -95,6 +96,8 @@ const AuthenticationContextProvider = ({ children }) => {
         setIsRegModalVisible,
         isAccountModalVisible,
         setIsAccountModalVisible,
+        logoutModalVisible,
+        setLogoutModalVisible,
       }}
     >
       {children}

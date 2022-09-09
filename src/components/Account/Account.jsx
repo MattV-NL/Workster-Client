@@ -91,10 +91,10 @@ const Account = () => {
           </>
         ) : (
           <>
-            <div>You do not have an account, Click here to sign up.</div>
+            <div>Click here to register or sign in.</div>
 
             <Link to={paths.HOME}>
-              <ButtonComp type={'primary'}>Sign Up</ButtonComp>
+              <ButtonComp type={'primary'}>to Homepage</ButtonComp>
             </Link>
           </>
         )}

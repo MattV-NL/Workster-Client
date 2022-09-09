@@ -148,7 +148,7 @@ export const weatherTableColumns = new Map(
       key: 'precip',
     },
     {
-      title: 'Wind Speed (km/hr)',
+      title: 'Wind Speed',
       dataIndex: 'windSpeed',
       key: 'windSpeed',
     },
@@ -271,4 +271,5 @@ export const SERVER_URL = {
   getWorkInformation: 'http://localhost:8000/get_work_information/',
   deleteWorkInformation: 'http://localhost:8000/delete_work_information',
   deleteLocation: 'http://localhost:8000/delete_location',
+  saveSettings: 'http://localhost:8000/save_settings',
 };
