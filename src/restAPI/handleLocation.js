@@ -59,12 +59,12 @@ export const sendCoordinatesManual = async (latitude, longitude, user_id) => {
   console.log(sendData, 'manual input');
 };
 
-export const manualLocationInput = async (latitude, longitude) => {
+export const manualLocationInput = async (latitude, longitude, units) => {
   const crd = {
     latitude: latitude,
     longitude: longitude,
   };
-  const apiURL = `${SERVER_URL.weather}${crd.latitude},${crd.longitude}`;
+  const apiURL = `${SERVER_URL.weather}${crd.latitude},${crd.longitude},${units}`;
   const response = await fetch(apiURL);
   return response.json();
 };

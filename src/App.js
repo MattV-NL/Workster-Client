@@ -30,6 +30,7 @@ import { DarkModeContext } from './contexts/DarkModeContext';
 import { useContext } from 'react';
 import LogoutModal from './components/Modals/LogoutModal';
 import UnitsContextProvider from './contexts/UnitsContext';
+import SaveLocationModal from './components/Modals/SaveLocationModal';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -59,6 +60,7 @@ function App() {
                             <ResetButton />
                             <WeatherWarningModal />
                             <ResetWarningModal />
+                            <SaveLocationModal />
                           </Route>
                           <Route exact path={paths.WORK}>
                             <WorkForm />

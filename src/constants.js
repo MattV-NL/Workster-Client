@@ -173,15 +173,16 @@ export const workTableColumns = new Map(
       key: 'isOutside',
     },
     {
-      title: 'Scaffolding',
-      dataIndex: 'isScaffolding',
-      key: 'isScaffolding',
-    },
-    {
       title: 'Welding',
       dataIndex: 'isWelding',
       key: 'isWelding',
     },
+    {
+      title: 'Scaffolding',
+      dataIndex: 'isScaffolding',
+      key: 'isScaffolding',
+    },
+
     {
       title: 'Work Details',
       dataIndex: 'details',
@@ -225,15 +226,16 @@ export const workInformationTableColumns = [
     key: 'isOutside',
   },
   {
-    title: 'Scaffolding',
-    dataIndex: 'isScaffolding',
-    key: 'isScaffolding',
-  },
-  {
     title: 'Welding',
     dataIndex: 'isWelding',
     key: 'isWelding',
   },
+  {
+    title: 'Scaffolding',
+    dataIndex: 'isScaffolding',
+    key: 'isScaffolding',
+  },
+
   {
     title: 'Work Details',
     dataIndex: 'workDetails',
@@ -272,4 +274,5 @@ export const SERVER_URL = {
   deleteWorkInformation: 'http://localhost:8000/delete_work_information',
   deleteLocation: 'http://localhost:8000/delete_location',
   saveSettings: 'http://localhost:8000/save_settings',
+  getSettings: 'http://localhost:8000/get_settings',
 };

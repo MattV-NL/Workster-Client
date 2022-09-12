@@ -77,7 +77,8 @@ const WeatherDataContextProvider = ({ children }) => {
         storeWeatherData(
           await manualLocationInput(
             positionData[LATITUDE_KEY].value,
-            positionData[LONGITUDE_KEY].value
+            positionData[LONGITUDE_KEY].value,
+            units
           )
         );
         setLatitude('');
@@ -95,6 +96,7 @@ const WeatherDataContextProvider = ({ children }) => {
     setIsWeatherModalVisible,
     setSaveLocation,
     storeWeatherData,
+    units,
   ]);
 
   const clearWeatherValues = useCallback(() => {

@@ -96,8 +96,6 @@ const WeatherTable = () => {
     [weatherValues]
   );
 
-  console.log(weatherValues);
-
   return (
     <div className={darkMode ? 'dark-weather-table' : 'light-weather-table'}>
       <Table dataSource={datasource} columns={columns} />

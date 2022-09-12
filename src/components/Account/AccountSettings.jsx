@@ -5,10 +5,12 @@ import { DarkModeContext } from '../../contexts/DarkModeContext';
 import { UnitsContext } from '../../contexts/UnitsContext';
 import './account.scss';
 import SaveSettingsButton from './SaveSettingsButton';
+import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 
 const AccountSettings = () => {
   const { darkMode, setDarkMode } = useContext(DarkModeContext);
   const { units, setUnits } = useContext(UnitsContext);
+  const { clearWeatherValues } = useContext(WeatherDataContext);
   const onChange = useCallback(
     (checked) => {
       setDarkMode(checked);
@@ -20,7 +22,16 @@ const AccountSettings = () => {
 
   const unitsMenu = unitsOptions.map((unit) => {
     return {
-      label: <div onClick={() => setUnits(unit)}>{unit}</div>,
+      label: (
+        <div
+          onClick={() => {
+            setUnits(unit);
+            clearWeatherValues();
+          }}
+        >
+          {unit}
+        </div>
+      ),
     };
   });
 

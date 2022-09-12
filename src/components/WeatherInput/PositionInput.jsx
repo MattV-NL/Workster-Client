@@ -6,6 +6,7 @@ import { PositionContext } from '../../contexts/PositionContext';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import LocationDropdown from './LocationDropdown';
 import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { Switch } from 'antd';
 
 const PositionInput = () => {
   const { darkMode } = useContext(DarkModeContext);
@@ -17,22 +18,46 @@ const PositionInput = () => {
         {authStatus.auth ? <LocationDropdown /> : ''}
         {[...positionFormInputs.values()].map(
           ({ label, id, type, required }) => {
-            return (
-              <div className='label-input-container' key={id}>
-                <label
-                  className={darkMode ? 'dark-form-label' : 'light-form-label'}
-                >
-                  {label}
-                </label>
-                <InputComp
-                  id={id}
-                  type={type}
-                  value={positionData[id].value}
-                  required={required}
-                  onChange={positionData[id].onChange}
-                />
-              </div>
-            );
+            if (type === 'checkbox') {
+              return (
+                <div className='label-input-container' key={id}>
+                  <label
+                    className={
+                      darkMode ? 'dark-form-label' : 'light-form-label'
+                    }
+                  >
+                    {label}
+                  </label>
+                  <Switch
+                    className={darkMode ? 'dark-switch' : 'light-switch'}
+                    id={id}
+                    required={required}
+                    onClick={positionData[id].onChange}
+                    checked={positionData[id].value}
+                    defaultChecked={false}
+                  />
+                </div>
+              );
+            } else {
+              return (
+                <div className='label-input-container' key={id}>
+                  <label
+                    className={
+                      darkMode ? 'dark-form-label' : 'light-form-label'
+                    }
+                  >
+                    {label}
+                  </label>
+                  <InputComp
+                    id={id}
+                    type={type}
+                    value={positionData[id].value}
+                    required={required}
+                    onChange={positionData[id].onChange}
+                  />
+                </div>
+              );
+            }
           }
         )}
       </form>

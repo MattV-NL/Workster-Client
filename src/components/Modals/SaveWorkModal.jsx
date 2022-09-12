@@ -9,16 +9,14 @@ const SaveWorkModal = () => {
     setSaveWorkModalVisible(false);
   }, [setSaveWorkModalVisible]);
   return (
-    <div>
-      <Modal
-        title='Please Login'
-        visible={saveWorkModalVisible}
-        onOk={handleOkCancel}
-        onCancel={handleOkCancel}
-      >
-        Please login to save work information.
-      </Modal>
-    </div>
+    <Modal
+      title='Please Login'
+      visible={saveWorkModalVisible}
+      onOk={handleOkCancel}
+      onCancel={handleOkCancel}
+    >
+      Please login to save work information.
+    </Modal>
   );
 };
 
