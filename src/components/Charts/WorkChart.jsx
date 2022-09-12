@@ -2,9 +2,11 @@ import { useContext, useMemo } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import { Column } from '@ant-design/plots';
 import './charts.scss';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const WorkChart = () => {
   const { workValues } = useContext(WorkDataContext);
+  const { darkMode } = useContext(DarkModeContext);
 
   const data = useMemo(() => {
     const arrWork = [...workValues.values()];
@@ -32,7 +34,7 @@ const WorkChart = () => {
     label: {
       position: 'middle',
       style: {
-        fill: '#FFFFFF',
+        fill: `${darkMode ? '#fff' : '#000'}`,
         opacity: 1,
       },
     },
@@ -40,14 +42,14 @@ const WorkChart = () => {
       label: {
         position: 'bottom',
         style: {
-          fill: '#fff',
+          fill: `${darkMode ? '#fff' : '#000'}`,
         },
       },
     },
     yAxis: {
       label: {
         style: {
-          fill: '#fff',
+          fill: `${darkMode ? '#fff' : '#000'}`,
           fontSize: 12,
         },
       },
@@ -63,8 +65,8 @@ const WorkChart = () => {
   };
 
   return (
-    <div className='chart'>
-      <div className='chart-title'>
+    <div className={darkMode ? 'dark-chart' : 'light-chart'}>
+      <div className={darkMode ? 'dark-chart-title' : 'light-chart-title'}>
         Number of Instances of Each Task in Work Scope
       </div>
       <Column {...config} />

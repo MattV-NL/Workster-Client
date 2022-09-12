@@ -6,21 +6,28 @@ import ButtonComp from '../Inputs/Button';
 
 const FetchButton = () => {
   const { getLocation, sendLocation } = useContext(WeatherDataContext);
-  const { saveLocation } = useContext(PositionContext);
+  const { saveLocation, setSaveLocationModalVisible } =
+    useContext(PositionContext);
   const { authStatus } = useContext(AuthenticationContext);
 
   const handleClick = useCallback(async () => {
     if (saveLocation) {
-      if (authStatus) {
+      if (await authStatus.auth) {
         sendLocation();
         getLocation();
       } else {
-        console.log({ message: 'please login to save location data' });
+        setSaveLocationModalVisible(true);
       }
     } else {
       getLocation();
     }
-  }, [getLocation, saveLocation, sendLocation, authStatus]);
+  }, [
+    getLocation,
+    saveLocation,
+    sendLocation,
+    authStatus,
+    setSaveLocationModalVisible,
+  ]);
 
   return (
     <div className='button-container'>

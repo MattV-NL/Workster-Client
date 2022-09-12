@@ -5,6 +5,8 @@ import img1 from '../../images/logo.png';
 import Compare from '../Compare/Compare';
 import LoginStatus from './LoginStatus';
 import { Menu } from 'antd';
+import { useContext } from 'react';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const logo = 'logo';
 
@@ -44,6 +46,8 @@ const items = [
 ];
 
 const TitleNav = () => {
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
     <div className='header'>
       <div className='title-container'>
@@ -52,7 +56,12 @@ const TitleNav = () => {
           <img className={logo} src={img1} alt='logo' />
         </Link>
       </div>
-      <Menu mode='horizontal' items={items} className='top-navbar-menu' />
+
+      <Menu
+        className={darkMode ? 'dark-menu-container' : 'light-menu-container'}
+        mode='horizontal'
+        items={items}
+      />
     </div>
   );
 };

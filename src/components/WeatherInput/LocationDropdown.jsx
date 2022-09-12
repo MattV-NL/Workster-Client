@@ -4,8 +4,10 @@ import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Space } from 'antd';
 import { PositionContext } from '../../contexts/PositionContext';
 import { getLocations } from '../../restAPI/getAccountLocations';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const LocationDropdown = () => {
+  const { darkMode } = useContext(DarkModeContext);
   const { authStatus } = useContext(AuthenticationContext);
   const { setLatitude, setLongitude, accountLocations, setAccountLocations } =
     useContext(PositionContext);
@@ -34,14 +36,16 @@ const LocationDropdown = () => {
   const menu = <Menu items={newWorkLocationsArray} />;
 
   return (
-    <Dropdown overlay={menu} trigger={['click']}>
-      <a onClick={(e) => e.preventDefault()}>
-        <Space>
-          Saved Locations
-          <DownOutlined />
-        </Space>
-      </a>
-    </Dropdown>
+    <div className={darkMode ? 'dark-dropdown' : 'light-dropdown'}>
+      <Dropdown overlay={menu} trigger={['click']}>
+        <a onClick={(e) => e.preventDefault()}>
+          <Space>
+            Saved Locations
+            <DownOutlined />
+          </Space>
+        </a>
+      </Dropdown>
+    </div>
   );
 };
 

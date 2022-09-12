@@ -1,10 +1,11 @@
-import { createContext, useState, useCallback } from 'react';
+import { createContext, useState } from 'react';
 import {
   GEOLOCATION_KEY,
   LATITUDE_KEY,
   LONGITUDE_KEY,
   SAVE_LOCATION_KEY,
 } from '../constants';
+import { onChange } from '../restAPI/onChange';
 
 export const PositionContext = createContext();
 
@@ -15,14 +16,9 @@ const PositionContextProvider = ({ children }) => {
   const [saveLocation, setSaveLocation] = useState(false);
   const [deleteLocationModalVisible, setDeleteLocationModalVisible] =
     useState(false);
+  const [saveLocationModalVisible, setSaveLocationModalVisible] =
+    useState(false);
   const [accountLocations, setAccountLocations] = useState([]);
-
-  const onChange = useCallback(
-    ({ setterFunction, isBoolean = false }) =>
-      ({ target: { value } }) =>
-        setterFunction(isBoolean ? value !== true.toString() : value),
-    []
-  );
 
   return (
     <PositionContext.Provider
@@ -60,6 +56,8 @@ const PositionContextProvider = ({ children }) => {
         setDeleteLocationModalVisible,
         accountLocations,
         setAccountLocations,
+        saveLocationModalVisible,
+        setSaveLocationModalVisible,
       }}
     >
       {children}

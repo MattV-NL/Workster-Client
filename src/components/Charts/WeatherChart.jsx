@@ -2,16 +2,31 @@ import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { DualAxes } from '@ant-design/plots';
 import './charts.scss';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const WeatherChart = () => {
-  const { weatherChartValues } = useContext(WeatherDataContext);
+  const { weatherValues } = useContext(WeatherDataContext);
+  const { darkMode } = useContext(DarkModeContext);
 
-  const weatherChartMap = new Map(weatherChartValues);
-  const data = Array.from(weatherChartMap.values());
+  const data = Array.from(weatherValues.values()).map(
+    ({ dt, pop, wind_speed }, index) => {
+      const date = new Date(dt * 1000).toDateString();
+      const precip = pop * 100;
+      const windSpeed = wind_speed * 3.6;
+
+      return {
+        date,
+        precip,
+        windSpeed,
+        key: index,
+      };
+    }
+  );
+
   const config = {
     data: [data, data],
     xField: 'date',
-    yField: ['precip', 'wind'],
+    yField: ['precip', 'windSpeed'],
     geometryOptions: [
       {
         geometry: 'line',
@@ -26,7 +41,7 @@ const WeatherChart = () => {
       label: {
         position: 'bottom',
         style: {
-          fill: '#fff',
+          fill: `${darkMode ? '#fff' : '#000'}`,
           fontSize: 12,
         },
       },
@@ -34,8 +49,8 @@ const WeatherChart = () => {
   };
 
   return (
-    <div className='chart'>
-      <div className='chart-title'>
+    <div className={darkMode ? 'dark-chart' : 'light-chart'}>
+      <div className={darkMode ? 'dark-chart-title' : 'light-chart-title'}>
         Chance of Precipitation and Wind Speed on a Given Day
       </div>
       <div className='weather-chart-container'>

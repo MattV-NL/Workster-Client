@@ -1,20 +1,57 @@
-.ant-table-tbody,
-.ant-table-thead > tr > th {
-  background-color: var(--componentBackground);
-  color: #fff;
+.light-table {
+  position: relative;
+  border: solid 0.125rem var(--darkBackground);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  max-width: 35rem;
+
+  & .ant-table-tbody,
+  .ant-table-thead > tr > th {
+    background-color: #fff;
+  }
 }
 
-.table {
+.dark-table {
   position: relative;
   border: solid 0.125rem #fff;
-  border-radius: 0.5rem;
   background-color: var(--componentBackground);
+  border-radius: 0.5rem;
   padding: 1rem;
   max-width: 35rem;
+  padding: 0.5rem;
+
+  & .ant-table-tbody,
+  .ant-table-thead > tr > th {
+    background-color: var(--componentBackground);
+  }
 }
 
-.work-table {
-  overflow-x: scroll;
+.light-weather-table {
+  position: relative;
+  border: solid 0.125rem var(--darkBackground);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  max-width: 35rem;
+  & .ant-table-tbody,
+  .ant-table-thead > tr > th {
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+.dark-weather-table {
+  position: relative;
+  border: solid 0.125rem #fff;
+  background-color: var(--componentBackground);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  max-width: 35rem;
+
+  & .ant-table-tbody,
+  .ant-table-thead > tr > th {
+    background-color: var(--componentBackground);
+    color: #fff;
+  }
 }
 
 .ant-table-thead {

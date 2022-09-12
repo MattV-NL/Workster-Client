@@ -4,10 +4,13 @@ import './antd.scss';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import DarkModeContextProvider from './contexts/DarkModeContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <DarkModeContextProvider>
+      <App />
+    </DarkModeContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

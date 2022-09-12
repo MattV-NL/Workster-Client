@@ -8,9 +8,8 @@ export const getLocations = async (
   if (!(await authStatus.auth)) {
     if (setModalVisible) {
       setModalVisible(true);
-      console.log({ message: 'please login to get your saved locations' });
     } else {
-      console.log({ message: 'please login to get your saved locations' });
+      return;
     }
   } else {
     const response = await fetch(SERVER_URL.getLocations, {

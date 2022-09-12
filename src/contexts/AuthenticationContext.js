@@ -11,9 +11,12 @@ const AuthenticationContextProvider = ({ children }) => {
   const [emailReg, setEmailReg] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [authStatus, setAuthStatus] = useState(false);
+  const [authStatus, setAuthStatus] = useState(
+    checkToken(localStorage.getItem('token'))
+  );
   const [isRegModalVisible, setIsRegModalVisible] = useState(false);
   const [isAccountModalVisible, setIsAccountModalVisible] = useState(false);
+  const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
   const handleClickReg = useCallback(async () => {
     if (attemptReg(usernameReg, passwordReg, emailReg)) {
@@ -39,7 +42,7 @@ const AuthenticationContextProvider = ({ children }) => {
   ]);
 
   const handleClickLogin = useCallback(async () => {
-    if (attemptLogin(username, password)) {
+    if (await attemptLogin(username, password)) {
       setAuthStatus(await checkToken(localStorage.getItem('token')));
       setUsername('');
       setPassword('');
@@ -56,7 +59,7 @@ const AuthenticationContextProvider = ({ children }) => {
       setAuthStatus(await checkToken(localStorage.getItem('token')));
     };
     checkAuth();
-  }, [authStatus]);
+  }, [setAuthStatus]);
 
   return (
     <AuthenticationContext.Provider
@@ -88,10 +91,13 @@ const AuthenticationContextProvider = ({ children }) => {
         handleClickReg,
         handleClickLogin,
         authStatus,
+        setAuthStatus,
         isRegModalVisible,
         setIsRegModalVisible,
         isAccountModalVisible,
         setIsAccountModalVisible,
+        logoutModalVisible,
+        setLogoutModalVisible,
       }}
     >
       {children}

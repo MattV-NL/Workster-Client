@@ -7,8 +7,10 @@ import WorkDetailsModal from '../Modals/WorkDetailsModal';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { displayBooleanInput } from '../../restAPI/displayBool';
 import { workDetails } from '../../restAPI/workDetails';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const WorkTable = () => {
+  const { darkMode } = useContext(DarkModeContext);
   const { authStatus } = useContext(AuthenticationContext);
   const { workValues, setIsWorkDetailsVisible } = useContext(WorkDataContext);
   const [workDetailsKey, setWorkDetailsKey] = useState('');
@@ -66,11 +68,15 @@ const WorkTable = () => {
   const columns = dynamicColumns();
 
   return (
-    <div className='table work-table'>
+    <div className={darkMode ? 'dark-table' : 'light-table'}>
       <Table dataSource={datasource} columns={columns} />
-      <WorkDetailsModal title={`Work Details`}>
-        {workDetails(workValues, workDetailsKey)}
-      </WorkDetailsModal>
+      {workValues.size === 0 ? (
+        ''
+      ) : (
+        <WorkDetailsModal title={`Work Details`}>
+          {workDetails(workValues, workDetailsKey)}
+        </WorkDetailsModal>
+      )}
     </div>
   );
 };

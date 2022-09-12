@@ -4,20 +4,27 @@ import '../Inputs/inputs.scss';
 import { useContext } from 'react';
 import ButtonComp from '../Inputs/Button';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
+import { FormOutlined, LoginOutlined } from '@ant-design/icons';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
 
 const LogInForm = () => {
   const { handleClickReg, handleClickLogin, logInData, regData } = useContext(
     AuthenticationContext
   );
+  const { darkMode } = useContext(DarkModeContext);
 
   return (
-    <div className='form-layout'>
+    <div className={darkMode ? 'dark-form-layout' : 'light-form-layout'}>
       <div className='form'>
         <div className='form-header'>Register Here</div>
         {[...regFormInputs.values()].map(({ label, id, type, required }) => {
           return (
             <div className='label-input-container' key={id}>
-              <label className='form-label'>{label}</label>
+              <label
+                className={darkMode ? 'dark-form-label' : 'light-form-label'}
+              >
+                {label}
+              </label>
               <InputComp
                 id={id + label}
                 type={type}
@@ -30,13 +37,18 @@ const LogInForm = () => {
           );
         })}
         <ButtonComp type='primary' onClick={handleClickReg}>
-          Register
+          <FormOutlined />
+          {'   '}Register
         </ButtonComp>
         <div className='form-header'>Log In Here</div>
         {[...loginFormInputs.values()].map(({ label, id, type, required }) => {
           return (
             <div className='label-input-container' key={id}>
-              <label className='form-label'>{label}</label>
+              <label
+                className={darkMode ? 'dark-form-label' : 'light-form-label'}
+              >
+                {label}
+              </label>
               <InputComp
                 id={id + type}
                 type={type}
@@ -49,7 +61,8 @@ const LogInForm = () => {
           );
         })}
         <ButtonComp type='primary' onClick={handleClickLogin}>
-          Log In
+          <LoginOutlined />
+          {'   '}Log In
         </ButtonComp>
       </div>
     </div>

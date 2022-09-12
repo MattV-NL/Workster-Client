@@ -148,7 +148,7 @@ export const weatherTableColumns = new Map(
       key: 'precip',
     },
     {
-      title: 'Wind Speed (km/hr)',
+      title: 'Wind Speed',
       dataIndex: 'windSpeed',
       key: 'windSpeed',
     },
@@ -173,15 +173,16 @@ export const workTableColumns = new Map(
       key: 'isOutside',
     },
     {
-      title: 'Scaffolding',
-      dataIndex: 'isScaffolding',
-      key: 'isScaffolding',
-    },
-    {
       title: 'Welding',
       dataIndex: 'isWelding',
       key: 'isWelding',
     },
+    {
+      title: 'Scaffolding',
+      dataIndex: 'isScaffolding',
+      key: 'isScaffolding',
+    },
+
     {
       title: 'Work Details',
       dataIndex: 'details',
@@ -225,15 +226,16 @@ export const workInformationTableColumns = [
     key: 'isOutside',
   },
   {
-    title: 'Scaffolding',
-    dataIndex: 'isScaffolding',
-    key: 'isScaffolding',
-  },
-  {
     title: 'Welding',
     dataIndex: 'isWelding',
     key: 'isWelding',
   },
+  {
+    title: 'Scaffolding',
+    dataIndex: 'isScaffolding',
+    key: 'isScaffolding',
+  },
+
   {
     title: 'Work Details',
     dataIndex: 'workDetails',
@@ -257,6 +259,7 @@ export const paths = {
   WORK: '/work',
   ACCOUNT: '/account',
   SAVED_WORK: '/account/saved_location_',
+  SETTINGS: '/account/settings',
 };
 
 export const SERVER_URL = {
@@ -270,4 +273,6 @@ export const SERVER_URL = {
   getWorkInformation: 'http://localhost:8000/get_work_information/',
   deleteWorkInformation: 'http://localhost:8000/delete_work_information',
   deleteLocation: 'http://localhost:8000/delete_location',
+  saveSettings: 'http://localhost:8000/save_settings',
+  getSettings: 'http://localhost:8000/get_settings',
 };
