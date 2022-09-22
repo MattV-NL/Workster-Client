@@ -23,8 +23,11 @@ const WeatherTable = () => {
       const date = new Date(dt * 1000).toDateString();
       const precip = pop * 100;
       let windSpeed = wind_speed;
+      let speedUnit = 'km/hr';
       if (units === 'metric' || units === 'standard') {
         windSpeed = wind_speed * 3.6;
+      } else if (units === 'imperial') {
+        speedUnit = 'mi/hr';
       }
       const details = (
         <>
@@ -41,7 +44,7 @@ const WeatherTable = () => {
       return {
         date,
         precip: precip.toFixed(2),
-        windSpeed: windSpeed.toFixed(2),
+        windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
         details,
         key: index,
       };
