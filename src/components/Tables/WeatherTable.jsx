@@ -5,12 +5,10 @@ import { Table } from 'antd';
 import { weatherTableColumns } from '../../constants';
 import WeatherDetailsModal from '../Modals/WeatherDetailsModal';
 import { DateTime } from 'luxon';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
-import { UnitsContext } from '../../contexts/UnitsContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const WeatherTable = () => {
-  const { darkMode } = useContext(DarkModeContext);
-  const { units } = useContext(UnitsContext);
+  const { darkMode, units } = useContext(UserSettingsContext);
   const { weatherValues, setIsWeatherDetailsVisible } =
     useContext(WeatherDataContext);
   const weatherValuesKeys = weatherValues.keys();

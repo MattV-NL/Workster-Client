@@ -2,11 +2,11 @@ import { useContext } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { DualAxes } from '@ant-design/plots';
 import './charts.scss';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const WeatherChart = () => {
   const { weatherValues } = useContext(WeatherDataContext);
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
 
   const data = Array.from(weatherValues.values()).map(
     ({ dt, pop, wind_speed }, index) => {

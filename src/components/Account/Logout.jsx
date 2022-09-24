@@ -1,10 +1,10 @@
 import { LogoutOutlined } from '@ant-design/icons';
 import { useContext, useCallback } from 'react';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 
 const Logout = () => {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
   const { setLogoutModalVisible } = useContext(AuthenticationContext);
 
   const logoutClicked = useCallback(() => {

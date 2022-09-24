@@ -26,75 +26,72 @@ import SaveWorkButton from './components/WorkInput/SaveWorkButton';
 import SaveWorkModal from './components/Modals/SaveWorkModal';
 import SavedWork from './components/Account/SavedWork';
 import AccountSettings from './components/Account/AccountSettings';
-import { DarkModeContext } from './contexts/DarkModeContext';
+import { UserSettingsContext } from './contexts/UserSettingsContext';
 import { useContext } from 'react';
 import LogoutModal from './components/Modals/LogoutModal';
-import UnitsContextProvider from './contexts/UnitsContext';
 import SaveLocationModal from './components/Modals/SaveLocationModal';
 
 function App() {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
 
   return (
     <AuthenticationContextProvider>
-      <UnitsContextProvider>
-        <PositionContextProvider>
-          <WeatherDataContextProvider>
-            <WorkDataContextProvider>
-              <WorkInputContextProvider>
-                <div className={darkMode ? 'dark-body' : 'light-body'}>
-                  <Router>
-                    <TitleNav />
-                    <div className='layout-center'>
-                      <div className='layout'>
-                        <Switch>
-                          <Route exact path={['/', paths.HOME]}>
-                            <Home />
-                            <RegLoginModal />
-                          </Route>
-                          <Route exact path={paths.WEATHER}>
-                            <PositionInput />
-                            <FetchButton />
-                            <WeatherTable />
-                            <WeatherChart />
-                            <ResetButton />
-                            <WeatherWarningModal />
-                            <ResetWarningModal />
-                            <SaveLocationModal />
-                          </Route>
-                          <Route exact path={paths.WORK}>
-                            <WorkForm />
-                            <WorkTable />
-                            <SaveWorkButton />
-                            <WorkChart />
-                            <ResetButton />
-                            <WorkWarningModal />
-                            <ResetWarningModal />
-                            <SaveWorkModal />
-                          </Route>
-                          <Route exact path={paths.ACCOUNT}>
-                            <Account />
-                            <LogoutModal />
-                          </Route>
-                          <Route exact path={`${paths.SAVED_WORK}:location_id`}>
-                            <SavedWork />
-                          </Route>
-                          <Route exact path={paths.SETTINGS}>
-                            <AccountSettings />
-                          </Route>
-                          <Route>
-                            <NotFound />
-                          </Route>
-                        </Switch>
-                      </div>
+      <PositionContextProvider>
+        <WeatherDataContextProvider>
+          <WorkDataContextProvider>
+            <WorkInputContextProvider>
+              <div className={darkMode ? 'dark-body' : 'light-body'}>
+                <Router>
+                  <TitleNav />
+                  <div className='layout-center'>
+                    <div className='layout'>
+                      <Switch>
+                        <Route exact path={['/', paths.HOME]}>
+                          <Home />
+                          <RegLoginModal />
+                        </Route>
+                        <Route exact path={paths.WEATHER}>
+                          <PositionInput />
+                          <FetchButton />
+                          <WeatherTable />
+                          <WeatherChart />
+                          <ResetButton />
+                          <WeatherWarningModal />
+                          <ResetWarningModal />
+                          <SaveLocationModal />
+                        </Route>
+                        <Route exact path={paths.WORK}>
+                          <WorkForm />
+                          <WorkTable />
+                          <SaveWorkButton />
+                          <WorkChart />
+                          <ResetButton />
+                          <WorkWarningModal />
+                          <ResetWarningModal />
+                          <SaveWorkModal />
+                        </Route>
+                        <Route exact path={paths.ACCOUNT}>
+                          <Account />
+                          <LogoutModal />
+                        </Route>
+                        <Route exact path={`${paths.SAVED_WORK}:location_id`}>
+                          <SavedWork />
+                        </Route>
+                        <Route exact path={paths.SETTINGS}>
+                          <AccountSettings />
+                        </Route>
+                        <Route>
+                          <NotFound />
+                        </Route>
+                      </Switch>
                     </div>
-                  </Router>
-                </div>
-              </WorkInputContextProvider>
-            </WorkDataContextProvider>
-          </WeatherDataContextProvider>
-        </PositionContextProvider>
-      </UnitsContextProvider>
+                  </div>
+                </Router>
+              </div>
+            </WorkInputContextProvider>
+          </WorkDataContextProvider>
+        </WeatherDataContextProvider>
+      </PositionContextProvider>
     </AuthenticationContextProvider>
   );
 }

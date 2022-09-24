@@ -5,13 +5,13 @@ import { useContext } from 'react';
 import ButtonComp from '../Inputs/Button';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { FormOutlined, LoginOutlined } from '@ant-design/icons';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const LogInForm = () => {
   const { handleClickReg, handleClickLogin, logInData, regData } = useContext(
     AuthenticationContext
   );
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
 
   return (
     <div className={darkMode ? 'dark-form-layout' : 'light-form-layout'}>
