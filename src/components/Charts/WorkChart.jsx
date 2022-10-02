@@ -2,11 +2,11 @@ import { useContext, useMemo } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import { Column } from '@ant-design/plots';
 import './charts.scss';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const WorkChart = () => {
   const { workValues } = useContext(WorkDataContext);
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
 
   const data = useMemo(() => {
     const arrWork = [...workValues.values()];

@@ -4,10 +4,10 @@ import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Space } from 'antd';
 import { PositionContext } from '../../contexts/PositionContext';
 import { getLocations } from '../../restAPI/getAccountLocations';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const LocationDropdown = () => {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
   const { authStatus } = useContext(AuthenticationContext);
   const { setLatitude, setLongitude, accountLocations, setAccountLocations } =
     useContext(PositionContext);

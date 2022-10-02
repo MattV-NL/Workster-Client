@@ -2,15 +2,14 @@ import './home.scss';
 import LogInForm from './LogInForm';
 import { useEffect, useContext } from 'react';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
-import { UnitsContext } from '../../contexts/UnitsContext';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import { checkToken } from '../../restAPI/auth';
 import { getSettings } from '../../restAPI/getSettings';
 
 const Home = () => {
   const { authStatus, setAuthStatus } = useContext(AuthenticationContext);
-  const { setDarkMode } = useContext(DarkModeContext);
-  const { setUnits } = useContext(UnitsContext);
+  const { setDarkMode, setUnits, setEmailNotifications } =
+    useContext(UserSettingsContext);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -21,10 +20,10 @@ const Home = () => {
 
   useEffect(() => {
     const checkSettings = async () => {
-      getSettings(authStatus, setDarkMode, setUnits);
+      getSettings(authStatus, setDarkMode, setUnits, setEmailNotifications);
     };
     checkSettings();
-  }, [authStatus, setDarkMode, setUnits]);
+  }, [authStatus, setDarkMode, setUnits, setEmailNotifications]);
 
   return (
     <div className='home-container'>

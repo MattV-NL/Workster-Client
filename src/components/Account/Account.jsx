@@ -11,10 +11,10 @@ import { getLocations } from '../../restAPI/getAccountLocations';
 import AccountSettingsLink from './AccountSettingsLink';
 import Logout from './Logout';
 import ButtonComp from '../Inputs/Button';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const Account = () => {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
   const { authStatus, setIsAccountModalVisible } = useContext(
     AuthenticationContext
   );

@@ -7,10 +7,10 @@ import WorkDetailsModal from '../Modals/WorkDetailsModal';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { displayBooleanInput } from '../../restAPI/displayBool';
 import { workDetails } from '../../restAPI/workDetails';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const WorkTable = () => {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
   const { authStatus } = useContext(AuthenticationContext);
   const { workValues, setIsWorkDetailsVisible } = useContext(WorkDataContext);
   const [workDetailsKey, setWorkDetailsKey] = useState('');

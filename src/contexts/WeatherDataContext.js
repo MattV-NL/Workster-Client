@@ -11,7 +11,7 @@ import {
   manualLocationInput,
 } from '../restAPI/handleLocation';
 import { AuthenticationContext } from './AuthenticationContext';
-import { UnitsContext } from './UnitsContext';
+import { UserSettingsContext } from './UserSettingsContext';
 
 export const WeatherDataContext = createContext();
 
@@ -23,7 +23,7 @@ const WeatherDataContextProvider = ({ children }) => {
     setLongitude,
     setSaveLocation,
   } = useContext(PositionContext);
-  const { units } = useContext(UnitsContext);
+  const { units } = useContext(UserSettingsContext);
   const { authStatus } = useContext(AuthenticationContext);
   const [weatherValues, setWeatherValues] = useState(new Map());
   const [isModalVisible, setIsModalVisible] = useState(false);

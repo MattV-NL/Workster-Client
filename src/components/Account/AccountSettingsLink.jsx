@@ -1,11 +1,11 @@
 import { SettingOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { paths } from '../../constants';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import { useContext } from 'react';
 
 const AccountSettingsLink = () => {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
   return (
     <Link
       to={paths.SETTINGS}

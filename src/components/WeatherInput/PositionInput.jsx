@@ -5,11 +5,11 @@ import { useContext } from 'react';
 import { PositionContext } from '../../contexts/PositionContext';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import LocationDropdown from './LocationDropdown';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import { Switch } from 'antd';
 
 const PositionInput = () => {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
   const { positionData } = useContext(PositionContext);
   const { authStatus } = useContext(AuthenticationContext);
   return (

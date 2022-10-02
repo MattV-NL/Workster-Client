@@ -5,13 +5,13 @@ import { Dropdown, Menu, Space } from 'antd';
 import { WorkInputContext } from '../../contexts/WorkInputContext';
 import { PositionContext } from '../../contexts/PositionContext';
 import { getLocations } from '../../restAPI/getAccountLocations';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const WorkLocationsDropdown = () => {
   const { authStatus } = useContext(AuthenticationContext);
   const { accountLocations, setAccountLocations } = useContext(PositionContext);
   const { workLocation, setWorkLocation } = useContext(WorkInputContext);
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
   useEffect(() => {
     getLocations(authStatus, setAccountLocations);
   }, [authStatus, setAccountLocations]);

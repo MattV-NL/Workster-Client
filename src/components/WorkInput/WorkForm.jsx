@@ -6,13 +6,13 @@ import { WorkInputContext } from '../../contexts/WorkInputContext';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { useContext } from 'react';
 import WorkLocationsDropdown from './WorkLocationsDropdown';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import { Switch } from 'antd';
 
 const WorkForm = () => {
   const { workData } = useContext(WorkInputContext);
   const { authStatus } = useContext(AuthenticationContext);
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
 
   return (
     <div className={darkMode ? 'dark-form-layout' : 'light-form-layout'}>

@@ -8,10 +8,10 @@ import { DateTime } from 'luxon';
 import { DeleteOutlined } from '@ant-design/icons';
 import DeleteWorkDataModal from '../Modals/DeleteWorkDataModal';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const SavedWork = () => {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
   const { location_id } = useParams();
   const [workInformation, setWorkInformation] = useState([]);
   const { setDeleteWorkModalVisible, deleteWorkModalVisible } =

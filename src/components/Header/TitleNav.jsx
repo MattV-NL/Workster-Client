@@ -6,7 +6,7 @@ import Compare from '../Compare/Compare';
 import LoginStatus from './LoginStatus';
 import { Menu } from 'antd';
 import { useContext } from 'react';
-import { DarkModeContext } from '../../contexts/DarkModeContext';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const logo = 'logo';
 
@@ -46,7 +46,7 @@ const items = [
 ];
 
 const TitleNav = () => {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode } = useContext(UserSettingsContext);
 
   return (
     <div className='header'>
