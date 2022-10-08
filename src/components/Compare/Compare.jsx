@@ -3,8 +3,10 @@ import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import './compare.scss';
 import { replaceDate } from '../../restAPI/replaceDate';
+import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const Compare = () => {
+  const { precipConflict, windConflcit } = useContext(UserSettingsContext);
   const { weatherValues } = useContext(WeatherDataContext);
   const { workValues } = useContext(WorkDataContext);
   const [isConflict, setIsConflict] = useState(null);
@@ -35,7 +37,7 @@ const Compare = () => {
         workCompareValues.get(date) || {};
 
       return !!(
-        (precip > 20 || wind > 30) &&
+        (precip > precipConflict || wind > windConflcit) &&
         (isOutside || isWelding || isScaffolding)
       );
     });

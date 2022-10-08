@@ -8,8 +8,13 @@ import { getSettings } from '../../restAPI/getSettings';
 
 const Home = () => {
   const { authStatus, setAuthStatus } = useContext(AuthenticationContext);
-  const { setDarkMode, setUnits, setEmailNotifications } =
-    useContext(UserSettingsContext);
+  const {
+    setDarkMode,
+    setUnits,
+    setEmailNotifications,
+    setPrecipConflict,
+    setWindConflict,
+  } = useContext(UserSettingsContext);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -20,10 +25,24 @@ const Home = () => {
 
   useEffect(() => {
     const checkSettings = async () => {
-      getSettings(authStatus, setDarkMode, setUnits, setEmailNotifications);
+      getSettings(
+        authStatus,
+        setDarkMode,
+        setUnits,
+        setEmailNotifications,
+        setPrecipConflict,
+        setWindConflict
+      );
     };
     checkSettings();
-  }, [authStatus, setDarkMode, setUnits, setEmailNotifications]);
+  }, [
+    authStatus,
+    setDarkMode,
+    setUnits,
+    setEmailNotifications,
+    setPrecipConflict,
+    setWindConflict,
+  ]);
 
   return (
     <div className='home-container'>

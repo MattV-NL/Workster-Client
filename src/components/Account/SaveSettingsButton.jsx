@@ -8,7 +8,7 @@ import { useCallback, useContext } from 'react';
 
 const SaveSettingsButton = () => {
   const { authStatus } = useContext(AuthenticationContext);
-  const { darkMode, units, emailNotifications } =
+  const { darkMode, units, emailNotifications, precipConflict, windConflict } =
     useContext(UserSettingsContext);
 
   const sendSettingInformation = useCallback(async () => {
@@ -16,6 +16,8 @@ const SaveSettingsButton = () => {
       darkMode,
       units,
       emailNotifications,
+      precipConflict,
+      windConflict,
       user_id: authStatus.user_id,
     };
     const response = await fetch(SERVER_URL.saveSettings, {
@@ -27,7 +29,14 @@ const SaveSettingsButton = () => {
     });
     const savedSettings = await response.json();
     console.log(savedSettings);
-  }, [darkMode, authStatus, units, emailNotifications]);
+  }, [
+    darkMode,
+    authStatus,
+    units,
+    emailNotifications,
+    precipConflict,
+    windConflict,
+  ]);
 
   return (
     <ButtonComp type={'primary'} onClick={sendSettingInformation}>

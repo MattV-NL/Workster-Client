@@ -1,10 +1,14 @@
-import { DownOutlined } from '@ant-design/icons';
-import { Dropdown, Menu, Space, Switch } from 'antd';
-import { useContext, useCallback } from 'react';
+import { useContext } from 'react';
 import './account.scss';
 import SaveSettingsButton from './SaveSettingsButton';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
+import DarkMode from '../Settings/DarkMode';
+import Units from '../Settings/Units';
+import EmailNotifications from '../Settings/EmailNotifications';
+import { onChange } from '../../restAPI/onChange';
+import PrecipConflict from '../Settings/PrecipConflict';
+import WindConflict from '../Settings/WindConflict';
 
 const AccountSettings = () => {
   const { clearWeatherValues } = useContext(WeatherDataContext);
@@ -15,40 +19,9 @@ const AccountSettings = () => {
     setEmailNotifications,
     units,
     setUnits,
+    windConflict,
+    setWindConflict,
   } = useContext(UserSettingsContext);
-
-  const onChange = useCallback(
-    (checked) => {
-      setDarkMode(checked);
-    },
-    [setDarkMode]
-  );
-
-  const onChangeNotifications = useCallback(
-    (checked) => {
-      setEmailNotifications(checked);
-    },
-    [setEmailNotifications]
-  );
-
-  const unitsOptions = ['metric', 'imperial', 'standard'];
-
-  const unitsMenu = unitsOptions.map((unit) => {
-    return {
-      label: (
-        <div
-          onClick={() => {
-            setUnits(unit);
-            clearWeatherValues();
-          }}
-        >
-          {unit}
-        </div>
-      ),
-    };
-  });
-
-  const menu = <Menu items={unitsMenu} />;
 
   return (
     <div className={darkMode ? 'dark-page-layout' : 'light-page-layout'}>
@@ -56,32 +29,25 @@ const AccountSettings = () => {
         <div className={darkMode ? 'dark-page-header' : 'light-page-header'}>
           User Settings
         </div>
-        <div className='sub-header'>Dark Mode</div>
-        <div className='account-setting'>
-          Off
-          <Switch checked={darkMode} onChange={onChange} /> On
-        </div>
-        <div className='sub-header'>Measurement Unit</div>
-        <div className={darkMode ? 'dark-dropdown' : 'light-dropdown'}>
-          <Dropdown overlay={menu} trigger={'click'}>
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>
-                Units
-                <DownOutlined />
-              </Space>
-            </a>
-          </Dropdown>
-        </div>
-        <div>{`Selected Units ${units}`}</div>
-        <div className='sub-header'>Email Notifications</div>
-        <div className='account-setting'>
-          Off
-          <Switch
-            checked={emailNotifications}
-            onChange={onChangeNotifications}
-          />{' '}
-          On
-        </div>
+        <DarkMode
+          checked={darkMode}
+          onChange={onChange({ setterFunction: setDarkMode, isBoolean: true })}
+        />
+        <Units
+          darkMode={darkMode}
+          units={units}
+          setUnits={setUnits}
+          clearWeatherValues={clearWeatherValues}
+        />
+        <EmailNotifications
+          checked={emailNotifications}
+          onChange={onChange({
+            setterFunction: setEmailNotifications,
+            isBoolean: true,
+          })}
+        />
+        <PrecipConflict />
+        <WindConflict />
         <SaveSettingsButton />
       </div>
     </div>

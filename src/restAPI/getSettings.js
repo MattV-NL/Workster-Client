@@ -4,7 +4,9 @@ export const getSettings = async (
   authStatus,
   setDarkMode,
   setUnits,
-  setEmailNotifications
+  setEmailNotifications,
+  setPrecipConlict,
+  setWindConflict
 ) => {
   if (await authStatus.auth) {
     const response = await fetch(SERVER_URL.getSettings, {
@@ -18,6 +20,8 @@ export const getSettings = async (
     setDarkMode(returnedData[0].darkmode_on);
     setUnits(returnedData[0].measurement_unit);
     setEmailNotifications(returnedData[0].email_notifications);
+    setPrecipConlict(returnedData[0].precip_limit);
+    setWindConflict(returnedData[0].wind_limit);
   } else {
     return;
   }
