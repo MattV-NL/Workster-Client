@@ -9,7 +9,12 @@ export const checkToken = async (token) => {
   return response.json();
 };
 
-export const attemptLogin = async (username, password) => {
+export const attemptLogin = async (
+  username,
+  password,
+  setUserNotFound,
+  setLoginMessageModal
+) => {
   if (username && password) {
     const loginData = {
       username,
@@ -24,26 +29,36 @@ export const attemptLogin = async (username, password) => {
     });
     const returnedData = await response.json();
     localStorage.setItem('token', returnedData.token);
+    console.log(returnedData);
+    setUserNotFound(returnedData.userNotFound);
+    setLoginMessageModal(returnedData.loginMessageModal);
     return true;
   } else {
     return false;
   }
 };
 
-export const attemptReg = async (usernameReg, passwordReg, emailReg) => {
+export const attemptReg = async (
+  usernameReg,
+  passwordReg,
+  emailReg,
+  setRegMessage
+) => {
   if (usernameReg && passwordReg && emailReg) {
     const regData = {
       username: usernameReg,
       password: passwordReg,
       email: emailReg,
     };
-    await fetch(SERVER_URL.register, {
+    const response = await fetch(SERVER_URL.register, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(regData),
     });
+    const message = await response.json();
+    setRegMessage(message.status);
     return true;
   } else {
     return false;

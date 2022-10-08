@@ -17,20 +17,17 @@ const AuthenticationContextProvider = ({ children }) => {
   const [isRegModalVisible, setIsRegModalVisible] = useState(false);
   const [isAccountModalVisible, setIsAccountModalVisible] = useState(false);
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
+  const [regMessage, setRegMessage] = useState(false);
+  const [loginMessageModal, setLoginMessageModal] = useState(false);
+  const [userNotFound, setUserNotFound] = useState(false);
 
   const handleClickReg = useCallback(async () => {
-    if (attemptReg(usernameReg, passwordReg, emailReg)) {
+    if (await attemptReg(usernameReg, passwordReg, emailReg, setRegMessage)) {
       setUsernameReg('');
       setPasswordReg('');
       setEmailReg('');
-      console.log({
-        message: 'registration successful',
-      });
     } else {
       setIsRegModalVisible(true);
-      console.log({
-        message: 'please enter a username, email, and password to register.',
-      });
     }
   }, [
     usernameReg,
@@ -42,7 +39,14 @@ const AuthenticationContextProvider = ({ children }) => {
   ]);
 
   const handleClickLogin = useCallback(async () => {
-    if (await attemptLogin(username, password)) {
+    if (
+      await attemptLogin(
+        username,
+        password,
+        setUserNotFound,
+        setLoginMessageModal
+      )
+    ) {
       setAuthStatus(await checkToken(localStorage.getItem('token')));
       setUsername('');
       setPassword('');
@@ -98,6 +102,12 @@ const AuthenticationContextProvider = ({ children }) => {
         setIsAccountModalVisible,
         logoutModalVisible,
         setLogoutModalVisible,
+        regMessage,
+        setRegMessage,
+        loginMessageModal,
+        setLoginMessageModal,
+        userNotFound,
+        setUserNotFound,
       }}
     >
       {children}

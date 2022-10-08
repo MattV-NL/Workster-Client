@@ -30,6 +30,8 @@ import { UserSettingsContext } from './contexts/UserSettingsContext';
 import { useContext } from 'react';
 import LogoutModal from './components/Modals/LogoutModal';
 import SaveLocationModal from './components/Modals/SaveLocationModal';
+import RegFailedModal from './components/Modals/RegFailedModal';
+import LoginFailedModal from './components/Modals/LoginFailedModal';
 
 function App() {
   const { darkMode } = useContext(UserSettingsContext);
@@ -49,6 +51,8 @@ function App() {
                         <Route exact path={['/', paths.HOME]}>
                           <Home />
                           <RegLoginModal />
+                          <RegFailedModal />
+                          <LoginFailedModal />
                         </Route>
                         <Route exact path={paths.WEATHER}>
                           <PositionInput />
