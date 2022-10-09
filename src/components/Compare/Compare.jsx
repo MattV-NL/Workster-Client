@@ -6,7 +6,7 @@ import { replaceDate } from '../../restAPI/replaceDate';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 
 const Compare = () => {
-  const { precipConflict, windConflcit } = useContext(UserSettingsContext);
+  const { precipConflict, windConflict } = useContext(UserSettingsContext);
   const { weatherValues } = useContext(WeatherDataContext);
   const { workValues } = useContext(WorkDataContext);
   const [isConflict, setIsConflict] = useState(null);
@@ -37,12 +37,18 @@ const Compare = () => {
         workCompareValues.get(date) || {};
 
       return !!(
-        (precip > precipConflict || wind > windConflcit) &&
+        (precip > precipConflict || wind > windConflict) &&
         (isOutside || isWelding || isScaffolding)
       );
     });
     setIsConflict(nextConflict);
-  }, [workCompareValues, setIsConflict, weatherValues]);
+  }, [
+    workCompareValues,
+    setIsConflict,
+    weatherValues,
+    windConflict,
+    precipConflict,
+  ]);
 
   return (
     <div className={isConflict ? 'alert' : 'no-alert'}>
