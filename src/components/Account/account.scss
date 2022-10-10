@@ -3,7 +3,8 @@
   border: solid 0.125rem var(--darkBackground);
   border-radius: 0.5rem;
   padding: 1rem;
-  min-width: 25rem;
+  width: 100%;
+  max-width: 45rem;
 }
 
 .dark-page-layout {
@@ -12,7 +13,8 @@
   border-radius: 0.5rem;
   background-color: var(--componentBackground);
   padding: 1rem;
-  min-width: 25rem;
+  width: 100%;
+  max-width: 45rem;
 }
 
 .light-page-header {

@@ -13,18 +13,12 @@ const LoginStatus = () => {
       label: authStatus.auth ? (
         <div className='logged-in'>Logged In</div>
       ) : (
-        <Link to={paths.HOME} className='navbar-item'>
-          Sign In / Sign Up
-        </Link>
+        <Link to={paths.HOME}>Sign In / Sign Up</Link>
       ),
       key: '1',
     },
     {
-      label: (
-        <Link to={paths.ACCOUNT} className='navbar-item'>
-          Account
-        </Link>
-      ),
+      label: <Link to={paths.ACCOUNT}>Account</Link>,
       key: '2',
     },
   ];

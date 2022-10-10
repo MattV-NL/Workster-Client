@@ -32,9 +32,18 @@ import LogoutModal from './components/Modals/LogoutModal';
 import SaveLocationModal from './components/Modals/SaveLocationModal';
 import RegFailedModal from './components/Modals/RegFailedModal';
 import LoginFailedModal from './components/Modals/LoginFailedModal';
+import { useEffect } from 'react';
 
 function App() {
   const { darkMode } = useContext(UserSettingsContext);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.style.backgroundColor = 'var(--darkBackground)';
+    } else {
+      document.body.style.backgroundColor = 'var(--lightBackground)';
+    }
+  }, [darkMode]);
 
   return (
     <AuthenticationContextProvider>
@@ -45,7 +54,7 @@ function App() {
               <div className={darkMode ? 'dark-body' : 'light-body'}>
                 <Router>
                   <TitleNav />
-                  <div className='layout-center'>
+                  <div className='second-child-body'>
                     <div className='layout'>
                       <Switch>
                         <Route exact path={['/', paths.HOME]}>

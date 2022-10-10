@@ -4,9 +4,10 @@ import { paths } from '../../constants';
 import img1 from '../../images/logo.png';
 import Compare from '../Compare/Compare';
 import LoginStatus from './LoginStatus';
-import { Menu } from 'antd';
+import { Menu, Dropdown } from 'antd';
 import { useContext } from 'react';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
+import { MenuUnfoldOutlined } from '@ant-design/icons';
 
 const logo = 'logo';
 
@@ -35,14 +36,6 @@ const items = [
     ),
     key: 'work',
   },
-  {
-    label: <Compare />,
-    key: 'compare',
-  },
-  {
-    label: <LoginStatus />,
-    key: 'login',
-  },
 ];
 
 const TitleNav = () => {
@@ -56,12 +49,23 @@ const TitleNav = () => {
           <img className={logo} src={img1} alt='logo' />
         </Link>
       </div>
-
-      <Menu
-        className={darkMode ? 'dark-menu-container' : 'light-menu-container'}
-        mode='horizontal'
-        items={items}
-      />
+      <div className='navbar'>
+        <Dropdown overlay={<Menu items={items} className='navbar-item' />}>
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <MenuUnfoldOutlined
+              className={darkMode ? 'dark-menu-icon' : 'light-menu-icon'}
+            />
+          </a>
+        </Dropdown>
+        <Compare className='navbar-item' />
+        <LoginStatus
+          className={darkMode ? 'dark-navbar-item' : 'light-navbar-item'}
+        />
+      </div>
     </div>
   );
 };

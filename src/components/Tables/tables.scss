@@ -3,7 +3,8 @@
   border: solid 0.125rem var(--darkBackground);
   border-radius: 0.5rem;
   padding: 0.5rem;
-  max-width: 35rem;
+  width: 100%;
+  overflow-x: scroll;
 
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
@@ -17,8 +18,9 @@
   background-color: var(--componentBackground);
   border-radius: 0.5rem;
   padding: 1rem;
-  max-width: 35rem;
+  width: 100%;
   padding: 0.5rem;
+  overflow-x: scroll;
 
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
@@ -30,8 +32,10 @@
   position: relative;
   border: solid 0.125rem var(--darkBackground);
   border-radius: 0.5rem;
-  padding: 1rem;
-  max-width: 35rem;
+  padding: 0.5rem;
+  width: 100%;
+  overflow-x: scroll;
+
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
     background-color: #fff;
@@ -44,8 +48,9 @@
   border: solid 0.125rem #fff;
   background-color: var(--componentBackground);
   border-radius: 0.5rem;
-  padding: 1rem;
-  max-width: 35rem;
+  padding: 0.5rem;
+  width: 100%;
+  overflow-x: scroll;
 
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
@@ -56,8 +61,4 @@
 
 .ant-table-thead {
   font-size: 0.95rem;
-}
-
-.ant-dropdown-trigger {
-  color: #fff;
 }

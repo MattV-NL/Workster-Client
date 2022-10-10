@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import '../Tables/tables.scss';
 import { Input } from 'antd';
 
 const InputComp = ({
@@ -19,7 +18,6 @@ const InputComp = ({
       required={required}
       onChange={onChange}
       {...(type === `checkbox` ? { checked: !!value } : {})}
-      className='input-element'
     />
   );
 };

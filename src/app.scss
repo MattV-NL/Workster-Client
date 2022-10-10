@@ -1,17 +1,10 @@
-.layout-center {
-  display: flex;
-  justify-content: center;
-}
-
 .layout {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 2rem;
-  padding: 1rem;
-  max-width: 35rem;
-  width: auto;
-  height: 100vh;
+  align-items: center;
+  width: 95%;
+  max-width: 45rem;
 }
 
 .not-found {
@@ -27,9 +20,26 @@
 .dark-body {
   background-color: var(--darkBackground);
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  width: auto;
+  height: auto;
 }
 
 .light-body {
   background-color: var(--lightBackground);
   color: #000;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: auto;
+  height: auto;
+}
+
+.second-child-body {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
 }
