@@ -1,11 +1,11 @@
-import { useContext, useCallback, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import './tables.scss';
 import { Table } from 'antd';
 import { weatherTableColumns } from '../../constants';
 import WeatherDetailsModal from '../Modals/WeatherDetailsModal';
-import { DateTime } from 'luxon';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
+import { weatherDetails } from '../../restAPI/weatherDetails';
 
 const WeatherTable = () => {
   const { darkMode, units } = useContext(UserSettingsContext);
@@ -14,12 +14,10 @@ const WeatherTable = () => {
   const weatherValuesKeys = weatherValues.keys();
   const [weatherDetailsKey, setWeatherDetailsKey] = useState('');
 
-  const columns = Array.from(weatherTableColumns.values());
   const datasource = Array.from(weatherValues.values()).map(
-    ({ dt, pop, wind_speed }, index) => {
+    ({ dt, wind_speed, rain, snow }, index) => {
       const detailsKey = weatherValuesKeys.next().value;
       const date = new Date(dt * 1000).toDateString();
-      const precip = pop * 100;
       let windSpeed = wind_speed;
       let speedUnit = 'km/hr';
       if (units === 'metric' || units === 'standard') {
@@ -39,63 +37,65 @@ const WeatherTable = () => {
           </div>
         </>
       );
-      return {
-        date,
-        precip: precip.toFixed(2),
-        windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
-        details,
-        key: index,
-      };
+      if (snow) {
+        if (!snow) {
+          snow = 0;
+          return {
+            date,
+            rain: `${rain}mm`,
+            snow: `${snow}mm`,
+            windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
+            details,
+            key: index,
+          };
+        } else {
+          return {
+            date,
+            rain: `${rain}mm`,
+            snow: `${snow}mm`,
+            windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
+            details,
+            key: index,
+          };
+        }
+      } else {
+        if (!rain) {
+          rain = 0;
+          return {
+            date,
+            rain: `${rain}mm`,
+            windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
+            details,
+            key: index,
+          };
+        } else {
+          return {
+            date,
+            rain: `${rain}mm`,
+            windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
+            details,
+            key: index,
+          };
+        }
+      }
     }
   );
 
-  const weatherDetails = useCallback(
-    (key, units) => {
-      if (!key) {
-        return 'no details yet, please enter location information to retrieve the weather details';
-      } else {
-        const weatherData = weatherValues.get(parseInt(key));
-        const getTime = (millis) =>
-          new DateTime.fromMillis(millis * 1000).toLocaleString(
-            DateTime.TIME_SIMPLE
-          );
-        const getWindSpeed = (wind) => {
-          if (units === 'metric' || units === 'standard') {
-            return `${parseFloat((wind * 3.6).toFixed(2))}km/hr`;
-          } else {
-            return `${parseFloat(wind.toFixed(2))}mi/hr`;
-          }
-        };
-        const getTemp = (temp) => {
-          if (units === 'metric') {
-            return `${temp}\u00b0C`;
-          } else if (units === 'standard') {
-            return `${temp}K`;
-          } else {
-            return `${temp}\u00b0F`;
-          }
-        };
-        return (
-          <ul>
-            <li>Sunrise: {getTime(weatherData.sunrise)}</li>
-            <li>Sunset: {getTime(weatherData.sunset)}</li>
-            <li>Humidity: {weatherData.humidity}%</li>
-            <li>Dewpoint: {getTemp(weatherData.dew_point)}</li>
-            <li>Morning Temperature: {getTemp(weatherData.feels_like.morn)}</li>
-            <li>Day Temperature: {getTemp(weatherData.feels_like.day)}</li>
-            <li>Evening Temperature: {getTemp(weatherData.feels_like.eve)}</li>
-            <li>Night Temperature: {getTemp(weatherData.feels_like.night)}</li>
-            <li>Wind Direction: {weatherData.wind_deg}&#176;</li>
-            <li>Wind Speed: {getWindSpeed(weatherData.wind_speed)}</li>
-            <li>
-              Precentage Chance of Precipitation: {weatherData.pop * 100}%
-            </li>
-          </ul>
-        );
-      }
-    },
-    [weatherValues]
-  );
+  const dynamicColumns = useCallback(() => {
+    const weatherData = Array.from(weatherValues.values());
+    if (weatherValues.size === 0) {
+      return;
+    } else {
+      //I  want to use includes but I don't know how
+      //to get into the object of the array, includes seems
+      //to just compare raw values easily, you can use .call()
+      //but not entirely sure how it works yet.
+    }
+  }, [weatherValues]);
+
+  dynamicColumns();
+
+  const columns = Array.from(weatherTableColumns.values());
 
   return (
     <div className={darkMode ? 'dark-weather-table' : 'light-weather-table'}>
@@ -104,7 +104,7 @@ const WeatherTable = () => {
         ''
       ) : (
         <WeatherDetailsModal title={`Weather Details`}>
-          {weatherDetails(weatherDetailsKey, units)}
+          {weatherDetails(weatherDetailsKey, units, weatherValues)}
         </WeatherDetailsModal>
       )}
     </div>
