@@ -90,7 +90,7 @@ const WeatherTable = () => {
   }, [weatherValues]);
 
   const dynamicColumns = useCallback(() => {
-    if (searchWeatherObjectsForSnow().includes(true)) {
+    if (!searchWeatherObjectsForSnow().includes(true)) {
       const newWeatherTableColumns = weatherTableColumns;
       newWeatherTableColumns.delete('snow');
       return Array.from(newWeatherTableColumns.values());
@@ -99,11 +99,9 @@ const WeatherTable = () => {
     }
   }, [searchWeatherObjectsForSnow]);
 
-  const columns = dynamicColumns();
-
   return (
     <div className={darkMode ? 'dark-weather-table' : 'light-weather-table'}>
-      <Table dataSource={datasource} columns={columns} />
+      <Table dataSource={datasource} columns={dynamicColumns()} />
       {weatherValues.size === 0 ? (
         ''
       ) : (
