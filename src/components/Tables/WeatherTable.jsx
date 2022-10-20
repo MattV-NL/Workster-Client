@@ -43,7 +43,7 @@ const WeatherTable = () => {
           return {
             date,
             rain: `${rain}mm`,
-            snow: `${snow}mm`,
+            snow: `${snow * 100}cm`,
             windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
             details,
             key: index,
@@ -52,7 +52,7 @@ const WeatherTable = () => {
           return {
             date,
             rain: `${rain}mm`,
-            snow: `${snow}mm`,
+            snow: `${snow * 100}cm`,
             windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
             details,
             key: index,
@@ -81,21 +81,25 @@ const WeatherTable = () => {
     }
   );
 
-  const dynamicColumns = useCallback(() => {
+  const searchWeatherObjectsForSnow = useCallback(() => {
     const weatherData = Array.from(weatherValues.values());
-    if (weatherValues.size === 0) {
-      return;
-    } else {
-      //I  want to use includes but I don't know how
-      //to get into the object of the array, includes seems
-      //to just compare raw values easily, you can use .call()
-      //but not entirely sure how it works yet.
-    }
+    const weatherValuesHasSnowArray = weatherData.map((day) => {
+      return Object.hasOwn(day, 'snow');
+    });
+    return weatherValuesHasSnowArray;
   }, [weatherValues]);
 
-  dynamicColumns();
+  const dynamicColumns = useCallback(() => {
+    if (searchWeatherObjectsForSnow().includes(true)) {
+      const newWeatherTableColumns = weatherTableColumns;
+      newWeatherTableColumns.delete('snow');
+      return Array.from(newWeatherTableColumns.values());
+    } else {
+      return Array.from(weatherTableColumns.values());
+    }
+  }, [searchWeatherObjectsForSnow]);
 
-  const columns = Array.from(weatherTableColumns.values());
+  const columns = dynamicColumns();
 
   return (
     <div className={darkMode ? 'dark-weather-table' : 'light-weather-table'}>

@@ -142,11 +142,6 @@ export const weatherTableColumns = new Map(
       dataIndex: 'date',
       key: 'date',
     },
-    // {
-    //   title: 'Chance of Precipitaion (%)',
-    //   dataIndex: 'precip',
-    //   key: 'precip',
-    // },
     {
       title: 'Rainfall Amount',
       dataIndex: 'rain',
