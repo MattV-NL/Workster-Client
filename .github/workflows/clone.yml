@@ -1,0 +1,15 @@
+name: Clone
+
+on:
+  push:
+    branches:
+      - precipChange
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Clone to new folder
+        run: |
+          git clone
