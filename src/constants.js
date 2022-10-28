@@ -267,15 +267,16 @@ export const paths = {
   SETTINGS: '/account/settings',
 };
 
-export const SERVER_URL = {
+//localhost:8000 in development, 139.144.110.102 in build
+export const SERVER_EP = {
   authCheck: 'http://localhost:8000/auth_check',
   saveLocation: 'http://localhost:8000/save_location',
   login: 'http://localhost:8000/login',
   register: 'http://localhost:8000/register',
-  weather: 'http://localhost:8000/api/weather/',
+  weather: 'http://localhost:8000/api/weather',
   getLocations: 'http://localhost:8000/get_locations',
   saveWorkInformation: 'http://localhost:8000/save_work_information',
-  getWorkInformation: 'http://localhost:8000/get_work_information/',
+  getWorkInformation: 'http://localhost:8000/get_work_information',
   deleteWorkInformation: 'http://localhost:8000/delete_work_information',
   deleteLocation: 'http://localhost:8000/delete_location',
   saveSettings: 'http://localhost:8000/save_settings',

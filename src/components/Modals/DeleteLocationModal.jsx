@@ -1,6 +1,6 @@
 import { useContext, useCallback } from 'react';
 import { PositionContext } from '../../contexts/PositionContext';
-import { SERVER_URL } from '../../constants';
+import { SERVER_EP } from '../../constants';
 import { Modal } from 'antd';
 import { deleteRow } from '../../restAPI/deleteRow';
 
@@ -16,7 +16,7 @@ const DeleteLocationModal = ({ children }) => {
     const packagedInfo = {
       location_id: children,
     };
-    const response = await deleteRow(SERVER_URL.deleteLocation, packagedInfo);
+    const response = await deleteRow(SERVER_EP.deleteLocation, packagedInfo);
     console.log(response);
     setDeleteLocationModalVisible(false);
   }, [setDeleteLocationModalVisible, children]);

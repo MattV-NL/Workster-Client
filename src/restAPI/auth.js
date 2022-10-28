@@ -1,7 +1,7 @@
-import { SERVER_URL } from '../constants';
+import { SERVER_EP } from '../constants';
 
 export const checkToken = async (token) => {
-  const response = await fetch(SERVER_URL.authCheck, {
+  const response = await fetch(`${SERVER_EP.authCheck}`, {
     headers: {
       'x-access-token': token,
     },
@@ -20,7 +20,7 @@ export const attemptLogin = async (
       username,
       password,
     };
-    const response = await fetch(SERVER_URL.login, {
+    const response = await fetch(SERVER_EP.login, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export const attemptLogin = async (
     });
     const returnedData = await response.json();
     localStorage.setItem('token', returnedData.token);
-    console.log(returnedData);
+    console.log('successful');
     setUserNotFound(returnedData.userNotFound);
     setLoginMessageModal(returnedData.loginMessageModal);
     return true;
@@ -50,7 +50,7 @@ export const attemptReg = async (
       password: passwordReg,
       email: emailReg,
     };
-    const response = await fetch(SERVER_URL.register, {
+    const response = await fetch(SERVER_EP.register, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

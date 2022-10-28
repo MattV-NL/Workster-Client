@@ -1,4 +1,4 @@
-import { SERVER_URL } from '../constants';
+import { SERVER_EP } from '../constants';
 
 export const options = {
   enableHighAccuracy: true,
@@ -14,7 +14,7 @@ export const getCoordinates = async (pos, units) => {
   const crd = pos.coords;
   const lat = crd.latitude;
   const lon = crd.longitude;
-  const apiUrl = `${SERVER_URL.weather}${lat},${lon},${units}`;
+  const apiUrl = `${SERVER_EP.weather}${lat},${lon},${units}`;
   const response = await fetch(apiUrl);
   return await response.json();
 };
@@ -28,7 +28,7 @@ export const sendCoordinatesGeolocate = async (pos, user_id) => {
     lat: lat,
     lon: lon,
   };
-  const sendResponse = await fetch(SERVER_URL.saveLocation, {
+  const sendResponse = await fetch(SERVER_EP.saveLocation, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ export const sendCoordinatesManual = async (latitude, longitude, user_id) => {
     lat: lat,
     lon: lon,
   };
-  const sendResponse = await fetch(SERVER_URL.saveLocation, {
+  const sendResponse = await fetch(SERVER_EP.saveLocation, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export const manualLocationInput = async (latitude, longitude, units) => {
     latitude: latitude,
     longitude: longitude,
   };
-  const apiURL = `${SERVER_URL.weather}${crd.latitude},${crd.longitude},${units}`;
+  const apiURL = `${SERVER_EP.weather}/${crd.latitude},${crd.longitude},${units}`;
   const response = await fetch(apiURL);
   return response.json();
 };

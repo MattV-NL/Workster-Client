@@ -1,4 +1,4 @@
-import { SERVER_URL } from '../constants';
+import { SERVER_EP } from '../constants';
 
 export const getLocations = async (
   authStatus,
@@ -12,7 +12,7 @@ export const getLocations = async (
       return;
     }
   } else {
-    const response = await fetch(SERVER_URL.getLocations, {
+    const response = await fetch(SERVER_EP.getLocations, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

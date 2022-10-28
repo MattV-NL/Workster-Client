@@ -1,4 +1,4 @@
-import { SERVER_URL } from '../constants';
+import { SERVER_EP } from '../constants';
 
 export const getSettings = async (
   authStatus,
@@ -10,7 +10,7 @@ export const getSettings = async (
   setWindConflict
 ) => {
   if (await authStatus.auth) {
-    const response = await fetch(SERVER_URL.getSettings, {
+    const response = await fetch(SERVER_EP.getSettings, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

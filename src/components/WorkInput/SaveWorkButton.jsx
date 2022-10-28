@@ -1,7 +1,7 @@
 import { useCallback, useContext } from 'react';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
-import { SERVER_URL } from '../../constants';
+import { SERVER_EP } from '../../constants';
 import ButtonComp from '../Inputs/Button';
 
 const SaveWorkButton = () => {
@@ -11,7 +11,7 @@ const SaveWorkButton = () => {
   const sendWorkInformation = useCallback(async (workValue) => {
     const newWorkValue = { ...workValue };
     delete newWorkValue.details;
-    const response = await fetch(SERVER_URL.saveWorkInformation, {
+    const response = await fetch(SERVER_EP.saveWorkInformation, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

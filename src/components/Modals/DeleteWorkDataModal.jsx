@@ -2,7 +2,7 @@ import { useCallback, useContext } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import { Modal } from 'antd';
 import { deleteRow } from '../../restAPI/deleteRow';
-import { SERVER_URL } from '../../constants';
+import { SERVER_EP } from '../../constants';
 
 const DeleteWorkDataModal = ({ children }) => {
   const { deleteWorkModalVisible, setDeleteWorkModalVisible } =
@@ -17,7 +17,7 @@ const DeleteWorkDataModal = ({ children }) => {
       information_id: children,
     };
     const response = await deleteRow(
-      SERVER_URL.deleteWorkInformation,
+      SERVER_EP.deleteWorkInformation,
       packagedInfo
     );
     console.log(response);

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
-import { SERVER_URL, workInformationTableColumns } from '../../constants';
+import { SERVER_EP, workInformationTableColumns } from '../../constants';
 import './account.scss';
 import { Table } from 'antd';
 import { displayBooleanInput } from '../../restAPI/displayBool';
@@ -19,7 +19,7 @@ const SavedWork = () => {
 
   useEffect(() => {
     const getSavedWork = async () => {
-      const apiURL = `${SERVER_URL.getWorkInformation}${location_id}`;
+      const apiURL = `${SERVER_EP.getWorkInformation}/${location_id}`;
       const response = await fetch(apiURL);
       setWorkInformation(await response.json());
     };
