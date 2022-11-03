@@ -15,5 +15,3 @@ I chose to build this project as I was working throughout the winter outside in 
 ## Running the App
 
 this project is not running quite yet as I am working on building the back end as well. I will update when that is complete.
-
-this is a test2
