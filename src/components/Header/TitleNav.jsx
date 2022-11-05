@@ -45,7 +45,7 @@ const TitleNav = () => {
     <div className='header'>
       <div className='title-container'>
         <div className='title'>Workster</div>
-        <Link to={paths.HOME} className='logo-container'>
+        <Link to={paths.HOME}>
           <img className={logo} src={img1} alt='logo' />
         </Link>
       </div>

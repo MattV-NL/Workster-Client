@@ -8,6 +8,8 @@ import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { displayBooleanInput } from '../../restAPI/displayBool';
 import { workDetails } from '../../restAPI/workDetails';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
+import '../Inputs/inputs.scss';
+import ResetButton from '../WorkInput/ResetButton';
 
 const WorkTable = () => {
   const { darkMode } = useContext(UserSettingsContext);
@@ -77,6 +79,9 @@ const WorkTable = () => {
           {workDetails(workValues, workDetailsKey)}
         </WorkDetailsModal>
       )}
+      <div className='form-button'>
+        <ResetButton />
+      </div>
     </div>
   );
 };

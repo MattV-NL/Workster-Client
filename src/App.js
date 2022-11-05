@@ -7,12 +7,10 @@ import Home from './components/Home/Home';
 import WorkForm from './components/WorkInput/WorkForm';
 import WorkTable from './components/Tables/WorkTable';
 import NotFound from './components/NotFound';
-import ResetButton from './components/WorkInput/ResetButton';
 import ResetWarningModal from './components/Modals/ResetWarningModal';
 import WeatherWarningModal from './components/Modals/WeatherWarningModal';
 import WorkWarningModal from './components/Modals/WorkWarningModal';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
-import FetchButton from './components/WeatherInput/FetchButton';
 import WeatherTable from './components/Tables/WeatherTable';
 import PositionInput from './components/WeatherInput/PositionInput';
 import PositionContextProvider from './contexts/PositionContext';
@@ -65,10 +63,8 @@ function App() {
                         </Route>
                         <Route exact path={paths.WEATHER}>
                           <PositionInput />
-                          <FetchButton />
                           <WeatherTable />
                           <WeatherChart />
-                          <ResetButton />
                           <WeatherWarningModal />
                           <ResetWarningModal />
                           <SaveLocationModal />
@@ -78,7 +74,6 @@ function App() {
                           <WorkTable />
                           <SaveWorkButton />
                           <WorkChart />
-                          <ResetButton />
                           <WorkWarningModal />
                           <ResetWarningModal />
                           <SaveWorkModal />

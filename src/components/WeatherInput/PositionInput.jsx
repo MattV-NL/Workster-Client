@@ -7,6 +7,8 @@ import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import LocationDropdown from './LocationDropdown';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import { Switch } from 'antd';
+import FetchButton from './FetchButton';
+import ResetButton from '../WorkInput/ResetButton';
 
 const PositionInput = () => {
   const { darkMode } = useContext(UserSettingsContext);
@@ -61,6 +63,9 @@ const PositionInput = () => {
           }
         )}
       </form>
+      <div className='form-button'>
+        <FetchButton />
+      </div>
     </div>
   );
 };

@@ -1,12 +1,14 @@
 import { useCallback, useContext, useState } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
+
 import './tables.scss';
 import { Table } from 'antd';
 import { weatherTableColumns } from '../../constants';
 import WeatherDetailsModal from '../Modals/WeatherDetailsModal';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import { weatherDetails } from '../../restAPI/weatherDetails';
-
+import ResetButton from '../WorkInput/ResetButton';
+import '../Inputs/inputs.scss';
 const WeatherTable = () => {
   const { darkMode, units } = useContext(UserSettingsContext);
   const { weatherValues, setIsWeatherDetailsVisible } =
@@ -109,6 +111,9 @@ const WeatherTable = () => {
           {weatherDetails(weatherDetailsKey, units, weatherValues)}
         </WeatherDetailsModal>
       )}
+      <div className='form-button'>
+        <ResetButton />
+      </div>
     </div>
   );
 };
