@@ -14,7 +14,7 @@ export const getCoordinates = async (pos, units) => {
   const crd = pos.coords;
   const lat = crd.latitude;
   const lon = crd.longitude;
-  const apiUrl = `${SERVER_EP.weather}${lat},${lon},${units}`;
+  const apiUrl = `${SERVER_EP.weather}/${lat},${lon},${units}`;
   const response = await fetch(apiUrl);
   return await response.json();
 };

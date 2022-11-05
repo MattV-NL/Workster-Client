@@ -267,7 +267,6 @@ export const paths = {
   SETTINGS: '/account/settings',
 };
 
-//localhost:8000 in development, 139.144.110.102 in build
 export const SERVER_EP = {
   authCheck: '/auth_check',
   saveLocation: '/save_location',
