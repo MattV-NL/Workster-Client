@@ -31,6 +31,30 @@
   }
 }
 
+.dark-table::-webkit-scrollbar {
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: var(--darkScrollbarTrack);
+  border-radius: 1rem;
+}
+
+.dark-table::-webkit-scrollbar-thumb {
+  background-color: var(--darkScrollbarThumb);
+  border-radius: 1rem;
+}
+
+.light-table::-webkit-scrollbar {
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: var(--lightScrollbarTrack);
+  border-radius: 1rem;
+}
+
+.light-table::-webkit-scrollbar-thumb {
+  background-color: var(--lightScrollbarThumb);
+  border-radius: 1rem;
+}
+
 .ant-table-thead {
   font-size: 0.95rem;
 }
