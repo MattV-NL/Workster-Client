@@ -102,7 +102,7 @@ const WeatherTable = () => {
   }, [searchWeatherObjectsForSnow]);
 
   return (
-    <div className={darkMode ? 'dark-weather-table' : 'light-weather-table'}>
+    <div className={darkMode ? 'dark-table' : 'light-table'}>
       <Table dataSource={datasource} columns={dynamicColumns()} />
       {weatherValues.size === 0 ? (
         ''

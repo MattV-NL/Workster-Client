@@ -1,6 +1,7 @@
 .light-page-layout {
   position: relative;
-  border: solid 0.125rem var(--darkBackground);
+  border: solid 0.125rem var(--lightBorder);
+  background-color: var(--lightComponentBackground);
   border-radius: 0.5rem;
   padding: 1rem;
   width: 100%;
@@ -9,9 +10,9 @@
 
 .dark-page-layout {
   position: relative;
-  border: solid 0.125rem #fff;
+  border: solid 0.125rem var(--darkBorder);
   border-radius: 0.5rem;
-  background-color: var(--componentBackground);
+  background-color: var(--darkComponentBackground);
   padding: 1rem;
   width: 100%;
   max-width: 45rem;
@@ -48,9 +49,8 @@
   padding-bottom: 1rem;
 }
 
-.dark-locations-table,
-.dark-table {
-  background-color: var(--componentBackground);
+.dark-locations-table {
+  background-color: var(--darkComponentBackground);
 
   & a {
     color: #fff;
@@ -58,13 +58,12 @@
 
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
-    background-color: var(--componentBackground);
-    color: #fff;
+    background-color: var(--darkComponentBackground);
+    color: var(--darkHeaderText);
   }
 }
 
-.light-locations-table,
-.light-table {
+.light-locations-table {
   & a {
     color: #000;
   }
@@ -72,7 +71,7 @@
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
     background-color: #fff;
-    color: #000;
+    color: var(--lightHeaderText);
   }
 }
 

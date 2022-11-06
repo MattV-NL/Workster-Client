@@ -1,7 +1,14 @@
 :root {
-  --darkBackground: #20232a;
-  --lightBackground: #f8f8ff;
-  --componentBackground: #677680;
+  --darkBackground: #1a1d23;
+  --darkComponentBackground: #373e43;
+  --darkBorder: #246794;
+  --darkHeaderText: #fff;
+
+  --lightBorder: #246794;
+  --lightBackground: #d4e7ed;
+  --lightComponentBackground: #b7d7e1;
+  --lightHeaderText: #000;
+
   --buttonColor: #1a4c6d;
   --buttonHover: #0f2f44;
   --scrollbarTrack: #47535b;

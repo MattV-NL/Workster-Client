@@ -1,6 +1,7 @@
 .light-chart {
   position: relative;
-  border: solid 0.125rem var(--darkBackground);
+  border: solid 0.125rem var(--lightBorder);
+  background-color: var(--lightComponentBackground);
   border-radius: 0.5rem;
   padding: 1rem;
   width: 100%;
@@ -14,8 +15,8 @@
 
 .dark-chart {
   position: relative;
-  border: solid 0.125rem #fff;
-  background-color: var(--componentBackground);
+  border: solid 0.125rem var(--darkBorder);
+  background-color: var(--darkComponentBackground);
   border-radius: 0.5rem;
   padding: 1rem;
   width: 100%;

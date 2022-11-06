@@ -1,21 +1,7 @@
-.light-table {
-  position: relative;
-  border: solid 0.125rem var(--darkBackground);
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  overflow-x: scroll;
-
-  & .ant-table-tbody,
-  .ant-table-thead > tr > th {
-    background-color: #fff;
-  }
-}
-
 .dark-table {
   position: relative;
-  border: solid 0.125rem #fff;
-  background-color: var(--componentBackground);
+  border: solid 0.125rem var(--darkBorder);
+  background-color: var(--darkComponentBackground);
   border-radius: 0.5rem;
   padding: 1rem;
   width: 100%;
@@ -24,13 +10,15 @@
 
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
-    background-color: var(--componentBackground);
+    background-color: var(--darkComponentBackground);
+    color: var(--darkHeaderText);
   }
 }
 
-.light-weather-table {
+.light-table {
   position: relative;
-  border: solid 0.125rem var(--darkBackground);
+  border: solid 0.125rem var(--lightBorder);
+  background-color: var(--lightComponentBackground);
   border-radius: 0.5rem;
   padding: 0.5rem;
   width: 100%;
@@ -38,24 +26,8 @@
 
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
-    background-color: #fff;
-    color: #000;
-  }
-}
-
-.dark-weather-table {
-  position: relative;
-  border: solid 0.125rem #fff;
-  background-color: var(--componentBackground);
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  overflow-x: scroll;
-
-  & .ant-table-tbody,
-  .ant-table-thead > tr > th {
-    background-color: var(--componentBackground);
-    color: #fff;
+    background-color: var(--lightComponentBackground);
+    color: var(--lightHeaderText);
   }
 }
 

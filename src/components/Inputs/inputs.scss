@@ -10,16 +10,17 @@
 
 .dark-form-layout {
   position: relative;
-  border: solid 0.125rem #fff;
+  border: solid 0.125rem var(--darkBorder);
   border-radius: 0.5rem;
-  background-color: var(--componentBackground);
+  background-color: var(--darkComponentBackground);
   padding: 1rem;
   width: 100%;
 }
 
 .light-form-layout {
   position: relative;
-  border: solid 0.125rem var(--buttonColor);
+  background-color: var(--lightComponentBackground);
+  border: solid 0.125rem var(--lightBorder);
   border-radius: 0.5rem;
   padding: 1rem;
   width: 100%;
