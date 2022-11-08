@@ -50,7 +50,7 @@ function App() {
           <WorkDataContextProvider>
             <WorkInputContextProvider>
               <div className={darkMode ? 'dark-body' : 'light-body'}>
-                <Router>
+                <BrowserRouter>
                   <TitleNav />
                   <div className='second-child-body'>
                     <div className='layout'>
@@ -94,7 +94,7 @@ function App() {
                       </Switch>
                     </div>
                   </div>
-                </Router>
+                </BrowserRouter>
               </div>
             </WorkInputContextProvider>
           </WorkDataContextProvider>
