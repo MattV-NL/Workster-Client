@@ -1,36 +1,23 @@
 import './app.scss';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { paths } from './constants';
 import WorkInputContextProvider from './contexts/WorkInputContext';
 import WorkDataContextProvider from './contexts/WorkDataContext';
-import Home from './components/Home/Home';
-import WorkForm from './components/WorkInput/WorkForm';
-import WorkTable from './components/Tables/WorkTable';
 import NotFound from './components/NotFound';
-import ResetWarningModal from './components/Modals/ResetWarningModal';
-import WeatherWarningModal from './components/Modals/WeatherWarningModal';
-import WorkWarningModal from './components/Modals/WorkWarningModal';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
-import WeatherTable from './components/Tables/WeatherTable';
-import PositionInput from './components/WeatherInput/PositionInput';
 import PositionContextProvider from './contexts/PositionContext';
-import WeatherChart from './components/Charts/WeatherChart';
-import WorkChart from './components/Charts/WorkChart';
 import TitleNav from './components/Header/TitleNav';
 import AuthenticationContextProvider from './contexts/AuthenticationContext';
 import Account from '../src/components/Account/Account';
-import RegLoginModal from './components/Modals/RegLoginModal';
-import SaveWorkButton from './components/WorkInput/SaveWorkButton';
-import SaveWorkModal from './components/Modals/SaveWorkModal';
 import SavedWork from './components/Account/SavedWork';
 import AccountSettings from './components/Account/AccountSettings';
 import { UserSettingsContext } from './contexts/UserSettingsContext';
 import { useContext } from 'react';
 import LogoutModal from './components/Modals/LogoutModal';
-import SaveLocationModal from './components/Modals/SaveLocationModal';
-import RegFailedModal from './components/Modals/RegFailedModal';
-import LoginFailedModal from './components/Modals/LoginFailedModal';
 import { useEffect } from 'react';
+import Weather from './pages/Weather';
+import Work from './pages/Work';
+import SignInSignUp from './pages/SignInSignUp';
 
 function App() {
   const { darkMode } = useContext(UserSettingsContext);
@@ -56,27 +43,13 @@ function App() {
                     <div className='layout'>
                       <Switch>
                         <Route exact path={['/', paths.HOME]}>
-                          <Home />
-                          <RegLoginModal />
-                          <RegFailedModal />
-                          <LoginFailedModal />
+                          <SignInSignUp />
                         </Route>
                         <Route exact path={paths.WEATHER}>
-                          <PositionInput />
-                          <WeatherTable />
-                          <WeatherChart />
-                          <WeatherWarningModal />
-                          <ResetWarningModal />
-                          <SaveLocationModal />
+                          <Weather />
                         </Route>
                         <Route exact path={paths.WORK}>
-                          <WorkForm />
-                          <WorkTable />
-                          <SaveWorkButton />
-                          <WorkChart />
-                          <WorkWarningModal />
-                          <ResetWarningModal />
-                          <SaveWorkModal />
+                          <Work />
                         </Route>
                         <Route exact path={paths.ACCOUNT}>
                           <Account />
