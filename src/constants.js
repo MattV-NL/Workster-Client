@@ -268,16 +268,16 @@ export const paths = {
 };
 
 export const SERVER_EP = {
-  authCheck: '/auth_check',
-  saveLocation: '/save_location',
-  login: '/login',
-  register: '/register',
+  authCheck: '/api/auth_check',
+  saveLocation: '/api/save_location',
+  login: '/api/login',
+  register: '/api/register',
   weather: '/api/weather',
-  getLocations: '/get_locations',
-  saveWorkInformation: '/save_work_information',
-  getWorkInformation: '/get_work_information',
-  deleteWorkInformation: '/delete_work_information',
-  deleteLocation: '/delete_location',
-  saveSettings: '/save_settings',
-  getSettings: '/get_settings',
+  getLocations: '/api/get_locations',
+  saveWorkInformation: '/api/save_work_information',
+  getWorkInformation: '/api/get_work_information',
+  deleteWorkInformation: '/api/delete_work_information',
+  deleteLocation: '/api/delete_location',
+  saveSettings: '/api/save_settings',
+  getSettings: '/api/get_settings',
 };
