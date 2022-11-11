@@ -18,6 +18,7 @@ import { useEffect } from 'react';
 import Weather from './pages/Weather';
 import Work from './pages/Work';
 import SignInSignUp from './pages/SignInSignUp';
+import GetSettingsComponent from './components/GetSettingsComponent/GetSettingsComponent';
 
 function App() {
   const { darkMode } = useContext(UserSettingsContext);
@@ -39,6 +40,7 @@ function App() {
               <div className={darkMode ? 'dark-body' : 'light-body'}>
                 <BrowserRouter>
                   <TitleNav />
+                  <GetSettingsComponent />
                   <div className='second-child-body'>
                     <div className='layout'>
                       <Switch>
