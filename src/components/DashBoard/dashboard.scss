@@ -1,15 +1,22 @@
 .dashboard-container {
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
-  max-width: 35rem;
 }
 
-.dashboard-item {
-  background-color: var(--buttonColor);
-  border-color: #fff;
+.dark-dashboard-item {
+  background-color: var(--darkComponentBackground);
+  border-color: var(--darkBorder);
+  border-radius: 0.5rem;
+  height: 5rem;
+  font-size: 1.05rem;
+}
+
+.light-dashboard-item {
+  background-color: var(--lightComponentBackground);
+  border-color: var(--lightBorder);
+  border-radius: 0.5rem;
   height: 5rem;
   font-size: 1.05rem;
 }
