@@ -13,7 +13,8 @@ export const attemptLogin = async (
   username,
   password,
   setUserNotFound,
-  setLoginMessageModal
+  setLoginMessageModal,
+  setLoginSuccessful
 ) => {
   if (username && password) {
     const loginData = {
@@ -29,6 +30,7 @@ export const attemptLogin = async (
     });
     const returnedData = await response.json();
     localStorage.setItem('token', returnedData.token);
+    setLoginSuccessful(true);
     console.log('successful');
     setUserNotFound(returnedData.userNotFound);
     setLoginMessageModal(returnedData.loginMessageModal);
@@ -42,7 +44,8 @@ export const attemptReg = async (
   usernameReg,
   passwordReg,
   emailReg,
-  setRegMessage
+  setRegMessage,
+  setRegSuccessful
 ) => {
   if (usernameReg && passwordReg && emailReg) {
     const regData = {
@@ -58,7 +61,9 @@ export const attemptReg = async (
       body: JSON.stringify(regData),
     });
     const message = await response.json();
+    console.log(message);
     setRegMessage(message.status);
+    setRegSuccessful(message.successful);
     return true;
   } else {
     return false;

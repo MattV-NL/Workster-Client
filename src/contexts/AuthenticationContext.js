@@ -20,9 +20,19 @@ const AuthenticationContextProvider = ({ children }) => {
   const [regMessage, setRegMessage] = useState(false);
   const [loginMessageModal, setLoginMessageModal] = useState(false);
   const [userNotFound, setUserNotFound] = useState(false);
+  const [loginSuccessful, setLoginSuccessful] = useState(false);
+  const [regSuccessful, setRegSuccessful] = useState(false);
 
   const handleClickReg = useCallback(async () => {
-    if (await attemptReg(usernameReg, passwordReg, emailReg, setRegMessage)) {
+    if (
+      await attemptReg(
+        usernameReg,
+        passwordReg,
+        emailReg,
+        setRegMessage,
+        setRegSuccessful
+      )
+    ) {
       setUsernameReg('');
       setPasswordReg('');
       setEmailReg('');
@@ -44,7 +54,8 @@ const AuthenticationContextProvider = ({ children }) => {
         username,
         password,
         setUserNotFound,
-        setLoginMessageModal
+        setLoginMessageModal,
+        setLoginSuccessful
       )
     ) {
       setAuthStatus(await checkToken(localStorage.getItem('token')));
@@ -108,6 +119,10 @@ const AuthenticationContextProvider = ({ children }) => {
         setLoginMessageModal,
         userNotFound,
         setUserNotFound,
+        loginSuccessful,
+        setLoginSuccessful,
+        regSuccessful,
+        setRegSuccessful,
       }}
     >
       {children}
