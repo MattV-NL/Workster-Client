@@ -14,7 +14,7 @@ const logo = 'logo';
 const items = [
   {
     label: (
-      <Link to={paths.HOME} className='navbar-item'>
+      <Link to={paths.DASHBOARD} className='navbar-item'>
         Home
       </Link>
     ),
@@ -45,7 +45,7 @@ const TitleNav = () => {
     <div className='header'>
       <div className='title-container'>
         <div className='title'>Workster</div>
-        <Link to={paths.HOME}>
+        <Link to={paths.DASHBOARD}>
           <img className={logo} src={img1} alt='logo' />
         </Link>
       </div>

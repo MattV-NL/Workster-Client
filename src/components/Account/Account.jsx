@@ -90,13 +90,9 @@ const Account = () => {
             </div>
           </>
         ) : (
-          <>
-            <div>Click here to register or sign in.</div>
-
-            <Link to={paths.HOME}>
-              <ButtonComp type={'primary'}>to Homepage</ButtonComp>
-            </Link>
-          </>
+          <Link to={paths.DASHBOARD}>
+            <ButtonComp type={'primary'}>to DashBoard</ButtonComp>
+          </Link>
         )}
       </div>
     </div>

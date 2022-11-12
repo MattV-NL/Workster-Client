@@ -19,6 +19,7 @@ import Weather from './pages/Weather';
 import Work from './pages/Work';
 import SignInSignUp from './pages/SignInSignUp';
 import GetSettingsComponent from './components/GetSettingsComponent/GetSettingsComponent';
+import DashBoard from './components/DashBoard/DashBoard';
 
 function App() {
   const { darkMode } = useContext(UserSettingsContext);
@@ -44,7 +45,10 @@ function App() {
                   <div className='second-child-body'>
                     <div className='layout'>
                       <Switch>
-                        <Route exact path={['/', paths.HOME]}>
+                        <Route exact path={['/', paths.DASHBOARD]}>
+                          <DashBoard />
+                        </Route>
+                        <Route exact path={['/authentication', paths.AUTH]}>
                           <SignInSignUp />
                         </Route>
                         <Route exact path={paths.WEATHER}>

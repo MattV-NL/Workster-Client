@@ -1,4 +1,4 @@
-import Home from '../components/Home/Home';
+import AuthPage from '../components/Authentication/AuthPage';
 import RegLoginModal from '../components/Modals/RegLoginModal';
 import RegFailedModal from '../components/Modals/RegFailedModal';
 import LoginFailedModal from '../components/Modals/LoginFailedModal';
@@ -8,7 +8,7 @@ import RegistrationSuccessfulModal from '../components/Modals/RegistrationSucces
 const SignInSignUp = () => {
   return (
     <>
-      <Home />
+      <AuthPage />
       <RegLoginModal />
       <RegFailedModal />
       <LoginFailedModal />

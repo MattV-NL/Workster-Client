@@ -259,7 +259,8 @@ export const workInformationTableColumns = [
 ];
 
 export const paths = {
-  HOME: '/',
+  DASHBOARD: '/',
+  AUTH: '/authentication',
   WEATHER: '/weather',
   WORK: '/work',
   ACCOUNT: '/account',
