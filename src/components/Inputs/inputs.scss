@@ -8,6 +8,10 @@
   border-color: #fff;
 }
 
+.button:hover {
+  background-color: var(--lightScrollbarThumb);
+}
+
 .dark-form-layout {
   position: relative;
   border: solid 0.125rem var(--darkBorder);

@@ -13,10 +13,18 @@
   font-size: 1.05rem;
 }
 
+.dark-dashboard-item:hover {
+  background-color: var(--buttonColor);
+}
+
 .light-dashboard-item {
   background-color: var(--lightComponentBackground);
   border-color: var(--lightBorder);
   border-radius: 0.5rem;
   height: 5rem;
   font-size: 1.05rem;
+}
+
+.light-dashboard-item:hover {
+  background-color: var(--lightScrollbarThumb);
 }

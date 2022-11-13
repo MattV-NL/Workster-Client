@@ -29,18 +29,5 @@
 }
 
 .weather-chart-container {
-  display: grid;
-  grid-template-columns: [col1] 2rem [canvas] auto [col3] 2rem;
   height: 20rem;
-}
-
-.chart-axis {
-  padding-top: 2.25rem;
-  margin-left: -1rem;
-}
-
-.chart-axis-label {
-  transform: rotate(270deg);
-  width: 10rem;
-  height: 10rem;
 }

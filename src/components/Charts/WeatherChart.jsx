@@ -8,29 +8,52 @@ const WeatherChart = () => {
   const { weatherValues } = useContext(WeatherDataContext);
   const { darkMode } = useContext(UserSettingsContext);
 
-  const data = Array.from(weatherValues.values()).map(
-    ({ dt, pop, wind_speed }, index) => {
+  const windData = Array.from(weatherValues.values()).map(
+    ({ dt, wind_speed }) => {
       const date = new Date(dt * 1000).toDateString();
-      const precip = pop * 100;
       const windSpeed = wind_speed * 3.6;
 
       return {
         date,
-        precip,
         windSpeed,
-        key: index,
       };
     }
   );
 
+  const rainData = Array.from(weatherValues.values()).map(({ dt, rain }) => {
+    const date = new Date(dt * 1000).toDateString();
+
+    return {
+      date,
+      value: rain || 0,
+      type: 'rain',
+    };
+  });
+
+  const snowData = Array.from(weatherValues.values()).map(({ dt, snow }) => {
+    const date = new Date(dt * 1000).toDateString();
+
+    return {
+      date,
+      value: snow || 0,
+      type: 'snow',
+    };
+  });
+
+  const rainSnowData = rainData.concat(snowData);
+
   const config = {
-    data: [data, data],
+    data: [rainSnowData, windData],
     xField: 'date',
-    yField: ['precip', 'windSpeed'],
+    yField: ['value', 'windSpeed'],
     geometryOptions: [
       {
-        geometry: 'line',
-        color: '#5B8FF9',
+        geometry: 'column',
+        isGroup: true,
+        seriesField: 'type',
+        columnWidthRatio: 0.4,
+        label: {},
+        color: ['#5B8FF9', '#5D7092'],
       },
       {
         geometry: 'line',
@@ -51,17 +74,10 @@ const WeatherChart = () => {
   return (
     <div className={darkMode ? 'dark-chart' : 'light-chart'}>
       <div className={darkMode ? 'dark-chart-title' : 'light-chart-title'}>
-        Chance of Precipitation and Wind Speed on a Given Day
+        Amount of Rain, Snow, and Wind in a Week
       </div>
       <div className='weather-chart-container'>
-        <div className='chart-axis'>
-          <div className='chart-axis-label'>Chance of Precipitation</div>
-        </div>
-
         <DualAxes {...config} />
-        <div className='chart-axis'>
-          <div className='chart-axis-label'>Wind Speed in Km/Hr</div>
-        </div>
       </div>
     </div>
   );

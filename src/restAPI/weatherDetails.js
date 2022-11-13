@@ -46,7 +46,7 @@ export const weatherDetails = (key, units, weatherValues) => {
         <li>Wind Speed: {getWindSpeed(weatherData.wind_speed)}</li>
         <li>Precentage Chance of Precipitation: {weatherData.pop * 100}%</li>
         <li>Rainfall Amount: {getPrecip(weatherData.rain)}mm</li>
-        <li>Snowfall Amount: {getPrecip(weatherData.snow)}mm</li>
+        <li>Snowfall Amount: {getPrecip(weatherData.snow)}cm</li>
       </ul>
     );
   }

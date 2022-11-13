@@ -1,6 +1,5 @@
 import { useCallback, useContext, useState } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
-
 import './tables.scss';
 import { Table } from 'antd';
 import { weatherTableColumns } from '../../constants';
@@ -39,47 +38,14 @@ const WeatherTable = () => {
           </div>
         </>
       );
-      if (snow) {
-        if (!snow) {
-          snow = 0;
-          return {
-            date,
-            rain: `${rain}mm`,
-            snow: `${snow * 100}cm`,
-            windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
-            details,
-            key: index,
-          };
-        } else {
-          return {
-            date,
-            rain: `${rain}mm`,
-            snow: `${snow * 100}cm`,
-            windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
-            details,
-            key: index,
-          };
-        }
-      } else {
-        if (!rain) {
-          rain = 0;
-          return {
-            date,
-            rain: `${rain}mm`,
-            windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
-            details,
-            key: index,
-          };
-        } else {
-          return {
-            date,
-            rain: `${rain}mm`,
-            windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
-            details,
-            key: index,
-          };
-        }
-      }
+      return {
+        date,
+        rain: `${rain || 0}mm`,
+        snow: `${snow || 0}cm`,
+        windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
+        details,
+        key: index,
+      };
     }
   );
 
@@ -92,12 +58,12 @@ const WeatherTable = () => {
   }, [weatherValues]);
 
   const dynamicColumns = useCallback(() => {
-    if (!searchWeatherObjectsForSnow().includes(true)) {
-      const newWeatherTableColumns = weatherTableColumns;
+    if (searchWeatherObjectsForSnow().includes(true)) {
+      return Array.from(weatherTableColumns.values());
+    } else {
+      const newWeatherTableColumns = new Map(weatherTableColumns);
       newWeatherTableColumns.delete('snow');
       return Array.from(newWeatherTableColumns.values());
-    } else {
-      return Array.from(weatherTableColumns.values());
     }
   }, [searchWeatherObjectsForSnow]);
 
