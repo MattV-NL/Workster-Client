@@ -51,27 +51,37 @@
 
 .dark-locations-table {
   background-color: var(--darkComponentBackground);
-
+  width: 100%;
   & a {
     color: #fff;
   }
-
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
     background-color: var(--darkComponentBackground);
     color: var(--darkHeaderText);
   }
+  & .ant-table-tbody > tr.ant-table-row:hover > td,
+  .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+    background-color: var(--buttonColor);
+    cursor: pointer;
+  }
 }
 
 .light-locations-table {
+  background-color: var(--lightComponentBackground);
+  width: 100%;
   & a {
     color: #000;
   }
-
   & .ant-table-tbody,
   .ant-table-thead > tr > th {
-    background-color: #fff;
+    background-color: var(--lightComponentBackground);
     color: var(--lightHeaderText);
+  }
+  & .ant-table-tbody > tr.ant-table-row:hover > td,
+  .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+    background-color: var(--lightScrollbarThumb);
+    cursor: pointer;
   }
 }
 

@@ -29,6 +29,7 @@ const WeatherTable = () => {
       const details = (
         <>
           <div
+            className='more-details'
             onClick={() => {
               setWeatherDetailsKey(detailsKey);
               setIsWeatherDetailsVisible(true);
