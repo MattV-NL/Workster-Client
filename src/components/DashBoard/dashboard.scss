@@ -18,6 +18,7 @@
 }
 
 .light-dashboard-item {
+  color: black;
   background-color: var(--lightComponentBackground);
   border-color: var(--lightBorder);
   border-radius: 0.5rem;
@@ -27,4 +28,5 @@
 
 .light-dashboard-item:hover {
   background-color: var(--lightScrollbarThumb);
+  color: black;
 }

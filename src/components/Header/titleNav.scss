@@ -2,6 +2,10 @@
   color: unset;
 }
 
+a {
+  color: unset;
+}
+
 .header {
   display: grid;
   grid-template-rows: [first] fit-content [last] 2rem;
@@ -12,16 +16,12 @@
   display: flex;
   gap: 1.5rem;
   font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 
   & .logo {
     width: 3rem;
     height: 3rem;
   }
-}
-
-.logged-in {
-  color: green;
-  font-weight: bolder;
 }
 
 .dark-menu-icon {

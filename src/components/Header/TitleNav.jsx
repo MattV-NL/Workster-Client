@@ -4,47 +4,10 @@ import { paths } from '../../constants';
 import img1 from '../../images/logo.png';
 import Compare from '../Compare/Compare';
 import LoginStatus from './LoginStatus';
-import { Menu, Dropdown } from 'antd';
 import { useContext } from 'react';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
-import { MenuUnfoldOutlined } from '@ant-design/icons';
 
 const logo = 'logo';
-
-const items = [
-  {
-    label: (
-      <Link to={paths.DASHBOARD} className='navbar-item'>
-        Home
-      </Link>
-    ),
-    key: 'home',
-  },
-  {
-    label: (
-      <Link to={paths.WEATHER} className='navbar-item'>
-        Weather Page
-      </Link>
-    ),
-    key: 'weather',
-  },
-  {
-    label: (
-      <Link to={paths.WORK} className='navbar-item'>
-        Work Page
-      </Link>
-    ),
-    key: 'work',
-  },
-  {
-    label: (
-      <Link to={paths.ABOUT} className='navbar-item'>
-        About
-      </Link>
-    ),
-    key: 'About',
-  },
-];
 
 const TitleNav = () => {
   const { darkMode } = useContext(UserSettingsContext);
@@ -58,21 +21,22 @@ const TitleNav = () => {
         </Link>
       </div>
       <div className='navbar'>
-        <Dropdown overlay={<Menu items={items} className='navbar-item' />}>
-          <a
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <MenuUnfoldOutlined
-              className={darkMode ? 'dark-menu-icon' : 'light-menu-icon'}
-            />
-          </a>
-        </Dropdown>
+        <Link to={paths.DASHBOARD} className='navbar-item'>
+          Home
+        </Link>
+        <Link to={paths.WEATHER} className='navbar-item'>
+          Weather
+        </Link>
+        <Link to={paths.WORK} className='navbar-item'>
+          Work
+        </Link>
         <Compare className='navbar-item' />
         <LoginStatus
           className={darkMode ? 'dark-navbar-item' : 'light-navbar-item'}
         />
+        <Link to={paths.ABOUT} className='navbar-item'>
+          About
+        </Link>
       </div>
     </div>
   );
