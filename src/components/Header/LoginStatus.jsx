@@ -9,7 +9,7 @@ const LoginStatus = () => {
   return (
     <div>
       {authStatus.auth ? (
-        authStatus.username
+        <Link to={paths.ACCOUNT}>{authStatus.username}</Link>
       ) : (
         <Link className='not-logged-in' to={paths.AUTH}>
           Account

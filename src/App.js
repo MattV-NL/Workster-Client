@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { paths } from './constants';
 import WorkInputContextProvider from './contexts/WorkInputContext';
 import WorkDataContextProvider from './contexts/WorkDataContext';
-import NotFound from './components/NotFound';
+import NotFound from './components/NotFound/NotFound';
 import WeatherDataContextProvider from './contexts/WeatherDataContext';
 import PositionContextProvider from './contexts/PositionContext';
 import TitleNav from './components/Header/TitleNav';
