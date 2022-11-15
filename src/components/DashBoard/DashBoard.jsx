@@ -1,6 +1,7 @@
 import AuthRedirect from './AuthRedirect';
 import WeatherRedirect from './WeatherRedirect';
 import WorkRedirect from './WorkRedirect';
+import AboutRedirect from './AboutRedirect';
 import './dashboard.scss';
 
 const DashBoard = () => {
@@ -9,6 +10,7 @@ const DashBoard = () => {
       <AuthRedirect />
       <WeatherRedirect />
       <WorkRedirect />
+      <AboutRedirect />
     </div>
   );
 };

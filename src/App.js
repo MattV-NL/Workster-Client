@@ -20,6 +20,7 @@ import Work from './pages/Work';
 import SignInSignUp from './pages/SignInSignUp';
 import GetSettingsComponent from './components/GetSettingsComponent/GetSettingsComponent';
 import DashBoard from './components/DashBoard/DashBoard';
+import About from './pages/About';
 
 function App() {
   const { darkMode } = useContext(UserSettingsContext);
@@ -60,6 +61,9 @@ function App() {
                         <Route exact path={paths.ACCOUNT}>
                           <Account />
                           <LogoutModal />
+                        </Route>
+                        <Route exact path={paths.ABOUT}>
+                          <About />
                         </Route>
                         <Route exact path={`${paths.SAVED_WORK}:location_id`}>
                           <SavedWork />

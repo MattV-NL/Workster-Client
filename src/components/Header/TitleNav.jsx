@@ -36,6 +36,14 @@ const items = [
     ),
     key: 'work',
   },
+  {
+    label: (
+      <Link to={paths.ABOUT} className='navbar-item'>
+        About
+      </Link>
+    ),
+    key: 'About',
+  },
 ];
 
 const TitleNav = () => {
