@@ -24,9 +24,9 @@ export const sendCoordinatesGeolocate = async (pos, user_id) => {
   const lat = crd.latitude.toPrecision(6);
   const lon = crd.longitude.toPrecision(6);
   const coordsJSON = {
-    user_id: user_id,
-    lat: lat,
-    lon: lon,
+    user_id,
+    lat,
+    lon,
   };
   const sendResponse = await fetch(SERVER_EP.saveLocation, {
     method: 'POST',
@@ -59,12 +59,12 @@ export const sendCoordinatesManual = async (latitude, longitude, user_id) => {
   console.log(sendData, 'manual input');
 };
 
-export const manualLocationInput = async (latitude, longitude, units) => {
+export const manualLocationInput = async (lat, lon, units) => {
   const crd = {
-    latitude: latitude,
-    longitude: longitude,
+    lat,
+    lon,
   };
-  const apiURL = `${SERVER_EP.weather}/${crd.latitude},${crd.longitude},${units}`;
+  const apiURL = `${SERVER_EP.weather}/${crd.lat},${crd.lon},${units}`;
   const response = await fetch(apiURL);
   return response.json();
 };
