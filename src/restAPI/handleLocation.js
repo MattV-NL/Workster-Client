@@ -21,8 +21,8 @@ export const getCoordinates = async (pos, units) => {
 
 export const sendCoordinatesGeolocate = async (pos, user_id) => {
   const crd = pos.coords;
-  const lat = crd.latitude.toPrecision(6);
-  const lon = crd.longitude.toPrecision(6);
+  const lat = crd.latitude.toFixed(3);
+  const lon = crd.longitude.toFixed(3);
   const coordsJSON = {
     user_id,
     lat,
