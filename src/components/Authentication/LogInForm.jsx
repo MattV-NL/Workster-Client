@@ -6,6 +6,7 @@ import ButtonComp from '../Inputs/Button';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { FormOutlined, LoginOutlined } from '@ant-design/icons';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
+import DeleteAccount from '../Account/DeleteAccount';
 
 const LogInForm = () => {
   const { handleClickReg, handleClickLogin, logInData, regData } = useContext(

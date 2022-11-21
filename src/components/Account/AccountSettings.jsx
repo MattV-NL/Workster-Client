@@ -10,6 +10,8 @@ import { onChange } from '../../restAPI/onChange';
 import RainConflict from '../Settings/RainConflict';
 import SnowConflict from '../Settings/SnowConflict';
 import WindConflict from '../Settings/WindConflict';
+import DeleteAccount from './DeleteAccount';
+import DeleteAccountModal from '../Modals/DeleteAccountModal';
 
 const AccountSettings = () => {
   const { clearWeatherValues } = useContext(WeatherDataContext);
@@ -23,34 +25,41 @@ const AccountSettings = () => {
   } = useContext(UserSettingsContext);
 
   return (
-    <div className={darkMode ? 'dark-page-layout' : 'light-page-layout'}>
-      <div className='page'>
-        <div className={darkMode ? 'dark-page-header' : 'light-page-header'}>
-          User Settings
+    <>
+      <div className={darkMode ? 'dark-page-layout' : 'light-page-layout'}>
+        <div className='page'>
+          <div className={darkMode ? 'dark-page-header' : 'light-page-header'}>
+            User Settings
+          </div>
+          <DarkMode
+            checked={darkMode}
+            onChange={onChange({
+              setterFunction: setDarkMode,
+              isBoolean: true,
+            })}
+          />
+          <Units
+            darkMode={darkMode}
+            units={units}
+            setUnits={setUnits}
+            clearWeatherValues={clearWeatherValues}
+          />
+          <EmailNotifications
+            checked={emailNotifications}
+            onChange={onChange({
+              setterFunction: setEmailNotifications,
+              isBoolean: true,
+            })}
+          />
+          <RainConflict />
+          <SnowConflict />
+          <WindConflict />
+          <SaveSettingsButton />
+          <DeleteAccount />
         </div>
-        <DarkMode
-          checked={darkMode}
-          onChange={onChange({ setterFunction: setDarkMode, isBoolean: true })}
-        />
-        <Units
-          darkMode={darkMode}
-          units={units}
-          setUnits={setUnits}
-          clearWeatherValues={clearWeatherValues}
-        />
-        <EmailNotifications
-          checked={emailNotifications}
-          onChange={onChange({
-            setterFunction: setEmailNotifications,
-            isBoolean: true,
-          })}
-        />
-        <RainConflict />
-        <SnowConflict />
-        <WindConflict />
-        <SaveSettingsButton />
       </div>
-    </div>
+      <DeleteAccountModal />
+    </>
   );
 };
 

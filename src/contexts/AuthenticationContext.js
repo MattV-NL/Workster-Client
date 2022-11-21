@@ -22,6 +22,8 @@ const AuthenticationContextProvider = ({ children }) => {
   const [userNotFound, setUserNotFound] = useState(false);
   const [loginSuccessful, setLoginSuccessful] = useState(false);
   const [regSuccessful, setRegSuccessful] = useState(false);
+  const [deleteAccountModalVisible, setDeleteAccountModalVisible] =
+    useState(false);
 
   const handleClickReg = useCallback(async () => {
     if (
@@ -123,6 +125,8 @@ const AuthenticationContextProvider = ({ children }) => {
         setLoginSuccessful,
         regSuccessful,
         setRegSuccessful,
+        deleteAccountModalVisible,
+        setDeleteAccountModalVisible,
       }}
     >
       {children}
