@@ -13,5 +13,4 @@ There is also a feature that if there is a certain degree of weather on the same
 I chose to build this project as I was working throughout the winter outside in the elements. Often we would be caught working out in snow storms and have work inside on days with calmer weather. So I thought that I the person planning the workscope had an easy way to see if there was weather during days when work was to be scheduled outside then perhaps that person could reevaluate the work scope and possibly rescedule the work on another day.
 
 ## Running the App
-
-this project is not running quite yet as I am working on building the back end as well. I will update when that is complete.
+this project is live at https://workster.app/
