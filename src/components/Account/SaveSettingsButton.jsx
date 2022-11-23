@@ -47,7 +47,11 @@ const SaveSettingsButton = () => {
   ]);
 
   return (
-    <ButtonComp type={'primary'} onClick={sendSettingInformation}>
+    <ButtonComp
+      type={'primary'}
+      className='button'
+      onClick={sendSettingInformation}
+    >
       <SaveOutlined />
       {'   '}Save Settings
     </ButtonComp>

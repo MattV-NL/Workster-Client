@@ -7,7 +7,7 @@ const WorkButton = () => {
 
   return (
     <div className='button-container'>
-      <ButtonComp type='primary' onClick={workDataUpdate}>
+      <ButtonComp type='primary' className='button' onClick={workDataUpdate}>
         Enter Work Info
       </ButtonComp>
     </div>

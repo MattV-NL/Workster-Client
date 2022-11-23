@@ -31,7 +31,7 @@ const FetchButton = () => {
 
   return (
     <div className='button-container'>
-      <ButtonComp type='primary' onClick={handleClick}>
+      <ButtonComp type='primary' className='button' onClick={handleClick}>
         Get Weather Info
       </ButtonComp>
     </div>

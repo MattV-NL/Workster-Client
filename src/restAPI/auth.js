@@ -30,8 +30,7 @@ export const attemptLogin = async (
     });
     const returnedData = await response.json();
     localStorage.setItem('token', returnedData.token);
-    setLoginSuccessful(true);
-    console.log('successful');
+    setLoginSuccessful(returnedData.auth);
     setUserNotFound(returnedData.userNotFound);
     setLoginMessageModal(returnedData.loginMessageModal);
     return true;

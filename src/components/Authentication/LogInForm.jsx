@@ -6,7 +6,6 @@ import ButtonComp from '../Inputs/Button';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { FormOutlined, LoginOutlined } from '@ant-design/icons';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
-import DeleteAccount from '../Account/DeleteAccount';
 
 const LogInForm = () => {
   const { handleClickReg, handleClickLogin, logInData, regData } = useContext(
@@ -38,7 +37,11 @@ const LogInForm = () => {
               </div>
             );
           })}
-          <ButtonComp type='primary' onClick={handleClickReg}>
+          <ButtonComp
+            type='primary'
+            className='button'
+            onClick={handleClickReg}
+          >
             <FormOutlined />
             {'   '}Register
           </ButtonComp>
@@ -70,7 +73,11 @@ const LogInForm = () => {
               );
             }
           )}
-          <ButtonComp type='primary' onClick={handleClickLogin}>
+          <ButtonComp
+            type='primary'
+            className='button'
+            onClick={handleClickLogin}
+          >
             <LoginOutlined />
             {'   '}Log In
           </ButtonComp>

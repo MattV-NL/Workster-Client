@@ -2,9 +2,9 @@ import './inputs.scss';
 import PropTypes from 'prop-types';
 import { Button } from 'antd';
 
-const ButtonComp = ({ onClick, children, id, type }) => (
+const ButtonComp = ({ onClick, className, children, id, type }) => (
   <div className='button-container'>
-    <Button className='button' type={type} onClick={onClick} id={id}>
+    <Button className={className} type={type} onClick={onClick} id={id}>
       {children}
     </Button>
   </div>

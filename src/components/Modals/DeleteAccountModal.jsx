@@ -54,6 +54,8 @@ const DeleteAccountModal = () => {
     setSnowConflict,
     setWindConflict,
     setUnits,
+    history,
+    authStatus.user_id,
   ]);
 
   return (

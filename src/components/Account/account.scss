@@ -125,3 +125,12 @@
   gap: 2rem;
   width: 100%;
 }
+
+.delete-button {
+  background-color: var(--buttonColor);
+  border-color: #fff;
+}
+
+.delete-button:hover {
+  background-color: #a11515;
+}
