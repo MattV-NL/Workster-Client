@@ -64,7 +64,10 @@ const DeleteAccountModal = () => {
       onOk={handleOk}
       onCancel={handleCancel}
     >
-      Are you sure you want to delete your account. This can not be undone.
+      Are you sure you want to delete your account? The database is purged of
+      deleted accounts on the 15th of every month. If you wish to recover your
+      account please do so before this time. Otherwise, the account is not
+      recoverable.
     </Modal>
   );
 };
