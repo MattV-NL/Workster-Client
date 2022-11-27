@@ -21,6 +21,7 @@ import SignInSignUp from './pages/SignInSignUp';
 import GetSettingsComponent from './components/GetSettingsComponent/GetSettingsComponent';
 import DashBoard from './components/DashBoard/DashBoard';
 import About from './pages/About';
+import RecoverAccountPage from './pages/RecoverAccountPage';
 
 function App() {
   const { darkMode } = useContext(UserSettingsContext);
@@ -70,6 +71,9 @@ function App() {
                         </Route>
                         <Route exact path={paths.SETTINGS}>
                           <AccountSettings />
+                        </Route>
+                        <Route exact path={paths.RECOVER}>
+                          <RecoverAccountPage />
                         </Route>
                         <Route>
                           <NotFound />

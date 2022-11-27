@@ -267,6 +267,7 @@ export const paths = {
   SAVED_WORK: '/account/saved_location_',
   SETTINGS: '/account/settings',
   ABOUT: '/about',
+  RECOVER: '/recover_account',
 };
 
 export const SERVER_EP = {
@@ -284,4 +285,5 @@ export const SERVER_EP = {
   getSettings: '/api/get_settings',
   deleteAccount: '/api/delete_account',
   softDeleteAccount: '/api/soft_delete_account',
+  recoverAccount: '/api/recover_account',
 };

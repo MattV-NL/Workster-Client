@@ -5,3 +5,16 @@
   gap: 2rem;
   width: 100%;
 }
+.recover-account-text {
+  text-decoration: underline;
+  transition: all 0.2s ease-in;
+}
+
+.recover-account-text:hover {
+  cursor: pointer;
+  color: var(--lightScrollbarThumb);
+}
+
+.recover-header {
+  padding-bottom: 1rem;
+}

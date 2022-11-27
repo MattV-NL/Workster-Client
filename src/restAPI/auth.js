@@ -68,3 +68,21 @@ export const attemptReg = async (
     return false;
   }
 };
+
+export const recoverAccount = async (username, password) => {
+  const userData = {
+    username,
+    password,
+  };
+  const response = await fetch(SERVER_EP.recoverAccount, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  });
+
+  const message = await response.json();
+  console.log(message);
+  return;
+};

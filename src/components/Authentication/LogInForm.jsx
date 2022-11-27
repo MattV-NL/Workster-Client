@@ -6,6 +6,7 @@ import ButtonComp from '../Inputs/Button';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { FormOutlined, LoginOutlined } from '@ant-design/icons';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
+import RecoverAccount from './RecoverAccount';
 
 const LogInForm = () => {
   const { handleClickReg, handleClickLogin, logInData, regData } = useContext(
@@ -81,6 +82,7 @@ const LogInForm = () => {
             <LoginOutlined />
             {'   '}Log In
           </ButtonComp>
+          <RecoverAccount />
         </div>
       </div>
     </>

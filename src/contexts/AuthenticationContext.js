@@ -1,6 +1,11 @@
 import { createContext, useCallback, useState, useEffect } from 'react';
 import { USERNAME_KEY, PASSWORD_KEY, EMAIL_KEY } from '../constants';
-import { checkToken, attemptLogin, attemptReg } from '../restAPI/auth';
+import {
+  checkToken,
+  attemptLogin,
+  attemptReg,
+  recoverAccount,
+} from '../restAPI/auth';
 import { onChange } from '../restAPI/onChange';
 
 export const AuthenticationContext = createContext();
@@ -71,6 +76,12 @@ const AuthenticationContextProvider = ({ children }) => {
     }
   }, [username, password, setUsername, setPassword, setAuthStatus]);
 
+  const handleClickRecover = useCallback(async () => {
+    recoverAccount(username, password);
+    setUsername('');
+    setPassword('');
+  }, [username, password]);
+
   useEffect(() => {
     const checkAuth = async () => {
       setAuthStatus(await checkToken(localStorage.getItem('token')));
@@ -127,6 +138,7 @@ const AuthenticationContextProvider = ({ children }) => {
         setRegSuccessful,
         deleteAccountModalVisible,
         setDeleteAccountModalVisible,
+        handleClickRecover,
       }}
     >
       {children}
