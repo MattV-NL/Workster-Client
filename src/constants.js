@@ -283,4 +283,5 @@ export const SERVER_EP = {
   saveSettings: '/api/save_settings',
   getSettings: '/api/get_settings',
   deleteAccount: '/api/delete_account',
+  softDeleteAccount: '/api/soft_delete_account',
 };

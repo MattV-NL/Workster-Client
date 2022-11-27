@@ -2,7 +2,7 @@ import { useContext, useCallback } from 'react';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { SERVER_EP } from '../../constants';
 import { Modal } from 'antd';
-import { deleteRow } from '../../restAPI/deleteRow';
+import { deleteAccount } from '../../restAPI/deleteAccount';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import { paths } from '../../constants';
 import { useHistory } from 'react-router-dom';
@@ -32,7 +32,7 @@ const DeleteAccountModal = () => {
     const packagedInfo = {
       user_id: authStatus.user_id,
     };
-    await deleteRow(SERVER_EP.deleteAccount, packagedInfo);
+    await deleteAccount(SERVER_EP.softDeleteAccount, packagedInfo);
     localStorage.removeItem('token');
     setAuthStatus({
       auth: false,
@@ -43,7 +43,6 @@ const DeleteAccountModal = () => {
     setSnowConflict(20);
     setWindConflict(30);
     setUnits('metric');
-    console.log('account deleted');
     setDeleteAccountModalVisible(false);
     history.push(paths.DASHBOARD);
   }, [
