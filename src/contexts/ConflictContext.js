@@ -1,17 +1,17 @@
-import { useContext, useEffect, useState, useMemo } from 'react';
-import { WeatherDataContext } from '../../contexts/WeatherDataContext';
-import { WorkDataContext } from '../../contexts/WorkDataContext';
-import './compare.scss';
-import { replaceDate } from '../../restAPI/replaceDate';
-import { UserSettingsContext } from '../../contexts/UserSettingsContext';
+import { useContext, useState, createContext, useEffect } from 'react';
+import { WeatherDataContext } from './WeatherDataContext';
+import { WorkDataContext } from './WorkDataContext';
+import { UserSettingsContext } from './UserSettingsContext';
+import { replaceDate } from '../restAPI/replaceDate';
 
-const Compare = () => {
+export const ConflictContext = createContext();
+
+const ConflictContextProvider = ({ children }) => {
   const { rainConflict, snowConflict, windConflict, units } =
     useContext(UserSettingsContext);
   const { weatherValues } = useContext(WeatherDataContext);
   const { workValues } = useContext(WorkDataContext);
-  const [isConflict, setIsConflict] = useState(null);
-  const workCompareValues = useMemo(() => new Map(workValues), [workValues]);
+  const [isConflict2, setIsConflict2] = useState(null);
 
   useEffect(() => {
     const weatherCompareValues = new Map(
@@ -40,34 +40,42 @@ const Compare = () => {
         .map((item) => [item.date, item])
     );
 
-    const nextConflict = [
-      ...new Set([...weatherCompareValues.keys(), ...workCompareValues.keys()]),
-    ].some((date) => {
+    const newConflict = [
+      ...new Set([...weatherCompareValues.keys(), ...workValues.keys()]),
+    ].map((date) => {
       const { rain, snow, wind } = weatherCompareValues.get(date) || {};
       const { isOutside, isWelding, isScaffolding } =
-        workCompareValues.get(date) || {};
+        workValues.get(date) || {};
 
-      return !!(
+      const conflict = !!(
         (rain > rainConflict || snow > snowConflict || wind > windConflict) &&
         (isOutside || isWelding || isScaffolding)
       );
+
+      return {
+        date,
+        conflict,
+      };
     });
-    setIsConflict(nextConflict);
+
+    setIsConflict2(newConflict);
   }, [
-    workCompareValues,
-    setIsConflict,
     weatherValues,
+    workValues,
     windConflict,
     rainConflict,
     snowConflict,
     units,
   ]);
-
   return (
-    <div className={isConflict ? 'alert' : 'no-alert'}>
-      {isConflict === false && 'No'} Conflict
-    </div>
+    <ConflictContext.Provider
+      value={{
+        isConflict2,
+      }}
+    >
+      {children}
+    </ConflictContext.Provider>
   );
 };
 
-export default Compare;
+export default ConflictContextProvider;
