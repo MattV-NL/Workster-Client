@@ -53,6 +53,27 @@ const Compare = () => {
       );
     });
     setIsConflict(nextConflict);
+
+    // working revised conflict feature
+    const newConflict = [
+      ...new Set([...weatherCompareValues.keys(), ...workCompareValues.keys()]),
+    ].map((date) => {
+      const { rain, snow, wind } = weatherCompareValues.get(date) || {};
+      const { isOutside, isWelding, isScaffolding } =
+        workCompareValues.get(date) || {};
+
+      const conflict = !!(
+        (rain > rainConflict || snow > snowConflict || wind > windConflict) &&
+        (isOutside || isWelding || isScaffolding)
+      );
+
+      return {
+        date,
+        conflict,
+      };
+    });
+
+    console.log(newConflict);
   }, [
     workCompareValues,
     setIsConflict,
