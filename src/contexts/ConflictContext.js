@@ -40,23 +40,30 @@ const ConflictContextProvider = ({ children }) => {
         .map((item) => [item.date, item])
     );
 
-    const newConflict = [
-      ...new Set([...weatherCompareValues.keys(), ...workValues.keys()]),
-    ].map((date) => {
-      const { rain, snow, wind } = weatherCompareValues.get(date) || {};
-      const { isOutside, isWelding, isScaffolding } =
-        workValues.get(date) || {};
+    const newConflict = new Map(
+      [...new Set([...weatherCompareValues.keys(), ...workValues.keys()])].map(
+        (date) => {
+          const { rain, snow, wind } = weatherCompareValues.get(date) || {};
+          const { isOutside, isWelding, isScaffolding } =
+            workValues.get(date) || {};
 
-      const conflict = !!(
-        (rain > rainConflict || snow > snowConflict || wind > windConflict) &&
-        (isOutside || isWelding || isScaffolding)
-      );
+          const conflict = !!(
+            (rain > rainConflict ||
+              snow > snowConflict ||
+              wind > windConflict) &&
+            (isOutside || isWelding || isScaffolding)
+          );
 
-      return {
-        date,
-        conflict,
-      };
-    });
+          return [
+            date,
+            {
+              date,
+              conflict,
+            },
+          ];
+        }
+      )
+    );
 
     setIsConflict2(newConflict);
   }, [
