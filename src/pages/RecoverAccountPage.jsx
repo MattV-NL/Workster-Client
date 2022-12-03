@@ -5,6 +5,7 @@ import InputComp from '../components/Inputs/Input';
 import ButtonComp from '../components/Inputs/Button';
 import { AuthenticationContext } from '../contexts/AuthenticationContext';
 import { LoginOutlined } from '@ant-design/icons';
+import RecoverAccountModal from '../components/Modals/RecoverAccountModal';
 
 const RecoverAccountPage = () => {
   const { darkMode } = useContext(UserSettingsContext);
@@ -44,6 +45,7 @@ const RecoverAccountPage = () => {
           {'   '}Submit
         </ButtonComp>
       </div>
+      <RecoverAccountModal />
     </div>
   );
 };

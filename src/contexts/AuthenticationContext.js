@@ -29,6 +29,7 @@ const AuthenticationContextProvider = ({ children }) => {
   const [regSuccessful, setRegSuccessful] = useState(false);
   const [deleteAccountModalVisible, setDeleteAccountModalVisible] =
     useState(false);
+  const [recoverAccountModal, setRecoverAccountModal] = useState(false);
 
   const handleClickReg = useCallback(async () => {
     if (
@@ -77,7 +78,7 @@ const AuthenticationContextProvider = ({ children }) => {
   }, [username, password, setUsername, setPassword, setAuthStatus]);
 
   const handleClickRecover = useCallback(async () => {
-    recoverAccount(username, password);
+    recoverAccount(username, password, setRecoverAccountModal);
     setUsername('');
     setPassword('');
   }, [username, password]);
@@ -139,6 +140,8 @@ const AuthenticationContextProvider = ({ children }) => {
         deleteAccountModalVisible,
         setDeleteAccountModalVisible,
         handleClickRecover,
+        recoverAccountModal,
+        setRecoverAccountModal,
       }}
     >
       {children}

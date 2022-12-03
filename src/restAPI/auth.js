@@ -69,7 +69,11 @@ export const attemptReg = async (
   }
 };
 
-export const recoverAccount = async (username, password) => {
+export const recoverAccount = async (
+  username,
+  password,
+  setRecoverAccountModal
+) => {
   const userData = {
     username,
     password,
@@ -84,5 +88,6 @@ export const recoverAccount = async (username, password) => {
 
   const message = await response.json();
   console.log(message);
+  setRecoverAccountModal(message.successful);
   return;
 };
