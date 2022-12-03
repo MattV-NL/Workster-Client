@@ -8,10 +8,14 @@ import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import { weatherDetails } from '../../restAPI/weatherDetails';
 import ResetButton from '../WorkInput/ResetButton';
 import '../Inputs/inputs.scss';
+import { replaceDate } from '../../restAPI/replaceDate';
+import { ConflictContext } from '../../contexts/ConflictContext';
+
 const WeatherTable = () => {
   const { darkMode, units } = useContext(UserSettingsContext);
   const { weatherValues, setIsWeatherDetailsVisible } =
     useContext(WeatherDataContext);
+  const { isConflict2 } = useContext(ConflictContext);
   const weatherValuesKeys = weatherValues.keys();
   const [weatherDetailsKey, setWeatherDetailsKey] = useState('');
 
@@ -39,6 +43,10 @@ const WeatherTable = () => {
           </div>
         </>
       );
+
+      const dateKey = replaceDate(dt * 1000);
+      const isThereConflict = Object(isConflict2.get(dateKey));
+
       return {
         date,
         rain: `${rain || 0}mm`,
@@ -46,6 +54,7 @@ const WeatherTable = () => {
         windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
         details,
         key: index,
+        conflict: isThereConflict.conflict,
       };
     }
   );
@@ -68,9 +77,25 @@ const WeatherTable = () => {
     }
   }, [searchWeatherObjectsForSnow]);
 
+  const dynamicRow = useCallback(() => {
+    const rowState = datasource.forEach((row) => {
+      return row.conflict;
+    });
+    if (rowState) {
+      console.log('in conflict');
+      return 'row-has-conflict';
+    } else {
+      return 'row-has-no-conflict';
+    }
+  }, [weatherValues]);
+
   return (
     <div className={darkMode ? 'dark-table' : 'light-table'}>
-      <Table dataSource={datasource} columns={dynamicColumns()} />
+      <Table
+        dataSource={datasource}
+        columns={dynamicColumns()}
+        rowClassName={dynamicRow()}
+      />
       {weatherValues.size === 0 ? (
         ''
       ) : (

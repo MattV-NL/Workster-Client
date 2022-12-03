@@ -22,6 +22,7 @@ import GetSettingsComponent from './components/GetSettingsComponent/GetSettingsC
 import DashBoard from './components/DashBoard/DashBoard';
 import About from './pages/About';
 import RecoverAccountPage from './pages/RecoverAccountPage';
+import ConflictContextProvider from './contexts/ConflictContext';
 
 function App() {
   const { darkMode } = useContext(UserSettingsContext);
@@ -40,49 +41,51 @@ function App() {
         <WeatherDataContextProvider>
           <WorkDataContextProvider>
             <WorkInputContextProvider>
-              <div className={darkMode ? 'dark-body' : 'light-body'}>
-                <BrowserRouter>
-                  <TitleNav />
-                  <GetSettingsComponent />
-                  <div className='second-child-body'>
-                    <div className='layout'>
-                      <Switch>
-                        <Route exact path={['/', paths.DASHBOARD]}>
-                          <DashBoard />
-                        </Route>
-                        <Route exact path={['/authentication', paths.AUTH]}>
-                          <SignInSignUp />
-                        </Route>
-                        <Route exact path={paths.WEATHER}>
-                          <Weather />
-                        </Route>
-                        <Route exact path={paths.WORK}>
-                          <Work />
-                        </Route>
-                        <Route exact path={paths.ACCOUNT}>
-                          <Account />
-                          <LogoutModal />
-                        </Route>
-                        <Route exact path={paths.ABOUT}>
-                          <About />
-                        </Route>
-                        <Route exact path={`${paths.SAVED_WORK}:location_id`}>
-                          <SavedWork />
-                        </Route>
-                        <Route exact path={paths.SETTINGS}>
-                          <AccountSettings />
-                        </Route>
-                        <Route exact path={paths.RECOVER}>
-                          <RecoverAccountPage />
-                        </Route>
-                        <Route>
-                          <NotFound />
-                        </Route>
-                      </Switch>
+              <ConflictContextProvider>
+                <div className={darkMode ? 'dark-body' : 'light-body'}>
+                  <BrowserRouter>
+                    <TitleNav />
+                    <GetSettingsComponent />
+                    <div className='second-child-body'>
+                      <div className='layout'>
+                        <Switch>
+                          <Route exact path={['/', paths.DASHBOARD]}>
+                            <DashBoard />
+                          </Route>
+                          <Route exact path={['/authentication', paths.AUTH]}>
+                            <SignInSignUp />
+                          </Route>
+                          <Route exact path={paths.WEATHER}>
+                            <Weather />
+                          </Route>
+                          <Route exact path={paths.WORK}>
+                            <Work />
+                          </Route>
+                          <Route exact path={paths.ACCOUNT}>
+                            <Account />
+                            <LogoutModal />
+                          </Route>
+                          <Route exact path={paths.ABOUT}>
+                            <About />
+                          </Route>
+                          <Route exact path={`${paths.SAVED_WORK}:location_id`}>
+                            <SavedWork />
+                          </Route>
+                          <Route exact path={paths.SETTINGS}>
+                            <AccountSettings />
+                          </Route>
+                          <Route exact path={paths.RECOVER}>
+                            <RecoverAccountPage />
+                          </Route>
+                          <Route>
+                            <NotFound />
+                          </Route>
+                        </Switch>
+                      </div>
                     </div>
-                  </div>
-                </BrowserRouter>
-              </div>
+                  </BrowserRouter>
+                </div>
+              </ConflictContextProvider>
             </WorkInputContextProvider>
           </WorkDataContextProvider>
         </WeatherDataContextProvider>
