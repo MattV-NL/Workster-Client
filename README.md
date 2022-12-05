@@ -11,4 +11,5 @@ A user can see the details of the work information they entered by clicking on t
 I chose to build this project as I was working throughout the winter outside in the elements. Often we would be caught working out in snow storms and have work inside on days with calmer weather. So I thought that I the person planning the workscope had an easy way to see if there was weather during days when work was to be scheduled outside then perhaps that person could reevaluate the work scope and possibly rescedule the work on another day.
 
 ## Running the App
-this project is live at https://workster.app/
+I deployed the app myself using a linode VM.
+This project is live at https://workster.app/
