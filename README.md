@@ -1,12 +1,10 @@
 ## Description
 
-This is a project using React.js that I created with my background of the construction industry in mind. [https://mattv-nl.github.io/Workster-Client/](https://github.com/MattV-NL/Workster-Client)
+This is a project using React.js that I created with my background of the construction industry in mind. This is the front end of the project, the back end can be found here 
 
-This project will allow a user to enter information regarding the work they have in their work scope. The app will then display the information in charts and tables for the user to see. The weather information is retreived from an API based on the users location. I plan to implement a inp[ut in the future for the user to enter in their desired location to get the weather information for.
+This project will allow a user to enter information regarding the work they have in their work scope. The app will then display the information in charts and tables for the user to see. The weather information is retreived from an API based on the users location.
 
 A user can see the details of the work information they entered by clicking on the cell in the table of the data they want to inspect.
-
-There is also a feature that if there is a certain degree of weather on the same day as there is work scheduled with the given parameters then in the navigatation bar there is a display message of "Schedule conflict" or "No Schedule Conflict".
 
 ## Motivation
 
