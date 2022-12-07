@@ -49,7 +49,9 @@ const WeatherTable = () => {
           );
 
           const dateKey = replaceDate(dt * 1000);
+          console.log(isConflict2);
           const isThereConflict = Object(isConflict2.get(dateKey));
+          console.log(isThereConflict);
 
           return {
             date,
@@ -58,15 +60,11 @@ const WeatherTable = () => {
             windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
             details,
             key: index,
-            conflict: isThereConflict.conflict,
+            conflict: isThereConflict.conflict || false,
           };
         }
       )
     );
-
-    datasource.forEach((row) => console.log(row));
-
-    setRowState(datasource.forEach((row) => row.conflict));
   }, [weatherValues]);
 
   const searchWeatherObjectsForSnow = useCallback(() => {
@@ -88,8 +86,8 @@ const WeatherTable = () => {
   }, [searchWeatherObjectsForSnow]);
 
   const dynamicRow = useCallback(() => {
-    if (rowState) {
-      console.log('in conflict');
+    const variable = false;
+    if (variable) {
       return 'row-has-conflict';
     } else {
       return 'row-has-no-conflict';
