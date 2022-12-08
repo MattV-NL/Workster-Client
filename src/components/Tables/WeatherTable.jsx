@@ -18,54 +18,46 @@ const WeatherTable = () => {
   const { isConflict2 } = useContext(ConflictContext);
   const weatherValuesKeys = weatherValues.keys();
   const [weatherDetailsKey, setWeatherDetailsKey] = useState('');
-  const [datasource, setDatasource] = useState([]);
-  const [rowState, setRowState] = useState(false);
 
-  useEffect(() => {
-    setDatasource(
-      Array.from(weatherValues.values()).map(
-        ({ dt, wind_speed, rain, snow }, index) => {
-          const detailsKey = weatherValuesKeys.next().value;
-          const date = new Date(dt * 1000).toDateString();
-          let windSpeed = wind_speed;
-          let speedUnit = 'km/hr';
-          if (units === 'metric' || units === 'standard') {
-            windSpeed = wind_speed * 3.6;
-          } else if (units === 'imperial') {
-            speedUnit = 'mi/hr';
-          }
-          const details = (
-            <>
-              <div
-                className='more-details'
-                onClick={() => {
-                  setWeatherDetailsKey(detailsKey);
-                  setIsWeatherDetailsVisible(true);
-                }}
-              >
-                More Details...
-              </div>
-            </>
-          );
+  const datasource = Array.from(weatherValues.values()).map(
+    ({ dt, wind_speed, rain, snow }, index) => {
+      const detailsKey = weatherValuesKeys.next().value;
+      const date = new Date(dt * 1000).toDateString();
+      let windSpeed = wind_speed;
+      let speedUnit = 'km/hr';
+      if (units === 'metric' || units === 'standard') {
+        windSpeed = wind_speed * 3.6;
+      } else if (units === 'imperial') {
+        speedUnit = 'mi/hr';
+      }
+      const details = (
+        <>
+          <div
+            className='more-details'
+            onClick={() => {
+              setWeatherDetailsKey(detailsKey);
+              setIsWeatherDetailsVisible(true);
+            }}
+          >
+            More Details...
+          </div>
+        </>
+      );
 
-          const dateKey = replaceDate(dt * 1000);
-          console.log(isConflict2);
-          const isThereConflict = Object(isConflict2.get(dateKey));
-          console.log(isThereConflict);
+      const dateKey = replaceDate(dt * 1000);
+      const isThereConflict = Object(isConflict2.get(dateKey));
 
-          return {
-            date,
-            rain: `${rain || 0}mm`,
-            snow: `${snow || 0}cm`,
-            windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
-            details,
-            key: index,
-            conflict: isThereConflict.conflict || false,
-          };
-        }
-      )
-    );
-  }, [weatherValues]);
+      return {
+        date,
+        rain: `${rain || 0}mm`,
+        snow: `${snow || 0}cm`,
+        windSpeed: `${windSpeed.toFixed(2)} ${speedUnit}`,
+        details,
+        key: index,
+        conflict: isThereConflict.conflict,
+      };
+    }
+  );
 
   const searchWeatherObjectsForSnow = useCallback(() => {
     const weatherData = Array.from(weatherValues.values());
@@ -85,22 +77,26 @@ const WeatherTable = () => {
     }
   }, [searchWeatherObjectsForSnow]);
 
-  const dynamicRow = useCallback(() => {
-    const variable = false;
-    if (variable) {
-      return 'row-has-conflict';
+  const dynamicBorder = useCallback(() => {
+    const checkForConflict = Array.from(isConflict2.values()).map(
+      (date) => date.conflict
+    );
+    if (checkForConflict.includes(true)) {
+      return '-conflict';
     } else {
-      return 'row-has-no-conflict';
+      return '';
     }
   }, [datasource]);
 
   return (
-    <div className={darkMode ? 'dark-table' : 'light-table'}>
-      <Table
-        dataSource={datasource}
-        columns={dynamicColumns()}
-        rowClassName={dynamicRow()}
-      />
+    <div
+      className={
+        darkMode
+          ? `dark-table${dynamicBorder()}`
+          : `light-table-${dynamicBorder()}`
+      }
+    >
+      <Table dataSource={datasource} columns={dynamicColumns()} />
       {weatherValues.size === 0 ? (
         ''
       ) : (

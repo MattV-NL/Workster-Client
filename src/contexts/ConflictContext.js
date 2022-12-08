@@ -11,7 +11,7 @@ const ConflictContextProvider = ({ children }) => {
     useContext(UserSettingsContext);
   const { weatherValues } = useContext(WeatherDataContext);
   const { workValues } = useContext(WorkDataContext);
-  const [isConflict2, setIsConflict2] = useState(null);
+  const [isConflict2, setIsConflict2] = useState(new Map());
 
   useEffect(() => {
     const weatherCompareValues = new Map(
