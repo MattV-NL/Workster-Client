@@ -67,11 +67,26 @@ const WorkTable = () => {
     }
   }, [authStatus]);
 
-  const columns = dynamicColumns();
+  const dynamicBorder = useCallback(() => {
+    const checkForConflict = Array.from(isConflict2.values()).map(
+      (date) => date.conflict
+    );
+    if (checkForConflict.includes(true)) {
+      return '-conflict';
+    } else {
+      return '';
+    }
+  }, [datasource]);
 
   return (
-    <div className={darkMode ? 'dark-table' : 'light-table'}>
-      <Table dataSource={datasource} columns={columns} />
+    <div
+      className={
+        darkMode
+          ? `dark-table${dynamicBorder()}`
+          : `light-table${dynamicBorder()}`
+      }
+    >
+      <Table dataSource={datasource} columns={dynamicColumns()} />
       {workValues.size === 0 ? (
         ''
       ) : (
