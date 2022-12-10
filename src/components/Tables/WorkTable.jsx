@@ -16,7 +16,7 @@ const WorkTable = () => {
   const { darkMode } = useContext(UserSettingsContext);
   const { authStatus } = useContext(AuthenticationContext);
   const { workValues, setIsWorkDetailsVisible } = useContext(WorkDataContext);
-  const { isConflict2 } = useContext(ConflictContext);
+  const { isConflict } = useContext(ConflictContext);
   const [workDetailsKey, setWorkDetailsKey] = useState('');
   const workValuesKeys = workValues.keys();
 
@@ -70,7 +70,7 @@ const WorkTable = () => {
   }, [authStatus]);
 
   const dynamicBorder = useCallback(() => {
-    const checkForConflict = Array.from(isConflict2.values()).map(
+    const checkForConflict = Array.from(isConflict.values()).map(
       (date) => date.conflict
     );
     if (checkForConflict.includes(true)) {
@@ -78,7 +78,7 @@ const WorkTable = () => {
     } else {
       return '';
     }
-  }, [isConflict2]);
+  }, [isConflict]);
 
   return (
     <div

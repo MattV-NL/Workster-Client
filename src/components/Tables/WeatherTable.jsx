@@ -15,7 +15,7 @@ const WeatherTable = () => {
   const { darkMode, units } = useContext(UserSettingsContext);
   const { weatherValues, setIsWeatherDetailsVisible } =
     useContext(WeatherDataContext);
-  const { isConflict2 } = useContext(ConflictContext);
+  const { isConflict } = useContext(ConflictContext);
   const weatherValuesKeys = weatherValues.keys();
   const [weatherDetailsKey, setWeatherDetailsKey] = useState('');
 
@@ -43,7 +43,7 @@ const WeatherTable = () => {
       );
 
       const dateKey = replaceDate(dt * 1000);
-      const isThereConflict = Object(isConflict2.get(dateKey));
+      const isThereConflict = Object(isConflict.get(dateKey));
 
       return {
         date,
@@ -76,16 +76,15 @@ const WeatherTable = () => {
   }, [searchWeatherObjectsForSnow]);
 
   const dynamicBorder = useCallback(() => {
-    const checkForConflict = Array.from(isConflict2.values()).map(
+    const checkForConflict = Array.from(isConflict.values()).map(
       (date) => date.conflict
     );
-    console.log(checkForConflict);
     if (checkForConflict.includes(true)) {
       return '-conflict';
     } else {
       return '';
     }
-  }, [isConflict2]);
+  }, [isConflict]);
 
   return (
     <div

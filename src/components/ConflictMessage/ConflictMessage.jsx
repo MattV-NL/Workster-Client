@@ -2,17 +2,16 @@ import { ConflictContext } from '../../contexts/ConflictContext.js';
 import { useContext, useEffect, useState } from 'react';
 
 const ConflictMessage = () => {
-  const { isConflict2 } = useContext(ConflictContext);
+  const { isConflict } = useContext(ConflictContext);
   const [conflictingDates, setConflictingDates] = useState([]);
   const [areThereDateConflicts, setAreThereDateConflicts] = useState(false);
 
   useEffect(() => {
-    const isThereConflict = Array.from(isConflict2.values()).map(
+    const isThereConflict = Array.from(isConflict.values()).map(
       (date) => date.conflict
     );
-    console.log(isThereConflict);
     if (isThereConflict.includes(true)) {
-      const returnedDates = Array.from(isConflict2.values()).map(
+      const returnedDates = Array.from(isConflict.values()).map(
         ({ dateString, conflict }) => {
           if (conflict) {
             return dateString;
@@ -26,7 +25,7 @@ const ConflictMessage = () => {
     } else {
       setAreThereDateConflicts(false);
     }
-  }, [isConflict2, setConflictingDates, setAreThereDateConflicts]);
+  }, [isConflict, setConflictingDates, setAreThereDateConflicts]);
 
   return (
     <div className='conflict-message'>
