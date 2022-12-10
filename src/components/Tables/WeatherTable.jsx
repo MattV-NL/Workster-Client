@@ -79,6 +79,7 @@ const WeatherTable = () => {
     const checkForConflict = Array.from(isConflict2.values()).map(
       (date) => date.conflict
     );
+    console.log(checkForConflict);
     if (checkForConflict.includes(true)) {
       return '-conflict';
     } else {

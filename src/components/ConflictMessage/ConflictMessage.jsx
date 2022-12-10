@@ -10,6 +10,7 @@ const ConflictMessage = () => {
     const isThereConflict = Array.from(isConflict2.values()).map(
       (date) => date.conflict
     );
+    console.log(isThereConflict);
     if (isThereConflict.includes(true)) {
       const returnedDates = Array.from(isConflict2.values()).map(
         ({ dateString, conflict }) => {
