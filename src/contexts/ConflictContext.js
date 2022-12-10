@@ -26,11 +26,11 @@ const ConflictContextProvider = ({ children }) => {
           }
           if (!snow) {
             snow = 0;
-          } else {
-            snow = snow * 100;
           }
+          const dateString = new Date(dt * 1000).toDateString();
 
           return {
+            dateString,
             date,
             rain,
             snow,
@@ -43,22 +43,23 @@ const ConflictContextProvider = ({ children }) => {
     const newConflict = new Map(
       [...new Set([...weatherCompareValues.keys(), ...workValues.keys()])].map(
         (date) => {
-          const { rain, snow, wind } = weatherCompareValues.get(date) || {};
+          const { rain, snow, windSpeed, dateString } =
+            weatherCompareValues.get(date) || {};
           const { isOutside, isWelding, isScaffolding } =
             workValues.get(date) || {};
 
           const conflict = !!(
             (rain > rainConflict ||
               snow > snowConflict ||
-              wind > windConflict) &&
+              windSpeed > windConflict) &&
             (isOutside || isWelding || isScaffolding)
           );
 
           return [
             date,
             {
-              date,
               conflict,
+              dateString,
             },
           ];
         }

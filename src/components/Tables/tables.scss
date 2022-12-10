@@ -78,6 +78,7 @@
 .dark-table-conflict {
   position: relative;
   border: solid 0.125rem red;
+  transition: 0.5s;
   background-color: var(--darkComponentBackground);
   border-radius: 0.5rem;
   padding: 1rem;
@@ -112,6 +113,7 @@
 .light-table-conflict {
   position: relative;
   border: solid 0.125rem red;
+  transition: 0.5s;
   background-color: var(--lightComponentBackground);
   border-radius: 0.5rem;
   padding: 0.5rem;

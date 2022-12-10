@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 import './tables.scss';
 import { Table } from 'antd';
@@ -31,17 +31,15 @@ const WeatherTable = () => {
         speedUnit = 'mi/hr';
       }
       const details = (
-        <>
-          <div
-            className='more-details'
-            onClick={() => {
-              setWeatherDetailsKey(detailsKey);
-              setIsWeatherDetailsVisible(true);
-            }}
-          >
-            More Details...
-          </div>
-        </>
+        <div
+          className='more-details'
+          onClick={() => {
+            setWeatherDetailsKey(detailsKey);
+            setIsWeatherDetailsVisible(true);
+          }}
+        >
+          More Details...
+        </div>
       );
 
       const dateKey = replaceDate(dt * 1000);
@@ -86,7 +84,7 @@ const WeatherTable = () => {
     } else {
       return '';
     }
-  }, [datasource]);
+  }, [isConflict2]);
 
   return (
     <div

@@ -10,11 +10,13 @@ import { workDetails } from '../../restAPI/workDetails';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import '../Inputs/inputs.scss';
 import ResetButton from '../WorkInput/ResetButton';
+import { ConflictContext } from '../../contexts/ConflictContext';
 
 const WorkTable = () => {
   const { darkMode } = useContext(UserSettingsContext);
   const { authStatus } = useContext(AuthenticationContext);
   const { workValues, setIsWorkDetailsVisible } = useContext(WorkDataContext);
+  const { isConflict2 } = useContext(ConflictContext);
   const [workDetailsKey, setWorkDetailsKey] = useState('');
   const workValuesKeys = workValues.keys();
 
@@ -76,7 +78,7 @@ const WorkTable = () => {
     } else {
       return '';
     }
-  }, [datasource]);
+  }, [isConflict2]);
 
   return (
     <div

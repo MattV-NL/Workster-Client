@@ -7,7 +7,7 @@ const UserSettingsContextProvider = ({ children }) => {
   const [emailNotifications, setEmailNotifications] = useState(false);
   const [rainConflict, setRainConflict] = useState(20);
   const [snowConflict, setSnowConflict] = useState(20);
-  const [windConflict, setWindConflict] = useState(30);
+  const [windConflict, setWindConflict] = useState(40);
   const [units, setUnits] = useState('metric');
   // metric - m/s & degrees C
   // standard m/s & degrees K

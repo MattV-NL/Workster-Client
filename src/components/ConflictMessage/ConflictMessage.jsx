@@ -1,24 +1,42 @@
 import { ConflictContext } from '../../contexts/ConflictContext.js';
-import { useContext, useCallback } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
-const ConflcitMessage = () => {
+const ConflictMessage = () => {
   const { isConflict2 } = useContext(ConflictContext);
+  const [conflictingDates, setConflictingDates] = useState([]);
+  const [areThereDateConflicts, setAreThereDateConflicts] = useState(false);
 
-  const checkForConflict = useCallback(() => {
+  useEffect(() => {
     const isThereConflict = Array.from(isConflict2.values()).map(
-      (date) => date.confict
+      (date) => date.conflict
     );
     if (isThereConflict.includes(true)) {
-      // show dates for conflicts
-
-      return;
+      const returnedDates = Array.from(isConflict2.values()).map(
+        ({ dateString, conflict }) => {
+          if (conflict) {
+            return dateString;
+          } else {
+            return undefined;
+          }
+        }
+      );
+      setConflictingDates(returnedDates.filter((date) => date !== undefined));
+      setAreThereDateConflicts(true);
     } else {
-      // do nothing
-      return;
+      setAreThereDateConflicts(false);
     }
-  }, [isConflict2]);
+  }, [isConflict2, setConflictingDates, setAreThereDateConflicts]);
 
-  return <div>{checkForConflict()}</div>;
+  return (
+    <div className='conflict-message'>
+      <div>
+        {areThereDateConflicts
+          ? `There is some work you have scheduled you may want to take another look at. They are:`
+          : ''}
+      </div>
+      <div>{areThereDateConflicts ? `${conflictingDates.toString()}` : ''}</div>
+    </div>
+  );
 };
 
 export default ConflictMessage;
