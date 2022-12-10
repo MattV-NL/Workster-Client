@@ -10,11 +10,13 @@ import { workDetails } from '../../restAPI/workDetails';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
 import '../Inputs/inputs.scss';
 import ResetButton from '../WorkInput/ResetButton';
+import { ConflictContext } from '../../contexts/ConflictContext';
 
 const WorkTable = () => {
   const { darkMode } = useContext(UserSettingsContext);
   const { authStatus } = useContext(AuthenticationContext);
   const { workValues, setIsWorkDetailsVisible } = useContext(WorkDataContext);
+  const { isConflict2 } = useContext(ConflictContext);
   const [workDetailsKey, setWorkDetailsKey] = useState('');
   const workValuesKeys = workValues.keys();
 
@@ -67,11 +69,26 @@ const WorkTable = () => {
     }
   }, [authStatus]);
 
-  const columns = dynamicColumns();
+  const dynamicBorder = useCallback(() => {
+    const checkForConflict = Array.from(isConflict2.values()).map(
+      (date) => date.conflict
+    );
+    if (checkForConflict.includes(true)) {
+      return '-conflict';
+    } else {
+      return '';
+    }
+  }, [isConflict2]);
 
   return (
-    <div className={darkMode ? 'dark-table' : 'light-table'}>
-      <Table dataSource={datasource} columns={columns} />
+    <div
+      className={
+        darkMode
+          ? `dark-table${dynamicBorder()}`
+          : `light-table${dynamicBorder()}`
+      }
+    >
+      <Table dataSource={datasource} columns={dynamicColumns()} />
       {workValues.size === 0 ? (
         ''
       ) : (

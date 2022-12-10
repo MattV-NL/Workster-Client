@@ -31,17 +31,15 @@ const WeatherTable = () => {
         speedUnit = 'mi/hr';
       }
       const details = (
-        <>
-          <div
-            className='more-details'
-            onClick={() => {
-              setWeatherDetailsKey(detailsKey);
-              setIsWeatherDetailsVisible(true);
-            }}
-          >
-            More Details...
-          </div>
-        </>
+        <div
+          className='more-details'
+          onClick={() => {
+            setWeatherDetailsKey(detailsKey);
+            setIsWeatherDetailsVisible(true);
+          }}
+        >
+          More Details...
+        </div>
       );
 
       const dateKey = replaceDate(dt * 1000);
@@ -77,25 +75,26 @@ const WeatherTable = () => {
     }
   }, [searchWeatherObjectsForSnow]);
 
-  const dynamicRow = useCallback(() => {
-    const rowState = datasource.forEach((row) => {
-      return row.conflict;
-    });
-    if (rowState) {
-      console.log('in conflict');
-      return 'row-has-conflict';
+  const dynamicBorder = useCallback(() => {
+    const checkForConflict = Array.from(isConflict2.values()).map(
+      (date) => date.conflict
+    );
+    if (checkForConflict.includes(true)) {
+      return '-conflict';
     } else {
-      return 'row-has-no-conflict';
+      return '';
     }
-  }, [weatherValues]);
+  }, [isConflict2]);
 
   return (
-    <div className={darkMode ? 'dark-table' : 'light-table'}>
-      <Table
-        dataSource={datasource}
-        columns={dynamicColumns()}
-        rowClassName={dynamicRow()}
-      />
+    <div
+      className={
+        darkMode
+          ? `dark-table${dynamicBorder()}`
+          : `light-table-${dynamicBorder()}`
+      }
+    >
+      <Table dataSource={datasource} columns={dynamicColumns()} />
       {weatherValues.size === 0 ? (
         ''
       ) : (

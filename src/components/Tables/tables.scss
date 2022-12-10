@@ -75,6 +75,72 @@
   text-decoration: underline;
 }
 
-.row-has-conflict {
-  color: maroon;
+.dark-table-conflict {
+  position: relative;
+  border: solid 0.125rem red;
+  transition: 0.5s;
+  background-color: var(--darkComponentBackground);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  overflow-x: scroll;
+
+  & .ant-table-tbody,
+  .ant-table-thead > tr > th {
+    background-color: var(--darkComponentBackground);
+    color: var(--darkHeaderText);
+  }
+  & .ant-table-tbody > tr.ant-table-row:hover > td,
+  .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+    background-color: var(--buttonColor);
+    cursor: pointer;
+  }
+}
+
+.dark-table-conflict::-webkit-scrollbar {
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: var(--darkScrollbarTrack);
+  border-radius: 1rem;
+}
+
+.dark-table-conflict::-webkit-scrollbar-thumb {
+  background-color: var(--darkScrollbarThumb);
+  border-radius: 1rem;
+}
+
+.light-table-conflict {
+  position: relative;
+  border: solid 0.125rem red;
+  transition: 0.5s;
+  background-color: var(--lightComponentBackground);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  overflow-x: scroll;
+
+  & .ant-table-tbody,
+  .ant-table-thead > tr > th {
+    background-color: var(--lightComponentBackground);
+    color: var(--lightHeaderText);
+  }
+
+  & .ant-table-tbody > tr.ant-table-row:hover > td,
+  .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+    background-color: var(--lightScrollbarThumb);
+    cursor: pointer;
+  }
+}
+
+.light-table-conflict::-webkit-scrollbar {
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: var(--lightScrollbarTrack);
+  border-radius: 1rem;
+}
+
+.light-table-conflict::-webkit-scrollbar-thumb {
+  background-color: var(--lightScrollbarThumb);
+  border-radius: 1rem;
 }
