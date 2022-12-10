@@ -5,11 +5,13 @@ import WorkChart from '../components/Charts/WorkChart';
 import WorkWarningModal from '../components/Modals/WorkWarningModal';
 import ResetWarningModal from '../components/Modals/ResetWarningModal';
 import SaveWorkModal from '../components/Modals/SaveWorkModal';
+import ConflictMessage from '../components/ConflictMessage/ConflictMessage';
 
 const Work = () => {
   return (
     <>
       <WorkForm />
+      <ConflictMessage />
       <WorkTable />
       <SaveWorkButton />
       <WorkChart />
