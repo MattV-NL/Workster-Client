@@ -268,6 +268,8 @@ export const paths = {
   SETTINGS: '/account/settings',
   ABOUT: '/about',
   RECOVER: '/recover_account',
+  GITHUB: 'https://github.com/MattV-NL',
+  LINKEDIN: 'https://www.linkedin.com/in/matthew-vey-4b9402151/',
 };
 
 export const SERVER_EP = {

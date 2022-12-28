@@ -36,7 +36,7 @@ const GetSettingsComponent = () => {
     setSnowConflict,
     setWindConflict,
   ]);
-  return <div></div>;
+  return <></>;
 };
 
 export default GetSettingsComponent;

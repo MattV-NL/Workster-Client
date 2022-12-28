@@ -23,6 +23,7 @@ import DashBoard from './components/DashBoard/DashBoard';
 import About from './pages/About';
 import RecoverAccountPage from './pages/RecoverAccountPage';
 import ConflictContextProvider from './contexts/ConflictContext';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const { darkMode } = useContext(UserSettingsContext);
@@ -83,6 +84,7 @@ function App() {
                         </Switch>
                       </div>
                     </div>
+                    <Footer />
                   </BrowserRouter>
                 </div>
               </ConflictContextProvider>
