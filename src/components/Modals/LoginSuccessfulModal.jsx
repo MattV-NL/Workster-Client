@@ -1,15 +1,19 @@
 import { useCallback, useContext } from 'react';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { Modal } from 'antd';
+import { useHistory } from 'react-router-dom';
 
 const LoginSuccessfulModal = () => {
   const { loginSuccessful, setLoginSuccessful } = useContext(
     AuthenticationContext
   );
 
+  const history = useHistory();
+
   const handleOkCancel = useCallback(() => {
     setLoginSuccessful(false);
-  }, [setLoginSuccessful]);
+    history.push('/');
+  }, [setLoginSuccessful, history]);
   return (
     <Modal
       title='Login Successful'

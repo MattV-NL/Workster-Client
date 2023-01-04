@@ -52,7 +52,14 @@ const WeatherChart = () => {
         isGroup: true,
         seriesField: 'type',
         columnWidthRatio: 0.4,
-        label: {},
+        label: {
+          position: 'top',
+          style: {
+            fill: '#fff',
+            shadowColor: '#000',
+            shadowBlur: 10,
+          },
+        },
         color: ['#5B8FF9', '#5D7092'],
       },
       {
