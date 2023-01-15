@@ -3,7 +3,7 @@ import { useContext, useCallback, useState } from 'react';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import { workTableColumns } from '../../constants';
 import { Table } from 'antd';
-import WorkDetailsModal from '../Modals/WorkDetailsModal';
+import WorkDetailsModalMain from '../Modals/WorkDetailsModalMain';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import { displayBooleanInput } from '../../restAPI/displayBool';
 import { workDetails } from '../../restAPI/workDetails';
@@ -15,7 +15,8 @@ import { ConflictContext } from '../../contexts/ConflictContext';
 const WorkTable = () => {
   const { darkMode } = useContext(UserSettingsContext);
   const { authStatus } = useContext(AuthenticationContext);
-  const { workValues, setIsWorkDetailsVisible } = useContext(WorkDataContext);
+  const { workValues, setIsWorkDetailsVisibleMain } =
+    useContext(WorkDataContext);
   const { isConflict } = useContext(ConflictContext);
   const [workDetailsKey, setWorkDetailsKey] = useState('');
   const workValuesKeys = workValues.keys();
@@ -28,7 +29,7 @@ const WorkTable = () => {
       <div
         onClick={() => {
           setWorkDetailsKey(detailsKey);
-          setIsWorkDetailsVisible(true);
+          setIsWorkDetailsVisibleMain(true);
         }}
       >
         More Details...
@@ -92,9 +93,9 @@ const WorkTable = () => {
       {workValues.size === 0 ? (
         ''
       ) : (
-        <WorkDetailsModal title={`Work Details`}>
+        <WorkDetailsModalMain title={`Work Details`}>
           {workDetails(workValues, workDetailsKey)}
-        </WorkDetailsModal>
+        </WorkDetailsModalMain>
       )}
       <div className='form-button'>
         <ResetButton />

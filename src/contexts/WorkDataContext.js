@@ -6,7 +6,10 @@ const sortTable = (a, b) => a[0] - b[0];
 
 const WorkDataContextProvider = ({ children }) => {
   const [workValues, setWorkValues] = useState(new Map());
-  const [isWorkDetailsVisible, setIsWorkDetailsVisible] = useState(false);
+  const [isWorkDetailsVisibleMain, setIsWorkDetailsVisibleMain] =
+    useState(false);
+  const [isWorkDetailsVisibleProfile, setIsWorkDetailsVisibleProfile] =
+    useState(false);
   const [saveWorkModalVisible, setSaveWorkModalVisible] = useState(false);
   const [deleteWorkModalVisible, setDeleteWorkModalVisible] = useState(false);
 
@@ -37,8 +40,10 @@ const WorkDataContextProvider = ({ children }) => {
         setWorkValues,
         submitWorkValues,
         clearWorkValues,
-        isWorkDetailsVisible,
-        setIsWorkDetailsVisible,
+        isWorkDetailsVisibleMain,
+        setIsWorkDetailsVisibleMain,
+        isWorkDetailsVisibleProfile,
+        setIsWorkDetailsVisibleProfile,
         saveWorkModalVisible,
         setSaveWorkModalVisible,
         deleteWorkModalVisible,

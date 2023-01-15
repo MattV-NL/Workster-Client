@@ -9,13 +9,17 @@ import { DeleteOutlined } from '@ant-design/icons';
 import DeleteWorkDataModal from '../Modals/DeleteWorkDataModal';
 import { WorkDataContext } from '../../contexts/WorkDataContext';
 import { UserSettingsContext } from '../../contexts/UserSettingsContext';
+import WorkDetailsModalProfile from '../Modals/WorkDetailsModalProfile';
+import { workDetailsProfile } from '../../restAPI/workDetailsProfile';
 
 const SavedWork = () => {
   const { darkMode } = useContext(UserSettingsContext);
+  const { setIsWorkDetailsVisibleProfile } = useContext(WorkDataContext);
   const { location_id } = useParams();
   const [workInformation, setWorkInformation] = useState([]);
   const { setDeleteWorkModalVisible, deleteWorkModalVisible } =
     useContext(WorkDataContext);
+  const [workDetailsKey, setWorkDetailsKey] = useState(null);
 
   useEffect(() => {
     const getSavedWork = async () => {
@@ -54,6 +58,16 @@ const SavedWork = () => {
           <DeleteWorkDataModal children={information_id} />
         </>
       ));
+      const details = (
+        <div
+          onClick={() => {
+            setWorkDetailsKey(information_id);
+            setIsWorkDetailsVisibleProfile(true);
+          }}
+        >
+          More Details...
+        </div>
+      );
 
       return {
         date: newDate,
@@ -61,7 +75,7 @@ const SavedWork = () => {
         isWelding: displayBooleanInput(is_welding),
         isScaffolding: displayBooleanInput(is_scaffolding),
         createdAt: createdDate,
-        workDetails: work_details,
+        workDetails: details,
         location_id,
         deleteRowIcon,
       };
@@ -72,6 +86,9 @@ const SavedWork = () => {
   return (
     <div className={darkMode ? 'dark-table' : 'light-table'}>
       <Table dataSource={datasource} columns={workInformationTableColumns} />
+      <WorkDetailsModalProfile title={'Work Details'}>
+        {workDetailsProfile(workInfoMap, workDetailsKey)}
+      </WorkDetailsModalProfile>
     </div>
   );
 };

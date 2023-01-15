@@ -19,6 +19,8 @@ export const workDetails = (workValues, key) => {
             ? 'Scaffolding will be required for this job'
             : 'No scaffolding needed for this job'}
         </div>
+        <br />
+        <div>Details:</div>
         <div>{workData.workDetails}</div>
       </>
     );
