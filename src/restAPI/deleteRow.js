@@ -1,5 +1,4 @@
 export const deleteRow = async (apiURL, packagedInfo) => {
-  console.log(packagedInfo);
   const response = await fetch(apiURL, {
     method: 'POST',
     headers: {

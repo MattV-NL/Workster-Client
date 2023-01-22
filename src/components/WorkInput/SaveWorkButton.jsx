@@ -19,7 +19,6 @@ const SaveWorkButton = () => {
       body: JSON.stringify(newWorkValue),
     });
     const serverMessage = await response.json();
-    console.log(serverMessage);
   }, []);
 
   const handleClick = useCallback(async () => {

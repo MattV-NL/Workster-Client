@@ -60,7 +60,6 @@ export const attemptReg = async (
       body: JSON.stringify(regData),
     });
     const message = await response.json();
-    console.log(message);
     setRegMessage(message.status);
     setRegSuccessful(message.successful);
     return true;
@@ -87,7 +86,6 @@ export const recoverAccount = async (
   });
 
   const message = await response.json();
-  console.log(message);
   setRecoverAccountModal(message.successful);
   return;
 };

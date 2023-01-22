@@ -35,7 +35,6 @@ const SaveSettingsButton = () => {
       body: JSON.stringify(settingsJSON),
     });
     const savedSettings = await response.json();
-    console.log(savedSettings);
   }, [
     darkMode,
     authStatus,

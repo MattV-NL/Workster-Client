@@ -71,9 +71,6 @@ const AuthenticationContextProvider = ({ children }) => {
       setPassword('');
     } else {
       setIsRegModalVisible(true);
-      console.log({
-        message: 'please enter your username and password to login.',
-      });
     }
   }, [username, password, setUsername, setPassword, setAuthStatus]);
 

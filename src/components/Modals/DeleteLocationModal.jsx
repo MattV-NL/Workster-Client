@@ -13,12 +13,10 @@ const DeleteLocationModal = ({ children }) => {
   }, [setDeleteLocationModalVisible]);
 
   const handleOk = useCallback(async () => {
-    console.log(children);
     const packagedInfo = {
       location_id: children,
     };
     const response = await deleteRow(SERVER_EP.deleteLocation, packagedInfo);
-    console.log(response);
     setDeleteLocationModalVisible(false);
   }, [setDeleteLocationModalVisible, children]);
 

@@ -36,7 +36,6 @@ export const sendCoordinatesGeolocate = async (pos, user_id) => {
     body: JSON.stringify(coordsJSON),
   });
   const sendData = await sendResponse.json();
-  console.log(sendData, 'geolocate');
 };
 
 export const sendCoordinatesManual = async (latitude, longitude, user_id) => {
@@ -56,7 +55,6 @@ export const sendCoordinatesManual = async (latitude, longitude, user_id) => {
     body: JSON.stringify(coordsJSON),
   });
   const sendData = await sendResponse.json();
-  console.log(sendData, 'manual input');
 };
 
 export const manualLocationInput = async (lat, lon, units) => {

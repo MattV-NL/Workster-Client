@@ -7,6 +7,5 @@ export const deleteAccount = async (apiURL, packagedInfo) => {
     body: JSON.stringify(packagedInfo),
   });
   const returnMessage = await response.json();
-  console.log(returnMessage);
   return;
 };

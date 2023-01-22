@@ -20,7 +20,6 @@ const DeleteWorkDataModal = ({ children }) => {
       SERVER_EP.deleteWorkInformation,
       packagedInfo
     );
-    console.log(response);
     setDeleteWorkModalVisible(false);
   }, [setDeleteWorkModalVisible, children]);
 
