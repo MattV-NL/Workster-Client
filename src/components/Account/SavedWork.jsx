@@ -20,6 +20,7 @@ const SavedWork = () => {
   const { setDeleteWorkModalVisible, deleteWorkModalVisible } =
     useContext(WorkDataContext);
   const [workDetailsKey, setWorkDetailsKey] = useState(null);
+  const [informationId, setInformationId] = useState(null);
 
   useEffect(() => {
     const getSavedWork = async () => {
@@ -52,14 +53,15 @@ const SavedWork = () => {
         <>
           <DeleteOutlined
             onClick={() => {
+              setInformationId(information_id);
               setDeleteWorkModalVisible(true);
             }}
           />
-          <DeleteWorkDataModal children={information_id} />
         </>
       ));
       const details = (
         <div
+          className='more-details'
           onClick={() => {
             setWorkDetailsKey(information_id);
             setIsWorkDetailsVisibleProfile(true);
@@ -89,6 +91,7 @@ const SavedWork = () => {
       <WorkDetailsModalProfile title={'Work Details'}>
         {workDetailsProfile(workInfoMap, workDetailsKey)}
       </WorkDetailsModalProfile>
+      <DeleteWorkDataModal children={informationId} />
     </div>
   );
 };

@@ -27,6 +27,7 @@ const WorkTable = () => {
 
     const details = (value.details = (
       <div
+        className='more-details'
         onClick={() => {
           setWorkDetailsKey(detailsKey);
           setIsWorkDetailsVisibleMain(true);

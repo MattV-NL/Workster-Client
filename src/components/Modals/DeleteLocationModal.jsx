@@ -13,6 +13,7 @@ const DeleteLocationModal = ({ children }) => {
   }, [setDeleteLocationModalVisible]);
 
   const handleOk = useCallback(async () => {
+    console.log(children);
     const packagedInfo = {
       location_id: children,
     };
@@ -28,7 +29,7 @@ const DeleteLocationModal = ({ children }) => {
       onOk={handleOk}
       onCancel={handleCancel}
     >
-      Are you sure you want to delete this row. This can not be undone.
+      Are you sure you want to delete location. This can not be undone.
     </Modal>
   );
 };

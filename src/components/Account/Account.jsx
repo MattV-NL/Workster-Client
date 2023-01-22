@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { paths, locationsTableColumns } from '../../constants';
 import { AuthenticationContext } from '../../contexts/AuthenticationContext';
 import '../DashBoard/dashboard.scss';
@@ -25,6 +25,7 @@ const Account = () => {
     accountLocations,
     setAccountLocations,
   } = useContext(PositionContext);
+  const [locationId, setLocationId] = useState(null);
 
   useEffect(() => {
     getLocations(authStatus, setAccountLocations, setIsAccountModalVisible);
@@ -37,12 +38,18 @@ const Account = () => {
 
   const datasource = accountLocations.map((location) => {
     const latitudeLink = (location.latitudeLink = (
-      <Link to={`${paths.SAVED_WORK}${location.location_id}`}>
+      <Link
+        className='more-details'
+        to={`${paths.SAVED_WORK}${location.location_id}`}
+      >
         {location.latitude}
       </Link>
     ));
     const longitudeLink = (location.longtiudeLink = (
-      <Link to={`${paths.SAVED_WORK}${location.location_id}`}>
+      <Link
+        className='more-details'
+        to={`${paths.SAVED_WORK}${location.location_id}`}
+      >
         {location.longitude}
       </Link>
     ));
@@ -50,10 +57,10 @@ const Account = () => {
       <>
         <DeleteOutlined
           onClick={() => {
+            setLocationId(location.location_id);
             setDeleteLocationModalVisible(true);
           }}
         />
-        <DeleteLocationModal children={location.location_id} />
       </>
     ));
     return {
@@ -99,6 +106,7 @@ const Account = () => {
           <Link to={paths.DASHBOARD}>Back to DashBoard</Link>
         </Button>
       )}
+      <DeleteLocationModal children={locationId} />
     </div>
   );
 };
