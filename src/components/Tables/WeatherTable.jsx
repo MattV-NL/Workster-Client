@@ -91,7 +91,7 @@ const WeatherTable = () => {
       className={
         darkMode
           ? `dark-table${dynamicBorder()}`
-          : `light-table-${dynamicBorder()}`
+          : `light-table${dynamicBorder()}`
       }
     >
       <Table dataSource={datasource} columns={dynamicColumns()} />
