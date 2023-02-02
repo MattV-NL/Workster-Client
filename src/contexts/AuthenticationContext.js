@@ -1,5 +1,11 @@
 import { createContext, useCallback, useState, useEffect } from 'react';
-import { USERNAME_KEY, PASSWORD_KEY, EMAIL_KEY } from '../constants';
+import {
+  USERNAME_KEY,
+  PASSWORD_KEY,
+  USERNAME_KEY_REG,
+  PASSWORD_KEY_REG,
+  EMAIL_KEY,
+} from '../constants';
 import {
   checkToken,
   attemptLogin,
@@ -91,7 +97,7 @@ const AuthenticationContextProvider = ({ children }) => {
     <AuthenticationContext.Provider
       value={{
         regData: {
-          [USERNAME_KEY]: {
+          [USERNAME_KEY_REG]: {
             value: usernameReg,
             onChange: onChange({ setterFunction: setUsernameReg }),
           },
@@ -99,7 +105,7 @@ const AuthenticationContextProvider = ({ children }) => {
             value: emailReg,
             onChange: onChange({ setterFunction: setEmailReg }),
           },
-          [PASSWORD_KEY]: {
+          [PASSWORD_KEY_REG]: {
             value: passwordReg,
             onChange: onChange({ setterFunction: setPasswordReg }),
           },

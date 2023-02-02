@@ -9,6 +9,8 @@ export const GEOLOCATION_KEY = 'geolocation-input';
 export const SAVE_LOCATION_KEY = 'save-location-input';
 export const USERNAME_KEY = 'username-input';
 export const PASSWORD_KEY = 'password-input';
+export const USERNAME_KEY_REG = 'username-input-reg';
+export const PASSWORD_KEY_REG = 'password-input-reg';
 export const EMAIL_KEY = 'email-input';
 
 export const workFormInputs = new Map(
@@ -108,7 +110,7 @@ export const regFormInputs = new Map(
     {
       title: 'username',
       label: 'Username',
-      id: 'username-input',
+      id: 'username-input-reg',
       type: 'text',
       required: true,
     },
@@ -122,7 +124,7 @@ export const regFormInputs = new Map(
     {
       title: 'password',
       label: 'Password',
-      id: 'password-input',
+      id: 'password-input-reg',
       type: 'password',
       required: true,
     },

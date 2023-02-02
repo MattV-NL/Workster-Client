@@ -28,7 +28,7 @@ const LogInForm = () => {
                   {label}
                 </label>
                 <InputComp
-                  id={id + label}
+                  id={id}
                   type={type}
                   value={regData[id].value}
                   required={required}
@@ -42,6 +42,7 @@ const LogInForm = () => {
             type='primary'
             className='button'
             onClick={handleClickReg}
+            id={'reg-button'}
           >
             <FormOutlined />
             {'   '}Register
@@ -63,7 +64,7 @@ const LogInForm = () => {
                     {label}
                   </label>
                   <InputComp
-                    id={id + type}
+                    id={id}
                     type={type}
                     value={logInData[id].value}
                     required={required}
@@ -78,6 +79,7 @@ const LogInForm = () => {
             type='primary'
             className='button'
             onClick={handleClickLogin}
+            id={'login-button'}
           >
             <LoginOutlined />
             {'   '}Log In
