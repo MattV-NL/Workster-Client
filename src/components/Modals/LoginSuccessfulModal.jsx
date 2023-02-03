@@ -20,6 +20,8 @@ const LoginSuccessfulModal = () => {
       visible={loginSuccessful}
       onOk={handleOkCancel}
       onCancel={handleOkCancel}
+      okText={'OK'}
+      cancelText={'Cancel'}
     >
       Login Successful!
     </Modal>
