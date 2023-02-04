@@ -11,7 +11,7 @@ const ResetButton = () => {
 
   return (
     <div className='button-container'>
-      <ButtonComp type='primary' className='button' onClick={showModal}>
+      <ButtonComp type='primary' className='button' onClick={showModal} id='reset-button'>
         Reset Info
       </ButtonComp>
     </div>

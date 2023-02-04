@@ -20,19 +20,19 @@ const TitleNav = () => {
         </Link>
       </div>
       <div className='navbar'>
-        <Link to={paths.DASHBOARD} className='navbar-item'>
+        <Link to={paths.DASHBOARD} className='navbar-item' id='navbar-home'>
           Home
         </Link>
-        <Link to={paths.WEATHER} className='navbar-item'>
+        <Link to={paths.WEATHER} className='navbar-item' id='navbar-weather'>
           Weather
         </Link>
-        <Link to={paths.WORK} className='navbar-item'>
+        <Link to={paths.WORK} className='navbar-item' id='navbar-work'>
           Work
         </Link>
         <LoginStatus
           className={darkMode ? 'dark-navbar-item' : 'light-navbar-item'}
         />
-        <Link to={paths.ABOUT} className='navbar-item'>
+        <Link to={paths.ABOUT} className='navbar-item' id='navbar-about'>
           About
         </Link>
       </div>

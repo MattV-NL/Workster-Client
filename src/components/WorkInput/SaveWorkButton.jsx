@@ -31,7 +31,12 @@ const SaveWorkButton = () => {
   }, [authStatus, workValues, sendWorkInformation, setSaveWorkModalVisible]);
   return (
     <div className='button-container'>
-      <ButtonComp type='primary' className='button' onClick={handleClick}>
+      <ButtonComp
+        type='primary'
+        className='button'
+        onClick={handleClick}
+        id='save-work-button'
+      >
         Save Work Info
       </ButtonComp>
     </div>

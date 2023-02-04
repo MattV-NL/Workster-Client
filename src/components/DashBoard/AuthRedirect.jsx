@@ -12,6 +12,7 @@ const AuthRedirect = () => {
       className={darkMode ? 'dark-dashboard-item' : 'light-dashboard-item'}
       type='primary'
       block='true'
+      id='auth-button'
     >
       <Link to={paths.AUTH}>Sign Up / Login</Link>
     </Button>

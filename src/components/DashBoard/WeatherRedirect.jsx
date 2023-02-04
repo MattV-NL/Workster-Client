@@ -12,6 +12,7 @@ const WeatherRedirect = () => {
       className={darkMode ? 'dark-dashboard-item' : 'light-dashboard-item'}
       type='primary'
       block='true'
+      id='weather-button'
     >
       <Link to={paths.WEATHER}>Weather</Link>
     </Button>

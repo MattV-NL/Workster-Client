@@ -12,6 +12,7 @@ const AboutRedirect = () => {
       className={darkMode ? 'dark-dashboard-item' : 'light-dashboard-item'}
       type='primary'
       block='true'
+      id='about-button'
     >
       <Link to={paths.ABOUT}>About</Link>
     </Button>

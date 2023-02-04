@@ -12,6 +12,7 @@ const WorkRedirect = () => {
       className={darkMode ? 'dark-dashboard-item' : 'light-dashboard-item'}
       type='primary'
       block='true'
+      id='work-button'
     >
       <Link to={paths.WORK}>Work</Link>
     </Button>
