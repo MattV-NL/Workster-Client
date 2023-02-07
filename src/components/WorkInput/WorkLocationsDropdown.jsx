@@ -36,7 +36,10 @@ const WorkLocationsDropdown = () => {
 
   return (
     <>
-      <div className={darkMode ? 'dark-dropdown' : 'light-dropdown'}>
+      <div
+        className={darkMode ? 'dark-dropdown' : 'light-dropdown'}
+        id='work-locations-dropdown'
+      >
         <Dropdown overlay={menu} trigger={['click']}>
           <a onClick={(e) => e.preventDefault()}>
             <Space>
