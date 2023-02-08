@@ -21,6 +21,7 @@ const WorkLocationsDropdown = () => {
       return {
         label: (
           <div
+            id={location_id}
             onClick={() => {
               setWorkLocation({ latitude, longitude, location_id });
             }}
@@ -36,12 +37,9 @@ const WorkLocationsDropdown = () => {
 
   return (
     <>
-      <div
-        className={darkMode ? 'dark-dropdown' : 'light-dropdown'}
-        id='work-locations-dropdown'
-      >
+      <div className={darkMode ? 'dark-dropdown' : 'light-dropdown'}>
         <Dropdown overlay={menu} trigger={['click']}>
-          <a onClick={(e) => e.preventDefault()}>
+          <a onClick={(e) => e.preventDefault()} id='work-locations-dropdown'>
             <Space>
               Work Locations
               <DownOutlined />
